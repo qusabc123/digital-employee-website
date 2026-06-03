@@ -186,6 +186,69 @@ body {
   .module-grid { grid-template-columns: 1fr; }
   .nav-links { display: none; }
 }
+
+/* Hero */
+.home-hero { text-align: center; padding: 60px 0 24px; }
+.hero-badge {
+  display: inline-block; background: #eef2ff; color: var(--accent);
+  padding: 4px 16px; border-radius: 20px; font-size: 13px; font-weight: 500;
+  margin-bottom: 16px;
+}
+.home-hero h1 { font-size: 40px; letter-spacing: -0.8px; font-weight: 700; margin-bottom: 12px; line-height: 1.2; }
+.home-hero .highlight { background: linear-gradient(135deg, #2563eb, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { font-size: 17px; color: var(--text-secondary); margin-bottom: 28px; }
+.hero-cta { display: flex; gap: 12px; justify-content: center; margin-bottom: 24px; }
+.btn-primary, .btn-secondary {
+  display: inline-block; padding: 10px 28px; border-radius: 8px;
+  font-size: 15px; font-weight: 500; text-decoration: none; transition: all 0.2s;
+}
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover { background: #1d4ed8; transform: translateY(-1px); }
+.btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Company Bar */
+.company-bar { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 24px; margin: 24px 0; }
+.company-inner { display: flex; flex-wrap: wrap; gap: 16px 32px; }
+.company-item { display: flex; gap: 8px; font-size: 13.5px; }
+.ci-label { color: var(--text-tertiary); font-weight: 500; min-width: 40px; }
+.ci-value { color: var(--text); }
+.sep { color: var(--border); margin: 0 6px; }
+
+/* Pricing */
+.pricing-section { margin: 48px 0; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+.pricing-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  padding: 28px 24px; text-align: center; position: relative; transition: all 0.2s;
+}
+.pricing-card:hover { border-color: var(--accent); box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.pricing-card.featured { border-color: var(--accent); border-width: 2px; }
+.pricing-badge {
+  position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+  background: var(--border); color: var(--text-secondary); padding: 2px 14px;
+  border-radius: 12px; font-size: 12px; font-weight: 500;
+}
+.pricing-badge.most { background: var(--accent); color: white; }
+.pricing-card h3 { font-size: 20px; margin-bottom: 8px; }
+.price { font-size: 36px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.price small { font-size: 14px; font-weight: 400; color: var(--text-secondary); }
+.price-desc { font-size: 13px; color: var(--text-secondary); margin-bottom: 20px; }
+.pricing-card ul { list-style: none; margin: 0; padding: 0; }
+.pricing-card ul li { padding: 6px 0; font-size: 14px; color: var(--text); border-bottom: 1px solid var(--border); }
+.pricing-card ul li:last-child { border-bottom: none; }
+.pricing-card.s1 { border-top: 3px solid #64748b; }
+.pricing-card.s2 { border-top: 3px solid var(--accent); }
+.pricing-card.s3 { border-top: 3px solid #7c3aed; }
+
+.section-title { font-size: 22px; font-weight: 600; margin-top: 48px; margin-bottom: 16px; letter-spacing: -0.3px; text-align: center; }
+
+@media (max-width: 768px) {
+  .pricing-grid { grid-template-columns: 1fr; }
+  .company-inner { flex-direction: column; gap: 8px; }
+  .home-hero h1 { font-size: 28px; }
+}
+
 </style>
 </head>
 <body>
@@ -263,21 +326,68 @@ body {
 <main class="content">
 <div class="breadcrumb"><a href="index.html" style="color:var(--text-tertiary)">🏠 首页</a></div>
 <article class="article"><div class="home-hero">
-<h1>AI 数字员工 · 企业增效计划</h1>
-<p>用半个月工资，给公司配一个 24 小时在岗的 AI 员工</p>
-<div class="home-info">
-<span class="badge">📄 23 篇文档</span>
-<span class="badge">📝 102,024+ 字</span>
-<span class="badge">📊 934 张数据表</span>
-<span class="badge">🏢 面向中小企业</span>
+<div class="hero-badge">AI 数字员工定制服务</div>
+<h1>用 <span class="highlight">半个月工资</span><br>给公司配一个 <span class="highlight">24 小时在岗</span> 的 AI 员工</h1>
+<p class="hero-sub">不请假 · 不摸鱼 · 不提涨薪 · 随叫随到</p>
+<div class="hero-cta">
+<a href="#pricing" class="btn-primary">查看报价方案</a>
+<a href="module-0-项目总览.html" class="btn-secondary">了解更多 →</a>
 </div>
-</div><div class="project-card"><table>
-<tr><td>公司</td><td>上海锦霓鲤锦网络科技有限公司</td></tr>
-<tr><td>联系人</td><td>倪锦 · 17601414435 · qusabc123@outlook.com</td></tr>
-<tr><td>报价</td><td>S1 ¥3,500 / S2 ¥6,000 / S3 ¥50,000/年</td></tr>
-<tr><td>定位</td><td>以 AI Agent（Codex/Hermes）为核心载体，企业全方位定制化 AI 数字员工</td></tr>
-<tr><td>客户</td><td>电商 · 直播 · 二手车 · 本地服务 · 传统制造业</td></tr>
-</table></div><div class="section-title">📚 知识模块</div><div class="module-grid"><a href="module-0-项目总览.html" class="module-card"><h3>🎯 项目总览</h3><p>GitHub 可用项目清单与案例方案
+<div class="home-info">
+<span class="badge">🤖 23 个解决方案</span>
+<span class="badge">📝 102,024+ 字实战文档</span>
+<span class="badge">📊 934 张标准流程表</span>
+<span class="badge">🏢 专注服务中小企业</span>
+</div>
+</div><div class="company-bar">
+<div class="company-inner">
+<div class="company-item"><span class="ci-label">公司</span><span class="ci-value">上海锦霓鲤锦网络科技有限公司</span></div>
+<div class="company-item"><span class="ci-label">联系人</span><span class="ci-value">倪锦 · 17601414435</span></div>
+<div class="company-item"><span class="ci-label">报价</span><span class="ci-value">S1 ¥3,500 <span class="sep">|</span> S2 ¥6,000 <span class="sep">|</span> S3 ¥50,000/年</span></div>
+<div class="company-item"><span class="ci-label">客户</span><span class="ci-value">电商 · 直播 · 二手车 · 本地服务 · 传统制造业</span></div>
+</div>
+</div>
+<div id="pricing" class="pricing-section">
+<h2 class="section-title">透明报价 · 按需选择</h2>
+<div class="pricing-grid">
+<div class="pricing-card s1">
+<div class="pricing-badge">入门</div>
+<h3>S1</h3>
+<div class="price">¥3,500</div>
+<div class="price-desc">员工半个月工资</div>
+<ul>
+<li>1 个场景完整交付</li>
+<li>AI 客服 / 报表 / 知识库</li>
+<li>7 天部署上线</li>
+<li>1 个月运维跟踪</li>
+</ul>
+</div>
+<div class="pricing-card s2 featured">
+<div class="pricing-badge most">推荐</div>
+<h3>S2</h3>
+<div class="price">¥6,000</div>
+<div class="price-desc">员工一个月工资</div>
+<ul>
+<li>3-5 个场景批量落地</li>
+<li>全渠道接入</li>
+<li>14 天部署上线</li>
+<li>3 个月运维跟踪</li>
+</ul>
+</div>
+<div class="pricing-card s3">
+<div class="pricing-badge">企业</div>
+<h3>S3</h3>
+<div class="price">¥50,000<small>/年</small></div>
+<div class="price-desc">一个正式员工年薪</div>
+<ul>
+<li>全公司不限场景</li>
+<li>定制开发 + 私有部署</li>
+<li>7×24 技术支持</li>
+<li>持续迭代升级</li>
+</ul>
+</div>
+</div>
+</div><div class="section-title">📚 知识模块</div><div class="module-grid"><a href="module-0-项目总览.html" class="module-card"><h3>🎯 项目总览</h3><p>GitHub 可用项目清单与案例方案
  筛选标准：能直接落地、适合中小企业、中文友好、社区活跃
  时间：2026-06-03
 ---
