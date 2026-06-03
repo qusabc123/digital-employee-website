@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>业务线规划 · 企业数字员工</title>
+<style>
+:root {
+  --bg: #f5f5f7;
+  --surface: #ffffff;
+  --text: #1d1d1f;
+  --text-secondary: #86868b;
+  --accent: #0071e3;
+  --border: #e8e8ed;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro SC", "PingFang SC", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.8; font-size: 15px;
+  padding: 40px 24px;
+}
+.container { max-width: 900px; margin: 0 auto; background: var(--surface); padding: 48px 56px; border-radius: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+h2 { font-size: 22px; font-weight: 600; margin: 32px 0 12px; color: var(--text); padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+h3 { font-size: 18px; font-weight: 600; margin: 24px 0 8px; color: var(--text); }
+h4 { font-size: 15px; font-weight: 600; margin: 16px 0 6px; color: var(--accent); }
+p { margin-bottom: 12px; color: var(--text); line-height: 1.8; }
+li { margin-bottom: 6px; margin-left: 20px; line-height: 1.7; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13.5px; }
+th { background: var(--bg); padding: 10px 14px; text-align: left; font-weight: 600; border: 1px solid var(--border); }
+td { padding: 10px 14px; border: 1px solid var(--border); vertical-align: top; }
+tr:nth-child(even) td { background: #fafafa; }
+br { display: block; content: ""; margin: 8px 0; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+strong { color: var(--text); }
+.back { display: inline-block; margin-bottom: 24px; color: var(--text-secondary); font-size: 13px; text-decoration: none; }
+.back:hover { color: var(--accent); }
+@media (max-width: 600px) { .container { padding: 24px 16px; } }
+</style>
+</head>
+<body>
+<div class="container">
+<a href="index.html" class="back">← 返回首页</a>
+<h1>企业数字员工 - 业务线规划</h1>
+<br>
+<p>> 基于开源生态可落地的企业AI服务方案</p>
+<p>> 2026年6月</p>
+<br>
+<p>---</p>
+<br>
+<h2>一、核心定位</h2>
+<br>
+<p><strong>企业数字员工 = AI 大脑 + 开源生态 + 定制落地</strong></p>
+<br>
+<p>我们不造轮子，我们做"最后一公里"的交付：</p>
+<li>开源项目负责基础设施</li>
+<li>我们负责企业需求分析、方案设计、部署落地、持续优化</li>
+<br>
+<p>---</p>
+<br>
+<h2>二、业务线全景</h2>
+<br>
+<h3>业务线A：AI智能客服系统</h3>
+<p><strong>一句话：让AI代替人工回答80%的重复咨询</strong></p>
+<br>
+<table><thead><tr>
+<th>项目</th>
+<th>可延伸的服务</th>
+<th>企业价值</th>
+</tr></thead><tbody>
+<tr>
+<td>**Dify** (已有)</td>
+<td>知识库搭建、对话流设计、多轮对话优化</td>
+<td>上传产品手册→自动回复客户</td>
+</tr>
+<tr>
+<td>**FastGPT**</td>
+<td>企业文档清洗、专业术语训练、冷启动方案</td>
+<td>解决"AI答非所问"</td>
+</tr>
+<tr>
+<td>**Chatwoot**</td>
+<td>多渠道接入（网站/微信/邮件）、人机协作转接</td>
+<td>客服不用切后台</td>
+</tr>
+</tbody></table>
+<br>
+<p><strong>适合客户：</strong> 电商、教育机构、物业、制造业</p>
+<p><strong>收费方式：</strong> 按知识库搭建 + 按对话量</p>
+<p><strong>展示话术：</strong> "把您公司的产品手册丢进去，客户问什么AI答什么，省下一个客服的工资"</p>
+<br>
+<p>---</p>
+<br>
+<h3>业务线B：企业知识大脑</h3>
+<p><strong>一句话：让企业所有文档资料变成AI可查的知识库</strong></p>
+<br>
+<table><thead><tr>
+<th>开源项目</th>
+<th>可延伸的服务</th>
+<th>企业价值</th>
+</tr></thead><tbody>
+<tr>
+<td>**Dify/知识库**</td>
+<td>文档清洗、多格式导入（PDF/Word/Excel/网页）、权限管理</td>
+<td>员工问"报销流程是什么"秒回</td>
+</tr>
+<tr>
+<td>**AnythingLLM**</td>
+<td>本地私有的企业知识库、完全隔离外网</td>
+<td>涉密企业也能用</td>
+</tr>
+<tr>
+<td>**Apache Answer**</td>
+<td>企业内部问答社区、员工互帮互助</td>
+<td>减少重复问主管</td>
+</tr>
+</tbody></table>
+<br>
+<p><strong>适合客户：</strong> 中大型企业、律所、设计院、医院</p>
+<p><strong>收费方式：</strong> 按文档量 + 用户数 + 私有化部署费</p>
+<p><strong>展示话术：</strong> "让新员工3天上手，不用天天问老同事"</p>
+<br>
+<p>---</p>
+<br>
+<h3>业务线C：销售线索自动化</h3>
+<p><strong>一句话：客户咨询时AI自动筛选、记录、通知销售</strong></p>
+<br>
+<table><thead><tr>
+<th>开源项目</th>
+<th>可延伸的服务</th>
+<th>企业价值</th>
+</tr></thead><tbody>
+<tr>
+<td>**n8n**</td>
+<td>客户留资→自动写入表格→短信通知→同步CRM</td>
+<td>一条龙自动化</td>
+</tr>
+<tr>
+<td>**Dify+工作流**</td>
+<td>智能判断客户意向→不同等级→不同跟进策略</td>
+<td>销售只追高意向客户</td>
+</tr>
+<tr>
+<td>**企业微信+中间件**</td>
+<td>自动记录客户对话→定期回访提醒→流失预警</td>
+<td>不漏一个客户</td>
+</tr>
+</tbody></table>
+<br>
+<p><strong>适合客户：</strong> 房产中介、装修公司、教育培训、B2B销售</p>
+<p><strong>收费方式：</strong> 按线索量 + 自动化流程数</p>
+<p><strong>展示话术：</strong> "客户晚上10点咨询，AI直接回答+记录，第二天销售上班就有线索"</p>
+<br>
+<p>---</p>
+<br>
+<h3>业务线D：企业流程自动化</h3>
+<p><strong>一句话：让AI跑通企业内部的审批、通知、报表</strong></p>
+<br>
+<table><thead><tr>
+<th>开源项目</th>
+<th>可延伸的服务</th>
+<th>企业价值</th>
+</tr></thead><tbody>
+<tr>
+<td>**n8n**</td>
+<td>报销审批流、请假通知、自动生成日报周报</td>
+<td>减少行政人力</td>
+</tr>
+<tr>
+<td>**Dify+API**</td>
+<td>对接企业ERP/CRM/OA系统、AI填表、AI审核</td>
+<td>打通数据孤岛</td>
+</tr>
+<tr>
+<td>**Vikunja**</td>
+<td>AI驱动的任务分配、进度跟踪、超期预警</td>
+<td>管理人效提升</td>
+</tr>
+</tbody></table>
+<br>
+<p><strong>适合客户：</strong> 有OA/ERP系统的企业、连锁门店</p>
+<p><strong>收费方式：</strong> 按流程数 + 对接系统数</p>
+<p><strong>展示话术：</strong> "员工请假、报销、审批，AI自动处理，老板手机上就能批"</p>
+<br>
+<p>---</p>
+<br>
+<h3>业务线E：企业AI数字人</h3>
+<p><strong>一句话：给企业一个独一无二的AI形象代表</strong></p>
+<br>
+<table><thead><tr>
+<th>开源项目</th>
+<th>可延伸的服务</th>
+<th>企业价值</th>
+</tr></thead><tbody>
+<tr>
+<td>**Dify+语音**</td>
+<td>AI语音客服、企业专属语音助手</td>
+<td>电话咨询也能AI接</td>
+</tr>
+<tr>
+<td>**ChatTTS**</td>
+<td>语音合成、企业语音播报</td>
+<td>用老板声音播通知</td>
+</tr>
+<tr>
+<td>**M3E/BGE**</td>
+<td>企业私有词嵌入模型训练</td>
+<td>回答更懂行业术语</td>
+</tr>
+</tbody></table>
+<br>
+<p><strong>适合客户：</strong> 品牌企业、连锁门店、物业</p>
+<p><strong>收费方式：</strong> 按定制量</p>
+<p><strong>展示话术：</strong> "让AI用老板的声音给客户打电话"</p>
+<br>
+<p>---</p>
+<br>
+<h2>三、针对不同类型企业的推荐套餐</h2>
+<br>
+<h3>🏪 小微企业（1-10人）</h3>
+<li><strong>推荐：</strong>业务线A（知识库客服） + 业务线C（线索自动化）</li>
+<li><strong>典型场景：</strong>淘宝店、小工作室、个体户</li>
+<li><strong>预算：</strong>0成本（用他们自己的电脑）+ 按效果付费</li>
+<br>
+<h3>🏢 中小企业（10-100人）  </h3>
+<li><strong>推荐：</strong>业务线A + B + C</li>
+<li><strong>典型场景：</strong>贸易公司、教培机构、连锁门店</li>
+<li><strong>预算：</strong>客户自购服务期（1-3千/月）</li>
+<br>
+<h3>🏭 中大型企业（100+人）</h3>
+<li><strong>推荐：</strong>全部5条业务线</li>
+<li><strong>典型场景：</strong>制造业、集团企业、医院</li>
+<li><strong>预算：</strong>私有化部署（2-10万起）</li>
+<br>
+<p>---</p>
+<br>
+<h2>四、我们vs竞品的差异点</h2>
+<br>
+<table><thead><tr>
+<th>对比项</th>
+<th>其他AI公司</th>
+<th>我们</th>
+</tr></thead><tbody>
+<tr>
+<td>技术基础</td>
+<td>自研/闭源</td>
+<td>**开源生态（持续进化）**</td>
+</tr>
+<tr>
+<td>交付方式</td>
+<td>黑盒</td>
+<td>**透明可定制**</td>
+</tr>
+<tr>
+<td>部署成本</td>
+<td>高</td>
+<td>**客户自带硬件/云资源**</td>
+</tr>
+<tr>
+<td>数据安全</td>
+<td>只能上云</td>
+<td>**本地/私有云都可**</td>
+</tr>
+<tr>
+<td>迭代速度</td>
+<td>等厂商更新</td>
+<td>**紧跟社区最新方案**</td>
+</tr>
+<tr>
+<td>定价</td>
+<td>固定套餐</td>
+<td>**灵活按需定价**</td>
+</tr>
+</tbody></table>
+<br>
+<p>---</p>
+<br>
+<h2>五、下一步可以做的案例 Demo</h2>
+<br>
+<table><thead><tr>
+<th>优先级</th>
+<th>案例</th>
+<th>用什么做</th>
+<th>企业主能看到的画面</th>
+</tr></thead><tbody>
+<tr>
+<td>⭐⭐⭐</td>
+<td>产品手册AI客服</td>
+<td>Dify + PDF</td>
+<td>上传PDF→问任何问题→秒回</td>
+</tr>
+<tr>
+<td>⭐⭐⭐</td>
+<td>客户咨询自动记录</td>
+<td>企微 + 中间件</td>
+<td>咨询→AI回复→记录到表格</td>
+</tr>
+<tr>
+<td>⭐⭐</td>
+<td>销售线索筛选</td>
+<td>n8n + Dify</td>
+<td>高意向客户自动标记+通知</td>
+</tr>
+<tr>
+<td>⭐⭐</td>
+<td>企业知识库</td>
+<td>AnythingLLM</td>
+<td>内部文档全AI化</td>
+</tr>
+<tr>
+<td>⭐</td>
+<td>AI语音客服</td>
+<td>Dify + TTS</td>
+<td>打电话给AI问问题</td>
+</tr>
+</tbody></table>
+<br>
+<p>---</p>
+<br>
+<h2>六、商业模式建议</h2>
+<br>
+<p><strong>第一阶段（现在）：</strong> 只做交付和实施</p>
+<li>客户提供硬件/云资源</li>
+<li>我们出方案+部署+培训</li>
+<li>收实施费 + 月维保费</li>
+<br>
+<p><strong>第二阶段（积累案例后）：</strong></p>
+<li>做出标准化模板</li>
+<li>快速复制同行业客户</li>
+<li>收订阅费</li>
+<br>
+<p><strong>第三阶段（有口碑后）：</strong></p>
+<li>培养本地代理商</li>
+<li>你躺着拿分成</li>
+<li>专注产品和升级</li>
+<br>
+<p>---</p>
+<br>
+<p>*本文档将持续更新，每完成一个案例Demo就补充实际效果数据。*</p>
+<br>
+</div>
+</body>
+</html>
