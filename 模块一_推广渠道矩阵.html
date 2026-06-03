@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模块一：推广渠道矩阵 · 企业数字员工</title>
+    <style>
+        
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --primary: #2563eb;
+    --primary-light: #3b82f6;
+    --bg: #f8fafc;
+    --sidebar-bg: #ffffff;
+    --card-bg: #ffffff;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --gradient: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #3b82f6 100%);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+/* Top Navigation */
+.top-nav {
+    background: var(--gradient);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(37,99,235,0.15);
+}
+.nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo { font-size: 18px; font-weight: 700; color: white; text-decoration: none; letter-spacing: 1px; }
+.nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+.nav-links a {
+    color: rgba(255,255,255,0.85); text-decoration: none; font-size: 12px;
+    padding: 4px 10px; border-radius: 20px; transition: all 0.2s;
+}
+.nav-links a:hover { background: rgba(255,255,255,0.15); color: white; }
+
+/* Layout */
+.layout { display: flex; max-width: 1400px; margin: 0 auto; min-height: calc(100vh - 56px); }
+
+/* Sidebar */
+.sidebar {
+    width: 260px; flex-shrink: 0; background: var(--sidebar-bg);
+    border-right: 1px solid var(--border); padding: 16px 12px;
+    position: sticky; top: 56px; height: calc(100vh - 56px); overflow-y: auto;
+}
+.sidebar-search { margin-bottom: 12px; }
+.sidebar-search input {
+    width: 100%; padding: 7px 12px; border: 1px solid var(--border);
+    border-radius: 8px; font-size: 13px; outline: none; transition: border 0.2s;
+}
+.sidebar-search input:focus { border-color: var(--primary); }
+.module-group { margin-bottom: 16px; }
+.module-title {
+    font-size: 11px; font-weight: 700; color: var(--text-light);
+    text-transform: uppercase; letter-spacing: 0.5px;
+    padding: 6px 8px 3px; border-bottom: 1px solid var(--border); margin-bottom: 3px;
+}
+.page-link {
+    display: flex; align-items: center; gap: 5px;
+    padding: 4px 8px; border-radius: 5px; color: var(--text);
+    text-decoration: none; font-size: 12.5px; transition: all 0.15s;
+}
+.page-link:hover { background: #eef2ff; color: var(--primary); }
+.page-link.active { background: #eef2ff; color: var(--primary); font-weight: 600; }
+.page-link .icon { font-size: 13px; width: 18px; text-align: center; flex-shrink: 0; }
+.page-link .title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Main Content */
+.content { flex: 1; padding: 32px 48px; max-width: 880px; }
+.breadcrumb { font-size: 13px; color: var(--text-light); margin-bottom: 20px; }
+.breadcrumb a { color: var(--primary); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* Article */
+.article h1 { font-size: 28px; font-weight: 700; margin-bottom: 16px; line-height: 1.3; }
+.article h2 {
+    font-size: 22px; font-weight: 600; margin-top: 32px; margin-bottom: 12px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--border);
+}
+.article h3 { font-size: 18px; font-weight: 600; margin-top: 28px; margin-bottom: 8px; }
+.article h4 { font-size: 16px; font-weight: 600; margin-top: 24px; margin-bottom: 8px; }
+.article p { margin-bottom: 14px; }
+.article a { color: var(--primary); text-decoration: none; }
+.article a:hover { text-decoration: underline; }
+.article a.wikilink { background: #eef2ff; padding: 1px 5px; border-radius: 3px; font-size: 14px; }
+.article a.wikilink::before { content: "📄 "; font-size: 12px; }
+.article code {
+    background: #f1f5f9; padding: 2px 6px; border-radius: 4px;
+    font-size: 13px; font-family: "SF Mono", "JetBrains Mono", monospace;
+}
+.article pre {
+    background: #1e293b; color: #e2e8f0; padding: 18px; border-radius: 10px;
+    overflow-x: auto; margin: 16px 0;
+}
+.article pre code { background: none; padding: 0; color: inherit; font-size: 13px; line-height: 1.5; }
+.article blockquote {
+    border-left: 4px solid var(--primary); padding: 10px 18px; margin: 14px 0;
+    background: #f8fafc; border-radius: 0 8px 8px 0; color: var(--text-light);
+}
+.article ul, .article ol { margin: 6px 0 14px 22px; }
+.article li { margin-bottom: 3px; }
+.article .table-wrap { overflow-x: auto; margin: 14px 0; }
+.article table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 500px; }
+.article th, .article td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+.article th { background: #f1f5f9; font-weight: 600; }
+.article tr:nth-child(even) { background: #f8fafc; }
+.article hr { border: none; border-top: 2px solid var(--border); margin: 28px 0; }
+.article .content-img { max-width: 100%; border-radius: 8px; margin: 16px 0; }
+
+.article .meta-bar {
+    display: flex; gap: 14px; font-size: 13px; color: var(--text-light);
+    margin-bottom: 20px; flex-wrap: wrap;
+}
+.article .meta-bar span { background: #f1f5f9; padding: 3px 10px; border-radius: 12px; }
+
+/* Page Footer */
+.page-footer {
+    margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border);
+    text-align: center; font-size: 13px; color: var(--text-light);
+}
+
+/* Home Page */
+.home-hero { text-align: center; padding: 40px 0 24px; }
+.home-hero h1 { font-size: 34px; margin-bottom: 10px; }
+.home-hero p { font-size: 17px; color: var(--text-light); margin-bottom: 6px; }
+.home-info { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
+.home-info .badge {
+    background: #eef2ff; padding: 5px 14px; border-radius: 20px;
+    font-size: 12.5px; color: var(--primary);
+}
+.project-card {
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    border-radius: 14px; padding: 24px 28px; margin: 20px 0;
+}
+.project-card table { width: 100%; border: none; font-size: 14px; }
+.project-card td { border: none; padding: 4px 0; vertical-align: top; }
+.project-card td:first-child { width: 100px; font-weight: 600; color: var(--text-light); }
+.module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; margin: 20px 0; }
+.module-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px; transition: all 0.2s;
+    text-decoration: none; color: inherit; display: block;
+}
+.module-card:hover {
+    border-color: var(--primary); box-shadow: 0 4px 16px rgba(37,99,235,0.08);
+    transform: translateY(-2px);
+}
+.module-card h3 { font-size: 15px; margin-bottom: 6px; }
+.module-card p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+.module-card .count { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .layout { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--border); }
+    .content { padding: 20px; }
+    .module-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+}
+
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-inner">
+            <a href="index.html" class="logo">🤖 企业数字员工</a>
+            <div class="nav-links">
+                <a href="module-0-项目总览.html">🎯 总览</a>
+<a href="module-1-推广体系.html">📡 推广</a>
+<a href="module-2-销售转化.html">🪜 销售</a>
+<a href="module-3-内容素材.html">📝 素材</a>
+<a href="module-4-客户细分.html">👥 客户</a>
+<a href="module-5-交付SOP.html">🔧 交付</a>
+<a href="module-6-工具模板.html">🧰 工具</a>
+<a href="module-7-Hermes技术基座.html">🤖 Hermes</a>
+<a href="module-交付物.html">📦 交付</a>
+<a href="module-附件.html">📎 附件</a>
+            </div>
+        </div>
+    </nav>
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-search">
+                <input type="text" id="search" placeholder="🔍 搜索笔记..." oninput="searchNotes(this.value)">
+            </div>
+            <div class="sidebar-toc" id="sidebar-toc">
+                <div class="module-group">
+<div class="module-title">🎯 项目总览</div>
+<a href="推广与流程体系_完整框架.html" class="page-link><span class="icon">📐</span><span class="title">AI数字员工 · 推广与流程体系完整框架</span></a>
+<a href="GitHub可用项目清单与案例方案.html" class="page-link><span class="icon">🎯</span><span class="title">GitHub 可用项目清单与案例方案</span></a>
+<a href="八大行业方案速查.html" class="page-link><span class="icon">🏢</span><span class="title">八大行业方案速查</span></a>
+<a href="对外资料清单与制作排期.html" class="page-link><span class="icon">🎯</span><span class="title">对外资料清单与制作排期</span></a>
+<a href="常见反对意见与应对.html" class="page-link><span class="icon">🛡️</span><span class="title">常见反对意见与应对</span></a>
+<a href="核心话术速查.html" class="page-link><span class="icon">💬</span><span class="title">核心话术速查</span></a>
+<a href="项目检查清单.html" class="page-link><span class="icon">✅</span><span class="title">项目检查清单</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📡 推广体系</div>
+<a href="模块一_推广渠道矩阵.html" class="page-link active><span class="icon">📡</span><span class="title">模块一：推广渠道矩阵</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🪜 销售转化</div>
+<a href="模块二_销售转化漏斗.html" class="page-link><span class="icon">🪜</span><span class="title">模块二：销售转化漏斗</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📝 内容素材</div>
+<a href="模块三_内容素材体系.html" class="page-link><span class="icon">📝</span><span class="title">模块三：内容素材体系</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">👥 客户细分</div>
+<a href="模块四_客户细分与差异化方案.html" class="page-link><span class="icon">👥</span><span class="title">模块四：客户细分与差异化方案</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🔧 交付SOP</div>
+<a href="模块五_交付SOP标准操作手册.html" class="page-link><span class="icon">🔧</span><span class="title">模块五：交付SOP标准操作手册</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🧰 工具模板</div>
+<a href="模块六_工具模板清单.html" class="page-link><span class="icon">🧰</span><span class="title">模块六：工具模板清单</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🤖 Hermes 技术基座</div>
+<a href="README.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes Agent — AI 数字员工技术基座</span></a>
+<a href="Hermes CLI 速查.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes CLI 速查</span></a>
+<a href="Hermes 工具清单.html" class="page-link><span class="icon">🔌</span><span class="title">Hermes 工具清单</span></a>
+<a href="Hermes 示例命令.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes 示例命令</span></a>
+<a href="Hermes 部署与运维.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes 部署与运维</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📦 交付物</div>
+<a href="知识库_客服话术.html" class="page-link><span class="icon">📚</span><span class="title">AI数字员工 客服知识库</span></a>
+<a href="操作手册_企微AI客服部署.html" class="page-link><span class="icon">📋</span><span class="title">企微AI客服部署操作手册</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📎 附件</div>
+<a href="AI数字员工_企业增效计划.html" class="page-link><span class="icon">📄</span><span class="title">AI数字员工_企业增效计划</span></a>
+<a href="AI数字员工_展会精华版.html" class="page-link><span class="icon">🎪</span><span class="title">AI数字员工_展会精华版</span></a>
+<a href="AI智能体企业定制服务_企业展示.html" class="page-link><span class="icon">🤖</span><span class="title">AI智能体企业定制服务_企业展示</span></a>
+<a href="ppt-master参考索引.html" class="page-link><span class="icon">📄</span><span class="title">ppt-master 模板参考</span></a>
+<a href="素材总索引.html" class="page-link><span class="icon">🖼️</span><span class="title">素材总索引</span></a>
+</div>
+            </div>
+        </aside>
+        <main class="content">
+            <div class="breadcrumb"><a href="index.html">🏠 首页</a> / <a href="module-1-推广体系.html">📡 推广体系</a> / 模块一：推广渠道矩阵</div>
+            <article class="article">
+                <h1>📡 模块一：推广渠道矩阵</h1>
+    <div class="meta-bar">
+        <span>📖 19 分钟</span>
+        <span>📝 9856 字</span>
+        <span>📊 100 个表格</span>
+    </div>
+    <h1>模块一：推广渠道矩阵</h1>
+
+<blockquote>版本：v1.0 <div class="table-wrap"><table></blockquote>
+<tr><td>日期：2026-06-03</td><td>负责人：倪锦</td></tr>
+</table></div>> 说明：全渠道推广策略，每个渠道从画像→内容→话术→转化路径→衡量指标极致细分
+
+<hr>
+
+<h2>目录</h2>
+
+<ol>
+<li>[微信朋友圈 — 私域核心阵地](#1-微信朋友圈)</li>
+<li>[微信社群 — 精准渗透](#2-微信社群)</li>
+<li>[短视频（抖音/快手/视频号）— 公域流量池](#3-短视频)</li>
+<li>[小红书 — 品牌种草](#4-小红书)</li>
+<li>[公众号/知乎 — 深度内容](#5-公众号知乎)</li>
+<li>[展会/行业论坛 — 高意向获客](#6-展会行业论坛)</li>
+<li>[产业园/商会/协会 — 批量触达](#7-产业园商会协会)</li>
+<li>[地推/扫街 — 区域深耕](#8-地推扫街)</li>
+<li>[老客户转介绍 — 最高质量](#9-老客户转介绍)</li>
+<li>[异业合作转介绍 — 渠道共享](#10-异业合作转介绍)</li>
+<li>[抖音/快手信息流 — 精准投放](#11-抖音快手信息流)</li>
+<li>[百度SEM/本地搜索 — 搜索截流](#12-百度sem本地搜索)</li>
+<li>[闲鱼/58同城 — 低价截流](#13-闲鱼58同城)</li>
+<li>[B站/知识类平台 — 品牌长期](#14-b站知识类平台)</li>
+</ol>
+
+<hr>
+
+<h2>1. 微信朋友圈</h2>
+
+<h3>优先级：★★★★★</h3>
+
+<h3>1.1 渠道画像</h3>
+<ul>
+<li><strong>人群</strong>：微信好友 = 私域资产，含熟人、前同事、客户、行业伙伴、潜在客户</li>
+<li><strong>场景</strong>：碎片化刷朋友圈，早晚高峰（7-9am / 12-2pm / 6-10pm）</li>
+<li><strong>心态</strong>：休闲状态，对广告免疫，对"有价值的内容"和"真实的人"感兴趣</li>
+<li><strong>行为特点</strong>：3秒决定是否看完 → 5秒决定是否互动 → 看到广告直接划走</li>
+</ul>
+
+<h3>1.2 人设定位</h3>
+<ul>
+<li><strong>不要</strong>：枯燥的广告机器、天天群发的大师</li>
+<li><strong>要做</strong>：有温度的AI专家形象、真实的前线创业者</li>
+<li><strong>关键词</strong>：干货 + 真实 + 案例 + 偶尔生活 + 从不硬广</li>
+<li><strong>人设四要素</strong>：</li>
+</ul>
+<p>- 专业（懂AI、懂企业）</p>
+<p>- 真实（有案例、有过程、有翻车）</p>
+<p>- 靠谱（说到做到、合同正规）</p>
+<p>- 亲民（价格透明、不装高深）</p>
+
+<h3>1.3 内容分类与比例</h3>
+<div class="table-wrap"><table>
+<tr><td>类型</td><td>占比</td><td>说明</td><td>频率</td></tr>
+<tr><td>干货输出</td><td>30%</td><td>AI知识、效率技巧、行业洞察</td><td>每周2条</td></tr>
+<tr><td>客户案例</td><td>25%</td><td>做了什么、客户评价、前后对比</td><td>每周1-2条</td></tr>
+<tr><td>过程展示</td><td>20%</td><td>调研现场、开发过程、交付瞬间</td><td>每周1条</td></tr>
+<tr><td>优惠/活动</td><td>10%</td><td>限时免费诊断、S1特价</td><td>每2周1条</td></tr>
+<tr><td>个人生活</td><td>10%</td><td>让人知道你是个真实的人</td><td>每周1条</td></tr>
+<tr><td>互动/提问</td><td>5%</td><td>投票、提问、征集</td><td>每2周1条</td></tr>
+</table></div>
+<h3>1.4 朋友圈文案模板库（分场景）</h3>
+
+<h4>场景A：干货输出型</h4>
+<pre><code class="lang-">【AI小知识】第X期
+
+<p>今天聊一个很多老板问的问题：</p>
+<p>&quot;AI能帮我做Excel报表吗？&quot;</p>
+
+<p>答案是：不仅能，而且比你助理做得快10倍。</p>
+
+<p>具体怎么做？</p>
+<ol>
+<li>把你的数据源（进销存/订单/财务）接入AI</li>
+<li>告诉AI你要看什么指标（日销/毛利/库存预警）</li>
+<li>AI自动生成报表，每天定时发到你微信</li>
+</ol>
+
+<p>不需要IT团队，不需要换系统。</p>
+<p>我们给xx二手车行做的案例，原来每天助理花2小时做报表，</p>
+<p>现在AI自动生成，助理只需要看一眼确认。</p>
+
+<p>想要了解具体怎么做的，评论区扣&quot;报表&quot;，</p>
+<p>我私信发你详细方案。</p>
+<p></code></pre></p>
+
+<h4>场景B：客户案例型</h4>
+<pre><code class="lang-">刚从一个客户那回来，聊得有点激动。
+
+<p>做本地生活服务的张总跟我说了一句话：</p>
+<p>&quot;这3500花得值，比招个客服划算10倍。&quot;</p>
+
+<p>他们以前每天100+咨询电话，2个客服从早接到晚，</p>
+<p>还经常漏单、怠慢客户、忘记回访。</p>
+
+<p>现在AI数字员工上岗第3天：</p>
+<p>✓ 咨询自动回复</p>
+<p>✓ 线索自动记录</p>
+<p>✓ 回访自动安排</p>
+
+<p>昨晚11点来了个咨询，AI直接对接了，早上张总一看：</p>
+<p>&quot;已经成交了一单。&quot;</p>
+
+<p>半个月工资，换来7x24在线不休息的员工。确实划算。</p>
+
+<p>你的企业有类似的问题吗？欢迎来聊聊，免费出诊断报告。</p>
+<p></code></pre></p>
+
+<h4>场景C：过程展示型</h4>
+<pre><code class="lang-">今天去xx工业园一家机械配件厂做AI调研。
+
+<p>老板问我：&quot;我一个搞机械的，能用AI干什么？&quot;</p>
+
+<p>聊了2小时后发现了3个可以优化的点：</p>
+<p>1️⃣ 报价单 —— 每天手动做，重复率80%</p>
+<p>2️⃣ 质检报告 —— 手工填写，月底汇总头痛</p>
+<p>3️⃣ 客户询价 —— 微信来来回回问同样的问题</p>
+
+<p>每一个都是AI擅长的事。</p>
+<p>现在等他们确认要做哪个场景，3-7天就能配好。</p>
+
+<p>你们公司也有类似的重复性工作吗？评论区聊聊。</p>
+<p></code></pre></p>
+
+<h4>场景D：优惠活动型</h4>
+<pre><code class="lang-">限时活动：本周前5名咨询，送免费AI诊断。
+
+<p>不是那种&quot;留了电话就没下文&quot;的引流。</p>
+<p>是真的上门/远程调研 → 出评估报告 → 告诉你AI能帮你省多少。</p>
+
+<p>没有任何隐形消费。</p>
+<p>觉得有价值再做，没价值就当交个朋友。</p>
+
+<p>评论区&quot;诊断&quot;或直接私信我。</p>
+<p>仅限本周5个名额，先到先得。</p>
+<p></code></pre></p>
+
+<h4>场景E：个人生活型</h4>
+<pre><code class="lang-">周末带小朋友去了个科技展，
+<p>看到各种AI机器人，小朋友问：</p>
+<p>&quot;爸爸，它们会不会抢我工作？&quot;</p>
+
+<p>我想了想说：</p>
+<p>&quot;它们会帮你做作业里重复性的部分，</p>
+<p>但创意和思考才是你的本事。&quot;</p>
+
+<p>就像我做的AI数字员工一样，</p>
+<p>不是取代人，是让人做更有价值的事。</p>
+
+<p>晚安，各位老板。</p>
+<p></code></pre></p>
+
+<h3>1.5 发布节奏与时间</h3>
+
+<div class="table-wrap"><table>
+<tr><td>时间</td><td>星期</td><td>内容类型</td><td>备注</td></tr>
+<tr><td>早7:30</td><td>周一</td><td>干货输出</td><td>开工前，老板刷手机期</td></tr>
+<tr><td>午12:00</td><td>周二</td><td>个人生活</td><td>午休刷朋友圈</td></tr>
+<tr><td>晚8:30</td><td>周三</td><td>客户案例</td><td>晚上阅读高峰期</td></tr>
+<tr><td>晚8:00</td><td>周四</td><td>干货输出</td><td>继续建立专业度</td></tr>
+<tr><td>晚7:00</td><td>周五</td><td>过程展示</td><td>周末前的轻松内容</td></tr>
+<tr><td>早9:00</td><td>周六</td><td>优惠/活动</td><td>周末老板有时间看</td></tr>
+<tr><td>晚9:00</td><td>周日</td><td>互动/提问</td><td>放松状态愿意互动</td></tr>
+</table></div>
+<h3>1.6 转化路径</h3>
+<pre><code class="lang-">客户刷到朋友圈 → 感兴趣 → 点赞/评论/私信
+<p>↓</p>
+<p>你回复/私信 → 聊需求 → 约免费诊断</p>
+<p>↓</p>
+<p>诊断出报告 → 方案报价 → 签约付款 → 交付上线</p>
+<p></code></pre></p>
+
+<h3>1.7 私信跟进话术</h3>
+
+<h4>客户评论"怎么做" / "私信我" 后：</h4>
+<pre><code class="lang-">标准回复：
+<p>&quot;收到！您主要做哪个行业的？我发针对性的案例给您参考。</p>
+<p>顺便问一下，目前公司几个员工呀？&quot;</p>
+
+<p>目的：快速了解客户画像，不给通用方案</p>
+<p></code></pre></p>
+
+<h4>客户私信"想了解"之后：</h4>
+<pre><code class="lang-">Step 1：了解基本盘
+<p>&quot;老板您好！感谢关注。简单了解一下您的情况：</p>
+<p>① 公司主要做什么业务？</p>
+<p>② 目前几个人？</p>
+<p>③ 目前有没有用过什么AI工具？</p>
+
+<p>知道这些我才能给您针对性的建议。&quot;</p>
+
+<p>Step 2：判断意向等级</p>
+<p>高意向 → 直接约免费诊断时间</p>
+<p>中意向 → 发案例+方案参考，跟进</p>
+<p>低意向 → 加微信保持朋友圈触达</p>
+
+<p>Step 3：堵住疑虑</p>
+<p>&quot;不用担心，免费诊断就是聊天+出个报告，</p>
+<p>觉得有价值再做，没价值就当认识个朋友。&quot;</p>
+<p></code></pre></p>
+
+<h3>1.8 效果衡量</h3>
+
+<div class="table-wrap"><table>
+<tr><td>指标</td><td>计算方式</td><td>目标值</td></tr>
+<tr><td>曝光量</td><td>好友数 x 平均观看率</td><td>500+/条</td></tr>
+<tr><td>互动率</td><td>(赞+评)/曝光量</td><td>3%+</td></tr>
+<tr><td>私信转化</td><td>私信数/曝光量</td><td>0.5%+</td></tr>
+<tr><td>诊断转化</td><td>约成诊断/私信数</td><td>30%+</td></tr>
+<tr><td>好友增量</td><td>每周新增好友</td><td>20+/周</td></tr>
+</table></div>
+<h3>1.9 进阶技巧</h3>
+<ol>
+<li><strong>评论区互动放大</strong> — 自己先评论一条置顶，引导互动</li>
+<li><strong>@好友</strong> — 在相关话题下@可能感兴趣的好友（偶尔）</li>
+<li><strong>回复区引导</strong> — 有人评论了，回复时带更多价值信息</li>
+<li><strong>截图+马赛克</strong> — 客户聊天截图（打码）更有真实感</li>
+<li><strong>"我有一个客户"</strong> — 第三人称讲案例，保护隐私同时打消顾虑</li>
+<li><strong>配合微信状态</strong> — 状态设为"限时免费AI诊断中"，好友聊天时看到</li>
+<li><strong>不刷屏</strong> — 每天最多2条，间隔6h+，否则被屏蔽</li>
+</ol>
+
+<h3>1.10 避坑指南</h3>
+<ul>
+<li>❌ 不要一天发5条朋友圈 → 被屏蔽</li>
+<li>❌ 不要只发广告 → 被拉黑</li>
+<li>❌ 不要群发广告消息 → 被删除</li>
+<li>❌ 不要用"震惊体" → 显得low</li>
+<li>❌ 不要复制粘贴别人的文案 → 没有个人温度</li>
+<li>✅ 坚持"7分发内容、2分互动、1分推广"</li>
+</ul>
+
+<hr>
+
+<h2>2. 微信社群</h2>
+
+<h3>优先级：★★★★☆</h3>
+
+<h3>2.1 渠道画像</h3>
+<ul>
+<li><strong>社群类型</strong>：创业者群/商会群/行业交流群/园区老板群/本地商家群</li>
+<li><strong>人群特征</strong>：中小老板、创业者、企业高管</li>
+<li><strong>群氛围</strong>：有干货有人聊的群活跃，全是广告的群已死</li>
+<li><strong>核心规则</strong>：进群先看公告，不急着发广告，先"养"后"收"</li>
+</ul>
+
+<h3>2.2 进群策略</h3>
+
+<h4>2.2.1 找到优质群</h4>
+<div class="table-wrap"><table>
+<tr><td>来源</td><td>方式</td><td>难度</td></tr>
+<tr><td>朋友拉入</td><td>直接让朋友拉进行业群</td><td>★☆☆☆☆</td></tr>
+<tr><td>商会/协会群</td><td>加入商会后自然进群</td><td>★★☆☆☆</td></tr>
+<tr><td>产业园群</td><td>拜访产业园后让负责人拉</td><td>★★☆☆☆</td></tr>
+<tr><td>行业活动群</td><td>参加活动后扫码进群</td><td>★★☆☆☆</td></tr>
+<tr><td>付费社群</td><td>花小钱买高质量群</td><td>★★★☆☆</td></tr>
+<tr><td>主动搜索</td><td>搜"xx行业交流群""老板群"</td><td>★★★★☆</td></tr>
+</table></div>
+<h4>2.2.2 进群后的"养群"节奏</h4>
+<div class="table-wrap"><table>
+<tr><td>天数</td><td>动作</td><td>目的</td></tr>
+<tr><td>Day 1</td><td>进群打招呼+发红包</td><td>混脸熟，建立第一印象</td></tr>
+<tr><td>Day 2-5</td><td>潜水观察</td><td>了解群氛围、谁是真老板、话题方向</td></tr>
+<tr><td>Day 6-7</td><td>参与讨论(非广告)</td><td>在别人话题下贡献观点</td></tr>
+<tr><td>Day 8-14</td><td>主动分享干货(每周1-2次)</td><td>建立专业形象</td></tr>
+<tr><td>Day 15+</td><td>适时植入+私信转化</td><td>开始转化</td></tr>
+</table></div>
+<h3>2.3 群内分享内容</h3>
+
+<h4>2.3.1 干货分享模板</h4>
+<pre><code class="lang-">【分享】中小企业用AI的3个最容易落地的场景
+
+<p>很多老板说AI好但不知道从哪开始，</p>
+<p>我帮大家梳理一下目前最容易出效果的3个方向：</p>
+
+<p>1️⃣ 智能客服</p>
+<p>适合：每天有人咨询问价的行业（电商/二手车/装修）</p>
+<p>效果：24小时自动回复，不漏单</p>
+<p>成本：S1起步3500元</p>
+
+<p>2️⃣ 文档自动化</p>
+<p>适合：合同/报价单/报告多的行业（制造/贸易/建筑）</p>
+<p>效果：以前1小时做完的事，现在3分钟</p>
+<p>成本：S1起步3500元</p>
+
+<p>3️⃣ 数据报表</p>
+<p>适合：每天需要做报表的行业（物流/零售/餐饮连锁）</p>
+<p>效果：数据自动汇总，异常自动告警</p>
+<p>成本：S1起步3500元</p>
+
+<p>大家有想过哪些场景可以AI化吗？欢迎讨论。</p>
+<p></code></pre></p>
+
+<h4>2.3.2 问题解答型</h4>
+<pre><code class="lang-">有人问：AI会不会取代我的员工？
+<p>我的看法：AI不会取代人，但会用AI的人会取代不用AI的人。</p>
+<p>就像当年Excel没有取代会计，但不会Excel的会计被淘汰了。</p>
+<p>AI数字员工是给企业主多一个24小时不休息的工具人，</p>
+<p>让员工去做更有价值的事。</p>
+<p></code></pre></p>
+
+<h4>2.3.3 引发讨论型</h4>
+<pre><code class="lang-">问大家一个问题：
+<p>如果您公司有一个AI员工，24小时不休息、不请假、不提涨薪，</p>
+<p>您最想让它帮您做什么？</p>
+<p>我先说我的答案：帮我回微信 + 做报表。</p>
+<p>&quot;&quot;&quot;</p>
+<p></code></pre></p>
+
+<h3>2.4 社群转化路径</h3>
+<pre><code class="lang-">群内分享干货 → 有人感兴趣 → 加微信好友
+<p>↓</p>
+<p>私信聊需求 → 约免费诊断 → 出方案 → 签约</p>
+<p></code></pre></p>
+
+<h3>2.5 群内加好友话术</h3>
+
+<h4>场景：有人对你分享的内容感兴趣</h4>
+<pre><code class="lang-">&quot;加个好友交流一下，我可以给您发一份我们最新的案例合集，
+<p>看看同行的AI是怎么配的，不一定要做，了解下没坏处。&quot;</p>
+<p></code></pre></p>
+
+<h4>场景：群内有人问了相关需求</h4>
+<pre><code class="lang-">&quot;我是做这块的，加您好友发个案例给您参考，
+<p>您看要不要加我一下？&quot;</p>
+<p></code></pre></p>
+
+<h3>2.6 效果衡量</h3>
+
+<div class="table-wrap"><table>
+<tr><td>指标</td><td>目标值</td></tr>
+<tr><td>每周新增群</td><td>2-3个</td></tr>
+<tr><td>好友新增/群/周</td><td>3-5人</td></tr>
+<tr><td>群分享频率</td><td>2次/周/群</td></tr>
+<tr><td>分享转私信率</td><td>5-10%</td></tr>
+</table></div>
+<h3>2.7 避坑指南</h3>
+<ul>
+<li>❌ 进群就发广告 → 被踢</li>
+<li>❌ 进群就疯狂加人 → 被投诉</li>
+<li>❌ 只发广告不参与讨论 → 被无视</li>
+<li>❌ 跟群主对着干 → 被封杀</li>
+<li>✅ 先给价值、后收结果</li>
+</ul>
+
+<hr>
+
+<h2>3. 短视频（抖音/快手/视频号）</h2>
+
+<h3>优先级：★★★★★</h3>
+
+<h3>3.1 渠道画像</h3>
+<ul>
+<li><strong>抖音</strong>：30-50岁中小企业主（25%+），娱乐心态偏重，但商业内容也能走</li>
+<li><strong>快手</strong>：下沉市场老板、个体户、实体店老板，更真实不装</li>
+<li><strong>视频号</strong>：35-55岁老板、企业家，微信生态内闭环，信任感强</li>
+<li><strong>核心逻辑</strong>：老板刷短视频是为了放松，但刷到"跟钱有关"的内容会停下</li>
+</ul>
+
+<h3>3.2 账号定位</h3>
+<ul>
+<li><strong>账号名</strong>：锦霓鲤锦·AI数字员工 / 倪锦·AI增效实战</li>
+<li><strong>人设</strong>：帮中小企业配AI数字员工的人</li>
+<li><strong>风格</strong>：真实、直接、不讲虚的、偶尔幽默</li>
+<li><strong>slogan</strong>：用半个月工资，给公司配一个24小时在岗的AI员工</li>
+</ul>
+
+<h3>3.3 内容矩阵</h3>
+
+<h4>3.3.1 短视频系列规划</h4>
+
+<div class="table-wrap"><table>
+<tr><td>系列</td><td>定位</td><td>形式</td><td>频率</td><td>目标</td></tr>
+<tr><td>【AI降本实战】</td><td>核心内容</td><td>口播+案例画面</td><td>每周3条</td><td>精准客户</td></tr>
+<tr><td>【老板说真话】</td><td>建立信任</td><td>第一人称吐槽</td><td>每周1条</td><td>共鸣涨粉</td></tr>
+<tr><td>【AI扫盲】</td><td>教育市场</td><td>讲解+演示</td><td>每周1条</td><td>泛粉</td></tr>
+<tr><td>【客户见证】</td><td>背书</td><td>客户出镜/截图</td><td>每2周1条</td><td>转化</td></tr>
+<tr><td>【行业揭秘】</td><td>引流</td><td>蹭热点</td><td>每周1条</td><td>曝光</td></tr>
+</table></div>
+<h4>3.3.2 短视频脚本模板库</h4>
+
+<h5>模板1：痛点开场型（AI降本实战系列）</h5>
+<pre><code class="lang-">【前3秒】
+<p>&quot;你公司有没有这样的员工？月薪5000，实际产出500？&quot;</p>
+
+<p>【3-15秒】</p>
+<p>不是我说话难听，很多中小企业养着&quot;伪员工&quot;，</p>
+<p>每天就是复制粘贴、回微信、做表格，</p>
+<p>这些事AI全能干，而且干得更好。</p>
+
+<p>【15-45秒】</p>
+<p>我去年帮xx二手车行配了个AI数字员工，</p>
+<p>原来客服3个人，现在1个人+AI，</p>
+<p>AI负责7x24自动回复、自动记录线索、自动出日报。</p>
+<p>老板说：这叫花一个人的钱，干三个人的活。</p>
+
+<p>【45-55秒】</p>
+<p>给各位老板算笔账：</p>
+<p>3500元 = S1单个场景</p>
+<p>6000元 = S2 3-5个场景</p>
+<p>你觉得你公司哪个岗位可以先配上？</p>
+
+<p>【结尾】</p>
+<p>评论区告诉我你的行业，我帮你分析哪个场景最值。</p>
+<p>关注我，让AI帮你省钱。</p>
+<p></code></pre></p>
+
+<h5>模板2：客户见证型</h5>
+<pre><code class="lang-">【前3秒】
+<p>&quot;昨天一个客户给我发了个截图，我直接截图给你看。&quot;</p>
+
+<p>【3-20秒】</p>
+<p>（展示打码的客户微信截图）</p>
+<p>&quot;老板说：昨天晚上11点来了个询价，</p>
+<p>AI自动回复自动记录了，早上起来一看，已经成交了。&quot;</p>
+
+<p>【20-40秒】</p>
+<p>这不是什么高科技，</p>
+<p>就是把你公司的常见问题、产品信息、报价规则教给AI，</p>
+<p>它就自动帮你干活了。</p>
+<p>7x24小时，不请假不涨薪。</p>
+
+<p>【40-50秒】</p>
+<p>&quot;半个月工资换来一个永不休息的员工，</p>
+<p>这个账，老板们都会算。&quot;</p>
+
+<p>【结尾】</p>
+<p>想要了解怎么配的，评论区扣&quot;方案&quot;，</p>
+<p>我私信发你详细资料。</p>
+<p>关注我，让你公司多一个AI员工。</p>
+<p></code></pre></p>
+
+<h5>模板3：行业揭秘型</h5>
+<pre><code class="lang-">【前3秒】
+<p>&quot;为什么有些公司招了AI团队也没用？因为我见过太多企业踩坑了。&quot;</p>
+
+<p>【3-25秒】</p>
+<p>（走在写字楼/园区里）</p>
+<p>&quot;很多老板花几万买AI软件，最后发现没人会用。</p>
+<p>为什么？因为市面上的AI产品都是通用版的，</p>
+<p>你一个做机械的，和做电商的用一个AI，能好用吗？</p>
+
+<p>我们不一样。</p>
+<p>我们不卖软件，我们是上门诊断你的业务流程，</p>
+<p>然后给你量身定做一个AI数字员工。&quot;</p>
+
+<p>【25-45秒】</p>
+<p>&quot;比如你公司接电话的是谁？做表的又是谁？</p>
+<p>我们把这些重复性工作拆出来，一个一个用AI配上去。</p>
+<p>你说配哪个人，我们就配哪个人。</p>
+
+<p>3500一个场景，做不好你来找我。&quot;</p>
+
+<p>【结尾】</p>
+<p>&quot;评论区告诉我你是什么行业，我给你诊断哪个环节最适合配AI。</p>
+<p>关注我，帮你省成本。&quot;</p>
+<p></code></pre></p>
+
+<h5>模板4：AI扫盲型（演示类）</h5>
+<pre><code class="lang-">【前3秒】
+<p>&quot;AI数字员工到底长什么样？今天给你看一眼。&quot;</p>
+
+<p>【3-30秒】</p>
+<p>（屏幕录制：展示一个AI智能客服的后台）</p>
+<p>&quot;看，这就是我们给零售店配的AI客服后台。</p>
+<p>客户发来一个问题，AI自动理解、自动回复。</p>
+<p>如果遇到AI解决不了的，自动转人工。&quot;</p>
+
+<p>【30-50秒】</p>
+<p>&quot;后台可以看到今天处理了多少咨询、多少转人工、</p>
+<p>客户问得最多的问题是什么。</p>
+<p>老板在手机上就能看，不需要电脑。&quot;</p>
+
+<p>【50-60秒】</p>
+<p>&quot;这就是AI数字员工的样子。</p>
+<p>不科幻，不遥远，就在你手机里。</p>
+<p>评论区扣&#x27;演示&#x27;，我发完整版给你看。&quot;</p>
+<p></code></pre></p>
+
+<h3>3.4 发布策略</h3>
+
+<div class="table-wrap"><table>
+<tr><td>平台</td><td>最佳发布时间</td><td>频率</td><td>时长</td></tr>
+<tr><td>抖音</td><td>早7-9am / 晚7-10pm</td><td>日更1条</td><td>30-60s</td></tr>
+<tr><td>快手</td><td>午12-2pm / 晚8-11pm</td><td>日更1-2条</td><td>30-45s</td></tr>
+<tr><td>视频号</td><td>早6-8am / 午12-2pm / 晚8-10pm</td><td>每周3-5条</td><td>45-90s</td></tr>
+</table></div>
+<h3>3.5 转化路径</h3>
+<pre><code class="lang-">刷到视频 → 看完 → 点赞/评论/关注
+<p>↓</p>
+<p>评论区扣关键词 → 私信自动回复</p>
+<p>↓</p>
+<p>引导加微信 → 初步沟通 → 约免费诊断</p>
+<p>↓</p>
+<p>出方案 → 签约</p>
+<p></code></pre></p>
+
+<h3>3.6 评论区运营</h3>
+
+<div class="table-wrap"><table>
+<tr><td>评论类型</td><td>标准回复</td></tr>
+<tr><td>"怎么做"</td><td>"私信您了，发您个案例看看"</td></tr>
+<tr><td>"多少钱"</td><td>"S1单场景3500，具体看您需要配几个岗位，私信聊聊？"</td></tr>
+<tr><td>"哪个行业"</td><td>"您是什么行业？不同行业方案不一样，私信我帮您分析"</td></tr>
+<tr><td>"在哪里"</td><td>"上海本地可以提供上门诊断，外地远程也可以，加我详聊"</td></tr>
+<tr><td>质疑"假的"</td><td>"欢迎来实地考察，或者先免费诊断试试效果"</td></tr>
+<tr><td>不相关评论</td><td>礼貌回复/忽略，不引战</td></tr>
+</table></div>
+<h3>3.7 效果衡量</h3>
+
+<div class="table-wrap"><table>
+<tr><td>指标</td><td>抖音目标</td><td>视频号目标</td><td>快手目标</td></tr>
+<tr><td>平均播放量</td><td>3000+/条</td><td>1000+/条</td><td>2000+/条</td></tr>
+<tr><td>完播率</td><td>25%+</td><td>30%+</td><td>20%+</td></tr>
+<tr><td>互动率</td><td>5%+</td><td>3%+</td><td>4%+</td></tr>
+<tr><td>粉丝增长/周</td><td>100+</td><td>50+</td><td>80+</td></tr>
+<tr><td>私信转化/周</td><td>5-10人</td><td>3-5人</td><td>3-5人</td></tr>
+<tr><td>加微信/周</td><td>10-20人</td><td>5-10人</td><td>5-10人</td></tr>
+</table></div>
+<h3>3.8 道具/场景建议</h3>
+<ul>
+<li><strong>场景</strong>：办公室/园区/咖啡厅/客户现场（真实感）</li>
+<li><strong>道具</strong>：笔记本电脑（展示后台）、手机（展示截图）、合同（展示正规）</li>
+<li><strong>穿着</strong>：干净商务休闲（不西装革履，也不拖鞋背心）</li>
+<li><strong>设备</strong>：手机即可，收音清晰最重要</li>
+</ul>
+
+<h3>3.9 避坑指南</h3>
+<ul>
+<li>❌ 不要用AI生成视频（没有真实感，中小企业主很敏感）</li>
+<li>❌ 不要过度包装（拍得像大厂宣传片，反而不信）</li>
+<li>❌ 不要承诺效果（AI不是万能的，承诺多了有纠纷）</li>
+<li>❌ 不要怼同行（显得小气且不专业）</li>
+<li>✅ 真实、真实、还是真实</li>
+</ul>
+<p></parameter></p>
+
+<hr>
+
+<h2>渠道启动优先级路线图</h2>
+
+<h3>第一阶段：零成本启动（第1-2周）</h3>
+<div class="table-wrap"><table>
+<tr><td>渠道</td><td>每日投入</td><td>目标</td></tr>
+<tr><td>朋友圈</td><td>30min</td><td>建立人设，每日1条</td></tr>
+<tr><td>微信社群</td><td>30min</td><td>加入5个群，开始养</td></tr>
+<tr><td>视频号</td><td>1h</td><td>每周3条，同步至朋友圈</td></tr>
+<tr><td>老客户</td><td>按需</td><td>联系已有客户/熟人</td></tr>
+</table></div>
+<h3>第二阶段：放大（第3-6周）</h3>
+<div class="table-wrap"><table>
+<tr><td>渠道</td><td>每日投入</td><td>目标</td></tr>
+<tr><td>抖音</td><td>2h</td><td>日更1条，积累粉丝</td></tr>
+<tr><td>小红书</td><td>30min</td><td>隔日更1篇</td></tr>
+<tr><td>园区/商会</td><td>按活动</td><td>每周1场分享/拜访</td></tr>
+<tr><td>转介绍</td><td>持续</td><td>启动转介绍机制</td></tr>
+</table></div>
+<h3>第三阶段：付费放大（第7周+）</h3>
+<div class="table-wrap"><table>
+<tr><td>渠道</td><td>每日投入</td><td>目标</td></tr>
+<tr><td>抖音/信息流</td><td>按预算</td><td>测投，5000+/月</td></tr>
+<tr><td>SEM</td><td>按预算</td><td>测投，3000+/月</td></tr>
+<tr><td>展会</td><td>按档期</td><td>每月至少1场</td></tr>
+<tr><td>异业合作</td><td>持续推进</td><td>建立3-5个稳定合作</td></tr>
+</table></div>
+<hr>
+
+<h2>周度推广排班表示例</h2>
+
+<div class="table-wrap"><table>
+<tr><td>时间</td><td>周一</td><td>周二</td><td>周三</td><td>周四</td><td>周五</td><td>周六</td><td>周日</td></tr>
+<tr><td>早8-9</td><td>发朋友圈</td><td>发朋友圈</td><td>发朋友圈</td><td>发朋友圈</td><td>发朋友圈</td><td>发朋友圈</td><td>发朋友圈</td></tr>
+<tr><td>9-10</td><td>社群维护</td><td>社群维护</td><td>社群维护</td><td>社群维护</td><td>社群维护</td><td>短视频拍摄</td><td>知乎回答</td></tr>
+<tr><td>10-12</td><td>客户跟进</td><td>客户跟进</td><td>客户跟进</td><td>客户跟进</td><td>客户跟进</td><td>短视频剪辑</td><td>内容整理</td></tr>
+<tr><td>13-15</td><td>短视频拍摄</td><td>拜访/外勤</td><td>短视频拍摄</td><td>拜访/外勤</td><td>短视频拍摄</td><td>自由</td><td>自由</td></tr>
+<tr><td>15-17</td><td>短视频剪辑</td><td>拜访/外勤</td><td>短视频剪辑</td><td>拜访/外勤</td><td>短视频剪辑</td><td>自由</td><td>自由</td></tr>
+<tr><td>20-21</td><td>小红书发文</td><td>社群交流</td><td>小红书发文</td><td>社群交流</td><td>小红书发文</td><td>朋友圈互动</td><td>下周计划</td></tr>
+<tr><td>21-22</td><td>评论区互动</td><td>评论区互动</td><td>评论区互动</td><td>评论区互动</td><td>评论区互动</td><td>评论区互动</td><td>数据分析</td></tr>
+</table></div>
+<hr>
+
+<blockquote>本模块完整版共覆盖14个推广渠道</blockquote>
+<blockquote>每个渠道包含：画像→内容→话术→转化路径→效果衡量→避坑指南</blockquote>
+<blockquote>下一模块：[模块二：销售转化漏斗](./模块二_销售转化漏斗.md)</blockquote>
+
+
+<hr>
+<h2>相关笔记</h2>
+<ul>
+<li><a href="模块二_销售转化漏斗.html" class="wikilink">模块二_销售转化漏斗</a> — 客户来了之后怎么转化</li>
+<li><a href="模块三_内容素材体系.html" class="wikilink">模块三_内容素材体系</a> — 各渠道发布的内容素材</li>
+<li><a href="核心话术速查.html" class="wikilink">核心话术速查</a> — 各渠道开场白话术</li>
+<li><a href="八大行业方案速查.html" class="wikilink">八大行业方案速查</a> — 不同行业在哪找、怎么说</li>
+</ul>
+
+<p>#推广 #渠道 #营销 #获客</p>
+            </article>
+            <footer class="page-footer">
+                <p>上海锦霓鲤锦网络科技有限公司 · AI 数字员工企业增效计划</p>
+                <p style="margin-top:4px;font-size:12px;"><a href="https://hermes-agent.nousresearch.com" target="_blank">Hermes Agent</a> · <a href="#" onclick="scrollToTop()">回到顶部 ↑</a></p>
+            </footer>
+        </main>
+    </div>
+    <script>
+        
+// 基础防复制
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('copy', e => e.preventDefault());
+document.addEventListener('selectstart', e => e.preventDefault());
+document.addEventListener('dragstart', e => e.preventDefault());
+
+function searchNotes(q) {
+    q = q.toLowerCase();
+    document.querySelectorAll('.page-link').forEach(el => {
+        const text = el.textContent.toLowerCase();
+        el.style.display = text.includes(q) ? '' : 'none';
+    });
+    // 隐藏空的分组
+    document.querySelectorAll('.module-group').forEach(g => {
+        const visible = Array.from(g.querySelectorAll('.page-link')).filter(e => e.style.display !== 'none');
+        g.style.display = visible.length > 0 ? '' : 'none';
+    });
+}
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模块四：客户细分与差异化方案 · 企业数字员工</title>
+    <style>
+        
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --primary: #2563eb;
+    --primary-light: #3b82f6;
+    --bg: #f8fafc;
+    --sidebar-bg: #ffffff;
+    --card-bg: #ffffff;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --gradient: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #3b82f6 100%);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+/* Top Navigation */
+.top-nav {
+    background: var(--gradient);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(37,99,235,0.15);
+}
+.nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo { font-size: 18px; font-weight: 700; color: white; text-decoration: none; letter-spacing: 1px; }
+.nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+.nav-links a {
+    color: rgba(255,255,255,0.85); text-decoration: none; font-size: 12px;
+    padding: 4px 10px; border-radius: 20px; transition: all 0.2s;
+}
+.nav-links a:hover { background: rgba(255,255,255,0.15); color: white; }
+
+/* Layout */
+.layout { display: flex; max-width: 1400px; margin: 0 auto; min-height: calc(100vh - 56px); }
+
+/* Sidebar */
+.sidebar {
+    width: 260px; flex-shrink: 0; background: var(--sidebar-bg);
+    border-right: 1px solid var(--border); padding: 16px 12px;
+    position: sticky; top: 56px; height: calc(100vh - 56px); overflow-y: auto;
+}
+.sidebar-search { margin-bottom: 12px; }
+.sidebar-search input {
+    width: 100%; padding: 7px 12px; border: 1px solid var(--border);
+    border-radius: 8px; font-size: 13px; outline: none; transition: border 0.2s;
+}
+.sidebar-search input:focus { border-color: var(--primary); }
+.module-group { margin-bottom: 16px; }
+.module-title {
+    font-size: 11px; font-weight: 700; color: var(--text-light);
+    text-transform: uppercase; letter-spacing: 0.5px;
+    padding: 6px 8px 3px; border-bottom: 1px solid var(--border); margin-bottom: 3px;
+}
+.page-link {
+    display: flex; align-items: center; gap: 5px;
+    padding: 4px 8px; border-radius: 5px; color: var(--text);
+    text-decoration: none; font-size: 12.5px; transition: all 0.15s;
+}
+.page-link:hover { background: #eef2ff; color: var(--primary); }
+.page-link.active { background: #eef2ff; color: var(--primary); font-weight: 600; }
+.page-link .icon { font-size: 13px; width: 18px; text-align: center; flex-shrink: 0; }
+.page-link .title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Main Content */
+.content { flex: 1; padding: 32px 48px; max-width: 880px; }
+.breadcrumb { font-size: 13px; color: var(--text-light); margin-bottom: 20px; }
+.breadcrumb a { color: var(--primary); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* Article */
+.article h1 { font-size: 28px; font-weight: 700; margin-bottom: 16px; line-height: 1.3; }
+.article h2 {
+    font-size: 22px; font-weight: 600; margin-top: 32px; margin-bottom: 12px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--border);
+}
+.article h3 { font-size: 18px; font-weight: 600; margin-top: 28px; margin-bottom: 8px; }
+.article h4 { font-size: 16px; font-weight: 600; margin-top: 24px; margin-bottom: 8px; }
+.article p { margin-bottom: 14px; }
+.article a { color: var(--primary); text-decoration: none; }
+.article a:hover { text-decoration: underline; }
+.article a.wikilink { background: #eef2ff; padding: 1px 5px; border-radius: 3px; font-size: 14px; }
+.article a.wikilink::before { content: "📄 "; font-size: 12px; }
+.article code {
+    background: #f1f5f9; padding: 2px 6px; border-radius: 4px;
+    font-size: 13px; font-family: "SF Mono", "JetBrains Mono", monospace;
+}
+.article pre {
+    background: #1e293b; color: #e2e8f0; padding: 18px; border-radius: 10px;
+    overflow-x: auto; margin: 16px 0;
+}
+.article pre code { background: none; padding: 0; color: inherit; font-size: 13px; line-height: 1.5; }
+.article blockquote {
+    border-left: 4px solid var(--primary); padding: 10px 18px; margin: 14px 0;
+    background: #f8fafc; border-radius: 0 8px 8px 0; color: var(--text-light);
+}
+.article ul, .article ol { margin: 6px 0 14px 22px; }
+.article li { margin-bottom: 3px; }
+.article .table-wrap { overflow-x: auto; margin: 14px 0; }
+.article table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 500px; }
+.article th, .article td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+.article th { background: #f1f5f9; font-weight: 600; }
+.article tr:nth-child(even) { background: #f8fafc; }
+.article hr { border: none; border-top: 2px solid var(--border); margin: 28px 0; }
+.article .content-img { max-width: 100%; border-radius: 8px; margin: 16px 0; }
+
+.article .meta-bar {
+    display: flex; gap: 14px; font-size: 13px; color: var(--text-light);
+    margin-bottom: 20px; flex-wrap: wrap;
+}
+.article .meta-bar span { background: #f1f5f9; padding: 3px 10px; border-radius: 12px; }
+
+/* Page Footer */
+.page-footer {
+    margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border);
+    text-align: center; font-size: 13px; color: var(--text-light);
+}
+
+/* Home Page */
+.home-hero { text-align: center; padding: 40px 0 24px; }
+.home-hero h1 { font-size: 34px; margin-bottom: 10px; }
+.home-hero p { font-size: 17px; color: var(--text-light); margin-bottom: 6px; }
+.home-info { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
+.home-info .badge {
+    background: #eef2ff; padding: 5px 14px; border-radius: 20px;
+    font-size: 12.5px; color: var(--primary);
+}
+.project-card {
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    border-radius: 14px; padding: 24px 28px; margin: 20px 0;
+}
+.project-card table { width: 100%; border: none; font-size: 14px; }
+.project-card td { border: none; padding: 4px 0; vertical-align: top; }
+.project-card td:first-child { width: 100px; font-weight: 600; color: var(--text-light); }
+.module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; margin: 20px 0; }
+.module-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px; transition: all 0.2s;
+    text-decoration: none; color: inherit; display: block;
+}
+.module-card:hover {
+    border-color: var(--primary); box-shadow: 0 4px 16px rgba(37,99,235,0.08);
+    transform: translateY(-2px);
+}
+.module-card h3 { font-size: 15px; margin-bottom: 6px; }
+.module-card p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+.module-card .count { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .layout { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--border); }
+    .content { padding: 20px; }
+    .module-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+}
+
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-inner">
+            <a href="index.html" class="logo">🤖 企业数字员工</a>
+            <div class="nav-links">
+                <a href="module-0-项目总览.html">🎯 总览</a>
+<a href="module-1-推广体系.html">📡 推广</a>
+<a href="module-2-销售转化.html">🪜 销售</a>
+<a href="module-3-内容素材.html">📝 素材</a>
+<a href="module-4-客户细分.html">👥 客户</a>
+<a href="module-5-交付SOP.html">🔧 交付</a>
+<a href="module-6-工具模板.html">🧰 工具</a>
+<a href="module-7-Hermes技术基座.html">🤖 Hermes</a>
+<a href="module-交付物.html">📦 交付</a>
+<a href="module-附件.html">📎 附件</a>
+            </div>
+        </div>
+    </nav>
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-search">
+                <input type="text" id="search" placeholder="🔍 搜索笔记..." oninput="searchNotes(this.value)">
+            </div>
+            <div class="sidebar-toc" id="sidebar-toc">
+                <div class="module-group">
+<div class="module-title">🎯 项目总览</div>
+<a href="推广与流程体系_完整框架.html" class="page-link><span class="icon">📐</span><span class="title">AI数字员工 · 推广与流程体系完整框架</span></a>
+<a href="GitHub可用项目清单与案例方案.html" class="page-link><span class="icon">🎯</span><span class="title">GitHub 可用项目清单与案例方案</span></a>
+<a href="八大行业方案速查.html" class="page-link><span class="icon">🏢</span><span class="title">八大行业方案速查</span></a>
+<a href="对外资料清单与制作排期.html" class="page-link><span class="icon">🎯</span><span class="title">对外资料清单与制作排期</span></a>
+<a href="常见反对意见与应对.html" class="page-link><span class="icon">🛡️</span><span class="title">常见反对意见与应对</span></a>
+<a href="核心话术速查.html" class="page-link><span class="icon">💬</span><span class="title">核心话术速查</span></a>
+<a href="项目检查清单.html" class="page-link><span class="icon">✅</span><span class="title">项目检查清单</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📡 推广体系</div>
+<a href="模块一_推广渠道矩阵.html" class="page-link><span class="icon">📡</span><span class="title">模块一：推广渠道矩阵</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🪜 销售转化</div>
+<a href="模块二_销售转化漏斗.html" class="page-link><span class="icon">🪜</span><span class="title">模块二：销售转化漏斗</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📝 内容素材</div>
+<a href="模块三_内容素材体系.html" class="page-link><span class="icon">📝</span><span class="title">模块三：内容素材体系</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">👥 客户细分</div>
+<a href="模块四_客户细分与差异化方案.html" class="page-link active><span class="icon">👥</span><span class="title">模块四：客户细分与差异化方案</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🔧 交付SOP</div>
+<a href="模块五_交付SOP标准操作手册.html" class="page-link><span class="icon">🔧</span><span class="title">模块五：交付SOP标准操作手册</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🧰 工具模板</div>
+<a href="模块六_工具模板清单.html" class="page-link><span class="icon">🧰</span><span class="title">模块六：工具模板清单</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🤖 Hermes 技术基座</div>
+<a href="README.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes Agent — AI 数字员工技术基座</span></a>
+<a href="Hermes CLI 速查.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes CLI 速查</span></a>
+<a href="Hermes 工具清单.html" class="page-link><span class="icon">🔌</span><span class="title">Hermes 工具清单</span></a>
+<a href="Hermes 示例命令.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes 示例命令</span></a>
+<a href="Hermes 部署与运维.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes 部署与运维</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📦 交付物</div>
+<a href="知识库_客服话术.html" class="page-link><span class="icon">📚</span><span class="title">AI数字员工 客服知识库</span></a>
+<a href="操作手册_企微AI客服部署.html" class="page-link><span class="icon">📋</span><span class="title">企微AI客服部署操作手册</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📎 附件</div>
+<a href="AI数字员工_企业增效计划.html" class="page-link><span class="icon">📄</span><span class="title">AI数字员工_企业增效计划</span></a>
+<a href="AI数字员工_展会精华版.html" class="page-link><span class="icon">🎪</span><span class="title">AI数字员工_展会精华版</span></a>
+<a href="AI智能体企业定制服务_企业展示.html" class="page-link><span class="icon">🤖</span><span class="title">AI智能体企业定制服务_企业展示</span></a>
+<a href="ppt-master参考索引.html" class="page-link><span class="icon">📄</span><span class="title">ppt-master 模板参考</span></a>
+<a href="素材总索引.html" class="page-link><span class="icon">🖼️</span><span class="title">素材总索引</span></a>
+</div>
+            </div>
+        </aside>
+        <main class="content">
+            <div class="breadcrumb"><a href="index.html">🏠 首页</a> / <a href="module-4-客户细分.html">👥 客户细分</a> / 模块四：客户细分与差异化方案</div>
+            <article class="article">
+                <h1>👥 模块四：客户细分与差异化方案</h1>
+    <div class="meta-bar">
+        <span>📖 16 分钟</span>
+        <span>📝 8176 字</span>
+        <span>📊 152 个表格</span>
+    </div>
+    <h1>模块四：客户细分与差异化方案</h1>
+
+<blockquote>版本：v1.0 <div class="table-wrap"><table></blockquote>
+<tr><td>日期：2026-06-03</td><td>负责人：倪锦</td></tr>
+</table></div>> 说明：按行业细分目标客户，每个行业从画像→痛点→场景→话术→案例→转化策略完整覆盖
+
+<hr>
+
+<h2>目录</h2>
+
+<ol>
+<li>[客户细分总览](#1-客户细分总览)</li>
+<li>[行业一：电商/直播](#2-行业一电商直播)</li>
+<li>[行业二：二手车/汽配](#3-行业二二手车汽配)</li>
+<li>[行业三：本地服务（餐饮/美容/装修）](#4-行业三本地服务)</li>
+<li>[行业四：传统制造业](#5-行业四传统制造业)</li>
+<li>[行业五：教育培训](#6-行业五教育培训)</li>
+<li>[行业六：律师/会计事务所](#7-行业六律师会计事务所)</li>
+<li>[行业七：房产中介](#8-行业七房产中介)</li>
+<li>[行业八：物流/贸易](#9-行业八物流贸易)</li>
+<li>[跨行业通用：客户分级标准](#10-跨行业通用客户分级标准)</li>
+</ol>
+
+<hr>
+
+<h2>1. 客户细分总览</h2>
+
+<h3>1.1 优先级矩阵</h3>
+
+<div class="table-wrap"><table>
+<tr><td>行业</td><td>优先级</td><td>市场规模</td><td>决策门槛</td><td>利润空间</td><td>首推场景</td><td>启动难度</td></tr>
+<tr><td>电商/直播</td><td>★★★★★</td><td>最大</td><td>低</td><td>高</td><td>智能客服+营销内容</td><td>低</td></tr>
+<tr><td>二手车/汽配</td><td>★★★★★</td><td>大</td><td>低</td><td>高</td><td>智能客服+数据报表</td><td>低</td></tr>
+<tr><td>本地服务</td><td>★★★★☆</td><td>大</td><td>低</td><td>中</td><td>智能客服+文档自动化</td><td>低</td></tr>
+<tr><td>传统制造</td><td>★★★★☆</td><td>大</td><td>中</td><td>高</td><td>知识库+文档自动化</td><td>中</td></tr>
+<tr><td>教育培训</td><td>★★★☆☆</td><td>中</td><td>中</td><td>中</td><td>智能客服+知识库</td><td>中</td></tr>
+<tr><td>律师/会计</td><td>★★★☆☆</td><td>中</td><td>高</td><td>高</td><td>文档自动化+知识库</td><td>高</td></tr>
+<tr><td>房产中介</td><td>★★★☆☆</td><td>中</td><td>低</td><td>中</td><td>数据报表+智能客服</td><td>低</td></tr>
+<tr><td>物流/贸易</td><td>★★☆☆☆</td><td>中</td><td>中</td><td>中</td><td>数据报表+文档自动化</td><td>中</td></tr>
+</table></div>
+<h3>1.2 客户需求核心维度</h3>
+
+<div class="table-wrap"><table>
+<tr><td>维度</td><td>说明</td><td>影响</td></tr>
+<tr><td>IT成熟度</td><td>公司目前用啥系统、数据在哪</td><td>决定交付难度</td></tr>
+<tr><td>预算敏感度</td><td>对价格敏感还是更看重效果</td><td>决定报价策略</td></tr>
+<tr><td>决策链条</td><td>一个人说了算还是需要多人审批</td><td>决定跟单周期</td></tr>
+<tr><td>AI认知度</td><td>对AI的了解程度</td><td>决定教育成本</td></tr>
+<tr><td>紧迫程度</td><td>现在就要还是先看看</td><td>决定跟进节奏</td></tr>
+</table></div>
+<hr>
+
+<h2>2. 行业一：电商/直播</h2>
+
+<h3>优先级：★★★★★</h3>
+
+<h3>2.1 行业画像</h3>
+
+<div class="table-wrap"><table>
+<tr><td>维度</td><td>描述</td></tr>
+<tr><td>典型企业</td><td>淘宝/拼多多/抖音店铺、直播带货团队、私域电商</td></tr>
+<tr><td>企业规模</td><td>3-50人，大部分10人以下</td></tr>
+<tr><td>决策者</td><td>老板本人（运营出身）、运营总监</td></tr>
+<tr><td>年营收</td><td>100万-5000万</td></tr>
+<tr><td>IT水平</td><td>会用ERP/店小秘/旺店通，但整体数字化程度一般</td></tr>
+<tr><td>认知水平</td><td>听说过AI，部分人用过ChatGPT/DeepSeek</td></tr>
+<tr><td>典型痛点</td><td>客服成本高、咨询量大、回复不及时、内容产出慢</td></tr>
+<tr><td>决策特征</td><td>老板个人决策，效率高，但价格敏感</td></tr>
+<tr><td>最佳触达渠道</td><td>短视频、电商卖家社群、卖家朋友圈</td></tr>
+</table></div>
+<h3>2.2 核心痛点（由深到浅）</h3>
+
+<div class="table-wrap"><table>
+<tr><td>排序</td><td>痛点</td><td>描述</td><td>频率</td></tr>
+<tr><td>1</td><td>客服人工成本高</td><td>咨询量大，两班倒客服，月薪6000-8000x2人</td><td>每天</td></tr>
+<tr><td>2</td><td>夜间无人值守</td><td>晚上11点咨询没人回，漏单</td><td>每天</td></tr>
+<tr><td>3</td><td>回复质量不稳定</td><td>不同客服回复不一样，差评率高</td><td>每天</td></tr>
+<tr><td>4</td><td>客服离职率高</td><td>电商客服流动性大，培训成本高</td><td>每月</td></tr>
+<tr><td>5</td><td>内容产出慢</td><td>短视频脚本、详情页文案、直播话术</td><td>每周</td></tr>
+<tr><td>6</td><td>客户画像不清</td><td>客户来了也不知道是谁、买过什么</td><td>每天</td></tr>
+<tr><td>7</td><td>售后跟进不及时</td><td>退货/换货/退款处理慢</td><td>每天</td></tr>
+<tr><td>8</td><td>数据分散</td><td>多平台数据各自为战，统计困难</td><td>每周/月</td></tr>
+</table></div>
+<h3>2.3 落地场景匹配</h3>
+
+<div class="table-wrap"><table>
+<tr><td>场景</td><td>适配度</td><td>优先级</td><td>典型效果</td></tr>
+<tr><td>智能客服</td><td>★★★★★</td><td>1st</td><td>处理60-80%常见咨询，24h在线</td></tr>
+<tr><td>营销内容生成</td><td>★★★★☆</td><td>2nd</td><td>批量生成脚本/文案</td></tr>
+<tr><td>数据报表</td><td>★★★☆☆</td><td>3rd</td><td>多平台数据自动汇总</td></tr>
+<tr><td>知识库</td><td>★★☆☆☆</td><td>4th</td><td>商品知识/话术沉淀</td></tr>
+</table></div>
+<h3>2.4 差异化话术（切入）</h3>
+
+<h4>电话/微信首次沟通</h4>
+<pre><code class="lang-">&quot;老板你好，看你做电商的对吧？
+<p>最近很多电商老板找我们配AI客服。</p>
+<p>原来两班倒的客服团队，现在AI能处理60-80%的常见问题，</p>
+<p>晚上11点有人来问，AI自动回复自动记录。</p>
+
+<p>起步3500块，不到一个客服半个月工资。</p>
+<p>怎么样，有兴趣了解一下吗？&quot;</p>
+<p></code></pre></p>
+
+<h4>短视频方向</h4>
+<pre><code class="lang-">&quot;电商老板注意了！
+<p>你花8000一个月请的客服，晚上10点之后就不在了？</p>
+<p>但你的客户晚上12点还在下单。</p>
+
+<p>我们给xx店铺配了AI客服，</p>
+<p>晚上11点-早上8点处理的咨询量，</p>
+<p>占了全天的30%以上。</p>
+
+<p>3500块，把这个时间段接住。</p>
+<p>合不合算你自己算。&quot;</p>
+<p></code></pre></p>
+
+<h4>朋友圈文案</h4>
+<pre><code class="lang-">电商朋友说：最怕晚上来大单，客服不在。
+<p>现在AI帮他兜底了：自动回复、自动报价、自动记录。</p>
+<p>早上起来一看，昨晚成交了3单。</p>
+
+<p>3500配的，第一天就回本了。</p>
+<p></code></pre></p>
+
+<h3>2.5 价值量化</h3>
+
+<div class="table-wrap"><table>
+<tr><td>场景</td><td>原来成本</td><td>AI方案成本</td><td>节省</td></tr>
+<tr><td>智能客服（单店）</td><td>1个客服月薪5000-8000</td><td>S1 3500 + API 200/月</td><td>第一年省3万+</td></tr>
+<tr><td>营销内容（月产100条）</td><td>1个文案月薪6000+</td><td>S2 6000 + API 300/月</td><td>第一年省5万+</td></tr>
+<tr><td>双11/618期间</td><td>临时招客服3人x3000</td><td>AI零成本增量</td><td>省9000</td></tr>
+</table></div>
+<h3>2.6 常见质疑与应对</h3>
+
+<div class="table-wrap"><table>
+<tr><td>质疑</td><td>应对</td></tr>
+<tr><td>"AI回消息会不会很死板？"</td><td>"我们会根据你的风格定制话术，客户区分不出来是不是AI。而且遇到AI不会的问题，自动转人工。"</td></tr>
+<tr><td>"客户发现是AI会不会反感？"</td><td>"客户只在乎能不能解决他的问题，不在乎谁回的。而且很多客户更喜欢AI，因为不用等。"</td></tr>
+<tr><td>"我们已经在用自动回复工具了"</td><td>"了解一下您用的什么工具？我们跟工具的区别是：我们是AI驱动的，能理解客户问题的意思，不是关键词匹配。而且可以深度定制。"</td></tr>
+</table></div>
+<h3>2.7 推广渠道侧重</h3>
+<ol>
+<li>短视频（抖音/视频号）— 打"半夜咨询漏单"痛点</li>
+<li>电商卖家社群 — 精准触达</li>
+<li>朋友圈 — 案例展示</li>
+<li>异业合作 — 代运营公司/ERP服务商推荐</li>
+</ol>
+
+<hr>
+
+<h2>3. 行业二：二手车/汽配</h2>
+
+<h3>优先级：★★★★★</h3>
+
+<h3>3.1 行业画像</h3>
+
+<div class="table-wrap"><table>
+<tr><td>维度</td><td>描述</td></tr>
+<tr><td>典型企业</td><td>二手车行、汽配批发商、汽修连锁店</td></tr>
+<tr><td>企业规模</td><td>3-20人</td></tr>
+<tr><td>决策者</td><td>老板/店长（通常懂车、懂生意但不懂技术）</td></tr>
+<tr><td>年营收</td><td>200万-5000万</td></tr>
+<tr><td>IT水平</td><td>低，有的在用"车300""查博士"等工具，有的还在用本子记</td></tr>
+<tr><td>认知水平</td><td>部分人听说过AI，但觉得跟自己没关系</td></tr>
+<tr><td>典型痛点</td><td>车源管理混乱、客户咨询量大、出价不统一、回访不及时</td></tr>
+<tr><td>决策特征</td><td>老板个人决策，看重"能不能帮我多卖车"</td></tr>
+<tr><td>最佳触达渠道</td><td>二手车市场地推、行业展会、朋友圈</td></tr>
+</table></div>
+<h3>3.2 核心痛点</h3>
+
+<div class="table-wrap"><table>
+<tr><td>排序</td><td>痛点</td><td>描述</td></tr>
+<tr><td>1</td><td>客户咨询量大量重复</td><td>每天十几二十个人问"XX车多少钱""哪年的"</td></tr>
+<tr><td>2</td><td>回复速度跟不上</td><td>咨询一多，回复慢，客户跑了</td></tr>
+<tr><td>3</td><td>出价不统一</td><td>不同销售报不同价，影响成交</td></tr>
+<tr><td>4</td><td>跟进回访不及时</td><td>客户来看过车走了之后没人跟进</td></tr>
+<tr><td>5</td><td>车源信息变化快</td><td>收车/卖车频繁更新，信息更新跟不上</td></tr>
+<tr><td>6</td><td>库存盘点费时</td><td>手上有什么车、在哪、什么价，每天靠人记</td></tr>
+<tr><td>7</td><td>客户数据流失</td><td>看过车的客户没有系统记录，无法再营销</td></tr>
+</table></div>
+<h3>3.3 落地场景匹配</h3>
+
+<div class="table-wrap"><table>
+<tr><td>场景</td><td>适配度</td><td>优先级</td><td>典型效果</td></tr>
+<tr><td>智能客服</td><td>★★★★★</td><td>1st</td><td>自动回复询价，24h在线</td></tr>
+<tr><td>数据报表</td><td>★★★★☆</td><td>2nd</td><td>车源/库存/询价数据自动汇总</td></tr>
+<tr><td>文档自动化</td><td>★★★☆☆</td><td>3rd</td><td>收车合同/交易协议自动生成</td></tr>
+</table></div>
+<h3>3.4 差异化话术</h3>
+
+<h4>首次沟通</h4>
+<pre><code class="lang-">&quot;王总好，我专做二手车行AI方案的。
+<p>最近好几个二手车老板找我们配了AI客服，</p>
+<p>效果挺明显的。</p>
+
+<p>原来微信上10个人问车，最多能接住3-4个，</p>
+<p>剩下的忙起来就忘了回。</p>
+<p>AI帮你自动回：什么车、多少钱、哪年上牌、在哪看车。</p>
+<p>客户走了还能自动跟进回访。</p>
+
+<p>起步3500块，3-7天就能配好。</p>
+<p>&quot;</p>
+<p></code></pre></p>
+
+<h4>话术要点（二手车老板关心的）</h4>
+<ul>
+<li>不要讲技术名词，讲"卖车""接客""不跑单"</li>
+<li>讲同行案例最有效</li>
+<li>用"昨天晚上11点来了个客户，AI接了"开头</li>
+</ul>
+
+<h3>3.5 价值量化</h3>
+
+<div class="table-wrap"><table>
+<tr><td>指标</td><td>改善幅度</td><td>计算方式</td></tr>
+<tr><td>询价回复率</td><td>从40%→95%</td><td>AI自动回复所有询价</td></tr>
+<tr><td>跟进回访</td><td>从不跟→自动跟</td><td>客户3天后自动回访</td></tr>
+<tr><td>漏单率</td><td>从30%→5%</td><td>夜间/忙碌时不再漏单</td></tr>
+<tr><td>月均多成交</td><td>1-3台</td><td>按询价→试驾→成交转化率</td></tr>
+</table></div>
+<h3>3.6 推广渠道侧重</h3>
+<ol>
+<li>二手车市场直接拜访/地推</li>
+<li>二手车行业展会/联谊会</li>
+<li>二手车商社群</li>
+<li>朋友圈案例展示（最有效）</li>
+</ol>
+
+<hr>
+
+<h2>4. 行业三：本地服务</h2>
+
+<h3>优先级：★★★★☆</h3>
+
+<h3>4.1 行业画像</h3>
+
+<div class="table-wrap"><table>
+<tr><td>维度</td><td>描述</td></tr>
+<tr><td>覆盖范围</td><td>餐饮、美容美发、装修/建材、家政、维修、宠物服务</td></tr>
+<tr><td>企业规模</td><td>1-10人</td></tr>
+<tr><td>决策者</td><td>老板本人（通常在店里）</td></tr>
+<tr><td>典型痛点</td><td>预约管理乱、客户咨询分散在微信/电话、回访不及时</td></tr>
+<tr><td>决策特征</td><td>老板说了算，价格敏感，看重"立竿见影"</td></tr>
+</table></div>
+<h3>4.2 核心痛点</h3>
+
+<div class="table-wrap"><table>
+<tr><td>痛点</td><td>描述</td></tr>
+<tr><td>电话咨询多</td><td>一天接几十个电话问"多少钱""还有没有位置"</td></tr>
+<tr><td>预约易冲突</td><td>本子记/微信记，容易漏单撞单</td></tr>
+<tr><td>回访基本不做</td><td>知道应该做回访但没时间做</td></tr>
+<tr><td>评价管理难</td><td>客户发到不同平台，看不过来</td></tr>
+<tr><td>员工流动大</td><td>培训成本高，知识没法沉淀</td></tr>
+</table></div>
+<h3>4.3 差异化话术</h3>
+
+<pre><code class="lang-">&quot;老板您好，我看您这家店开了挺久了，
+<p>平时是不是经常接到电话问&#x27;多少钱&#x27;&#x27;几点开门&#x27;这种问题？</p>
+<p>问的人多了，忙起来就容易忘回。</p>
+
+<p>我们给本地商家配的AI客服，</p>
+<p>能自动接电话、回微信、帮您记录预约。</p>
+<p>客户几点来、做什么项目、多少钱，AI自动记。</p>
+
+<p>起步就3500，不到一个员工半个月工资。</p>
+<p>&quot;</p>
+
+<p>（更适合的切入方式：直接对着实体店老板，用&quot;你店里现在最忙的活是什么&quot;开场）</p>
+<p></code></pre></p>
+
+<h3>4.4 推广渠道侧重</h3>
+<ol>
+<li>本地生活社群（美团/点评老板群）</li>
+<li>地推（写字楼下的餐饮街、社区商业街）</li>
+<li>同城短视频（抖音同城、本地生活号）</li>
+</ol>
+
+<hr>
+
+<h2>5. 行业四：传统制造业</h2>
+
+<h3>优先级：★★★★☆</h3>
+
+<h3>5.1 行业画像</h3>
+
+<div class="table-wrap"><table>
+<tr><td>维度</td><td>描述</td></tr>
+<tr><td>典型企业</td><td>机械配件厂、五金加工、电子组装、包装印刷</td></tr>
+<tr><td>企业规模</td><td>10-200人</td></tr>
+<tr><td>决策者</td><td>老板/厂长/生产经理</td></tr>
+<tr><td>典型痛点</td><td>图纸/文档管理乱、经验传承难、质量报告手工写</td></tr>
+<tr><td>决策特征</td><td>决策周期长、看重稳定和安全、对价格不敏感</td></tr>
+</table></div>
+<h3>5.2 核心痛点</h3>
+
+<div class="table-wrap"><table>
+<tr><td>排序</td><td>痛点</td><td>描述</td></tr>
+<tr><td>1</td><td>文档/图纸管理混乱</td><td>文件散落各处，新员工找不到</td></tr>
+<tr><td>2</td><td>老员工经验无法传承</td><td>干了20年的师傅，经验全在脑子里</td></tr>
+<tr><td>3</td><td>报价/合同反复人工操作</td><td>客户询价→人工查参数→出报价</td></tr>
+<tr><td>4</td><td>质检报告手工填写</td><td>每天几十份，月底汇总头疼</td></tr>
+<tr><td>5</td><td>新品说明书/培训资料</td><td>每出一个新品，文档全靠写</td></tr>
+</table></div>
+<h3>5.3 落地场景</h3>
+
+<div class="table-wrap"><table>
+<tr><td>场景</td><td>适配度</td><td>优先级</td></tr>
+<tr><td>知识库</td><td>★★★★★</td><td>1st</td></tr>
+<tr><td>文档自动化</td><td>★★★★☆</td><td>2nd</td></tr>
+<tr><td>数据报表</td><td>★★★☆☆</td><td>3rd</td></tr>
+</table></div>
+<h3>5.4 差异化话术</h3>
+
+<pre><code class="lang-">&quot;老板，我看你们厂做XX配件做了好多年了吧？
+<p>有件事您肯定有体会：</p>
+<p>厂里最有经验的老师傅，干了一辈子，脑子里东西最值钱，</p>
+<p>但他退休了怎么办？</p>
+
+<p>我们做的事很简单：把老师傅的经验、工艺流程、产品参数</p>
+<p>做成一个AI知识库。</p>
+<p>新员工随时用手机问，AI自动回答。</p>
+<p>不用翻文件、不用找老师傅。</p>
+
+<p>起步3500一个场景。</p>
+<p>&quot;</p>
+<p></code></pre></p>
+
+<h3>5.5 注意事项</h3>
+<ul>
+<li>制造业老板决策周期长（2-4周），需要有耐心</li>
+<li>通过商会/工业园渠道触达效率最高</li>
+<li>案例最好用制造业的，不要用电商案例（对方会觉得跟我不一样）</li>
+</ul>
+
+<hr>
+
+<h2>6. 行业五：教育培训</h2>
+
+<h3>优先级：★★★☆☆</h3>
+
+<h3>6.1 痛点简析</h3>
+
+<div class="table-wrap"><table>
+<tr><td>场景</td><td>痛点</td><td>AI方案</td></tr>
+<tr><td>课程咨询</td><td>每天几十个"你们有什么课""多少钱"</td><td>智能客服自动回复</td></tr>
+<tr><td>学员管理</td><td>报名/排课/签到全靠人工</td><td>文档自动化+数据报表</td></tr>
+<tr><td>新员工培训</td><td>老师培训成本高、时间长</td><td>AI知识库</td></tr>
+</table></div>
+<h3>6.2 差异化话术</h3>
+
+<pre><code class="lang-">&quot;做培训的朋友都有一个共同的问题：
+<p>每天被家长问&#x27;你们有什么课&#x27;&#x27;多少钱&#x27;&#x27;几岁的孩子能上&#x27;。</p>
+<p>一忙起来微信回不过来。</p>
+
+<p>AI自动回复，还能帮你记录意向学员，</p>
+<p>自动排试听课时间。</p>
+<p>&quot;</p>
+<p></code></pre></p>
+
+<hr>
+
+<h2>7. 行业六：律师/会计事务所</h2>
+
+<h3>优先级：★★★☆☆</h3>
+
+<h3>7.1 痛点简析</h3>
+
+<div class="table-wrap"><table>
+<tr><td>场景</td><td>痛点</td><td>AI方案</td></tr>
+<tr><td>文档处理</td><td>合同/协议/法律文书大量重复性工作</td><td>文档自动化</td></tr>
+<tr><td>法规检索</td><td>查法规费时</td><td>AI知识库</td></tr>
+<tr><td>客户问答</td><td>客户反复问同样问题</td><td>智能客服</td></tr>
+</table></div>
+<h3>7.2 注意事项</h3>
+<ul>
+<li>对数据安全要求极高，需要强调私有化部署</li>
+<li>决策周期长（合伙人共同决策）</li>
+<li>报价策略：直接推S2/S3，S1的接受度可能不高</li>
+<li>话术重点：不是替代律师/会计，是帮他们节省时间做更有价值的事</li>
+</ul>
+
+<hr>
+
+<h2>8. 行业七：房产中介</h2>
+
+<h3>优先级：★★★☆☆</h3>
+
+<h3>8.1 痛点简析</h3>
+
+<div class="table-wrap"><table>
+<tr><td>场景</td><td>痛点</td><td>AI方案</td></tr>
+<tr><td>房源咨询</td><td>每天大量"XX小区有没有房子""多少钱"</td><td>智能客服</td></tr>
+<tr><td>客户跟进</td><td>看了房的客户没人跟进</td><td>智能客服+数据报表</td></tr>
+<tr><td>房源管理</td><td>房源信息更新跟踪麻烦</td><td>数据报表</td></tr>
+</table></div>
+<h3>8.2 差异化话术</h3>
+
+<pre><code class="lang-">&quot;中介朋友，你们门店是不是每天接待几十个咨询，
+<p>忙起来微信就回不过来了？</p>
+
+<p>AI自动回客户：有什么房源、多少钱、约看房时间。</p>
+<p>晚上11点来的咨询也不会漏。</p>
+<p>&quot;</p>
+<p></code></pre></p>
+
+<hr>
+
+<h2>9. 行业八：物流/贸易</h2>
+
+<h3>优先级：★★☆☆☆</h3>
+
+<h3>9.1 痛点简析</h3>
+
+<div class="table-wrap"><table>
+<tr><td>场景</td><td>痛点</td><td>AI方案</td></tr>
+<tr><td>订单跟踪</td><td>客户反复查货到哪了</td><td>智能客服</td></tr>
+<tr><td>异常处理</td><td>丢件/延迟时大量客诉</td><td>智能客服+文档自动化</td></tr>
+<tr><td>数据报表</td><td>每日订单/物流数据汇总</td><td>数据报表</td></tr>
+</table></div>
+<h3>9.2 注意事项</h3>
+<ul>
+<li>通常有自己系统，需要对接API，交付难度略高</li>
+<li>适合推S2（多个场景联动）</li>
+<li>话术重点：减少客服负担、自动出报表</li>
+</ul>
+
+<hr>
+
+<h2>10. 跨行业通用：客户分级标准</h2>
+
+<h3>10.1 企业客户分级</h3>
+
+<div class="table-wrap"><table>
+<tr><td>级别</td><td>定义</td><td>特征</td><td>策略</td></tr>
+<tr><td>S级</td><td>高意向+高预算</td><td>明确需要、有预算、决策快</td><td>优先排期、亲自跟</td></tr>
+<tr><td>A级</td><td>明确意向</td><td>有需要、预算适中</td><td>重点跟进、快速推进</td></tr>
+<tr><td>B级</td><td>潜在意向</td><td>有兴趣、不确定要不要</td><td>教育培养、保持触达</td></tr>
+<tr><td>C级</td><td>了解阶段</td><td>刚接触、问得多</td><td>加好友、朋友圈养</td></tr>
+<tr><td>D级</td><td>无效</td><td>同行/非目标/无需求</td><td>不投入精力</td></tr>
+</table></div>
+<h3>10.2 客户跟进节奏</h3>
+
+<div class="table-wrap"><table>
+<tr><td>级别</td><td>跟进频率</td><td>跟进方式</td><td>多久不回放弃</td></tr>
+<tr><td>S级</td><td>每2天1次</td><td>电话+微信</td><td>持续跟</td></tr>
+<tr><td>A级</td><td>每3-4天1次</td><td>微信为主</td><td>2周</td></tr>
+<tr><td>B级</td><td>每周1次</td><td>微信/朋友圈</td><td>1个月</td></tr>
+<tr><td>C级</td><td>每月1次</td><td>朋友圈 + 偶尔私信</td><td>3个月</td></tr>
+<tr><td>D级</td><td>不跟进</td><td>按需</td><td>—</td></tr>
+</table></div>
+<h3>10.3 跟进记录的标准化</h3>
+
+<p>每次跟进后，在客户管理表中记录：</p>
+<pre><code class="lang-">时间：2026-06-03 14:30
+<p>方式：微信私信</p>
+<p>客户反馈：问了价格，说考虑</p>
+<p>后续动作：发案例，约3天后跟进</p>
+<p>跟进人：倪锦</p>
+<p>状态：B级→A级 ↑</p>
+<p>备注：客户对智能客服有兴趣，可能还有数据报表需求</p>
+<p></code></pre></p>
+
+<hr>
+
+<blockquote>本模块覆盖8个目标行业</blockquote>
+<blockquote>每个行业包含：画像→痛点→场景→话术→价值量化→推广侧重</blockquote>
+<blockquote>附录：客户分级标准 + 跟进节奏 + 记录规范</blockquote>
+<blockquote>下一模块：[模块五：交付SOP标准操作手册](./模块五_交付SOP标准操作手册.md)</blockquote>
+
+
+<hr>
+<h2>相关笔记</h2>
+<ul>
+<li><a href="八大行业方案速查.html" class="wikilink">八大行业方案速查</a> — 各行业一句话方案</li>
+<li><a href="核心话术速查.html" class="wikilink">核心话术速查</a> — 各行业切入话术</li>
+<li><a href="模块一_推广渠道矩阵.html" class="wikilink">模块一_推广渠道矩阵</a> — 各行业在哪获客</li>
+<li><a href="模块二_销售转化漏斗.html" class="wikilink">模块二_销售转化漏斗</a> — 各行业转化策略</li>
+</ul>
+
+<p>#客户细分 #行业 #销售 #B2B</p>
+            </article>
+            <footer class="page-footer">
+                <p>上海锦霓鲤锦网络科技有限公司 · AI 数字员工企业增效计划</p>
+                <p style="margin-top:4px;font-size:12px;"><a href="https://hermes-agent.nousresearch.com" target="_blank">Hermes Agent</a> · <a href="#" onclick="scrollToTop()">回到顶部 ↑</a></p>
+            </footer>
+        </main>
+    </div>
+    <script>
+        
+// 基础防复制
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('copy', e => e.preventDefault());
+document.addEventListener('selectstart', e => e.preventDefault());
+document.addEventListener('dragstart', e => e.preventDefault());
+
+function searchNotes(q) {
+    q = q.toLowerCase();
+    document.querySelectorAll('.page-link').forEach(el => {
+        const text = el.textContent.toLowerCase();
+        el.style.display = text.includes(q) ? '' : 'none';
+    });
+    // 隐藏空的分组
+    document.querySelectorAll('.module-group').forEach(g => {
+        const visible = Array.from(g.querySelectorAll('.page-link')).filter(e => e.style.display !== 'none');
+        g.style.display = visible.length > 0 ? '' : 'none';
+    });
+}
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+    </script>
+</body>
+</html>

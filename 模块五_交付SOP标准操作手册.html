@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模块五：交付SOP标准操作手册 · 企业数字员工</title>
+    <style>
+        
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --primary: #2563eb;
+    --primary-light: #3b82f6;
+    --bg: #f8fafc;
+    --sidebar-bg: #ffffff;
+    --card-bg: #ffffff;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --gradient: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #3b82f6 100%);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+/* Top Navigation */
+.top-nav {
+    background: var(--gradient);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(37,99,235,0.15);
+}
+.nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo { font-size: 18px; font-weight: 700; color: white; text-decoration: none; letter-spacing: 1px; }
+.nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+.nav-links a {
+    color: rgba(255,255,255,0.85); text-decoration: none; font-size: 12px;
+    padding: 4px 10px; border-radius: 20px; transition: all 0.2s;
+}
+.nav-links a:hover { background: rgba(255,255,255,0.15); color: white; }
+
+/* Layout */
+.layout { display: flex; max-width: 1400px; margin: 0 auto; min-height: calc(100vh - 56px); }
+
+/* Sidebar */
+.sidebar {
+    width: 260px; flex-shrink: 0; background: var(--sidebar-bg);
+    border-right: 1px solid var(--border); padding: 16px 12px;
+    position: sticky; top: 56px; height: calc(100vh - 56px); overflow-y: auto;
+}
+.sidebar-search { margin-bottom: 12px; }
+.sidebar-search input {
+    width: 100%; padding: 7px 12px; border: 1px solid var(--border);
+    border-radius: 8px; font-size: 13px; outline: none; transition: border 0.2s;
+}
+.sidebar-search input:focus { border-color: var(--primary); }
+.module-group { margin-bottom: 16px; }
+.module-title {
+    font-size: 11px; font-weight: 700; color: var(--text-light);
+    text-transform: uppercase; letter-spacing: 0.5px;
+    padding: 6px 8px 3px; border-bottom: 1px solid var(--border); margin-bottom: 3px;
+}
+.page-link {
+    display: flex; align-items: center; gap: 5px;
+    padding: 4px 8px; border-radius: 5px; color: var(--text);
+    text-decoration: none; font-size: 12.5px; transition: all 0.15s;
+}
+.page-link:hover { background: #eef2ff; color: var(--primary); }
+.page-link.active { background: #eef2ff; color: var(--primary); font-weight: 600; }
+.page-link .icon { font-size: 13px; width: 18px; text-align: center; flex-shrink: 0; }
+.page-link .title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Main Content */
+.content { flex: 1; padding: 32px 48px; max-width: 880px; }
+.breadcrumb { font-size: 13px; color: var(--text-light); margin-bottom: 20px; }
+.breadcrumb a { color: var(--primary); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* Article */
+.article h1 { font-size: 28px; font-weight: 700; margin-bottom: 16px; line-height: 1.3; }
+.article h2 {
+    font-size: 22px; font-weight: 600; margin-top: 32px; margin-bottom: 12px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--border);
+}
+.article h3 { font-size: 18px; font-weight: 600; margin-top: 28px; margin-bottom: 8px; }
+.article h4 { font-size: 16px; font-weight: 600; margin-top: 24px; margin-bottom: 8px; }
+.article p { margin-bottom: 14px; }
+.article a { color: var(--primary); text-decoration: none; }
+.article a:hover { text-decoration: underline; }
+.article a.wikilink { background: #eef2ff; padding: 1px 5px; border-radius: 3px; font-size: 14px; }
+.article a.wikilink::before { content: "📄 "; font-size: 12px; }
+.article code {
+    background: #f1f5f9; padding: 2px 6px; border-radius: 4px;
+    font-size: 13px; font-family: "SF Mono", "JetBrains Mono", monospace;
+}
+.article pre {
+    background: #1e293b; color: #e2e8f0; padding: 18px; border-radius: 10px;
+    overflow-x: auto; margin: 16px 0;
+}
+.article pre code { background: none; padding: 0; color: inherit; font-size: 13px; line-height: 1.5; }
+.article blockquote {
+    border-left: 4px solid var(--primary); padding: 10px 18px; margin: 14px 0;
+    background: #f8fafc; border-radius: 0 8px 8px 0; color: var(--text-light);
+}
+.article ul, .article ol { margin: 6px 0 14px 22px; }
+.article li { margin-bottom: 3px; }
+.article .table-wrap { overflow-x: auto; margin: 14px 0; }
+.article table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 500px; }
+.article th, .article td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+.article th { background: #f1f5f9; font-weight: 600; }
+.article tr:nth-child(even) { background: #f8fafc; }
+.article hr { border: none; border-top: 2px solid var(--border); margin: 28px 0; }
+.article .content-img { max-width: 100%; border-radius: 8px; margin: 16px 0; }
+
+.article .meta-bar {
+    display: flex; gap: 14px; font-size: 13px; color: var(--text-light);
+    margin-bottom: 20px; flex-wrap: wrap;
+}
+.article .meta-bar span { background: #f1f5f9; padding: 3px 10px; border-radius: 12px; }
+
+/* Page Footer */
+.page-footer {
+    margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border);
+    text-align: center; font-size: 13px; color: var(--text-light);
+}
+
+/* Home Page */
+.home-hero { text-align: center; padding: 40px 0 24px; }
+.home-hero h1 { font-size: 34px; margin-bottom: 10px; }
+.home-hero p { font-size: 17px; color: var(--text-light); margin-bottom: 6px; }
+.home-info { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
+.home-info .badge {
+    background: #eef2ff; padding: 5px 14px; border-radius: 20px;
+    font-size: 12.5px; color: var(--primary);
+}
+.project-card {
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    border-radius: 14px; padding: 24px 28px; margin: 20px 0;
+}
+.project-card table { width: 100%; border: none; font-size: 14px; }
+.project-card td { border: none; padding: 4px 0; vertical-align: top; }
+.project-card td:first-child { width: 100px; font-weight: 600; color: var(--text-light); }
+.module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; margin: 20px 0; }
+.module-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px; transition: all 0.2s;
+    text-decoration: none; color: inherit; display: block;
+}
+.module-card:hover {
+    border-color: var(--primary); box-shadow: 0 4px 16px rgba(37,99,235,0.08);
+    transform: translateY(-2px);
+}
+.module-card h3 { font-size: 15px; margin-bottom: 6px; }
+.module-card p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+.module-card .count { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .layout { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--border); }
+    .content { padding: 20px; }
+    .module-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+}
+
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-inner">
+            <a href="index.html" class="logo">🤖 企业数字员工</a>
+            <div class="nav-links">
+                <a href="module-0-项目总览.html">🎯 总览</a>
+<a href="module-1-推广体系.html">📡 推广</a>
+<a href="module-2-销售转化.html">🪜 销售</a>
+<a href="module-3-内容素材.html">📝 素材</a>
+<a href="module-4-客户细分.html">👥 客户</a>
+<a href="module-5-交付SOP.html">🔧 交付</a>
+<a href="module-6-工具模板.html">🧰 工具</a>
+<a href="module-7-Hermes技术基座.html">🤖 Hermes</a>
+<a href="module-交付物.html">📦 交付</a>
+<a href="module-附件.html">📎 附件</a>
+            </div>
+        </div>
+    </nav>
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-search">
+                <input type="text" id="search" placeholder="🔍 搜索笔记..." oninput="searchNotes(this.value)">
+            </div>
+            <div class="sidebar-toc" id="sidebar-toc">
+                <div class="module-group">
+<div class="module-title">🎯 项目总览</div>
+<a href="推广与流程体系_完整框架.html" class="page-link><span class="icon">📐</span><span class="title">AI数字员工 · 推广与流程体系完整框架</span></a>
+<a href="GitHub可用项目清单与案例方案.html" class="page-link><span class="icon">🎯</span><span class="title">GitHub 可用项目清单与案例方案</span></a>
+<a href="八大行业方案速查.html" class="page-link><span class="icon">🏢</span><span class="title">八大行业方案速查</span></a>
+<a href="对外资料清单与制作排期.html" class="page-link><span class="icon">🎯</span><span class="title">对外资料清单与制作排期</span></a>
+<a href="常见反对意见与应对.html" class="page-link><span class="icon">🛡️</span><span class="title">常见反对意见与应对</span></a>
+<a href="核心话术速查.html" class="page-link><span class="icon">💬</span><span class="title">核心话术速查</span></a>
+<a href="项目检查清单.html" class="page-link><span class="icon">✅</span><span class="title">项目检查清单</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📡 推广体系</div>
+<a href="模块一_推广渠道矩阵.html" class="page-link><span class="icon">📡</span><span class="title">模块一：推广渠道矩阵</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🪜 销售转化</div>
+<a href="模块二_销售转化漏斗.html" class="page-link><span class="icon">🪜</span><span class="title">模块二：销售转化漏斗</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📝 内容素材</div>
+<a href="模块三_内容素材体系.html" class="page-link><span class="icon">📝</span><span class="title">模块三：内容素材体系</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">👥 客户细分</div>
+<a href="模块四_客户细分与差异化方案.html" class="page-link><span class="icon">👥</span><span class="title">模块四：客户细分与差异化方案</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🔧 交付SOP</div>
+<a href="模块五_交付SOP标准操作手册.html" class="page-link active><span class="icon">🔧</span><span class="title">模块五：交付SOP标准操作手册</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🧰 工具模板</div>
+<a href="模块六_工具模板清单.html" class="page-link><span class="icon">🧰</span><span class="title">模块六：工具模板清单</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🤖 Hermes 技术基座</div>
+<a href="README.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes Agent — AI 数字员工技术基座</span></a>
+<a href="Hermes CLI 速查.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes CLI 速查</span></a>
+<a href="Hermes 工具清单.html" class="page-link><span class="icon">🔌</span><span class="title">Hermes 工具清单</span></a>
+<a href="Hermes 示例命令.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes 示例命令</span></a>
+<a href="Hermes 部署与运维.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes 部署与运维</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📦 交付物</div>
+<a href="知识库_客服话术.html" class="page-link><span class="icon">📚</span><span class="title">AI数字员工 客服知识库</span></a>
+<a href="操作手册_企微AI客服部署.html" class="page-link><span class="icon">📋</span><span class="title">企微AI客服部署操作手册</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📎 附件</div>
+<a href="AI数字员工_企业增效计划.html" class="page-link><span class="icon">📄</span><span class="title">AI数字员工_企业增效计划</span></a>
+<a href="AI数字员工_展会精华版.html" class="page-link><span class="icon">🎪</span><span class="title">AI数字员工_展会精华版</span></a>
+<a href="AI智能体企业定制服务_企业展示.html" class="page-link><span class="icon">🤖</span><span class="title">AI智能体企业定制服务_企业展示</span></a>
+<a href="ppt-master参考索引.html" class="page-link><span class="icon">📄</span><span class="title">ppt-master 模板参考</span></a>
+<a href="素材总索引.html" class="page-link><span class="icon">🖼️</span><span class="title">素材总索引</span></a>
+</div>
+            </div>
+        </aside>
+        <main class="content">
+            <div class="breadcrumb"><a href="index.html">🏠 首页</a> / <a href="module-5-交付SOP.html">🔧 交付SOP</a> / 模块五：交付SOP标准操作手册</div>
+            <article class="article">
+                <h1>🔧 模块五：交付SOP标准操作手册</h1>
+    <div class="meta-bar">
+        <span>📖 22 分钟</span>
+        <span>📝 11353 字</span>
+        <span>📊 47 个表格</span>
+    </div>
+    <h1>模块五：交付SOP标准操作手册</h1>
+
+<blockquote>版本：v1.0 <div class="table-wrap"><table></blockquote>
+<tr><td>日期：2026-06-03</td><td>负责人：倪锦</td></tr>
+</table></div>> 说明：从客户联系到交付上线的全流程标准操作手册，每个步骤可执行、可检查、可迭代
+
+<hr>
+
+<h2>目录</h2>
+
+<ol>
+<li>[SOP总览：6阶段16步](#1-sop总览)</li>
+<li>[L1 联系咨询](#2-l1-联系咨询)</li>
+<li>[L2 免费诊断](#3-l2-免费诊断)</li>
+<li>[L3 方案设计](#4-l3-方案设计)</li>
+<li>[L4 签约付款](#5-l4-签约付款)</li>
+<li>[L5 开发部署](#6-l5-开发部署)</li>
+<li>[L6 验收上线](#7-l6-验收上线)</li>
+<li>[L7 优化维护](#8-l7-优化维护)</li>
+<li>[SOP执行检查清单总表](#9-sop执行检查清单总表)</li>
+</ol>
+
+<hr>
+
+<h2>1. SOP总览</h2>
+
+<h3>1.1 6阶段16步总表</h3>
+
+<div class="table-wrap"><table>
+<tr><td>阶段</td><td>步骤</td><td>负责</td><td>标准时长</td><td>交付物</td><td>质量门</td></tr>
+<tr><td>L1</td><td>1.1 首次响应</td><td>销售</td><td>1小时内</td><td>客户信息已录入</td><td>是否有记录?</td></tr>
+<tr><td>L1</td><td>1.2 初步沟通</td><td>销售</td><td>20-30min</td><td>需求记录表</td><td>是否完成初筛?</td></tr>
+<tr><td>L2</td><td>2.1 预约诊断</td><td>销售+技术</td><td>1天内</td><td>诊断时间确认</td><td>时间是否排好?</td></tr>
+<tr><td>L2</td><td>2.2 现场/远程调研</td><td>技术</td><td>1-2天</td><td>调研记录</td><td>是否覆盖全部问题?</td></tr>
+<tr><td>L2</td><td>2.3 输出评估报告</td><td>技术</td><td>1天内</td><td>《AI诊断评估报告》</td><td>客户是否收到?</td></tr>
+<tr><td>L3</td><td>3.1 方案设计</td><td>技术</td><td>1-2天</td><td>《AI落地方案书》</td><td>场景是否对?</td></tr>
+<tr><td>L3</td><td>3.2 报价谈判</td><td>销售</td><td>1-2天</td><td>报价单</td><td>客户是否知晓?</td></tr>
+<tr><td>L4</td><td>4.1 签订合同</td><td>销售</td><td>1天</td><td>合同</td><td>是否双方签字?</td></tr>
+<tr><td>L4</td><td>4.2 收款开票</td><td>销售+财务</td><td>1-3天</td><td>付款凭证+发票</td><td>首款是否到账?</td></tr>
+<tr><td>L5</td><td>5.1 环境搭建</td><td>技术</td><td>1天</td><td>环境就绪</td><td>是否能跑通?</td></tr>
+<tr><td>L5</td><td>5.2 Agent开发</td><td>技术</td><td>2-5天</td><td>Agent交付</td><td>逻辑是否正确?</td></tr>
+<tr><td>L5</td><td>5.3 对接测试 + 5.4 验收上线</td><td>技术+销售</td><td>1-2天</td><td>测试报告+验收单</td><td>客户是否签字?</td></tr>
+<tr><td>L6</td><td>6.1 员工培训</td><td>销售/技术</td><td>1-2h</td><td>培训记录</td><td>是否完成培训?</td></tr>
+<tr><td>L6</td><td>6.2 效果跟踪</td><td>技术</td><td>每周</td><td>周报</td><td>是否达到预期?</td></tr>
+<tr><td>L6</td><td>6.3 迭代升级</td><td>技术</td><td>每月</td><td>升级记录</td><td>是否持续优化?</td></tr>
+</table></div>
+<h3>1.2 SOP使用说明</h3>
+
+<ul>
+<li>每完成一个步骤，在对应检查项打✓</li>
+<li>遇到异常情况，按"异常处理"章节操作</li>
+<li>本SOP随项目推进持续迭代，每月至少review一次</li>
+</ul>
+
+<hr>
+
+<h2>2. L1 联系咨询</h2>
+
+<h3>2.1 步骤1.1：首次响应</h3>
+
+<p><strong>触发条件</strong>：客户通过任意渠道发起联系（私信/电话/评论/加好友/展会）</p>
+
+<p><strong>标准时长</strong>：1小时内完成</p>
+
+<p><strong>执行动作</strong>：</p>
+
+<pre><code class="lang-">Step 1: 确认客户身份
+<p>□ 如果是微信：通过好友申请 + 打招呼</p>
+<p>□ 如果是电话：接听并记录对方称呼和来意</p>
+<p>□ 如果是评论/私信：回复并引导加微信</p>
+
+<p>Step 2: 录入客户信息</p>
+<p>将以下信息录入《客户信息记录表》：</p>
+<ul>
+<li>客户姓名/称呼</li>
+<li>联系电话</li>
+<li>联系渠道</li>
+<li>第一次联系时间</li>
+<li>初步意向描述</li>
+</ul>
+
+<p>Step 3: 初次回复</p>
+<p>根据客户联系的渠道使用对应的回复话术（见模块二L1话术库）</p>
+<p></code></pre></p>
+
+<p><strong>标准回复话术</strong>：</p>
+<pre><code class="lang-">（微信通过后）
+<p>&quot;老板您好，我是倪锦，做AI数字员工企业定制的。</p>
+<p>方便问一下您是什么行业的？我发相关的案例给您参考。😊&quot;</p>
+<p></code></pre></p>
+
+<p><strong>异常处理</strong>：</p>
+<div class="table-wrap"><table>
+<tr><td>异常</td><td>处理方式</td></tr>
+<tr><td>客户加了不回复</td><td>24h后发第二条追问，72h后转入朋友圈触达</td></tr>
+<tr><td>客户直接问价</td><td>不要直接报，引导了解背景</td></tr>
+<tr><td>客户非常急</td><td>优先安排，加急排期</td></tr>
+<tr><td>客户打电话进来</td><td>问清称呼来意，加微信进一步沟通</td></tr>
+</table></div>
+<hr>
+
+<h3>2.2 步骤1.2：初步沟通</h3>
+
+<p><strong>触发条件</strong>：客户已通过好友/电话建立了初步联系</p>
+
+<p><strong>标准时长</strong>：20-30分钟</p>
+
+<p><strong>目标</strong>：完成客户初筛 + 约到免费诊断</p>
+
+<p><strong>执行动作</strong>：</p>
+
+<pre><code class="lang-">Step 1: 了解基本信息（5-10min）
+<p>必问的5个问题：</p>
+<p>1️⃣ &quot;公司主要做什么业务？&quot;</p>
+<p>2️⃣ &quot;目前公司几个人？&quot;</p>
+<p>3️⃣ &quot;目前有在用AI吗？&quot;</p>
+<p>4️⃣ &quot;目前最头痛的效率问题是什么？&quot;</p>
+<p>5️⃣ &quot;对AI投入有大概预算吗？&quot;</p>
+
+<p>Step 2: 判断客户等级（立刻）</p>
+<p>□ A级：明确需求+有预算+有决策权 → 直接约诊断</p>
+<p>□ B级：有兴趣但模糊 → 给案例+再跟进</p>
+<p>□ C级：随便问问 → 加好友保持朋友圈触达</p>
+
+<p>Step 3: 约免费诊断（如果客户符合条件）</p>
+<p>&quot;这周X或者X，您哪个时间方便？</p>
+<p>我上门/远程帮您免费诊断一下，</p>
+<p>出个报告看看AI能帮您省多少。</p>
+
+<p>不需要任何费用，就当了解一下。&quot;</p>
+<p></code></pre></p>
+
+<p><strong>判断标准</strong>：</p>
+<div class="table-wrap"><table>
+<tr><td>客户说了这句话</td><td>表示</td><td>应对话术</td></tr>
+<tr><td>"你就说多少钱"</td><td>价格敏感</td><td>"价格后面说，先了解情况再推荐最适合的"</td></tr>
+<tr><td>"我先了解一下"</td><td>不确定</td><td>"理解，我先发您几个案例看看，有感觉了再聊"</td></tr>
+<tr><td>"我回去跟合伙人商量"</td><td>快成了</td><td>"好的，我准备一份简版方案您带过去"</td></tr>
+<tr><td>"现在没时间"</td><td>拒绝/忙</td><td>"好的，加个微信回头聊" → 转入朋友圈触达</td></tr>
+</table></div>
+<hr>
+
+<h2>3. L2 免费诊断</h2>
+
+<h3>3.1 步骤2.1：预约诊断</h3>
+
+<p><strong>触发条件</strong>：客户同意接受免费诊断</p>
+
+<p><strong>标准时长</strong>：1天内完成预约确认</p>
+
+<p><strong>执行动作</strong>：</p>
+
+<pre><code class="lang-">Step 1: 确认诊断时间
+<p>□ 给出2-3个时间段供客户选择</p>
+<p>□ 确认上门还是远程（建议首单上门，建立信任）</p>
+<p>□ 确认地址（上门）/ 会议链接（远程）</p>
+
+<p>Step 2: 客户告知</p>
+<p>&quot;王总，已确认X月X日X点，到您公司（或远程）做诊断。</p>
+<p>大概需要1小时左右，我会带上电脑做演示。</p>
+<p>到时见！&quot;</p>
+
+<p>Step 3: 准备工作（15min，见下）</p>
+<p>□ 客户背景回顾</p>
+<p>□ 案例准备（同行最佳）</p>
+<p>□ 工具包检查（笔记本/名片/记录本/演示内容）</p>
+<p></code></pre></p>
+
+<h3>3.2 步骤2.2：现场/远程调研</h3>
+
+<p><strong>触发条件</strong>：按时到达客户现场/启动远程会议</p>
+
+<p><strong>标准时长</strong>：1-2小时</p>
+
+<p><strong>执行动作</strong>：</p>
+
+<pre><code class="lang-">□ Step 1: 开场破冰（5min）
+<p>&quot;王总，感谢您抽时间。</p>
+<p>今天我来的目的是了解一下您公司的业务流程，</p>
+<p>看看哪些环节可以用AI优化。</p>
+<p>整个过程大概1小时，结束后我会出一份评估报告。</p>
+
+<p>先请教一下，咱们公司目前最头痛的效率问题是？&quot;</p>
+
+<p>□ Step 2: 全面调研（30-45min）</p>
+<p>按调研问题清单逐一提问（完整清单见下方3.2.1）</p>
+<p>确保覆盖：业务流程→痛点→技术准备度→预算→决策逻辑</p>
+
+<p>□ Step 3: 现场演示（10min，可选）</p>
+<p>如果条件允许，现场展示一个相关的AI场景</p>
+
+<p>□ Step 4: 初步反馈（10min）</p>
+<p>&quot;今天聊下来有几个点值得关注：</p>
+<ol>
+<li>XX环节可以AI化</li>
+<li>XX环节可以优化</li>
+</ol>
+<p>详细的我会写进报告，2天内发给您。&quot;</p>
+
+<p>□ Step 5: 约定下一步（5min）</p>
+<p>&quot;收到报告后我们约个时间再聊一次，</p>
+<p>我给您看看具体怎么做、多少钱、多久能上线。&quot;</p>
+<p></code></pre></p>
+
+<h4>3.2.1 调研问题完整清单</h4>
+
+<p><strong>业务全貌：</strong></p>
+<ol>
+<li>"公司主要做什么业务？线上线下怎么分布？"</li>
+<li>"公司目前几个人？谁负责什么？"</li>
+<li>"日咨询量大概多少？从哪来？"</li>
+</ol>
+
+<p><strong>流程细节：</strong></p>
+<ol>
+<li>"从客户询价到成交，走什么流程？"</li>
+<li>"订单来了之后，谁处理、怎么处理？"</li>
+<li>"每天/周/月必做的重复性工作有哪些？"</li>
+<li>"数据主要在Excel里、纸上、还是系统里？"</li>
+</ol>
+
+<p><strong>痛点深挖：</strong></p>
+<ol>
+<li>"现在哪个环节最费时间/最让人头疼？"</li>
+<li>"如果现在选一个环节用AI辅助，您最先想到哪个？"</li>
+<li>"之前尝试过什么工具/方案吗？效果怎么样？"</li>
+</ol>
+
+<p><strong>决策与预算：</strong></p>
+<ol>
+<li>"这个事是您说了算，还是需要跟别人商量？"</li>
+<li>"对AI投入大概有预算范围吗？"</li>
+<li>"想多久上线？有什么时间节点吗？"</li>
+</ol>
+
+<p><strong>顾虑了解：</strong></p>
+<ol>
+<li>"用AI这件事，您主要担心什么？"</li>
+<li>"对数据安全有没有特殊要求？"</li>
+</ol>
+
+<h4>3.2.2 调研记录模板</h4>
+
+<p>每次调研后必须填写的标准化记录：</p>
+
+<pre><code class="lang-">┌────────────────────────────────────────┐
+<p>│ 调研记录表                             │</p>
+<p>├────────────────────────────────────────┤</p>
+<p>│ 企业名称：                             │</p>
+<p>│ 调研日期：                             │</p>
+<p>│ 调研方式：上门 / 远程                  │</p>
+<p>│ 参与人（客户方）：                     │</p>
+<p>│ 参与人（我方）：                       │</p>
+<p>├────────────────────────────────────────┤</p>
+<p>│ 一、业务流程现状                       │</p>
+<p>│ （用文字描述关键流程，附照片更佳）      │</p>
+<p>│                                        │</p>
+<p>│ 二、核心痛点（按优先级排序）            │</p>
+<p>│ 1.                                     │</p>
+<p>│ 2.                                     │</p>
+<p>│ 3.                                     │</p>
+<p>│                                        │</p>
+<p>│ 三、可AI化场景（初步判断）              │</p>
+<p>│ 场景1：                                │</p>
+<p>│ 场景2：                                │</p>
+<p>│ 场景3：                                │</p>
+<p>│                                        │</p>
+<p>│ 四、技术准备度                         │</p>
+<p>│ □ 数据在Excel中，可直接接入            │</p>
+<p>│ □ 数据在系统中，需要API对接            │</p>
+<p>│ □ 数据在纸上/人脑中，需要先数字化      │</p>
+<p>│                                        │</p>
+<p>│ 五、客户顾虑                           │</p>
+<p>│ 1.                                     │</p>
+<p>│ 2.                                     │</p>
+<p>│                                        │</p>
+<p>│ 六、备注                               │</p>
+<p>│                                        │</p>
+<p>└────────────────────────────────────────┘</p>
+<p></code></pre></p>
+
+<hr>
+
+<h2>4. L3 方案设计</h2>
+
+<h3>4.1 步骤3.1：方案设计</h3>
+
+<p><strong>触发条件</strong>：诊断调研完成</p>
+
+<p><strong>标准时长</strong>：1-2天内出方案</p>
+
+<p><strong>交付物</strong>：《AI落地方案书》</p>
+
+<p><strong>执行动作</strong>：</p>
+
+<pre><code class="lang-">Step 1: 分析调研结果（2-4h）
+<p>□ 梳理业务流程中的AI切入点</p>
+<p>□ 评估每个场景的ROI（时间节省/成本节省）</p>
+<p>□ 确定推荐的方案级别（S1/S2/S3）</p>
+
+<p>Step 2: 编写方案书</p>
+<p>方案书标准结构：</p>
+<ol>
+<li>现状分析（基于诊断报告）</li>
+<li>推荐场景（2-3个+优先级标注）</li>
+<li>实施方案（做了什么、怎么做、多久）</li>
+<li>效果预估（量化的时间/成本节省）</li>
+<li>报价方案（S1/S2/S3，阶梯展示）</li>
+<li>服务保障（正规合同/售后/保密）</li>
+<li>下一步（如果需要可以怎么继续）</li>
+</ol>
+
+<p>Step 3: 内部评审（可选）</p>
+<p>□ 技术方案是否可行</p>
+<p>□ 报价是否合理</p>
+<p>□ 是否有遗漏的需求</p>
+<p></code></pre></p>
+
+<h3>4.2 步骤3.2：方案报价</h3>
+
+<p><strong>触发条件</strong>：方案书完成</p>
+
+<p><strong>标准时长</strong>：1-2天内完成方案讲解+报价</p>
+
+<p><strong>执行动作</strong>：</p>
+
+<pre><code class="lang-">Step 1: 约方案讲解会
+<p>&quot;王总，报告和方案都做好了。</p>
+<p>您看这周X或者X，30分钟电话/见面，</p>
+<p>我给您讲解一下报告内容和我们的建议。&quot;</p>
+
+<p>Step 2: 方案讲解会（30min）</p>
+<p>□ 前10min：讲报告发现（痛点确认+共鸣）</p>
+<p>□ 中10min：讲推荐方案（场景+实现方式）</p>
+<p>□ 后10min：讲报价+答疑（分S1/S2/S3展示）</p>
+
+<p>Step 3: 处理反对意见</p>
+<p>参考模块二 L3反对意见处理清单</p>
+<p>□ 价格问题</p>
+<p>□ 效果担心</p>
+<p>□ 对比竞品</p>
+<p>□ 需要商量</p>
+
+<p>Step 4: 推进签约</p>
+<p>处理完所有顾虑后，自然推进到签约</p>
+<p>&quot;如果您觉得没问题的话，我们可以先把合同签了。</p>
+<p>首付50%，验收后付尾款。3-7天就能上线。&quot;</p>
+<p></code></pre></p>
+
+<h4>4.2.1 报价单标准格式</h4>
+
+<pre><code class="lang-">┌─────────────────────────────────────────┐
+<p>│          AI数字员工服务报价单            │</p>
+<p>│                                          │</p>
+<p>│ 客户名称：                               │</p>
+<p>│ 日期：                                   │</p>
+<p>│ 报价有效期：7天                          │</p>
+<p>│ 报价单号：Q-2026-XXX                    │</p>
+<p>├─────────────────────────────────────────┤</p>
+<p>│ 方案一：S1 单场景方案                    │</p>
+<p>│ 场景：XXX                                │</p>
+<p>│ 价格：¥3,500                             │</p>
+<p>│ 包含：诊断+开发+部署+1个月维护          │</p>
+<p>├─────────────────────────────────────────┤</p>
+<p>│ 方案二：S2 多场景方案                    │</p>
+<p>│ 场景：XXX + XXX + XXX                   │</p>
+<p>│ 价格：¥6,000                             │</p>
+<p>│ 包含：诊断+开发+部署+1个月维护          │</p>
+<p>├─────────────────────────────────────────┤</p>
+<p>│ 方案三：S3 不限场景方案                  │</p>
+<p>│ 价格：¥50,000/年                         │</p>
+<p>│ 包含：全年所有场景+无限次迭代           │</p>
+<p>├─────────────────────────────────────────┤</p>
+<p>│ * 不含大模型API调用费（约数百元/月）      │</p>
+<p>│ * 可签合同、可开专票                     │</p>
+<p>│ * 分期付款支持                           │</p>
+<p>│                                          │</p>
+<p>│ 上海锦霓鲤锦网络科技有限公司              │</p>
+<p>│ 联系人：倪锦 17601414435                 │</p>
+<p>└─────────────────────────────────────────┘</p>
+<p></code></pre></p>
+
+<hr>
+
+<h2>5. L4 签约付款</h2>
+
+<h3>5.1 步骤4.1：签订合同</h3>
+
+<p><strong>触发条件</strong>：客户确认方案并同意签约</p>
+
+<p><strong>标准时长</strong>：1天内完成</p>
+
+<p><strong>执行动作</strong>：</p>
+
+<pre><code class="lang-">Step 1: 准备合同
+<p>□ 填写客户基本信息</p>
+<p>□ 填写服务内容（场景描述）</p>
+<p>□ 填写合同金额</p>
+<p>□ 填写交付周期</p>
+<p>□ 填写付款方式</p>
+
+<p>Step 2: 发送合同</p>
+<p>□ 发送电子版供客户预览</p>
+<p>□ 确认客户无异议</p>
+
+<p>Step 3: 签署合同</p>
+<p>□ 客户签字/盖章</p>
+<p>□ 我方签字/盖章</p>
+<p>□ 双方各执一份</p>
+
+<p>Step 4: 确认收款</p>
+<p>□ 发送银行账号</p>
+<p>□ 确认首付款到账</p>
+<p>□ 开具相应发票</p>
+<p></code></pre></p>
+
+<h3>5.2 步骤4.2：项目启动</h3>
+
+<p><strong>触发条件</strong>：合同签署+首付款到账</p>
+
+<p><strong>标准时长</strong>：签约后24h内</p>
+
+<p><strong>执行动作</strong>：</p>
+
+<pre><code class="lang-">Step 1: 拉项目群
+<p>□ 邀请客户（关键联系人）</p>
+<p>□ 邀请我方技术人员</p>
+<p>□ 群名格式：&quot;【锦霓鲤锦】xx公司AI数字员工项目&quot;</p>
+
+<p>Step 2: 群内启动消息</p>
+<p>&quot;各位好，感谢王总的信任！</p>
+<p>今天正式启动xx公司的AI数字员工项目。</p>
+<p>项目成员：</p>
+<ul>
+<li>客户方：xxx（对接人）</li>
+<li>我方：倪锦（项目负责）、xxx（技术）</li>
+</ul>
+
+<p>接下来我们会按以下排期推进：</p>
+<p>Day 1-2：环境搭建+数据对接</p>
+<p>Day 3-4：Agent开发</p>
+<p>Day 5：测试+验收</p>
+<p>Day 6-7：上线+培训</p>
+
+<p>每天会在群里同步进度。</p>
+<p>有任何问题随时在群里沟通！&quot;</p>
+
+<p>Step 3: 项目排期表</p>
+<p>□ 制作并在群内发布《项目排期表》</p>
+<p>□ 明确各节点时间和交付物</p>
+<p></code></pre></p>
+
+<hr>
+
+<h2>6. L5 开发部署</h2>
+
+<h3>6.1 步骤5.1：环境搭建</h3>
+
+<p><strong>触发条件</strong>：项目启动会完成</p>
+
+<p><strong>标准时长</strong>：1天</p>
+
+<p><strong>执行动作</strong>：</p>
+
+<pre><code class="lang-">□ 确认AI Agent平台账号就绪
+<p>□ 确认大模型API密钥申请完成</p>
+<p>□ 确认数据源接入方式（Excel/API/手动录入）</p>
+<p>□ 确认知识库搭建方案（如果需要）</p>
+<p>□ 搭建开发环境并验证基础功能可用</p>
+<p></code></pre></p>
+
+<h3>6.2 步骤5.2：Agent开发</h3>
+
+<p><strong>触发条件</strong>：环境搭建完成</p>
+
+<p><strong>标准时长</strong>：2-5天（视场景复杂度）</p>
+
+<p><strong>执行动作</strong>：</p>
+
+<pre><code class="lang-">□ 根据方案书编写Agent指令/规则
+<p>□ 配置知识库内容（如果有）</p>
+<p>□ 配置数据源对接</p>
+<p>□ 配置对外接口（微信/网站/钉钉等）</p>
+<p>□ 内部功能测试（覆盖率100%）</p>
+<p>□ 修复测试中发现的问题</p>
+<p></code></pre></p>
+
+<h3>6.3 步骤5.3：测试验收</h3>
+
+<p><strong>触发条件</strong>：Agent开发完成+内部测试通过</p>
+
+<p><strong>标准时长</strong>：1天</p>
+
+<p><strong>执行动作</strong>：</p>
+
+<pre><code class="lang-">Step 1: 内部验收测试
+<p>测试用例覆盖：</p>
+<p>□ 正常流程：客户标准咨询→AI正确回复</p>
+<p>□ 异常流程：客户问题AI不会→自动转人工</p>
+<p>□ 边界测试：大量咨询→系统稳定</p>
+<p>□ 数据测试：数据接入→正确输出</p>
+
+<p>Step 2: 客户测试（UAT）</p>
+<p>□ 邀请客户进行验收测试</p>
+<p>□ 提供测试账号/入口</p>
+<p>□ 记录客户发现的问题</p>
+<p>□ 修复客户反馈的问题</p>
+
+<p>Step 3: 验收确认</p>
+<p>□ 客户确认功能符合预期</p>
+<p>□ 客户在《验收确认单》上签字</p>
+<p></code></pre></p>
+
+<h3>6.4 步骤5.4：正式上线</h3>
+
+<p><strong>触发条件</strong>：验收通过</p>
+
+<p><strong>标准时长</strong>：验收后24h内</p>
+
+<p><strong>执行动作</strong>：</p>
+
+<pre><code class="lang-">□ 切换至正式环境
+<p>□ 配置正式域名/接口</p>
+<p>□ 通知客户正式上线</p>
+<p>□ 监控上线后第1个小时运行状态</p>
+<p>□ 确认一切正常运行</p>
+<p></code></pre></p>
+
+<hr>
+
+<h2>7. L6 验收上线</h2>
+
+<h3>7.1 步骤6.1：员工培训</h3>
+
+<p><strong>触发条件</strong>：正式上线</p>
+
+<p><strong>标准时长</strong>：1-2小时</p>
+
+<p><strong>执行动作</strong>：</p>
+
+<pre><code class="lang-">培训内容：
+<p>□ AI数字员工基本功能介绍（10min）</p>
+<p>□ 日常使用流程演示（20min）</p>
+<p>□ 常见问题处理方式（15min）</p>
+<p>□ 如何转人工（10min）</p>
+<p>□ 如何查看数据（10min）</p>
+<p>□ Q&amp;A（15min）</p>
+
+<p>培训方式：</p>
+<p>□ 线下当面培训（推荐）</p>
+<p>□ 远程视频培训（可选）</p>
+<p>□ 录播教程+文档（辅助）</p>
+
+<p>培训后：</p>
+<p>□ 发放《AI数字员工使用手册》</p>
+<p>□ 留下联系方式供后续咨询</p>
+<p></code></pre></p>
+
+<h3>7.2 步骤6.2：验收确认</h3>
+
+<p><strong>触发条件</strong>：培训完成+客户确认使用正常</p>
+
+<p><strong>标准时长</strong>：上线后第3天</p>
+
+<p><strong>执行动作</strong>：</p>
+
+<pre><code class="lang-">Step 1: 收集效果数据
+<p>□ 对比上线前后的数据</p>
+<p>□ 咨询处理量、响应时间、客户满意度等</p>
+
+<p>Step 2: 发送《上线效果报告》</p>
+<p>□ 数据对比表</p>
+<p>□ 客户反馈（如果有）</p>
+<p>□ 优化建议</p>
+
+<p>Step 3: 客户确认</p>
+<p>□ 客户确认效果满意</p>
+<p>□ 客户在《验收确认单》上签字</p>
+<p>□ 客户支付尾款（如果首付50%）</p>
+
+<p>Step 4: 引导转介绍</p>
+<p>&quot;王总，效果您也看到了。</p>
+<p>如果您身边有朋友也需要的话，帮我推荐一下。</p>
+<p>每推荐成功签约一单，给您10%返佣。&quot;</p>
+<p></code></pre></p>
+
+<hr>
+
+<h2>8. L7 优化维护</h2>
+
+<h3>8.1 步骤7.1：日常维护</h3>
+
+<div class="table-wrap"><table>
+<tr><td>时间</td><td>动作</td><td>说明</td></tr>
+<tr><td>每日</td><td>监控运行状态</td><td>确保AI正常运行</td></tr>
+<tr><td>每周</td><td>效果跟踪周报</td><td>发给客户</td></tr>
+<tr><td>每2周</td><td>微调优化</td><td>根据对话记录优化回复</td></tr>
+<tr><td>每月</td><td>升级迭代</td><td>加入新功能/优化效果</td></tr>
+<tr><td>每季度</td><td>全面回顾</td><td>效果回顾+新场景推荐</td></tr>
+</table></div>
+<h3>8.2 步骤7.2：效果跟踪周报模板</h3>
+
+<pre><code class="lang-">┌─────────────────────────────────────────┐
+<p>│         AI数字员工运营周报               │</p>
+<p>│                                          │</p>
+<p>│ 客户：XX公司                             │</p>
+<p>│ 周期：2026.06.03 - 2026.06.09           │</p>
+<p>│                                          │</p>
+<p>│ 📊 本周数据                              │</p>
+<p>│ 咨询处理总数：XXX 次                     │</p>
+<p>│ AI自动处理：XXX 次（占比XX%）            │</p>
+<p>│ 转人工处理：XXX 次（占比XX%）            │</p>
+<p>│ 平均响应时间：X秒                        │</p>
+<p>│ 客户满意率：XX%                          │</p>
+<p>│                                          │</p>
+<p>│ 🔄 优化内容                              │</p>
+<p>│ 1. 优化了XXX问题的回复                   │</p>
+<p>│ 2. 新增了XXX功能                         │</p>
+<p>│                                          │</p>
+<p>│ 📈 建议                                  │</p>
+<p>│ 1. 根据本周数据，建议增加XXX场景         │</p>
+<p>│ 2. XXX话术可进一步优化                   │</p>
+<p>│                                          │</p>
+<p>│ 下周计划：XXX                            │</p>
+<p>└─────────────────────────────────────────┘</p>
+<p></code></pre></p>
+
+<h3>8.3 续费与升级</h3>
+
+<div class="table-wrap"><table>
+<tr><td>场景</td><td>时机</td><td>话术</td></tr>
+<tr><td>S1免费维护到期</td><td>到期前1周</td><td>"王总，S1的1个月免费维护快到期了。如果您还想继续让我们维护优化，可以续S+，每月500块。或者升级到S2，再加2-4个场景。"</td></tr>
+<tr><td>S1使用满意</td><td>上线后30天</td><td>"用了一个月了，效果还满意吧？有没有想加的场景？升级到S2的话补2800差价就行了。"</td></tr>
+<tr><td>新需求出现</td><td>客户主动提出新需求时</td><td>"这个可以做！您看是单独加一个场景（S1），还是直接升到S2更划算？"</td></tr>
+</table></div>
+<hr>
+
+<h2>9. SOP执行检查清单总表</h2>
+
+<h3>9.1 每个项目必须完成的检查项</h3>
+
+<pre><code class="lang-">□ L1-1 客户信息已录入系统
+<p>□ L1-2 客户初筛等级已标注</p>
+<p>□ L2-1 诊断时间已确认</p>
+<p>□ L2-2 调研记录已完成</p>
+<p>□ L2-3 评估报告已交付客户</p>
+<p>□ L3-1 方案书已完成</p>
+<p>□ L3-2 报价已发送并讲解</p>
+<p>□ L4-1 合同已签署</p>
+<p>□ L4-2 首付款已到账</p>
+<p>□ L5-1 项目群已建立</p>
+<p>□ L5-2 环境已搭建</p>
+<p>□ L5-3 Agent开发完成</p>
+<p>□ L5-4 内部测试通过</p>
+<p>□ L6-1 客户验收测试通过</p>
+<p>□ L6-2 验收确认单已签字</p>
+<p>□ L6-3 尾款已到账（如有）</p>
+<p>□ L7-1 员工培训已完成</p>
+<p>□ L7-2 效果跟踪周报已开始发送</p>
+<p>□ L7-3 转介绍引导已完成</p>
+<p></code></pre></p>
+
+<h3>9.2 SOP迭代机制</h3>
+
+<div class="table-wrap"><table>
+<tr><td>频率</td><td>动作</td><td>负责</td></tr>
+<tr><td>每周</td><td>复盘本周项目执行情况</td><td>项目负责</td></tr>
+<tr><td>每月</td><td>SOP内容review+更新</td><td>团队</td></tr>
+<tr><td>每项目</td><td>结项后收集改进建议</td><td>项目负责</td></tr>
+<tr><td>每季度</td><td>SOP大版本更新</td><td>团队</td></tr>
+</table></div>
+<hr>
+
+<blockquote>本模块完整覆盖了从联系到交付的7个阶段19个步骤</blockquote>
+<blockquote>每个步骤包含：触发条件→准备工作→执行动作→标准话术→交付物</blockquote>
+<blockquote>附录：项目检查清单总表+SOP迭代机制</blockquote>
+<blockquote>下一模块：[模块六：工具模板清单](./模块六_工具模板清单.md)</blockquote>
+
+
+<hr>
+<h2>相关笔记</h2>
+<ul>
+<li><a href="项目检查清单.html" class="wikilink">项目检查清单</a> — 每个项目完成的18项检查</li>
+<li><a href="模块六_工具模板清单.html" class="wikilink">模块六_工具模板清单</a> — 交付用到的所有模板</li>
+<li><a href="模块二_销售转化漏斗.html" class="wikilink">模块二_销售转化漏斗</a> — 签约后的交付衔接</li>
+<li><a href="素材总索引.html" class="wikilink">素材总索引</a> — 要交付的PPT/文档素材</li>
+</ul>
+
+<p>#SOP #交付 #项目管理 #实施</p>
+            </article>
+            <footer class="page-footer">
+                <p>上海锦霓鲤锦网络科技有限公司 · AI 数字员工企业增效计划</p>
+                <p style="margin-top:4px;font-size:12px;"><a href="https://hermes-agent.nousresearch.com" target="_blank">Hermes Agent</a> · <a href="#" onclick="scrollToTop()">回到顶部 ↑</a></p>
+            </footer>
+        </main>
+    </div>
+    <script>
+        
+// 基础防复制
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('copy', e => e.preventDefault());
+document.addEventListener('selectstart', e => e.preventDefault());
+document.addEventListener('dragstart', e => e.preventDefault());
+
+function searchNotes(q) {
+    q = q.toLowerCase();
+    document.querySelectorAll('.page-link').forEach(el => {
+        const text = el.textContent.toLowerCase();
+        el.style.display = text.includes(q) ? '' : 'none';
+    });
+    // 隐藏空的分组
+    document.querySelectorAll('.module-group').forEach(g => {
+        const visible = Array.from(g.querySelectorAll('.page-link')).filter(e => e.style.display !== 'none');
+        g.style.display = visible.length > 0 ? '' : 'none';
+    });
+}
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+    </script>
+</body>
+</html>

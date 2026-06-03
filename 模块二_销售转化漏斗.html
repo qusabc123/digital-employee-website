@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模块二：销售转化漏斗 · 企业数字员工</title>
+    <style>
+        
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --primary: #2563eb;
+    --primary-light: #3b82f6;
+    --bg: #f8fafc;
+    --sidebar-bg: #ffffff;
+    --card-bg: #ffffff;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --gradient: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #3b82f6 100%);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+/* Top Navigation */
+.top-nav {
+    background: var(--gradient);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(37,99,235,0.15);
+}
+.nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo { font-size: 18px; font-weight: 700; color: white; text-decoration: none; letter-spacing: 1px; }
+.nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+.nav-links a {
+    color: rgba(255,255,255,0.85); text-decoration: none; font-size: 12px;
+    padding: 4px 10px; border-radius: 20px; transition: all 0.2s;
+}
+.nav-links a:hover { background: rgba(255,255,255,0.15); color: white; }
+
+/* Layout */
+.layout { display: flex; max-width: 1400px; margin: 0 auto; min-height: calc(100vh - 56px); }
+
+/* Sidebar */
+.sidebar {
+    width: 260px; flex-shrink: 0; background: var(--sidebar-bg);
+    border-right: 1px solid var(--border); padding: 16px 12px;
+    position: sticky; top: 56px; height: calc(100vh - 56px); overflow-y: auto;
+}
+.sidebar-search { margin-bottom: 12px; }
+.sidebar-search input {
+    width: 100%; padding: 7px 12px; border: 1px solid var(--border);
+    border-radius: 8px; font-size: 13px; outline: none; transition: border 0.2s;
+}
+.sidebar-search input:focus { border-color: var(--primary); }
+.module-group { margin-bottom: 16px; }
+.module-title {
+    font-size: 11px; font-weight: 700; color: var(--text-light);
+    text-transform: uppercase; letter-spacing: 0.5px;
+    padding: 6px 8px 3px; border-bottom: 1px solid var(--border); margin-bottom: 3px;
+}
+.page-link {
+    display: flex; align-items: center; gap: 5px;
+    padding: 4px 8px; border-radius: 5px; color: var(--text);
+    text-decoration: none; font-size: 12.5px; transition: all 0.15s;
+}
+.page-link:hover { background: #eef2ff; color: var(--primary); }
+.page-link.active { background: #eef2ff; color: var(--primary); font-weight: 600; }
+.page-link .icon { font-size: 13px; width: 18px; text-align: center; flex-shrink: 0; }
+.page-link .title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Main Content */
+.content { flex: 1; padding: 32px 48px; max-width: 880px; }
+.breadcrumb { font-size: 13px; color: var(--text-light); margin-bottom: 20px; }
+.breadcrumb a { color: var(--primary); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* Article */
+.article h1 { font-size: 28px; font-weight: 700; margin-bottom: 16px; line-height: 1.3; }
+.article h2 {
+    font-size: 22px; font-weight: 600; margin-top: 32px; margin-bottom: 12px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--border);
+}
+.article h3 { font-size: 18px; font-weight: 600; margin-top: 28px; margin-bottom: 8px; }
+.article h4 { font-size: 16px; font-weight: 600; margin-top: 24px; margin-bottom: 8px; }
+.article p { margin-bottom: 14px; }
+.article a { color: var(--primary); text-decoration: none; }
+.article a:hover { text-decoration: underline; }
+.article a.wikilink { background: #eef2ff; padding: 1px 5px; border-radius: 3px; font-size: 14px; }
+.article a.wikilink::before { content: "📄 "; font-size: 12px; }
+.article code {
+    background: #f1f5f9; padding: 2px 6px; border-radius: 4px;
+    font-size: 13px; font-family: "SF Mono", "JetBrains Mono", monospace;
+}
+.article pre {
+    background: #1e293b; color: #e2e8f0; padding: 18px; border-radius: 10px;
+    overflow-x: auto; margin: 16px 0;
+}
+.article pre code { background: none; padding: 0; color: inherit; font-size: 13px; line-height: 1.5; }
+.article blockquote {
+    border-left: 4px solid var(--primary); padding: 10px 18px; margin: 14px 0;
+    background: #f8fafc; border-radius: 0 8px 8px 0; color: var(--text-light);
+}
+.article ul, .article ol { margin: 6px 0 14px 22px; }
+.article li { margin-bottom: 3px; }
+.article .table-wrap { overflow-x: auto; margin: 14px 0; }
+.article table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 500px; }
+.article th, .article td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+.article th { background: #f1f5f9; font-weight: 600; }
+.article tr:nth-child(even) { background: #f8fafc; }
+.article hr { border: none; border-top: 2px solid var(--border); margin: 28px 0; }
+.article .content-img { max-width: 100%; border-radius: 8px; margin: 16px 0; }
+
+.article .meta-bar {
+    display: flex; gap: 14px; font-size: 13px; color: var(--text-light);
+    margin-bottom: 20px; flex-wrap: wrap;
+}
+.article .meta-bar span { background: #f1f5f9; padding: 3px 10px; border-radius: 12px; }
+
+/* Page Footer */
+.page-footer {
+    margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border);
+    text-align: center; font-size: 13px; color: var(--text-light);
+}
+
+/* Home Page */
+.home-hero { text-align: center; padding: 40px 0 24px; }
+.home-hero h1 { font-size: 34px; margin-bottom: 10px; }
+.home-hero p { font-size: 17px; color: var(--text-light); margin-bottom: 6px; }
+.home-info { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
+.home-info .badge {
+    background: #eef2ff; padding: 5px 14px; border-radius: 20px;
+    font-size: 12.5px; color: var(--primary);
+}
+.project-card {
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    border-radius: 14px; padding: 24px 28px; margin: 20px 0;
+}
+.project-card table { width: 100%; border: none; font-size: 14px; }
+.project-card td { border: none; padding: 4px 0; vertical-align: top; }
+.project-card td:first-child { width: 100px; font-weight: 600; color: var(--text-light); }
+.module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; margin: 20px 0; }
+.module-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px; transition: all 0.2s;
+    text-decoration: none; color: inherit; display: block;
+}
+.module-card:hover {
+    border-color: var(--primary); box-shadow: 0 4px 16px rgba(37,99,235,0.08);
+    transform: translateY(-2px);
+}
+.module-card h3 { font-size: 15px; margin-bottom: 6px; }
+.module-card p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+.module-card .count { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .layout { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--border); }
+    .content { padding: 20px; }
+    .module-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+}
+
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-inner">
+            <a href="index.html" class="logo">🤖 企业数字员工</a>
+            <div class="nav-links">
+                <a href="module-0-项目总览.html">🎯 总览</a>
+<a href="module-1-推广体系.html">📡 推广</a>
+<a href="module-2-销售转化.html">🪜 销售</a>
+<a href="module-3-内容素材.html">📝 素材</a>
+<a href="module-4-客户细分.html">👥 客户</a>
+<a href="module-5-交付SOP.html">🔧 交付</a>
+<a href="module-6-工具模板.html">🧰 工具</a>
+<a href="module-7-Hermes技术基座.html">🤖 Hermes</a>
+<a href="module-交付物.html">📦 交付</a>
+<a href="module-附件.html">📎 附件</a>
+            </div>
+        </div>
+    </nav>
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-search">
+                <input type="text" id="search" placeholder="🔍 搜索笔记..." oninput="searchNotes(this.value)">
+            </div>
+            <div class="sidebar-toc" id="sidebar-toc">
+                <div class="module-group">
+<div class="module-title">🎯 项目总览</div>
+<a href="推广与流程体系_完整框架.html" class="page-link><span class="icon">📐</span><span class="title">AI数字员工 · 推广与流程体系完整框架</span></a>
+<a href="GitHub可用项目清单与案例方案.html" class="page-link><span class="icon">🎯</span><span class="title">GitHub 可用项目清单与案例方案</span></a>
+<a href="八大行业方案速查.html" class="page-link><span class="icon">🏢</span><span class="title">八大行业方案速查</span></a>
+<a href="对外资料清单与制作排期.html" class="page-link><span class="icon">🎯</span><span class="title">对外资料清单与制作排期</span></a>
+<a href="常见反对意见与应对.html" class="page-link><span class="icon">🛡️</span><span class="title">常见反对意见与应对</span></a>
+<a href="核心话术速查.html" class="page-link><span class="icon">💬</span><span class="title">核心话术速查</span></a>
+<a href="项目检查清单.html" class="page-link><span class="icon">✅</span><span class="title">项目检查清单</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📡 推广体系</div>
+<a href="模块一_推广渠道矩阵.html" class="page-link><span class="icon">📡</span><span class="title">模块一：推广渠道矩阵</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🪜 销售转化</div>
+<a href="模块二_销售转化漏斗.html" class="page-link active><span class="icon">🪜</span><span class="title">模块二：销售转化漏斗</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📝 内容素材</div>
+<a href="模块三_内容素材体系.html" class="page-link><span class="icon">📝</span><span class="title">模块三：内容素材体系</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">👥 客户细分</div>
+<a href="模块四_客户细分与差异化方案.html" class="page-link><span class="icon">👥</span><span class="title">模块四：客户细分与差异化方案</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🔧 交付SOP</div>
+<a href="模块五_交付SOP标准操作手册.html" class="page-link><span class="icon">🔧</span><span class="title">模块五：交付SOP标准操作手册</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🧰 工具模板</div>
+<a href="模块六_工具模板清单.html" class="page-link><span class="icon">🧰</span><span class="title">模块六：工具模板清单</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🤖 Hermes 技术基座</div>
+<a href="README.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes Agent — AI 数字员工技术基座</span></a>
+<a href="Hermes CLI 速查.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes CLI 速查</span></a>
+<a href="Hermes 工具清单.html" class="page-link><span class="icon">🔌</span><span class="title">Hermes 工具清单</span></a>
+<a href="Hermes 示例命令.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes 示例命令</span></a>
+<a href="Hermes 部署与运维.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes 部署与运维</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📦 交付物</div>
+<a href="知识库_客服话术.html" class="page-link><span class="icon">📚</span><span class="title">AI数字员工 客服知识库</span></a>
+<a href="操作手册_企微AI客服部署.html" class="page-link><span class="icon">📋</span><span class="title">企微AI客服部署操作手册</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📎 附件</div>
+<a href="AI数字员工_企业增效计划.html" class="page-link><span class="icon">📄</span><span class="title">AI数字员工_企业增效计划</span></a>
+<a href="AI数字员工_展会精华版.html" class="page-link><span class="icon">🎪</span><span class="title">AI数字员工_展会精华版</span></a>
+<a href="AI智能体企业定制服务_企业展示.html" class="page-link><span class="icon">🤖</span><span class="title">AI智能体企业定制服务_企业展示</span></a>
+<a href="ppt-master参考索引.html" class="page-link><span class="icon">📄</span><span class="title">ppt-master 模板参考</span></a>
+<a href="素材总索引.html" class="page-link><span class="icon">🖼️</span><span class="title">素材总索引</span></a>
+</div>
+            </div>
+        </aside>
+        <main class="content">
+            <div class="breadcrumb"><a href="index.html">🏠 首页</a> / <a href="module-2-销售转化.html">🪜 销售转化</a> / 模块二：销售转化漏斗</div>
+            <article class="article">
+                <h1>🪜 模块二：销售转化漏斗</h1>
+    <div class="meta-bar">
+        <span>📖 22 分钟</span>
+        <span>📝 11398 字</span>
+        <span>📊 82 个表格</span>
+    </div>
+    <h1>模块二：销售转化漏斗</h1>
+
+<blockquote>版本：v1.0 <div class="table-wrap"><table></blockquote>
+<tr><td>日期：2026-06-03</td><td>负责人：倪锦</td></tr>
+</table></div>> 说明：从客户第一次接触到签约付款的完整转化链路，每个阶段拆解到可执行的最小颗粒度
+
+<hr>
+
+<h2>漏斗全景</h2>
+
+<pre><code class="lang-">                    ┌─────────────────────────────┐
+<p>│   L0 曝光/触达   (100%)      │</p>
+<p>│   客户看到推广内容           │</p>
+<p>└──────────┬──────────────────┘</p>
+<p>│  ↓ 点击/私信</p>
+<p>┌──────────▼──────────────────┐</p>
+<p>│   L1 初步沟通   (≈5%)        │</p>
+<p>│   微信/电话首次聊             │</p>
+<p>└──────────┬──────────────────┘</p>
+<p>│  ↓ 认同价值</p>
+<p>┌──────────▼──────────────────┐</p>
+<p>│   L2 免费诊断   (≈2%)        │</p>
+<p>│   上门/远程业务调研           │</p>
+<p>└──────────┬──────────────────┘</p>
+<p>│  ↓ 认可方案</p>
+<p>┌──────────▼──────────────────┐</p>
+<p>│   L3 方案报价   (≈1%)        │</p>
+<p>│   出方案+报价谈判            │</p>
+<p>└──────────┬──────────────────┘</p>
+<p>│  ↓ 消除顾虑</p>
+<p>┌──────────▼──────────────────┐</p>
+<p>│   L4 签约付款   (≈0.5%)      │</p>
+<p>│   签合同+收款               │</p>
+<p>└──────────┬──────────────────┘</p>
+<p>│  ↓ 交付满意</p>
+<p>┌──────────▼──────────────────┐</p>
+<p>│   L5 交付上线   (≈0.5%)      │</p>
+<p>│   开发部署验收               │</p>
+<p>└──────────┬──────────────────┘</p>
+<p>│  ↓ 超出预期</p>
+<p>┌──────────▼──────────────────┐</p>
+<p>│   L6 转介绍/续费             │</p>
+<p>│   长期价值闭环               │</p>
+<p>└─────────────────────────────┘</p>
+<p></code></pre></p>
+
+<hr>
+
+<h2>L0 曝光/触达</h2>
+
+<h3>客户状态</h3>
+<ul>
+<li>对AI有模糊认知（听说过ChatGPT/文心一言/DeepSeek）</li>
+<li>知道AI能做事，但不知道跟自己有什么关系</li>
+<li>或者：完全没想过AI跟自己有什么关系</li>
+<li>或者：已经搜索过AI相关服务，处于对比阶段</li>
+</ul>
+
+<h3>触达方式（对应模块一各渠道）</h3>
+<ul>
+<li>朋友圈刷到你的内容</li>
+<li>短视频推荐流刷到</li>
+<li>微信群看到分享</li>
+<li>展会/讲座遇到你</li>
+<li>朋友推荐</li>
+<li>搜索"AI企业服务"看到</li>
+</ul>
+
+<h3>此阶段唯一目标</h3>
+<p><strong>让客户产生"这跟我有关系"的第一印象</strong></p>
+<p>—— 不是让他马上掏钱，而是让他想了解更多</p>
+
+<h3>各渠道的"钩子"标准</h3>
+<p>每个渠道的头3秒/前3行必须回答客户内心的两个问题：</p>
+<ol>
+<li>"这跟我有什么关系？"</li>
+<li>"继续看下去对我有什么好处？"</li>
+</ol>
+
+<p><strong>合格钩子示例：</strong></p>
+<ul>
+<li>"用半个月工资，给公司配一个24小时在岗的AI员工"</li>
+<li>"你公司有没有月薪5000、实际产出500的岗位？"</li>
+<li>"昨天一个客户给我发了个截图……"</li>
+<li>"中小企业用AI，只需要做好这一步"</li>
+</ul>
+
+<p><strong>失败钩子示例：</strong></p>
+<ul>
+<li>"上海锦霓鲤锦网络科技有限公司专注于AI智能体定制服务……"（上来就自我介绍）</li>
+<li>"AI是什么？ChatGPT、GPT-4……"（从定义讲起）</li>
+<li>"2026年AI Agent市场规模将超过300亿美元……"（只讲行业不讲他）</li>
+</ul>
+
+<h3>广告/推广内容核检清单</h3>
+<p>每次发布内容前，检查以下问题：</p>
+<ul>
+<li>[ ] 前3秒/前3行能否让对方觉得"跟我有关"？</li>
+<li>[ ] 对方看完会不会想知道更多？</li>
+<li>[ ] 对方知道下一步该做什么（评论/私信/加微信）？</li>
+<li>[ ] 是不是用一个真实场景代替了空洞描述？</li>
+<li>[ ] 有没有明确的"下一步行动"？</li>
+</ul>
+
+<hr>
+
+<h2>L1 初步沟通</h2>
+
+<h3>客户状态</h3>
+<ul>
+<li>通过某种方式联系上了你（私信/加微信/电话）</li>
+<li>好奇心驱动，但还没下定决心</li>
+<li>可能是随便问问，也可能是真有意向</li>
+<li><strong>最脆弱的时候</strong>：随时可能消失/被竞品抢走</li>
+</ul>
+
+<h3>此阶段唯一目标</h3>
+<p><strong>判断客户画像 + 建立初步信任 + 约到免费诊断</strong></p>
+
+<p><strong>不是</strong>：给他报价、给他讲完整方案、说服他马上买</p>
+
+<h3>客户初筛分级（立刻判断）</h3>
+
+<div class="table-wrap"><table>
+<tr><td>等级</td><td>特征</td><td>策略</td></tr>
+<tr><td>A级（高意向）</td><td>主动问价格、明确说自己有需求、说了自己的行业/规模</td><td>加快节奏，直接约诊断</td></tr>
+<tr><td>B级（中意向）</td><td>对AI感兴趣、问了但問題模糊、可能在对比</td><td>给案例+引导，不急但保持跟进</td></tr>
+<tr><td>C级（低意向）</td><td>"先了解一下"、"随便看看"、不透露信息</td><td>加好友保持朋友圈触达，暂不主动跟进</td></tr>
+<tr><td>D级（无效）</td><td>竞品/同行、完全不是目标客户、推销者</td><td>礼貌拒绝或不加</td></tr>
+</table></div>
+<h3>私信首次沟通话术（逐字稿）</h3>
+
+<h4>场景A：客户从私信/评论主动联系你</h4>
+<pre><code class="lang-">客户：&quot;你好，想了解一下AI员工&quot;
+
+<p>你：</p>
+<p>&quot;您好老板！感谢关注 🙌</p>
+<p>方便问一下您是什么行业、目前公司多少人？</p>
+<p>我发针对性的案例给您参考，</p>
+<p>现在加您好友了，通过一下~&quot;</p>
+
+<p>（同时发好友申请）</p>
+<p></code></pre></p>
+
+<h4>场景B：你主动加客户好友后</h4>
+<pre><code class="lang-">&quot;老板您好，我是倪锦，做AI数字员工企业定制的。
+<p>刚才在xx群/展会上有交流过 👋</p>
+
+<p>简单了解一下您的情况：</p>
+<p>① 公司主要做什么业务？</p>
+<p>② 目前几个员工在使用AI？</p>
+<p>③ 目前有遇到什么效率上的困扰吗？</p>
+
+<p>知道这些我才能给您有针对性的建议。</p>
+<p>不着急，慢慢聊~&quot;</p>
+<p></code></pre></p>
+
+<h4>场景C：客户主动问价</h4>
+<pre><code class="lang-">客户：&quot;你们那个S1 3500是什么？&quot;
+
+<p>你：</p>
+<p>&quot;S1是单场景方案，</p>
+<p>比如只做智能客服、或者只做文档自动化，</p>
+<p>适合先试一个场景看看效果。</p>
+
+<p>不过不一定要先定方案，</p>
+<p>我的建议是先免费帮您诊断一下：</p>
+<p>您公司哪个岗位最适合先配AI、</p>
+<p>配了能省多少时间/多少钱。</p>
+
+<p>这周有空聊聊吗？</p>
+<p>先出个报告，有感觉了再做决定也不迟。&quot;</p>
+<p></code></pre></p>
+
+<h4>场景D：客户说"考虑考虑"</h4>
+<pre><code class="lang-">&quot;明白，AI这事确实不能急。
+<p>这样，我发您几个同行案例看看，</p>
+<p>您先了解一下同行业的效果，</p>
+<p>有感觉了我们再聊？</p>
+
+<p>或者这周有空的话，</p>
+<p>免费上门帮您诊断一下出个报告，</p>
+<p>零成本看看AI能帮您做什么。&quot;</p>
+<p></code></pre></p>
+
+<h3>初步沟通信息收集表</h3>
+<p>以下是50秒内必须问出来的信息：</p>
+
+<div class="table-wrap"><table>
+<tr><td>信息</td><td>问法</td><td>为什么重要</td></tr>
+<tr><td>行业/业务</td><td>"您公司主要做什么业务？"</td><td>决定场景推荐方向</td></tr>
+<tr><td>规模</td><td>"目前公司几个人？"</td><td>判断决策能级/预算</td></tr>
+<tr><td>痛点</td><td>"目前最头痛的效率问题是什么？"</td><td>精准定位场景</td></tr>
+<tr><td>预算范围</td><td>"对AI投入有大概预算吗？"</td><td>推荐S1/S2/S3</td></tr>
+<tr><td>决策角色</td><td>"这个事是您说了算还是需要跟合伙人商量？"</td><td>判断决策链长度</td></tr>
+<tr><td>时间节点</td><td>"希望什么时候能上线？"</td><td>判断紧迫度</td></tr>
+</table></div>
+<h3>反对意见处理</h3>
+
+<h4>反对1："太贵了"</h4>
+<pre><code class="lang-">&quot;了解。3500是入门价格，对比大厂定制一个场景2-5万，
+<p>我们的价格其实挺实在的。</p>
+
+<p>而且可以先免费诊断，出个报告看看能省多少。</p>
+<p>如果AI一年能帮您省1万+，那3500就是稳赚的投资。</p>
+
+<p>您说呢？&quot;</p>
+<p></code></pre></p>
+
+<h4>反对2："我不懂AI，怕用了不会"</h4>
+<pre><code class="lang-">&quot;这个您不用担心，这也是我们跟卖软件最大的区别。
+<p>我们全程陪跑：从诊断到安装到培训到维护，</p>
+<p>您不用懂AI，您只需要告诉我想解决什么问题就行。</p>
+
+<p>就像您买一台新机器，您不需要懂机械原理，</p>
+<p>懂怎么用、能产出就行了。&quot;</p>
+<p></code></pre></p>
+
+<h4>反对3："我想再等等，看看别人怎么用"</h4>
+<pre><code class="lang-">&quot;理解。很多老板都这么说。
+
+<p>不过有个数据供您参考：</p>
+<p>先用的企业效率提升20-35%，后用的可能只是在追差距。</p>
+<p>而且现在是免费诊断阶段，没有成本。</p>
+
+<p>要不这样，我先免费帮您出个报告，</p>
+<p>您看看AI在您公司能做什么，</p>
+<p>再决定做不做，怎么样？&quot;</p>
+<p></code></pre></p>
+
+<h4>反对4："我先跟合伙人商量一下"</h4>
+<pre><code class="lang-">&quot;应该的。这样，我整理一份简版方案您带回去给合伙人看，
+<p>包括做什么、花多少钱、能省多少，</p>
+<p>一目了然。</p>
+
+<p>您给我个邮箱，我发您一份。&quot;</p>
+<p></code></pre></p>
+
+<h3>初步沟通后跟进节奏</h3>
+
+<div class="table-wrap"><table>
+<tr><td>情况</td><td>跟进策略</td></tr>
+<tr><td>答应约诊断</td><td>当天定时间，发日程确认</td></tr>
+<tr><td>说"想想"</td><td>24h后发一个案例，48h后问一次，1周后最后一次，转入长期触达</td></tr>
+<tr><td>说"不需要"</td><td>"好的，有问题随时找我"，保持朋友圈触达</td></tr>
+<tr><td>未回复</td><td>72h后补一条，再不回复转入朋友圈触达</td></tr>
+<tr><td>说"发资料看看"</td><td>发精心准备的资料（不是转个链接），提醒"看完了告诉我，有问题随时聊"</td></tr>
+</table></div>
+<h3>L1 到 L2 的转化标准</h3>
+<ul>
+<li>[ ] 获取了客户行业/规模/痛点基本信息</li>
+<li>[ ] 客户接受了"免费诊断"的价值</li>
+<li>[ ] 约定了诊断时间（远程或上门）</li>
+<li>[ ] 客户没有明显的反对意见未被处理</li>
+</ul>
+
+<hr>
+
+<h2>L2 免费诊断</h2>
+
+<h3>客户状态</h3>
+<ul>
+<li>愿意花1-2小时跟你聊他的业务</li>
+<li>已经有一定信任基础</li>
+<li>但仍有顾虑："说了不做会不会不好意思"</li>
+</ul>
+
+<h3>此阶段唯一目标</h3>
+<p><strong>呈现专业度 + 找到1-2个高价值场景 + 让客户觉得"这人有水平"</strong></p>
+
+<p><strong>不是</strong>：现场报价、现场说服、做完整方案</p>
+
+<h3>诊断前准备（15min）</h3>
+
+<h4>2.1 客户背景复习</h4>
+<ul>
+<li>[ ] 再看一遍初步沟通记录（行业/规模/痛点）</li>
+<li>[ ] 搜索该行业的AI落地案例（至少准备2个同行案例）</li>
+<li>[ ] 准备该行业高频场景的初步想法</li>
+<li>[ ] 如果上门，查好路线和时间</li>
+</ul>
+
+<h4>2.2 工具包检查</h4>
+<ul>
+<li>[ ] 笔记本电脑（有演示内容）</li>
+<li>[ ] 笔记本和笔（不要用手机记，显得不专业）</li>
+<li>[ ] 名片（再给一次）</li>
+<li>[ ] 案例打印版（如果有）</li>
+<li>[ ] 手机录音（征得同意后）</li>
+</ul>
+
+<h4>2.3 诊断议程</h4>
+<div class="table-wrap"><table>
+<tr><td>时段</td><td>内容</td><td>目的</td></tr>
+<tr><td>0-5min</td><td>寒暄+说明今天的目的</td><td>放松氛围</td></tr>
+<tr><td>5-25min</td><td>调研业务流程</td><td>找痛点和场景</td></tr>
+<tr><td>25-35min</td><td>现场演示（如果有条件）</td><td>建立信心</td></tr>
+<tr><td>35-45min</td><td>初步诊断反馈</td><td>呈现价值</td></tr>
+<tr><td>45-50min</td><td>讲下一步流程</td><td>自然引入方案阶段</td></tr>
+<tr><td>50-60min</td><td>Q&A+道别</td><td>留下好印象</td></tr>
+</table></div>
+<h3>诊断调研问题清单（逐题）</h3>
+
+<h4>开场（5min）</h4>
+<pre><code class="lang-">&quot;王总，感谢您今天抽时间。
+<p>我今天来的目的很简单：</p>
+<p>了解一下您公司的业务流程，看看哪些环节可以用AI优化。</p>
+<p>诊断是免费的，做完后我会出一份评估报告给您。</p>
+
+<p>整个过程大概1小时左右，</p>
+<p>我们会聊您公司的日常运营、哪个环节最费时间、</p>
+<p>目前遇到的效率问题。</p>
+
+<p>来，先从您的业务开始说吧——</p>
+<p>您公司目前主要做什么？&quot;</p>
+<p></code></pre></p>
+
+<h4>核心问题（25min）</h4>
+
+<p><strong>业务全貌：</strong></p>
+<ol>
+<li>"公司目前线上线下都有吗？占比大概怎样？"</li>
+<li>"日常客户咨询量大概多少？什么渠道来的？"</li>
+<li>"有没有重复性高的手工工作？比如做报表、写报价、填表格？"</li>
+</ol>
+
+<p><strong>痛点深挖：</strong></p>
+<ol>
+<li>"目前团队里，哪个岗位你觉得最累或者最值？"</li>
+<li>"如果现在让你选一个岗位用AI替代一部分工作，你最先想到哪个？"</li>
+<li>"公司目前有没有用任何软件/工具来做自动化？"</li>
+</ol>
+
+<p><strong>技术准备度：</strong></p>
+<ol>
+<li>"公司目前数据大多在哪里？Excel？ERP系统？还是纸上记？"</li>
+<li>"员工对新技术接受度怎么样？"</li>
+</ol>
+
+<p><strong>决策逻辑：</strong></p>
+<ol>
+<li>"如果这个AI能证明帮您省了XX时间/钱，您会考虑做吗？"</li>
+<li>"主要是担心什么？效果？成本？员工抵触？安全？"</li>
+</ol>
+
+<h4>诊断结束前（15min）</h4>
+<pre><code class="lang-">&quot;好的，今天聊下来我觉得有几个点可以优化：
+
+<p>第一，XX环节（如客户咨询）的重复性很高，</p>
+<p>AI可以自动处理60-80%的常见问题。</p>
+
+<p>第二，XX环节（如数据汇总）目前靠人工，</p>
+<p>AI可以自动完成，而且更准确。</p>
+
+<p>第三，XX环节（如合同/报价）可以自动化生成。</p>
+
+<p>我会把详细的分析和方案写进评估报告，</p>
+<p>2天内发给您。</p>
+
+<p>到时候我们约个时间再聊一次，</p>
+<p>我给您看看具体怎么做、多少钱、多久能上线。</p>
+
+<p>您看这个节奏可以吗？&quot;</p>
+<p></code></pre></p>
+
+<h3>拒绝诊断后的处理</h3>
+
+<h4>场景：客户在L1说约诊断，到临头推辞</h4>
+<pre><code class="lang-">&quot;没关系，可以理解。要不这样：
+<p>我远程帮您梳理一下，您不用特意安排时间。</p>
+<p>你把目前最耗时的2-3个工作环节跟我说说，</p>
+<p>我出个初步分析发您看看？</p>
+
+<p>也是免费的，发您看看值不值得深入聊。&quot;</p>
+<p></code></pre></p>
+
+<h4>场景：诊断中客户表现冷淡/不确定</h4>
+<pre><code class="lang-">&quot;没关系，AI不一定适合所有企业。
+<p>但至少今天聊下来，我发现XX环节确实可以优化，</p>
+<p>即使不找我们做，我也建议您关注一下这个方向。</p>
+
+<p>报告我还是会发您，</p>
+<p>以后有需求了随时找我。&quot;</p>
+<p></code></pre></p>
+
+<h3>诊断报告交付</h3>
+
+<h4>报告结构</h4>
+<pre><code class="lang-">《AI诊断评估报告 — XX公司》
+
+<ol>
+<li>企业概况</li>
+</ol>
+<p>行业、规模、现状</p>
+
+<ol>
+<li>业务流程分析</li>
+</ol>
+<p>现状流程图 + 效率瓶颈标注</p>
+
+<ol>
+<li>可AI化场景建议</li>
+</ol>
+<p>场景1：XXX（优先级★★★）</p>
+<p>场景2：XXX（优先级★★☆）</p>
+<p>场景3：XXX（优先级★★☆）</p>
+
+<ol>
+<li>预期效果</li>
+</ol>
+<p>每个场景的预估时间节约/成本节约</p>
+
+<ol>
+<li>建议方案</li>
+</ol>
+<p>S1/S2/S3推荐及理由</p>
+
+<ol>
+<li>下一步行动</li>
+</ol>
+<p>如果认可 → 进入方案报价阶段</p>
+<p></code></pre></p>
+
+<h4>报告交付SOP</h4>
+<pre><code class="lang-">诊断后24h内 → 报告初稿完成
+<p>诊断后48h内 → 发给客户 + 约&quot;方案讲解会&quot;</p>
+<p>讲解会 → 30min电话/见面</p>
+<p>前10min：讲报告内容</p>
+<p>中10min：讲建议方案</p>
+<p>后10min：讲报价+回答疑虑</p>
+<p>讲解会后 → 发正式报价单</p>
+<p></code></pre></p>
+
+<h3>L2 到 L3 的转化标准</h3>
+<ul>
+<li>[ ] 完成了至少1小时的业务调研</li>
+<li>[ ] 交付了《AI诊断评估报告》</li>
+<li>[ ] 客户确认了至少有1个场景他认为有价值</li>
+<li>[ ] 约定了方案讲解/报价时间</li>
+</ul>
+
+<hr>
+
+<h2>L3 方案报价</h2>
+
+<h3>客户状态</h3>
+<ul>
+<li>已经看到了诊断报告，认可了AI的价值</li>
+<li>到了"要掏钱"的环节，心理阻力最大</li>
+<li>开始对比：价格、性价比、风险、其他供应商</li>
+</ul>
+
+<h3>此阶段唯一目标</h3>
+<p><strong>让客户觉得"值" + 消除最后顾虑 → 促成签约</strong></p>
+
+<p><strong>关键认知</strong>：客户买的不是AI，买的是"省事/省钱/省心"</p>
+
+<h3>方案设计原则</h3>
+
+<div class="table-wrap"><table>
+<tr><td>原则</td><td>说明</td></tr>
+<tr><td>从诊断报告出发</td><td>方案紧贴诊断中发现的问题</td></tr>
+<tr><td>不要过度承诺</td><td>说清楚做什么、不做什么、预期效果</td></tr>
+<tr><td>给选择</td><td>提供2-3个方案（S1/S2/S3或不同场景组合）</td></tr>
+<tr><td>量化价值</td><td>帮客户算清楚：投入X元 = 每年省Y元/小时</td></tr>
+<tr><td>降低决策门槛</td><td>承诺先做、效果不好可调整</td></tr>
+</table></div>
+<h3>报价策略</h3>
+
+<h4>S1 报价策略（3500元）</h4>
+<p><strong>适用</strong>：预算有限、想先试水、单个场景明确</p>
+<p><strong>话术</strong>：</p>
+<pre><code class="lang-">&quot;S1 3500元，相当于一个员工半个月工资。
+<p>包：诊断+开发+部署+1个月维护。</p>
+<p>一个场景完整跑通。</p>
+
+<p>如果您试了发现有效果，</p>
+<p>后续可以升级到S2或者再加其他场景。</p>
+<p>如果效果不如预期，我们按S1收了，您损失也不大。</p>
+<p>&quot;</p>
+<p></code></pre></p>
+
+<h4>S2 报价策略（6000元）</h4>
+<p><strong>适用</strong>：有3-5个场景需求、追求性价比</p>
+<p><strong>话术</strong>：</p>
+<pre><code class="lang-">&quot;S2 6000元，相当于一个员工一个月工资。
+<p>包3-5个场景，平均每个场景才1200-2000元。</p>
+<p>比S1划算很多。</p>
+
+<p>我建议您先选3个最迫切的场景做，</p>
+<p>等验证了效果可以再加。&quot;</p>
+<p></code></pre></p>
+
+<h4>S3 报价策略（50000/年）</h4>
+<p><strong>适用</strong>：有长远规划、所有场景都想覆盖、预算充足</p>
+<p><strong>话术</strong>：</p>
+<pre><code class="lang-">&quot;S3 5万一年，不限场景、不限次数。
+<p>相当于一个月4000多，比招一个员工省多了。</p>
+<p>而且我们全年维护、随时迭代。</p>
+
+<p>如果您公司有10个以上员工，</p>
+<p>基本S3是最划算的选择。&quot;</p>
+<p></code></pre></p>
+
+<h4>报价中常见反对意见处理</h4>
+
+<h5>反对1："比我想的贵"</h5>
+<pre><code class="lang-">&quot;理解。不过您算一笔账：
+<p>目前XX员工做这个工作，每月工资XX元，</p>
+<p>一年下来就是XX元。</p>
+<p>AI配上去之后，效率提升后相当于省了XX%的时间。</p>
+<p>一年下来其实回本了。</p>
+
+<p>而且我们是先诊断、后出方案、不滿意可以调整。</p>
+<p>试错成本很低。&quot;</p>
+<p></code></pre></p>
+
+<h5>反对2："别家比你便宜"</h5>
+<pre><code class="lang-">&quot;方便说说是哪家吗？我了解一下。
+
+<p>（听完后）</p>
+<p>不同公司报价差异主要在服务范围：</p>
+<p>有些只卖软件不管实施，</p>
+<p>有些只做咨询不做落地。</p>
+
+<p>我们是从诊断到开发到培训到维护全包。</p>
+<p>而且我们是签正规合同、开发票的。</p>
+
+<p>您可以对比一下总成本，</p>
+<p>便宜的方案如果配完之后没人用，</p>
+<p>那才是最贵的。&quot;</p>
+<p></code></pre></p>
+
+<h5>反对3："能不能再便宜点"</h5>
+<pre><code class="lang-">预设折扣权限：
+<ul>
+<li>S1：不降价（起步价，没有空间）</li>
+<li>S2：可送1个月运维（价值500元）</li>
+<li>S3：可做到4.5万（心理价位）或送季度运维</li>
+</ul>
+
+<p>话术：</p>
+<p>&quot;不瞒您说，我们的价格已经很低了。</p>
+<p>大厂定制一个场景2-5万，我们3500起步。</p>
+<p>这样吧，今天我做个主：</p>
+<p>如果今天签约，我送您XX（运维/方案升级/再加一个场景）。&quot;</p>
+<p></code></pre></p>
+
+<h5>反对4："效果不好怎么办"</h5>
+<pre><code class="lang-">&quot;所以我们做的是先诊断再出方案，
+<p>不是瞎配的。</p>
+
+<p>而且上线后我们会跟踪1个月效果，</p>
+<p>如果效果不达标，我们负责调整优化到满意为止。</p>
+
+<p>签合同的时候也会把交付标准写清楚，</p>
+<p>达不到标准我们继续改，这个您放心。&quot;</p>
+<p></code></pre></p>
+
+<h3>逼单技巧</h3>
+
+<h4>场景：客户犹豫不决</h4>
+<pre><code class="lang-">（不要逼单）
+<p>&quot;王总，我完全理解。</p>
+<p>买AI服务不是买包烟，需要考虑。</p>
+
+<p>这样吧，我说一下我们的排期：</p>
+<p>最近我们手上还有XX个项目在做，</p>
+<p>如果您这周确定，我们可以优先排您。</p>
+<p>如果这周定不下来，可能要等到下个月中旬。</p>
+
+<p>您看要不要这周先签了，我们下周就开始做？</p>
+<p>不需要全额付，首付50%，验收后再付尾款。&quot;</p>
+<p></code></pre></p>
+
+<h4>场景：客户说"我跟合伙人商量"</h4>
+<pre><code class="lang-">&quot;应该的。不过我建议您跟合伙人说的时候，
+<p>注意三个核心点：</p>
+<ol>
+<li>成本：3500/6000/5万，分别的投入</li>
+<li>效果：诊断报告里说的XX场景能省XX时间/钱</li>
+<li>风险：先免费诊断、效果不好可调整、有正规合同</li>
+</ol>
+
+<p>我帮您整理一份简版的方案说明，</p>
+<p>您直接转发给合伙人看就行。&quot;</p>
+<p></code></pre></p>
+
+<h3>L3 到 L4 的转化标准</h3>
+<ul>
+<li>[ ] 客户清晰了解方案内容</li>
+<li>[ ] 客户对报价没有重大异议</li>
+<li>[ ] 客户知道了自己的主要疑虑且得到了解答</li>
+<li>[ ] （最好）约定了签约时间</li>
+</ul>
+
+<hr>
+
+<h2>L4 签约付款</h2>
+
+<h3>此阶段唯一目标</h3>
+<p><strong>以最高效率完成签约和收款，确保客户无后顾之忧</strong></p>
+
+<h3>签约流程</h3>
+
+<pre><code class="lang-">客户确认 → 发电子版合同 → 客户确认合同条款
+<p>↓</p>
+<p>客户盖章/签字 → 回传合同</p>
+<p>↓</p>
+<p>客户付款 → 我方确认到账 → 开具发票</p>
+<p>↓</p>
+<p>拉项目群 → 进入交付阶段</p>
+<p></code></pre></p>
+
+<h3>合同关键条款说明</h3>
+<div class="table-wrap"><table>
+<tr><td>条款</td><td>内容</td><td>说明</td></tr>
+<tr><td>服务范围</td><td>具体哪几个场景</td><td>写清楚，避免扯皮</td></tr>
+<tr><td>交付周期</td><td>3-7个工作日</td><td>留buffer</td></tr>
+<tr><td>付款方式</td><td>首付50%+验收后付50%</td><td>降低客户风险</td></tr>
+<tr><td>售后保障</td><td>1个月免费维护</td><td>超出1个月按S+计</td></tr>
+<tr><td>知识产权</td><td>Agent归属客户</td><td>重要信任点</td></tr>
+<tr><td>保密协议</td><td>客户数据保密</td><td>安全顾虑的最后一关</td></tr>
+<tr><td>违约责任</td><td>双方免责条款</td><td>正规感</td></tr>
+</table></div>
+<h3>收款方式</h3>
+<ul>
+<li>对公转账（最正规，可开发票）</li>
+<li>微信/支付宝（小额S1可用）</li>
+<li>分期付款（S3可谈季付）</li>
+</ul>
+
+<h3>签约后的动作</h3>
+<pre><code class="lang-">签约后24h内
+<p>✓ 拉项目群（你+客户+技术）</p>
+<p>✓ 发项目启动邮件/消息</p>
+<p>✓ 同步项目排期表</p>
+<p>✓ 预约环境搭建时间</p>
+
+<p>签约后48h内</p>
+<p>✓ 技术开始对接</p>
+<p>✓ 客户确认数据源</p>
+<p>✓ 排期确认</p>
+<p></code></pre></p>
+
+<hr>
+
+<h2>L5 交付上线</h2>
+
+<p>详细SOP见 [模块五：交付SOP](./模块五_交付SOP标准操作手册.md)</p>
+
+<h3>此阶段关键点</h3>
+<ol>
+<li><strong>超预期沟通</strong> — 每天在项目群汇报进度</li>
+<li><strong>客户参与</strong> — 让客户看到、摸到、体验到</li>
+<li><strong>验收标准清晰</strong> — 什么算"做完了"要提前说好</li>
+<li><strong>培训到位</strong> — 客户会用才是真交付</li>
+</ol>
+
+<h3>验收后的黄金72h</h3>
+<ul>
+<li>第1天：正式上线 + 密切关注运行</li>
+<li>第2天：检查效果 + 微调</li>
+<li>第3天：收集客户反馈 + 确认满意</li>
+<li>第4天：发"上线报告" + 引导转介绍</li>
+</ul>
+
+<hr>
+
+<h2>L6 转介绍/续费</h2>
+
+<h3>此阶段唯一目标</h3>
+<p><strong>让客户成为你的"销售"</strong></p>
+
+<h3>触发时机一览（再强调）</h3>
+
+<div class="table-wrap"><table>
+<tr><td>时机</td><td>动作</td></tr>
+<tr><td>验收当天</td><td>引导转介绍话术（见模块一第9章）</td></tr>
+<tr><td>第1个月</td><td>效果回顾 + 问使用感受 + 自然引导</td></tr>
+<tr><td>第3个月</td><td>续费提醒 + 升级建议</td></tr>
+<tr><td>每半年</td><td>全面效果回顾 + 新场景推荐</td></tr>
+</table></div>
+<h3>续费策略</h3>
+
+<div class="table-wrap"><table>
+<tr><td>类型</td><td>方案</td><td>话术</td></tr>
+<tr><td>S1续运维</td><td>S+ 500/月</td><td>"S1的1个月免费维护快到期了，续S+的话每月500，持续优化调整。"</td></tr>
+<tr><td>S1升S2</td><td>补差价即可</td><td>"S1用得不错吧？要不要升级到S2，再加2-4个场景？补2800就行了。"</td></tr>
+<tr><td>S2升S3</td><td>按年签S3</td><td>"S2已经配了X个场景了。如果要覆盖全公司，S3更划算，不限场景。"</td></tr>
+<tr><td>转介绍</td><td>返佣/优惠</td><td>"有朋友需要的话，帮推一下，每单返佣10%。"</td></tr>
+</table></div>
+<h3>长期客户维护日历</h3>
+
+<div class="table-wrap"><table>
+<tr><td>频率</td><td>动作</td></tr>
+<tr><td>每日</td><td>朋友圈持续触达（已成交客户也在看）</td></tr>
+<tr><td>每周</td><td>发周报给客户</td></tr>
+<tr><td>每月</td><td>电话/微信回访一次</td></tr>
+<tr><td>每季</td><td>上门回访一次（可选）</td></tr>
+<tr><td>每半年</td><td>效果报告+新场景推荐+续费</td></tr>
+<tr><td>特殊节点</td><td>节日问候、行业资讯分享</td></tr>
+</table></div>
+<hr>
+
+<h2>全漏斗数据追踪表</h2>
+
+<div class="table-wrap"><table>
+<tr><td>阶段</td><td>当前数量</td><td>转化率目标</td><td>需优化点</td></tr>
+<tr><td>L0 曝光</td><td>—</td><td>—</td><td>各渠道曝光量</td></tr>
+<tr><td>L1 初步沟通</td><td>—</td><td>L0→L1: 5%+</td><td>钩子吸引力</td></tr>
+<tr><td>L2 免费诊断</td><td>—</td><td>L1→L2: 40%+</td><td>约诊话术</td></tr>
+<tr><td>L3 方案报价</td><td>—</td><td>L2→L3: 60%+</td><td>报告质量</td></tr>
+<tr><td>L4 签约付款</td><td>—</td><td>L3→L4: 50%+</td><td>反对意见处理</td></tr>
+<tr><td>L5 交付上线</td><td>—</td><td>L4→L5: 95%+</td><td>交付效率</td></tr>
+<tr><td>L6 转介绍/续费</td><td>—</td><td>L5→L6: 20%+</td><td>客户满意+转介绍机制</td></tr>
+</table></div>
+<hr>
+
+<h2>各阶段"死因"排查清单</h2>
+
+<div class="table-wrap"><table>
+<tr><td>阶段</td><td>客户为什么流失</td><td>根本原因</td><td>解决方案</td></tr>
+<tr><td>L0→L1</td><td>内容不吸引</td><td>钩子不精准</td><td>换钩子，A/B测试</td></tr>
+<tr><td>L1→L2</td><td>犹豫不决</td><td>信任度不够/价值不清晰</td><td>加强案例展示、降低约诊门槛</td></tr>
+<tr><td>L2→L3</td><td>觉得诊断没用</td><td>诊断不够深入/场景不痛</td><td>提高诊断质量，找到真痛点</td></tr>
+<tr><td>L3→L4</td><td>觉得贵/对比别家</td><td>价值展示不够/反对意见没处理</td><td>算账对比、增强案例和风险保障</td></tr>
+<tr><td>L4→L5</td><td>交付不满意</td><td>交付超期/质量不行</td><td>严格按SOP走，定期沟通</td></tr>
+<tr><td>L5→L6</td><td>不转介绍</td><td>没有引导/激励不够</td><td>验收时即引导转介绍、有激励机制</td></tr>
+</table></div>
+<hr>
+
+<blockquote>本模块完整版覆盖了从曝光到转介绍的7层漏斗</blockquote>
+<blockquote>每一层包含：客户状态 → 唯一目标 → 标准动作 → 逐字稿话术 → 反对意见处理 → 转化标准</blockquote>
+<blockquote>下一模块：[模块三：内容素材体系](./模块三_内容素材体系.md)</blockquote>
+
+
+<hr>
+<h2>相关笔记</h2>
+<ul>
+<li><a href="核心话术速查.html" class="wikilink">核心话术速查</a> — 销售全流程一句话话术</li>
+<li><a href="常见反对意见与应对.html" class="wikilink">常见反对意见与应对</a> — 客户说什么你回什么</li>
+<li><a href="模块一_推广渠道矩阵.html" class="wikilink">模块一_推广渠道矩阵</a> — 客户是从哪来的</li>
+<li><a href="模块五_交付SOP标准操作手册.html" class="wikilink">模块五_交付SOP标准操作手册</a> — 签了约怎么交付</li>
+<li><a href="项目检查清单.html" class="wikilink">项目检查清单</a> — 每个项目检查一遍</li>
+</ul>
+
+<p>#销售 #转化 #漏斗 #话术 #成交</p>
+            </article>
+            <footer class="page-footer">
+                <p>上海锦霓鲤锦网络科技有限公司 · AI 数字员工企业增效计划</p>
+                <p style="margin-top:4px;font-size:12px;"><a href="https://hermes-agent.nousresearch.com" target="_blank">Hermes Agent</a> · <a href="#" onclick="scrollToTop()">回到顶部 ↑</a></p>
+            </footer>
+        </main>
+    </div>
+    <script>
+        
+// 基础防复制
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('copy', e => e.preventDefault());
+document.addEventListener('selectstart', e => e.preventDefault());
+document.addEventListener('dragstart', e => e.preventDefault());
+
+function searchNotes(q) {
+    q = q.toLowerCase();
+    document.querySelectorAll('.page-link').forEach(el => {
+        const text = el.textContent.toLowerCase();
+        el.style.display = text.includes(q) ? '' : 'none';
+    });
+    // 隐藏空的分组
+    document.querySelectorAll('.module-group').forEach(g => {
+        const visible = Array.from(g.querySelectorAll('.page-link')).filter(e => e.style.display !== 'none');
+        g.style.display = visible.length > 0 ? '' : 'none';
+    });
+}
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模块六：工具模板清单 · 企业数字员工</title>
+    <style>
+        
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --primary: #2563eb;
+    --primary-light: #3b82f6;
+    --bg: #f8fafc;
+    --sidebar-bg: #ffffff;
+    --card-bg: #ffffff;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --gradient: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #3b82f6 100%);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+/* Top Navigation */
+.top-nav {
+    background: var(--gradient);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(37,99,235,0.15);
+}
+.nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo { font-size: 18px; font-weight: 700; color: white; text-decoration: none; letter-spacing: 1px; }
+.nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+.nav-links a {
+    color: rgba(255,255,255,0.85); text-decoration: none; font-size: 12px;
+    padding: 4px 10px; border-radius: 20px; transition: all 0.2s;
+}
+.nav-links a:hover { background: rgba(255,255,255,0.15); color: white; }
+
+/* Layout */
+.layout { display: flex; max-width: 1400px; margin: 0 auto; min-height: calc(100vh - 56px); }
+
+/* Sidebar */
+.sidebar {
+    width: 260px; flex-shrink: 0; background: var(--sidebar-bg);
+    border-right: 1px solid var(--border); padding: 16px 12px;
+    position: sticky; top: 56px; height: calc(100vh - 56px); overflow-y: auto;
+}
+.sidebar-search { margin-bottom: 12px; }
+.sidebar-search input {
+    width: 100%; padding: 7px 12px; border: 1px solid var(--border);
+    border-radius: 8px; font-size: 13px; outline: none; transition: border 0.2s;
+}
+.sidebar-search input:focus { border-color: var(--primary); }
+.module-group { margin-bottom: 16px; }
+.module-title {
+    font-size: 11px; font-weight: 700; color: var(--text-light);
+    text-transform: uppercase; letter-spacing: 0.5px;
+    padding: 6px 8px 3px; border-bottom: 1px solid var(--border); margin-bottom: 3px;
+}
+.page-link {
+    display: flex; align-items: center; gap: 5px;
+    padding: 4px 8px; border-radius: 5px; color: var(--text);
+    text-decoration: none; font-size: 12.5px; transition: all 0.15s;
+}
+.page-link:hover { background: #eef2ff; color: var(--primary); }
+.page-link.active { background: #eef2ff; color: var(--primary); font-weight: 600; }
+.page-link .icon { font-size: 13px; width: 18px; text-align: center; flex-shrink: 0; }
+.page-link .title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Main Content */
+.content { flex: 1; padding: 32px 48px; max-width: 880px; }
+.breadcrumb { font-size: 13px; color: var(--text-light); margin-bottom: 20px; }
+.breadcrumb a { color: var(--primary); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* Article */
+.article h1 { font-size: 28px; font-weight: 700; margin-bottom: 16px; line-height: 1.3; }
+.article h2 {
+    font-size: 22px; font-weight: 600; margin-top: 32px; margin-bottom: 12px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--border);
+}
+.article h3 { font-size: 18px; font-weight: 600; margin-top: 28px; margin-bottom: 8px; }
+.article h4 { font-size: 16px; font-weight: 600; margin-top: 24px; margin-bottom: 8px; }
+.article p { margin-bottom: 14px; }
+.article a { color: var(--primary); text-decoration: none; }
+.article a:hover { text-decoration: underline; }
+.article a.wikilink { background: #eef2ff; padding: 1px 5px; border-radius: 3px; font-size: 14px; }
+.article a.wikilink::before { content: "📄 "; font-size: 12px; }
+.article code {
+    background: #f1f5f9; padding: 2px 6px; border-radius: 4px;
+    font-size: 13px; font-family: "SF Mono", "JetBrains Mono", monospace;
+}
+.article pre {
+    background: #1e293b; color: #e2e8f0; padding: 18px; border-radius: 10px;
+    overflow-x: auto; margin: 16px 0;
+}
+.article pre code { background: none; padding: 0; color: inherit; font-size: 13px; line-height: 1.5; }
+.article blockquote {
+    border-left: 4px solid var(--primary); padding: 10px 18px; margin: 14px 0;
+    background: #f8fafc; border-radius: 0 8px 8px 0; color: var(--text-light);
+}
+.article ul, .article ol { margin: 6px 0 14px 22px; }
+.article li { margin-bottom: 3px; }
+.article .table-wrap { overflow-x: auto; margin: 14px 0; }
+.article table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 500px; }
+.article th, .article td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+.article th { background: #f1f5f9; font-weight: 600; }
+.article tr:nth-child(even) { background: #f8fafc; }
+.article hr { border: none; border-top: 2px solid var(--border); margin: 28px 0; }
+.article .content-img { max-width: 100%; border-radius: 8px; margin: 16px 0; }
+
+.article .meta-bar {
+    display: flex; gap: 14px; font-size: 13px; color: var(--text-light);
+    margin-bottom: 20px; flex-wrap: wrap;
+}
+.article .meta-bar span { background: #f1f5f9; padding: 3px 10px; border-radius: 12px; }
+
+/* Page Footer */
+.page-footer {
+    margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border);
+    text-align: center; font-size: 13px; color: var(--text-light);
+}
+
+/* Home Page */
+.home-hero { text-align: center; padding: 40px 0 24px; }
+.home-hero h1 { font-size: 34px; margin-bottom: 10px; }
+.home-hero p { font-size: 17px; color: var(--text-light); margin-bottom: 6px; }
+.home-info { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
+.home-info .badge {
+    background: #eef2ff; padding: 5px 14px; border-radius: 20px;
+    font-size: 12.5px; color: var(--primary);
+}
+.project-card {
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    border-radius: 14px; padding: 24px 28px; margin: 20px 0;
+}
+.project-card table { width: 100%; border: none; font-size: 14px; }
+.project-card td { border: none; padding: 4px 0; vertical-align: top; }
+.project-card td:first-child { width: 100px; font-weight: 600; color: var(--text-light); }
+.module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; margin: 20px 0; }
+.module-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px; transition: all 0.2s;
+    text-decoration: none; color: inherit; display: block;
+}
+.module-card:hover {
+    border-color: var(--primary); box-shadow: 0 4px 16px rgba(37,99,235,0.08);
+    transform: translateY(-2px);
+}
+.module-card h3 { font-size: 15px; margin-bottom: 6px; }
+.module-card p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+.module-card .count { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .layout { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--border); }
+    .content { padding: 20px; }
+    .module-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+}
+
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-inner">
+            <a href="index.html" class="logo">🤖 企业数字员工</a>
+            <div class="nav-links">
+                <a href="module-0-项目总览.html">🎯 总览</a>
+<a href="module-1-推广体系.html">📡 推广</a>
+<a href="module-2-销售转化.html">🪜 销售</a>
+<a href="module-3-内容素材.html">📝 素材</a>
+<a href="module-4-客户细分.html">👥 客户</a>
+<a href="module-5-交付SOP.html">🔧 交付</a>
+<a href="module-6-工具模板.html">🧰 工具</a>
+<a href="module-7-Hermes技术基座.html">🤖 Hermes</a>
+<a href="module-交付物.html">📦 交付</a>
+<a href="module-附件.html">📎 附件</a>
+            </div>
+        </div>
+    </nav>
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-search">
+                <input type="text" id="search" placeholder="🔍 搜索笔记..." oninput="searchNotes(this.value)">
+            </div>
+            <div class="sidebar-toc" id="sidebar-toc">
+                <div class="module-group">
+<div class="module-title">🎯 项目总览</div>
+<a href="推广与流程体系_完整框架.html" class="page-link><span class="icon">📐</span><span class="title">AI数字员工 · 推广与流程体系完整框架</span></a>
+<a href="GitHub可用项目清单与案例方案.html" class="page-link><span class="icon">🎯</span><span class="title">GitHub 可用项目清单与案例方案</span></a>
+<a href="八大行业方案速查.html" class="page-link><span class="icon">🏢</span><span class="title">八大行业方案速查</span></a>
+<a href="对外资料清单与制作排期.html" class="page-link><span class="icon">🎯</span><span class="title">对外资料清单与制作排期</span></a>
+<a href="常见反对意见与应对.html" class="page-link><span class="icon">🛡️</span><span class="title">常见反对意见与应对</span></a>
+<a href="核心话术速查.html" class="page-link><span class="icon">💬</span><span class="title">核心话术速查</span></a>
+<a href="项目检查清单.html" class="page-link><span class="icon">✅</span><span class="title">项目检查清单</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📡 推广体系</div>
+<a href="模块一_推广渠道矩阵.html" class="page-link><span class="icon">📡</span><span class="title">模块一：推广渠道矩阵</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🪜 销售转化</div>
+<a href="模块二_销售转化漏斗.html" class="page-link><span class="icon">🪜</span><span class="title">模块二：销售转化漏斗</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📝 内容素材</div>
+<a href="模块三_内容素材体系.html" class="page-link><span class="icon">📝</span><span class="title">模块三：内容素材体系</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">👥 客户细分</div>
+<a href="模块四_客户细分与差异化方案.html" class="page-link><span class="icon">👥</span><span class="title">模块四：客户细分与差异化方案</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🔧 交付SOP</div>
+<a href="模块五_交付SOP标准操作手册.html" class="page-link><span class="icon">🔧</span><span class="title">模块五：交付SOP标准操作手册</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🧰 工具模板</div>
+<a href="模块六_工具模板清单.html" class="page-link active><span class="icon">🧰</span><span class="title">模块六：工具模板清单</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🤖 Hermes 技术基座</div>
+<a href="README.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes Agent — AI 数字员工技术基座</span></a>
+<a href="Hermes CLI 速查.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes CLI 速查</span></a>
+<a href="Hermes 工具清单.html" class="page-link><span class="icon">🔌</span><span class="title">Hermes 工具清单</span></a>
+<a href="Hermes 示例命令.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes 示例命令</span></a>
+<a href="Hermes 部署与运维.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes 部署与运维</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📦 交付物</div>
+<a href="知识库_客服话术.html" class="page-link><span class="icon">📚</span><span class="title">AI数字员工 客服知识库</span></a>
+<a href="操作手册_企微AI客服部署.html" class="page-link><span class="icon">📋</span><span class="title">企微AI客服部署操作手册</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📎 附件</div>
+<a href="AI数字员工_企业增效计划.html" class="page-link><span class="icon">📄</span><span class="title">AI数字员工_企业增效计划</span></a>
+<a href="AI数字员工_展会精华版.html" class="page-link><span class="icon">🎪</span><span class="title">AI数字员工_展会精华版</span></a>
+<a href="AI智能体企业定制服务_企业展示.html" class="page-link><span class="icon">🤖</span><span class="title">AI智能体企业定制服务_企业展示</span></a>
+<a href="ppt-master参考索引.html" class="page-link><span class="icon">📄</span><span class="title">ppt-master 模板参考</span></a>
+<a href="素材总索引.html" class="page-link><span class="icon">🖼️</span><span class="title">素材总索引</span></a>
+</div>
+            </div>
+        </aside>
+        <main class="content">
+            <div class="breadcrumb"><a href="index.html">🏠 首页</a> / <a href="module-6-工具模板.html">🧰 工具模板</a> / 模块六：工具模板清单</div>
+            <article class="article">
+                <h1>🧰 模块六：工具模板清单</h1>
+    <div class="meta-bar">
+        <span>📖 17 分钟</span>
+        <span>📝 8606 字</span>
+        <span>📊 93 个表格</span>
+    </div>
+    <h1>模块六：工具模板清单</h1>
+
+<blockquote>版本：v1.0 <div class="table-wrap"><table></blockquote>
+<tr><td>日期：2026-06-03</td><td>负责人：倪锦</td></tr>
+</table></div>> 说明：所有工具模板的完整清单和创建规范，让每次执行都有标准模板可用
+
+<hr>
+
+<h2>目录</h2>
+
+<ol>
+<li>[模板总览](#1-模板总览)</li>
+<li>[客户信息记录表](#2-客户信息记录表)</li>
+<li>[初步需求调研问卷](#3-初步需求调研问卷)</li>
+<li>[AI诊断评估报告模板](#4-ai诊断评估报告模板)</li>
+<li>[AI落地方案书模板](#5-ai落地方案书模板)</li>
+<li>[报价单模板](#6-报价单模板)</li>
+<li>[合同关键条款说明](#7-合同关键条款说明)</li>
+<li>[验收确认单模板](#8-验收确认单模板)</li>
+<li>[项目排期表模板](#9-项目排期表模板)</li>
+<li>[培训记录表模板](#10-培训记录表模板)</li>
+<li>[效果跟踪周报模板](#11-效果跟踪周报模板)</li>
+<li>[客户案例采集模板](#12-客户案例采集模板)</li>
+<li>[跟进记录表](#13-跟进记录表)</li>
+<li>[客户管理总表](#14-客户管理总表)</li>
+</ol>
+
+<hr>
+
+<h2>1. 模板总览</h2>
+
+<h3>1.1 模板清单</h3>
+
+<div class="table-wrap"><table>
+<tr><td>编号</td><td>模板名称</td><td>使用阶段</td><td>创建方式</td><td>优先级</td></tr>
+<tr><td>T-01</td><td>客户信息记录表</td><td>L1首次联系</td><td>飞书多维表格/Excel</td><td>★★★★★</td></tr>
+<tr><td>T-02</td><td>初步需求调研问卷</td><td>L1约诊前</td><td>腾讯文档/飞书表单</td><td>★★★★☆</td></tr>
+<tr><td>T-03</td><td>AI诊断评估报告</td><td>L2诊断后</td><td>Markdown/Word</td><td>★★★★★</td></tr>
+<tr><td>T-04</td><td>AI落地方案书</td><td>L3方案</td><td>Markdown/Word</td><td>★★★★★</td></tr>
+<tr><td>T-05</td><td>报价单</td><td>L3报价</td><td>Excel/PDF</td><td>★★★★★</td></tr>
+<tr><td>T-06</td><td>技术服务合同</td><td>L4签约</td><td>Word/法务审核</td><td>★★★★★</td></tr>
+<tr><td>T-07</td><td>验收确认单</td><td>L6验收</td><td>飞书文档/Word</td><td>★★★★★</td></tr>
+<tr><td>T-08</td><td>项目排期表</td><td>L4启动</td><td>飞书甘特图/Excel</td><td>★★★★☆</td></tr>
+<tr><td>T-09</td><td>培训记录表</td><td>L6培训</td><td>飞书文档</td><td>★★★★☆</td></tr>
+<tr><td>T-10</td><td>效果跟踪周报</td><td>L7维护</td><td>飞书文档</td><td>★★★☆☆</td></tr>
+<tr><td>T-11</td><td>客户案例采集</td><td>交付后</td><td>Markdown</td><td>★★★★☆</td></tr>
+<tr><td>T-12</td><td>跟进记录表</td><td>L1-L3</td><td>与T-01合并</td><td>★★★★☆</td></tr>
+<tr><td>T-13</td><td>客户管理总表</td><td>全流程</td><td>飞书多维表格</td><td>★★★★★</td></tr>
+<tr><td>T-14</td><td>上线效果报告</td><td>L6验收</td><td>Word/飞书文档</td><td>★★★☆☆</td></tr>
+<tr><td>T-15</td><td>使用手册(客户版)</td><td>L6培训</td><td>PDF</td><td>★★★☆☆</td></tr>
+</table></div>
+<h3>1.2 模板管理规范</h3>
+
+<ul>
+<li><strong>存储位置</strong>：<code>/docs/templates/</code> 目录下</li>
+<li><strong>命名规则</strong>：<code>T-编号_模板名称_版本号.md</code></li>
+<li><strong>更新策略</strong>：每次使用后，如有改进意见，在模板底部"改进记录"中注明</li>
+<li><strong>权限管理</strong>：所有模板对团队成员可见</li>
+</ul>
+
+<hr>
+
+<h2>2. 客户信息记录表（T-01）</h2>
+
+<h3>2.1 字段结构</h3>
+
+<pre><code class="lang-">┌──────────────────────────────────────────────────────────────┐
+<p>│ 客户编号 │ 客户名称 │ 行业 │ 规模 │ 联系电话 │ 微信 │ 联系渠道 │</p>
+<p>├──────────┼──────────┼──────┼──────┼──────────┼──────┼──────────┤</p>
+<p>│ C-001    │ 张总     │ 电商 │ 8人  │ 138xxxx  │ xxx  │ 朋友圈   │</p>
+<p>├──────────┼──────────┼──────┼──────┼──────────┼──────┼──────────┤</p>
+<p>│ ...      │          │      │      │          │      │          │</p>
+<p>└──────────────────────────────────────────────────────────────┘</p>
+
+<p>┌──────┬──────┬──────┬──────┬──────┬──────┬──────┐</p>
+<p>│ 等级 │ 意向 │ 痛点 │ 场景 │ 状态 │ 跟进 │ 备注 │</p>
+<p>├──────┼──────┼──────┼──────┼──────┼──────┼──────┤</p>
+<p>│ A级  │ 高   │ 客服 │ S1   │ 已签 │ 倪锦 │ ...  │</p>
+<p>├──────┼──────┼──────┼──────┼──────┼──────┼──────┤</p>
+<p>│ ...  │      │      │      │      │      │      │</p>
+<p>└──────┴──────┴──────┴──────┴──────┴──────┴──────┘</p>
+<p></code></pre></p>
+
+<h3>2.2 字段说明</h3>
+
+<div class="table-wrap"><table>
+<tr><td>字段</td><td>必填</td><td>说明</td></tr>
+<tr><td>客户编号</td><td>是</td><td>C-001 格式自动生成</td></tr>
+<tr><td>客户名称</td><td>是</td><td>"张总"或公司名</td></tr>
+<tr><td>行业</td><td>是</td><td>电商/二手车/制造/本地服务</td></tr>
+<tr><td>规模</td><td>是</td><td>人数 + 年营收（估算）</td></tr>
+<tr><td>联系电话</td><td>是</td><td></td></tr>
+<tr><td>微信</td><td>是</td><td></td></tr>
+<tr><td>联系渠道</td><td>是</td><td>朋友圈/展会/转介绍/短视频/社群</td></tr>
+<tr><td>等级</td><td>是</td><td>A/B/C/D</td></tr>
+<tr><td>意向</td><td>是</td><td>高/中/低</td></tr>
+<tr><td>痛点</td><td>是</td><td>核心痛点一句话</td></tr>
+<tr><td>场景</td><td>否</td><td>S1/S2/S3</td></tr>
+<tr><td>状态</td><td>是</td><td>新客/沟通中/诊断中/已报价/已签约/已交付/流失</td></tr>
+<tr><td>跟进人</td><td>是</td><td>默认倪锦</td></tr>
+<tr><td>跟进记录</td><td>是</td><td>每次跟进的简要记录</td></tr>
+<tr><td>上次跟进时间</td><td>是</td><td></td></tr>
+<tr><td>下次跟进时间</td><td>是</td><td></td></tr>
+<tr><td>备注</td><td>否</td><td>其他重要信息</td></tr>
+</table></div>
+<h3>2.3 创建方式</h3>
+
+<p>推荐使用飞书多维表格（免费版即可）：</p>
+<ol>
+<li>创建多维表格 → "客户管理"</li>
+<li>按上述字段创建维度</li>
+<li>设置"自动编号"生成客户编号</li>
+<li>设置"状态"为单选字段</li>
+<li>设置"等级"为单选字段</li>
+<li>设置"跟进记录"为文本字段，每次追加</li>
+</ol>
+
+<hr>
+
+<h2>3. AI诊断评估报告模板（T-03）</h2>
+
+<h3>3.1 报告结构</h3>
+
+<pre><code class="lang-"># AI诊断评估报告
+
+<h2>基本信息</h2>
+<ul>
+<li>客户名称：XX公司</li>
+<li>行业：xx</li>
+<li>规模：xx人</li>
+<li>调研日期：2026-06-XX</li>
+<li>调研方式：上门/远程</li>
+<li>报告编号：R-2026-XXX</li>
+</ul>
+
+<h2>一、企业概况</h2>
+<p>简要描述客户的核心业务、人员结构、当前数字化水平（1-2段）</p>
+
+<h2>二、业务流程分析</h2>
+<h3>2.1 现状流程</h3>
+<p>从客户咨询到成交/交付的核心流程描述</p>
+
+<h3>2.2 效率瓶颈</h3>
+<p>按优先级列出3-5个效率瓶颈点</p>
+<ol>
+<li>xxx（影响最大）</li>
+<li>xxx</li>
+<li>xxx</li>
+</ol>
+
+<h3>2.3 可优化环节评估</h3>
+<div class="table-wrap"><table>
+<tr><td>环节</td><td>当前耗时</td><td>AI化后</td><td>可节省</td></tr>
+<tr><td>xxx</td><td>2h/天</td><td>5min/天</td><td>90%+</td></tr>
+<tr><td>xxx</td><td>1h/天</td><td>10min/天</td><td>80%+</td></tr>
+</table></div>
+<h2>三、AI落地点建议</h2>
+
+<h3>推荐场景1：xxx</h3>
+<ul>
+<li>场景描述：xxx</li>
+<li>实施方式：xxx</li>
+<li>预期效果：xxx</li>
+<li>推荐方案：S1/S2/S3</li>
+<li>预估费用：xxx</li>
+</ul>
+
+<h3>推荐场景2：xxx</h3>
+<ul>
+<li>场景描述：xxx</li>
+<li>实施方式：xxx</li>
+<li>预期效果：xxx</li>
+<li>推荐方案：S1/S2/S3</li>
+<li>预估费用：xxx</li>
+</ul>
+
+<h3>推荐场景3：xxx</h3>
+<p>（同上）</p>
+
+<h2>四、预期ROI分析</h2>
+<div class="table-wrap"><table>
+<tr><td>投入</td><td>每年可节省</td><td>ROI</td></tr>
+<tr><td>xxx</td><td>xxx</td><td>xxx%</td></tr>
+</table></div>
+<h2>五、风险与注意事项</h2>
+<ol>
+<li>xxx</li>
+<li>xxx</li>
+</ol>
+
+<h2>六、下一步建议</h2>
+<ol>
+<li>建议方案</li>
+<li>建议下一步行动</li>
+<li>建议联系时间</li>
+</ol>
+
+<hr>
+
+<p>报告人：倪锦</p>
+<p>日期：2026-06-XX</p>
+<p>上海锦霓鲤锦网络科技有限公司</p>
+<p></code></pre></p>
+
+<hr>
+
+<h2>4. AI落地方案书模板（T-04）</h2>
+
+<h3>4.1 方案书结构</h3>
+
+<pre><code class="lang-"># AI落地方案书
+
+<p>客户名称：____________________</p>
+<p>日期：________________________</p>
+<p>方案编号：P-2026-XXX</p>
+
+<hr>
+
+<h2>一、项目背景</h2>
+<p>（1-2段简要回顾诊断结果和客户需求）</p>
+
+<h2>二、推荐方案</h2>
+
+<h3>方案A：S1 单场景方案 ¥3,500</h3>
+<ul>
+<li>实施场景：xxx</li>
+<li>交付内容：xxx</li>
+<li>交付周期：3-5个工作日</li>
+<li>包含服务：开发+部署+培训+1个月维护</li>
+</ul>
+
+<h3>方案B：S2 多场景方案 ¥6,000</h3>
+<ul>
+<li>实施场景：xxx + xxx + xxx</li>
+<li>交付内容：xxx</li>
+<li>交付周期：5-7个工作日</li>
+<li>包含服务：开发+部署+培训+1个月维护</li>
+</ul>
+
+<h3>方案C：S3 不限场景方案 ¥50,000/年</h3>
+<ul>
+<li>覆盖所有场景</li>
+<li>全年无限次迭代</li>
+<li>专人对接服务</li>
+</ul>
+
+<h2>三、实施计划</h2>
+<div class="table-wrap"><table>
+<tr><td>阶段</td><td>内容</td><td>时间</td></tr>
+<tr><td>环境搭建</td><td>xxx</td><td>Day 1-2</td></tr>
+<tr><td>Agent开发</td><td>xxx</td><td>Day 3-5</td></tr>
+<tr><td>测试验收</td><td>xxx</td><td>Day 6</td></tr>
+<tr><td>上线培训</td><td>xxx</td><td>Day 7</td></tr>
+</table></div>
+<h2>四、效果预估</h2>
+<div class="table-wrap"><table>
+<tr><td>指标</td><td>现状</td><td>上线后预估</td></tr>
+<tr><td>xxx</td><td>xxx</td><td>xxx</td></tr>
+</table></div>
+<h2>五、服务保障</h2>
+<ul>
+<li>正规合同+增值税专票</li>
+<li>1个月免费维护</li>
+<li>不满意免费调整</li>
+</ul>
+
+<h2>六、常见问题</h2>
+<p>Q: xxx</p>
+<p>A: xxx</p>
+
+<hr>
+
+<p>上海锦霓鲤锦网络科技有限公司</p>
+<p>联系人：倪锦 17601414435</p>
+<p></code></pre></p>
+
+<hr>
+
+<h2>5. 报价单模板（T-05）</h2>
+
+<p>见模块五 4.2.1 报价单标准格式</p>
+
+<hr>
+
+<h2>6. 合同关键条款说明（T-06）</h2>
+
+<h3>6.1 合同结构（由法务审核后定稿）</h3>
+
+<pre><code class="lang-">技术服务合同
+
+<p>甲方（委托方）：____________________</p>
+<p>乙方（服务方）：上海锦霓鲤锦网络科技有限公司</p>
+
+<p>第一条 服务内容</p>
+<p>1.1 乙方为甲方提供AI数字员工定制开发服务</p>
+<p>1.2 具体服务场景：____________________</p>
+<p>1.3 交付标准：____________________</p>
+
+<p>第二条 服务期限</p>
+<p>2.1 开发周期：自本合同生效之日起____个工作日内</p>
+<p>2.2 维护期限：自验收通过之日起____个月</p>
+
+<p>第三条 服务费用及支付方式</p>
+<p>3.1 合同总金额：¥________</p>
+<p>3.2 支付方式：</p>
+<p>- 首付款：合同签署后____日内支付____%</p>
+<p>- 尾款：验收通过后____日内支付____%</p>
+<p>3.3 乙方收款账户：____________________</p>
+
+<p>第四条 验收标准</p>
+<p>4.1 验收标准：____________________</p>
+<p>4.2 验收流程：乙方完成开发→甲方测试→双方签署《验收确认单》</p>
+
+<p>第五条 知识产权</p>
+<p>5.1 乙方为甲方开发的AI数字员工相关代码、配置、知识库等知识产权归甲方所有</p>
+<p>5.2 乙方不得将甲方的数据用于任何其他目的</p>
+
+<p>第六条 保密条款</p>
+<p>6.1 双方对合作过程中获取的对方商业秘密负有保密义务</p>
+<p>6.2 保密期限：自本合同生效之日起____年</p>
+
+<p>第七条 违约责任</p>
+<p>7.1 如乙方未按期交付，每逾期一日按合同金额的____%支付违约金</p>
+<p>7.2 如甲方未按期付款，每逾期一日按未付金额的____%支付违约金</p>
+
+<p>第八条 争议解决</p>
+<p>8.1 本合同适用中华人民共和国法律</p>
+<p>8.2 争议协商不成的，提交乙方所在地人民法院诉讼解决</p>
+
+<p>第九条 其他</p>
+<p>9.1 本合同一式两份，双方各执一份</p>
+<p>9.2 本合同自双方签字盖章之日起生效</p>
+
+<p>甲方签字/盖章：________________  日期：________</p>
+<p>乙方签字/盖章：________________  日期：________</p>
+<p></code></pre></p>
+
+<hr>
+
+<h2>7. 验收确认单模板（T-07）</h2>
+
+<pre><code class="lang-"># AI数字员工验收确认单
+
+<h2>基本信息</h2>
+<ul>
+<li>客户名称：____________________</li>
+<li>项目名称：AI数字员工定制服务</li>
+<li>合同编号：____________________</li>
+<li>验收日期：____________________</li>
+</ul>
+
+<h2>验收内容</h2>
+<div class="table-wrap"><table>
+<tr><td>验收项</td><td>状态</td><td>备注</td></tr>
+<tr><td>功能1：xxx</td><td>□ 通过 □ 不通过</td><td></td></tr>
+<tr><td>功能2：xxx</td><td>□ 通过 □ 不通过</td><td></td></tr>
+<tr><td>功能3：xxx</td><td>□ 通过 □ 不通过</td><td></td></tr>
+<tr><td>员工培训</td><td>□ 已完成 □ 未完成</td><td></td></tr>
+</table></div>
+<h2>验收结论</h2>
+<p>□ 验收通过</p>
+<p>□ 验收不通过，需整改项：____________________</p>
+
+<h2>客户确认</h2>
+<p>本人确认上述服务内容已按合同约定交付，功能符合预期。</p>
+
+<p>客户签名：________________</p>
+<p>日期：____________________</p>
+
+<h2>服务方确认</h2>
+<p>服务方签名：________________</p>
+<p>日期：____________________</p>
+<p></code></pre></p>
+
+<hr>
+
+<h2>8. 项目排期表模板（T-08）</h2>
+
+<pre><code class="lang-"># 项目排期表
+
+<p>客户：____________________</p>
+<p>项目经理：________________</p>
+<p>项目周期：____年__月__日 至 ____年__月__日</p>
+
+<div class="table-wrap"><table>
+<tr><td>阶段</td><td>任务</td><td>负责人</td><td>开始日</td><td>结束日</td><td>交付物</td><td>状态</td></tr>
+<tr><td>L5</td><td>环境搭建</td><td>xxx</td><td>D1</td><td>D2</td><td>环境就绪</td><td>□</td></tr>
+<tr><td>L5</td><td>Agent开发</td><td>xxx</td><td>D3</td><td>D5</td><td>Agent交付</td><td>□</td></tr>
+<tr><td>L5</td><td>测试验收</td><td>xxx</td><td>D6</td><td>D6</td><td>测试报告</td><td>□</td></tr>
+<tr><td>L6</td><td>上线培训</td><td>xxx</td><td>D7</td><td>D7</td><td>培训记录</td><td>□</td></tr>
+<tr><td>L6</td><td>验收确认</td><td>xxx</td><td>D7</td><td>D7</td><td>验收单</td><td>□</td></tr>
+</table></div></code></pre>
+
+<hr>
+
+<h2>9. 培训记录表模板（T-09）</h2>
+
+<pre><code class="lang-"># AI数字员工使用培训记录
+
+<h2>基本信息</h2>
+<ul>
+<li>客户名称：____________________</li>
+<li>培训日期：____________________</li>
+<li>培训方式：上门/远程</li>
+<li>培训时长：____小时</li>
+<li>培训师：____________________</li>
+</ul>
+
+<h2>参训人员</h2>
+<div class="table-wrap"><table>
+<tr><td>姓名</td><td>岗位</td><td>联系方式</td></tr>
+<tr><td>xxx</td><td>xxx</td><td>xxx</td></tr>
+</table></div>
+<h2>培训内容</h2>
+<p>□ AI数字员工功能介绍</p>
+<p>□ 日常使用流程</p>
+<p>□ 常见问题处理</p>
+<p>□ 转人工操作</p>
+<p>□ 数据查看</p>
+<p>□ 注意事项</p>
+
+<h2>培训后考核</h2>
+<p>□ 参训人员能独立使用</p>
+<p>□ 参训人员能解决常见问题</p>
+
+<h2>培训反馈</h2>
+<p>（客户对培训的评价和建议）</p>
+
+<h2>备注</h2>
+<p>____________________</p>
+<p></code></pre></p>
+
+<hr>
+
+<h2>10. 效果跟踪周报模板（T-10）</h2>
+
+<h3>10.1 基础版周报</h3>
+
+<pre><code class="lang-"># AI数字员工运营周报
+
+<p>客户：____________________</p>
+<p>周期：____年__月__日 至 ____年__月__日</p>
+
+<h2>本周数据</h2>
+<ul>
+<li>咨询处理总数：____次</li>
+<li>AI自动处理：____次（占比____%）</li>
+<li>转人工处理：____次（占比____%）</li>
+<li>平均响应时间：____秒</li>
+<li>客户满意率：____%</li>
+</ul>
+
+<h2>优化内容</h2>
+<ol>
+<li>xxx</li>
+<li>xxx</li>
+</ol>
+
+<h2>下周计划</h2>
+<ol>
+<li>xxx</li>
+<li>xxx</li>
+</ol>
+<p></code></pre></p>
+
+<hr>
+
+<h2>11. 客户案例采集模板（T-11）</h2>
+
+<pre><code class="lang-"># 客户案例采集
+
+<h2>基本信息</h2>
+<p>案例编号：CASE-2026-XXX</p>
+<p>客户行业：__________</p>
+<p>客户规模：__________人</p>
+<p>签约方案：S1 / S2 / S3</p>
+<p>交付周期：____个工作日</p>
+<p>案例状态：□ 待脱敏 □ 已脱敏可用</p>
+<p>是否可公开：□ 可公开 □ 仅内部使用</p>
+
+<h2>客户背景</h2>
+<p>（1-2段，描述客户的核心业务和痛点）</p>
+
+<h2>实施内容</h2>
+<p>场景1：__________</p>
+<p>场景2：__________</p>
+<p>场景3：__________</p>
+
+<h2>效果数据</h2>
+<div class="table-wrap"><table>
+<tr><td>指标</td><td>实施前</td><td>实施后</td></tr>
+<tr><td>xxx</td><td>xxx</td><td>xxx</td></tr>
+<tr><td>xxx</td><td>xxx</td><td>xxx</td></tr>
+</table></div>
+<h2>客户原话</h2>
+<p>&quot;____________________&quot;</p>
+
+<h2>使用场景</h2>
+<p>□ 朋友圈 □ 短视频 □ 小红书 □ 方案书 □ 展会 □ 销售话术</p>
+<p></code></pre></p>
+
+<hr>
+
+<h2>12. 跟进记录表（T-12）</h2>
+
+<h3>12.1 单次跟进记录格式</h3>
+
+<pre><code class="lang-">时间：2026-06-XX XX:XX
+<p>方式：电话/微信/见面/其他</p>
+<p>客户反馈：____________________</p>
+<p>我方动作：____________________</p>
+<p>下次跟进：____年__月__日</p>
+<p>跟进人：____________________</p>
+<p>备注：____________________</p>
+<p></code></pre></p>
+
+<h3>12.2 建议：合并至客户管理总表</h3>
+
+<p>每个客户在客户管理总表中直接追加跟进记录，不单独建表。</p>
+
+<hr>
+
+<h2>13. 客户管理总表（T-13）</h2>
+
+<h3>13.1 飞书多维表格字段配置</h3>
+
+<div class="table-wrap"><table>
+<tr><td>字段名</td><td>字段类型</td><td>说明</td></tr>
+<tr><td>客户编号</td><td>自动编号</td><td>C-001</td></tr>
+<tr><td>客户名称</td><td>文本</td><td></td></tr>
+<tr><td>所属行业</td><td>单选</td><td>电商/二手车/本地服务/制造/教育/法律/房产/物流/其他</td></tr>
+<tr><td>企业规模</td><td>文本</td><td>人数+年营收</td></tr>
+<tr><td>联系电话</td><td>文本</td><td></td></tr>
+<tr><td>微信</td><td>文本</td><td></td></tr>
+<tr><td>联系渠道</td><td>单选</td><td>朋友圈/社群/短视频/小红书/展会/转介绍/地推/SEM/其他</td></tr>
+<tr><td>客户等级</td><td>单选</td><td>A级/B级/C级/D级</td></tr>
+<tr><td>意向程度</td><td>单选</td><td>高/中/低</td></tr>
+<tr><td>核心痛点</td><td>文本</td><td></td></tr>
+<tr><td>推荐方案</td><td>单选</td><td>S1/S2/S3/未定</td></tr>
+<tr><td>当前状态</td><td>单选</td><td>新客/沟通中/诊断中/已报价/谈判中/已签约/交付中/已交付/维护中/流失</td></tr>
+<tr><td>跟进人</td><td>文本</td><td></td></tr>
+<tr><td>跟进记录</td><td>文本</td><td>每次追加记录</td></tr>
+<tr><td>上次跟进</td><td>日期</td><td></td></tr>
+<tr><td>下次跟进</td><td>日期</td><td></td></tr>
+<tr><td>签约金额</td><td>数字</td><td></td></tr>
+<tr><td>签约日期</td><td>日期</td><td></td></tr>
+<tr><td>备注</td><td>文本</td><td></td></tr>
+</table></div>
+<hr>
+
+<h2>14. 模板迭代与管理</h2>
+
+<h3>14.1 模板版本记录</h3>
+
+<p>每个模板文件顶部包含版本信息：</p>
+<pre><code class="lang-"># 模板名称
+<p>版本：v1.0</p>
+<p>最后更新：2026-06-03</p>
+<p>更新人：倪锦</p>
+<p>更新内容：初始版本</p>
+<p></code></pre></p>
+
+<h3>14.2 模板使用反馈</h3>
+
+<p>每次使用模板后，记录改进建议：</p>
+<pre><code class="lang-">使用日期：
+<p>使用项目：</p>
+<p>改进建议：</p>
+<p>是否已更新模板：是/否</p>
+<p></code></pre></p>
+
+<hr>
+
+<blockquote>本模块覆盖了15个核心工具模板</blockquote>
+<blockquote>每个模板有完整的结构字段和使用说明</blockquote>
+<blockquote>建议优先创建：T-01客户管理总表 > T-03诊断报告 > T-06合同</blockquote>
+<blockquote>下一模块可基于此清单逐个实现具体模板文件</blockquote>
+
+
+<hr>
+<h2>相关笔记</h2>
+<ul>
+<li><a href="模块五_交付SOP标准操作手册.html" class="wikilink">模块五_交付SOP标准操作手册</a> — 模板的使用场景</li>
+<li><a href="项目检查清单.html" class="wikilink">项目检查清单</a> — 每个项目要完成哪些</li>
+<li><a href="模块二_销售转化漏斗.html" class="wikilink">模块二_销售转化漏斗</a> — 销售阶段用的模板</li>
+</ul>
+
+<p>#模板 #工具 #SOP #表单</p>
+            </article>
+            <footer class="page-footer">
+                <p>上海锦霓鲤锦网络科技有限公司 · AI 数字员工企业增效计划</p>
+                <p style="margin-top:4px;font-size:12px;"><a href="https://hermes-agent.nousresearch.com" target="_blank">Hermes Agent</a> · <a href="#" onclick="scrollToTop()">回到顶部 ↑</a></p>
+            </footer>
+        </main>
+    </div>
+    <script>
+        
+// 基础防复制
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('copy', e => e.preventDefault());
+document.addEventListener('selectstart', e => e.preventDefault());
+document.addEventListener('dragstart', e => e.preventDefault());
+
+function searchNotes(q) {
+    q = q.toLowerCase();
+    document.querySelectorAll('.page-link').forEach(el => {
+        const text = el.textContent.toLowerCase();
+        el.style.display = text.includes(q) ? '' : 'none';
+    });
+    // 隐藏空的分组
+    document.querySelectorAll('.module-group').forEach(g => {
+        const visible = Array.from(g.querySelectorAll('.page-link')).filter(e => e.style.display !== 'none');
+        g.style.display = visible.length > 0 ? '' : 'none';
+    });
+}
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+    </script>
+</body>
+</html>

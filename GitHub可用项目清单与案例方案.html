@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub 可用项目清单与案例方案 · 企业数字员工</title>
+    <style>
+        
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --primary: #2563eb;
+    --primary-light: #3b82f6;
+    --bg: #f8fafc;
+    --sidebar-bg: #ffffff;
+    --card-bg: #ffffff;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --gradient: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #3b82f6 100%);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+/* Top Navigation */
+.top-nav {
+    background: var(--gradient);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(37,99,235,0.15);
+}
+.nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo { font-size: 18px; font-weight: 700; color: white; text-decoration: none; letter-spacing: 1px; }
+.nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+.nav-links a {
+    color: rgba(255,255,255,0.85); text-decoration: none; font-size: 12px;
+    padding: 4px 10px; border-radius: 20px; transition: all 0.2s;
+}
+.nav-links a:hover { background: rgba(255,255,255,0.15); color: white; }
+
+/* Layout */
+.layout { display: flex; max-width: 1400px; margin: 0 auto; min-height: calc(100vh - 56px); }
+
+/* Sidebar */
+.sidebar {
+    width: 260px; flex-shrink: 0; background: var(--sidebar-bg);
+    border-right: 1px solid var(--border); padding: 16px 12px;
+    position: sticky; top: 56px; height: calc(100vh - 56px); overflow-y: auto;
+}
+.sidebar-search { margin-bottom: 12px; }
+.sidebar-search input {
+    width: 100%; padding: 7px 12px; border: 1px solid var(--border);
+    border-radius: 8px; font-size: 13px; outline: none; transition: border 0.2s;
+}
+.sidebar-search input:focus { border-color: var(--primary); }
+.module-group { margin-bottom: 16px; }
+.module-title {
+    font-size: 11px; font-weight: 700; color: var(--text-light);
+    text-transform: uppercase; letter-spacing: 0.5px;
+    padding: 6px 8px 3px; border-bottom: 1px solid var(--border); margin-bottom: 3px;
+}
+.page-link {
+    display: flex; align-items: center; gap: 5px;
+    padding: 4px 8px; border-radius: 5px; color: var(--text);
+    text-decoration: none; font-size: 12.5px; transition: all 0.15s;
+}
+.page-link:hover { background: #eef2ff; color: var(--primary); }
+.page-link.active { background: #eef2ff; color: var(--primary); font-weight: 600; }
+.page-link .icon { font-size: 13px; width: 18px; text-align: center; flex-shrink: 0; }
+.page-link .title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Main Content */
+.content { flex: 1; padding: 32px 48px; max-width: 880px; }
+.breadcrumb { font-size: 13px; color: var(--text-light); margin-bottom: 20px; }
+.breadcrumb a { color: var(--primary); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* Article */
+.article h1 { font-size: 28px; font-weight: 700; margin-bottom: 16px; line-height: 1.3; }
+.article h2 {
+    font-size: 22px; font-weight: 600; margin-top: 32px; margin-bottom: 12px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--border);
+}
+.article h3 { font-size: 18px; font-weight: 600; margin-top: 28px; margin-bottom: 8px; }
+.article h4 { font-size: 16px; font-weight: 600; margin-top: 24px; margin-bottom: 8px; }
+.article p { margin-bottom: 14px; }
+.article a { color: var(--primary); text-decoration: none; }
+.article a:hover { text-decoration: underline; }
+.article a.wikilink { background: #eef2ff; padding: 1px 5px; border-radius: 3px; font-size: 14px; }
+.article a.wikilink::before { content: "📄 "; font-size: 12px; }
+.article code {
+    background: #f1f5f9; padding: 2px 6px; border-radius: 4px;
+    font-size: 13px; font-family: "SF Mono", "JetBrains Mono", monospace;
+}
+.article pre {
+    background: #1e293b; color: #e2e8f0; padding: 18px; border-radius: 10px;
+    overflow-x: auto; margin: 16px 0;
+}
+.article pre code { background: none; padding: 0; color: inherit; font-size: 13px; line-height: 1.5; }
+.article blockquote {
+    border-left: 4px solid var(--primary); padding: 10px 18px; margin: 14px 0;
+    background: #f8fafc; border-radius: 0 8px 8px 0; color: var(--text-light);
+}
+.article ul, .article ol { margin: 6px 0 14px 22px; }
+.article li { margin-bottom: 3px; }
+.article .table-wrap { overflow-x: auto; margin: 14px 0; }
+.article table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 500px; }
+.article th, .article td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+.article th { background: #f1f5f9; font-weight: 600; }
+.article tr:nth-child(even) { background: #f8fafc; }
+.article hr { border: none; border-top: 2px solid var(--border); margin: 28px 0; }
+.article .content-img { max-width: 100%; border-radius: 8px; margin: 16px 0; }
+
+.article .meta-bar {
+    display: flex; gap: 14px; font-size: 13px; color: var(--text-light);
+    margin-bottom: 20px; flex-wrap: wrap;
+}
+.article .meta-bar span { background: #f1f5f9; padding: 3px 10px; border-radius: 12px; }
+
+/* Page Footer */
+.page-footer {
+    margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border);
+    text-align: center; font-size: 13px; color: var(--text-light);
+}
+
+/* Home Page */
+.home-hero { text-align: center; padding: 40px 0 24px; }
+.home-hero h1 { font-size: 34px; margin-bottom: 10px; }
+.home-hero p { font-size: 17px; color: var(--text-light); margin-bottom: 6px; }
+.home-info { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
+.home-info .badge {
+    background: #eef2ff; padding: 5px 14px; border-radius: 20px;
+    font-size: 12.5px; color: var(--primary);
+}
+.project-card {
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    border-radius: 14px; padding: 24px 28px; margin: 20px 0;
+}
+.project-card table { width: 100%; border: none; font-size: 14px; }
+.project-card td { border: none; padding: 4px 0; vertical-align: top; }
+.project-card td:first-child { width: 100px; font-weight: 600; color: var(--text-light); }
+.module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; margin: 20px 0; }
+.module-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px; transition: all 0.2s;
+    text-decoration: none; color: inherit; display: block;
+}
+.module-card:hover {
+    border-color: var(--primary); box-shadow: 0 4px 16px rgba(37,99,235,0.08);
+    transform: translateY(-2px);
+}
+.module-card h3 { font-size: 15px; margin-bottom: 6px; }
+.module-card p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+.module-card .count { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .layout { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--border); }
+    .content { padding: 20px; }
+    .module-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+}
+
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-inner">
+            <a href="index.html" class="logo">🤖 企业数字员工</a>
+            <div class="nav-links">
+                <a href="module-0-项目总览.html">🎯 总览</a>
+<a href="module-1-推广体系.html">📡 推广</a>
+<a href="module-2-销售转化.html">🪜 销售</a>
+<a href="module-3-内容素材.html">📝 素材</a>
+<a href="module-4-客户细分.html">👥 客户</a>
+<a href="module-5-交付SOP.html">🔧 交付</a>
+<a href="module-6-工具模板.html">🧰 工具</a>
+<a href="module-7-Hermes技术基座.html">🤖 Hermes</a>
+<a href="module-交付物.html">📦 交付</a>
+<a href="module-附件.html">📎 附件</a>
+            </div>
+        </div>
+    </nav>
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-search">
+                <input type="text" id="search" placeholder="🔍 搜索笔记..." oninput="searchNotes(this.value)">
+            </div>
+            <div class="sidebar-toc" id="sidebar-toc">
+                <div class="module-group">
+<div class="module-title">🎯 项目总览</div>
+<a href="推广与流程体系_完整框架.html" class="page-link><span class="icon">📐</span><span class="title">AI数字员工 · 推广与流程体系完整框架</span></a>
+<a href="GitHub可用项目清单与案例方案.html" class="page-link active><span class="icon">🎯</span><span class="title">GitHub 可用项目清单与案例方案</span></a>
+<a href="八大行业方案速查.html" class="page-link><span class="icon">🏢</span><span class="title">八大行业方案速查</span></a>
+<a href="对外资料清单与制作排期.html" class="page-link><span class="icon">🎯</span><span class="title">对外资料清单与制作排期</span></a>
+<a href="常见反对意见与应对.html" class="page-link><span class="icon">🛡️</span><span class="title">常见反对意见与应对</span></a>
+<a href="核心话术速查.html" class="page-link><span class="icon">💬</span><span class="title">核心话术速查</span></a>
+<a href="项目检查清单.html" class="page-link><span class="icon">✅</span><span class="title">项目检查清单</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📡 推广体系</div>
+<a href="模块一_推广渠道矩阵.html" class="page-link><span class="icon">📡</span><span class="title">模块一：推广渠道矩阵</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🪜 销售转化</div>
+<a href="模块二_销售转化漏斗.html" class="page-link><span class="icon">🪜</span><span class="title">模块二：销售转化漏斗</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📝 内容素材</div>
+<a href="模块三_内容素材体系.html" class="page-link><span class="icon">📝</span><span class="title">模块三：内容素材体系</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">👥 客户细分</div>
+<a href="模块四_客户细分与差异化方案.html" class="page-link><span class="icon">👥</span><span class="title">模块四：客户细分与差异化方案</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🔧 交付SOP</div>
+<a href="模块五_交付SOP标准操作手册.html" class="page-link><span class="icon">🔧</span><span class="title">模块五：交付SOP标准操作手册</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🧰 工具模板</div>
+<a href="模块六_工具模板清单.html" class="page-link><span class="icon">🧰</span><span class="title">模块六：工具模板清单</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🤖 Hermes 技术基座</div>
+<a href="README.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes Agent — AI 数字员工技术基座</span></a>
+<a href="Hermes CLI 速查.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes CLI 速查</span></a>
+<a href="Hermes 工具清单.html" class="page-link><span class="icon">🔌</span><span class="title">Hermes 工具清单</span></a>
+<a href="Hermes 示例命令.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes 示例命令</span></a>
+<a href="Hermes 部署与运维.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes 部署与运维</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📦 交付物</div>
+<a href="知识库_客服话术.html" class="page-link><span class="icon">📚</span><span class="title">AI数字员工 客服知识库</span></a>
+<a href="操作手册_企微AI客服部署.html" class="page-link><span class="icon">📋</span><span class="title">企微AI客服部署操作手册</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📎 附件</div>
+<a href="AI数字员工_企业增效计划.html" class="page-link><span class="icon">📄</span><span class="title">AI数字员工_企业增效计划</span></a>
+<a href="AI数字员工_展会精华版.html" class="page-link><span class="icon">🎪</span><span class="title">AI数字员工_展会精华版</span></a>
+<a href="AI智能体企业定制服务_企业展示.html" class="page-link><span class="icon">🤖</span><span class="title">AI智能体企业定制服务_企业展示</span></a>
+<a href="ppt-master参考索引.html" class="page-link><span class="icon">📄</span><span class="title">ppt-master 模板参考</span></a>
+<a href="素材总索引.html" class="page-link><span class="icon">🖼️</span><span class="title">素材总索引</span></a>
+</div>
+            </div>
+        </aside>
+        <main class="content">
+            <div class="breadcrumb"><a href="index.html">🏠 首页</a> / <a href="module-0-项目总览.html">🎯 项目总览</a> / GitHub 可用项目清单与案例方案</div>
+            <article class="article">
+                <h1>🎯 GitHub 可用项目清单与案例方案</h1>
+    <div class="meta-bar">
+        <span>📖 5 分钟</span>
+        <span>📝 2736 字</span>
+        <span>📊 6 个表格</span>
+    </div>
+    <h1>GitHub 可用项目清单与案例方案</h1>
+
+<blockquote>筛选标准：能直接落地、适合中小企业、中文友好、社区活跃</blockquote>
+<blockquote>时间：2026-06-03</blockquote>
+
+<hr>
+
+<h2>一、重点推荐项目</h2>
+
+<h3>1. Dify ⭐143k — AI应用搭建平台</h3>
+
+<p><strong>GitHub</strong>：https://github.com/langgenius/dify</p>
+<p><strong>语言</strong>：TypeScript</p>
+<p><strong>定位</strong>：生产级 AI Agent 工作流开发平台</p>
+
+<p><strong>能做什么</strong>：</p>
+<ul>
+<li>可视化搭建 AI 客服（拖拽式）</li>
+<li>RAG 知识库（上传文档自动生成问答）</li>
+<li>AI 工作流编排（复杂业务流程自动化）</li>
+<li>对接微信/企微/飞书/网页等渠道</li>
+</ul>
+
+<p><strong>对我们项目的价值</strong>：★★★★★</p>
+<p>这是我们最核心的技术底座。给客户做 AI 客服、知识库、工作流自动化，全都可以用 Dify 搭出来。</p>
+
+<p><strong>使用方式</strong>：Docker 一键部署，有服务器就能跑</p>
+
+<hr>
+
+<h3>2. FastGPT ⭐28k — 知识库问答系统</h3>
+
+<p><strong>GitHub</strong>：https://github.com/labring/FastGPT</p>
+<p><strong>语言</strong>：TypeScript</p>
+<p><strong>定位</strong>：基于 LLM 的知识库平台</p>
+
+<p><strong>能做什么</strong>：</p>
+<ul>
+<li>上传企业文档自动构建知识库</li>
+<li>AI 自动回答员工/客户问题</li>
+<li>可视化工作流编排</li>
+<li>支持 OA、企业微信对接</li>
+</ul>
+
+<p><strong>对我们项目的价值</strong>：★★★★☆</p>
+<p>适合制造业知识库、教育培训知识库场景。中文化做得好，开箱即用。</p>
+
+<hr>
+
+<h3>3. Chatwoot ⭐29k — 开源全渠道客服平台</h3>
+
+<p><strong>GitHub</strong>：https://github.com/chatwoot/chatwoot</p>
+<p><strong>语言</strong>：Ruby</p>
+<p><strong>定位</strong>：开源版 Intercom/Zendesk</p>
+
+<p><strong>能做什么</strong>：</p>
+<ul>
+<li>多渠道客服收件箱（网页/邮件/微信/WhatsApp）</li>
+<li>自动分配、自动回复</li>
+<li>AI 辅助回复</li>
+<li>客户数据分析</li>
+</ul>
+
+<p><strong>对我们项目的价值</strong>：★★★☆☆</p>
+<p>如果客户需要的是"客服系统"而非"AI 客服"，可以用 Chatwoot。但偏传统客服，AI 能力需二次开发。</p>
+
+<hr>
+
+<h3>4. BuildingAI ⭐1.6k — 积木式AI搭建（中文）</h3>
+
+<p><strong>GitHub</strong>：https://github.com/BidingCC/BuildingAI</p>
+<p><strong>语言</strong>：TypeScript</p>
+<p><strong>定位</strong>：AI 时代的 WordPress，积木式搭建</p>
+
+<p><strong>能做什么</strong>：</p>
+<ul>
+<li>可视化搭建企业智能体系统</li>
+<li>AI 客服系统</li>
+<li>AI 知识库</li>
+</ul>
+
+<p><strong>对我们项目的价值</strong>：★★★☆☆</p>
+<p>中文化好，但是星数还比较少，生态没起来，备选方案。</p>
+
+<hr>
+
+<h3>5. PySpur ⭐5.7k — AI工作流可视化</h3>
+
+<p><strong>GitHub</strong>：https://github.com/PySpur-Dev/pyspur</p>
+<p><strong>语言</strong>：TypeScript</p>
+<p><strong>定位</strong>：Agent 工作流可视化调试</p>
+
+<p><strong>对我们项目的价值</strong>：★★★☆☆</p>
+<p>适合做复杂的业务流程自动化，比 Dify 更偏技术，作为技术储备。</p>
+
+<hr>
+
+<h2>二、技术方案组合建议</h2>
+
+<h3>方案A（推荐）：Dify 为核心</h3>
+
+<pre><code class="lang-">Dify（AI应用平台）
+<p>├── 智能客服场景 → 对接微信公众号/企业微信/网页</p>
+<p>├── 知识库场景 → 上传文档，AI自动回答</p>
+<p>├── 工作流自动化 → 复杂业务流程编排</p>
+<p>└── AI 报表 → 对接数据源自动生成</p>
+<p></code></pre></p>
+
+<p><strong>优势</strong>：一个平台覆盖所有场景，社区最大，162k Star</p>
+<p><strong>部署</strong>：一台云服务器即可（2核4G，约100元/月）</p>
+<p><strong>成本</strong>：开源免费 + API调用费（约数百元/月）</p>
+
+<h3>方案B：FastGPT + Chatwoot</h3>
+
+<pre><code class="lang-">FastGPT（知识库 + 工作流）
+<p>└── Chatwoot（客服收件箱）</p>
+<p></code></pre></p>
+
+<p><strong>优势</strong>：知识库能力很强，中文优化好</p>
+<p><strong>劣势</strong>：需要维护两套系统</p>
+
+<hr>
+
+<h2>三、用这些项目造案例的计划</h2>
+
+<h3>第一步：自己先跑起来（本周）</h3>
+
+<p>用 Dify 给自己搭建 3 个场景，录屏做案例：</p>
+
+<p><strong>案例1：智能客服</strong></p>
+<pre><code class="lang-">场景：模拟一个二手车行的客户咨询
+<p>AI 自动回复：&quot;XX车多少钱&quot;&quot;哪年上牌&quot;&quot;在哪看车&quot;</p>
+<p>录屏展示：客户提问 → AI秒回 → 自动记录线索</p>
+<p></code></pre></p>
+
+<p><strong>案例2：知识库</strong></p>
+<pre><code class="lang-">场景：把我们的产品信息、报价、FAQ 做成知识库
+<p>演示：员工/客户问问题，AI 从知识库找到答案</p>
+<p>录屏展示：上传文档 → 提问 → AI精准回答</p>
+<p></code></pre></p>
+
+<p><strong>案例3：自动报表</strong></p>
+<pre><code class="lang-">场景：模拟销售数据，AI 自动出日报
+<p>录屏展示：输入Excel → AI 分析 → 自动生成日报</p>
+<p></code></pre></p>
+
+<p><strong>产出</strong>：3 条录屏视频 + 3 组效果截图 → 直接作为案例素材</p>
+
+<h3>第二步：帮熟人免费搭（两周内）</h3>
+
+<p>用 Dify 帮 1-2 个熟人/潜在客户搭真实场景：</p>
+<ul>
+<li>谈好"免费帮你配，你授权我做案例"</li>
+<li>录真实效果数据</li>
+<li>写客户案例</li>
+</ul>
+
+<h3>第三步：案例反哺推广</h3>
+
+<p>有了案例后：</p>
+<ul>
+<li>短视频：发布案例演示</li>
+<li>朋友圈：客户见证</li>
+<li>方案书：案例章节填充</li>
+<li>展会：现场演示 Dify 后台</li>
+</ul>
+
+<hr>
+
+<h2>四、部署成本估算</h2>
+
+<div class="table-wrap"><table>
+<tr><td>项目</td><td>月成本</td><td>说明</td></tr>
+<tr><td>云服务器</td><td>100元</td><td>2核4G，阿里云/腾讯云轻量</td></tr>
+<tr><td>大模型API</td><td>200-500元</td><td>DeepSeek/千问 的价格</td></tr>
+<tr><td>域名</td><td>5元</td><td>如果需要对公展示</td></tr>
+<tr><td><strong>总计</strong></td><td><strong>约300-600元/月</strong></td><td>一套系统可以服务N个客户</td></tr>
+</table></div>
+<hr>
+
+<h2>五、马上可以做的事</h2>
+
+<ul>
+<li>[ ] 部署 Dify（docker compose up -d）</li>
+<li>[ ] 配置 DeepSeek API（便宜又好用）</li>
+<li>[ ] 搭建"二手车智能客服"场景并录屏</li>
+<li>[ ] 搭建"企业知识库"场景并录屏</li>
+<li>[ ] 搭建"自动报表"场景并录屏</li>
+<li>[ ] 拿这3个录屏发第一条朋友圈/短视频</li>
+</ul>
+
+<hr>
+
+<blockquote>关联：<a href="对外资料清单与制作排期.html" class="wikilink">对外资料清单与制作排期</a> — 案例是推广的核心弹药</blockquote>
+<blockquote>关联：<a href="模块四_客户细分与差异化方案.html" class="wikilink">模块四_客户细分与差异化方案</a> — 不同行业用不同案例</blockquote>
+
+<p>#GitHub #开源 #技术方案 #案例 #Dify #FastGPT</p>
+            </article>
+            <footer class="page-footer">
+                <p>上海锦霓鲤锦网络科技有限公司 · AI 数字员工企业增效计划</p>
+                <p style="margin-top:4px;font-size:12px;"><a href="https://hermes-agent.nousresearch.com" target="_blank">Hermes Agent</a> · <a href="#" onclick="scrollToTop()">回到顶部 ↑</a></p>
+            </footer>
+        </main>
+    </div>
+    <script>
+        
+// 基础防复制
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('copy', e => e.preventDefault());
+document.addEventListener('selectstart', e => e.preventDefault());
+document.addEventListener('dragstart', e => e.preventDefault());
+
+function searchNotes(q) {
+    q = q.toLowerCase();
+    document.querySelectorAll('.page-link').forEach(el => {
+        const text = el.textContent.toLowerCase();
+        el.style.display = text.includes(q) ? '' : 'none';
+    });
+    // 隐藏空的分组
+    document.querySelectorAll('.module-group').forEach(g => {
+        const visible = Array.from(g.querySelectorAll('.page-link')).filter(e => e.style.display !== 'none');
+        g.style.display = visible.length > 0 ? '' : 'none';
+    });
+}
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+    </script>
+</body>
+</html>

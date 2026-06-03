@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI数字员工 · 推广与流程体系完整框架 · 企业数字员工</title>
+    <style>
+        
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --primary: #2563eb;
+    --primary-light: #3b82f6;
+    --bg: #f8fafc;
+    --sidebar-bg: #ffffff;
+    --card-bg: #ffffff;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --gradient: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #3b82f6 100%);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+/* Top Navigation */
+.top-nav {
+    background: var(--gradient);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(37,99,235,0.15);
+}
+.nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo { font-size: 18px; font-weight: 700; color: white; text-decoration: none; letter-spacing: 1px; }
+.nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+.nav-links a {
+    color: rgba(255,255,255,0.85); text-decoration: none; font-size: 12px;
+    padding: 4px 10px; border-radius: 20px; transition: all 0.2s;
+}
+.nav-links a:hover { background: rgba(255,255,255,0.15); color: white; }
+
+/* Layout */
+.layout { display: flex; max-width: 1400px; margin: 0 auto; min-height: calc(100vh - 56px); }
+
+/* Sidebar */
+.sidebar {
+    width: 260px; flex-shrink: 0; background: var(--sidebar-bg);
+    border-right: 1px solid var(--border); padding: 16px 12px;
+    position: sticky; top: 56px; height: calc(100vh - 56px); overflow-y: auto;
+}
+.sidebar-search { margin-bottom: 12px; }
+.sidebar-search input {
+    width: 100%; padding: 7px 12px; border: 1px solid var(--border);
+    border-radius: 8px; font-size: 13px; outline: none; transition: border 0.2s;
+}
+.sidebar-search input:focus { border-color: var(--primary); }
+.module-group { margin-bottom: 16px; }
+.module-title {
+    font-size: 11px; font-weight: 700; color: var(--text-light);
+    text-transform: uppercase; letter-spacing: 0.5px;
+    padding: 6px 8px 3px; border-bottom: 1px solid var(--border); margin-bottom: 3px;
+}
+.page-link {
+    display: flex; align-items: center; gap: 5px;
+    padding: 4px 8px; border-radius: 5px; color: var(--text);
+    text-decoration: none; font-size: 12.5px; transition: all 0.15s;
+}
+.page-link:hover { background: #eef2ff; color: var(--primary); }
+.page-link.active { background: #eef2ff; color: var(--primary); font-weight: 600; }
+.page-link .icon { font-size: 13px; width: 18px; text-align: center; flex-shrink: 0; }
+.page-link .title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Main Content */
+.content { flex: 1; padding: 32px 48px; max-width: 880px; }
+.breadcrumb { font-size: 13px; color: var(--text-light); margin-bottom: 20px; }
+.breadcrumb a { color: var(--primary); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* Article */
+.article h1 { font-size: 28px; font-weight: 700; margin-bottom: 16px; line-height: 1.3; }
+.article h2 {
+    font-size: 22px; font-weight: 600; margin-top: 32px; margin-bottom: 12px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--border);
+}
+.article h3 { font-size: 18px; font-weight: 600; margin-top: 28px; margin-bottom: 8px; }
+.article h4 { font-size: 16px; font-weight: 600; margin-top: 24px; margin-bottom: 8px; }
+.article p { margin-bottom: 14px; }
+.article a { color: var(--primary); text-decoration: none; }
+.article a:hover { text-decoration: underline; }
+.article a.wikilink { background: #eef2ff; padding: 1px 5px; border-radius: 3px; font-size: 14px; }
+.article a.wikilink::before { content: "📄 "; font-size: 12px; }
+.article code {
+    background: #f1f5f9; padding: 2px 6px; border-radius: 4px;
+    font-size: 13px; font-family: "SF Mono", "JetBrains Mono", monospace;
+}
+.article pre {
+    background: #1e293b; color: #e2e8f0; padding: 18px; border-radius: 10px;
+    overflow-x: auto; margin: 16px 0;
+}
+.article pre code { background: none; padding: 0; color: inherit; font-size: 13px; line-height: 1.5; }
+.article blockquote {
+    border-left: 4px solid var(--primary); padding: 10px 18px; margin: 14px 0;
+    background: #f8fafc; border-radius: 0 8px 8px 0; color: var(--text-light);
+}
+.article ul, .article ol { margin: 6px 0 14px 22px; }
+.article li { margin-bottom: 3px; }
+.article .table-wrap { overflow-x: auto; margin: 14px 0; }
+.article table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 500px; }
+.article th, .article td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+.article th { background: #f1f5f9; font-weight: 600; }
+.article tr:nth-child(even) { background: #f8fafc; }
+.article hr { border: none; border-top: 2px solid var(--border); margin: 28px 0; }
+.article .content-img { max-width: 100%; border-radius: 8px; margin: 16px 0; }
+
+.article .meta-bar {
+    display: flex; gap: 14px; font-size: 13px; color: var(--text-light);
+    margin-bottom: 20px; flex-wrap: wrap;
+}
+.article .meta-bar span { background: #f1f5f9; padding: 3px 10px; border-radius: 12px; }
+
+/* Page Footer */
+.page-footer {
+    margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border);
+    text-align: center; font-size: 13px; color: var(--text-light);
+}
+
+/* Home Page */
+.home-hero { text-align: center; padding: 40px 0 24px; }
+.home-hero h1 { font-size: 34px; margin-bottom: 10px; }
+.home-hero p { font-size: 17px; color: var(--text-light); margin-bottom: 6px; }
+.home-info { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
+.home-info .badge {
+    background: #eef2ff; padding: 5px 14px; border-radius: 20px;
+    font-size: 12.5px; color: var(--primary);
+}
+.project-card {
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    border-radius: 14px; padding: 24px 28px; margin: 20px 0;
+}
+.project-card table { width: 100%; border: none; font-size: 14px; }
+.project-card td { border: none; padding: 4px 0; vertical-align: top; }
+.project-card td:first-child { width: 100px; font-weight: 600; color: var(--text-light); }
+.module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; margin: 20px 0; }
+.module-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px; transition: all 0.2s;
+    text-decoration: none; color: inherit; display: block;
+}
+.module-card:hover {
+    border-color: var(--primary); box-shadow: 0 4px 16px rgba(37,99,235,0.08);
+    transform: translateY(-2px);
+}
+.module-card h3 { font-size: 15px; margin-bottom: 6px; }
+.module-card p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+.module-card .count { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .layout { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--border); }
+    .content { padding: 20px; }
+    .module-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+}
+
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-inner">
+            <a href="index.html" class="logo">🤖 企业数字员工</a>
+            <div class="nav-links">
+                <a href="module-0-项目总览.html">🎯 总览</a>
+<a href="module-1-推广体系.html">📡 推广</a>
+<a href="module-2-销售转化.html">🪜 销售</a>
+<a href="module-3-内容素材.html">📝 素材</a>
+<a href="module-4-客户细分.html">👥 客户</a>
+<a href="module-5-交付SOP.html">🔧 交付</a>
+<a href="module-6-工具模板.html">🧰 工具</a>
+<a href="module-7-Hermes技术基座.html">🤖 Hermes</a>
+<a href="module-交付物.html">📦 交付</a>
+<a href="module-附件.html">📎 附件</a>
+            </div>
+        </div>
+    </nav>
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-search">
+                <input type="text" id="search" placeholder="🔍 搜索笔记..." oninput="searchNotes(this.value)">
+            </div>
+            <div class="sidebar-toc" id="sidebar-toc">
+                <div class="module-group">
+<div class="module-title">🎯 项目总览</div>
+<a href="推广与流程体系_完整框架.html" class="page-link active><span class="icon">📐</span><span class="title">AI数字员工 · 推广与流程体系完整框架</span></a>
+<a href="GitHub可用项目清单与案例方案.html" class="page-link><span class="icon">🎯</span><span class="title">GitHub 可用项目清单与案例方案</span></a>
+<a href="八大行业方案速查.html" class="page-link><span class="icon">🏢</span><span class="title">八大行业方案速查</span></a>
+<a href="对外资料清单与制作排期.html" class="page-link><span class="icon">🎯</span><span class="title">对外资料清单与制作排期</span></a>
+<a href="常见反对意见与应对.html" class="page-link><span class="icon">🛡️</span><span class="title">常见反对意见与应对</span></a>
+<a href="核心话术速查.html" class="page-link><span class="icon">💬</span><span class="title">核心话术速查</span></a>
+<a href="项目检查清单.html" class="page-link><span class="icon">✅</span><span class="title">项目检查清单</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📡 推广体系</div>
+<a href="模块一_推广渠道矩阵.html" class="page-link><span class="icon">📡</span><span class="title">模块一：推广渠道矩阵</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🪜 销售转化</div>
+<a href="模块二_销售转化漏斗.html" class="page-link><span class="icon">🪜</span><span class="title">模块二：销售转化漏斗</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📝 内容素材</div>
+<a href="模块三_内容素材体系.html" class="page-link><span class="icon">📝</span><span class="title">模块三：内容素材体系</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">👥 客户细分</div>
+<a href="模块四_客户细分与差异化方案.html" class="page-link><span class="icon">👥</span><span class="title">模块四：客户细分与差异化方案</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🔧 交付SOP</div>
+<a href="模块五_交付SOP标准操作手册.html" class="page-link><span class="icon">🔧</span><span class="title">模块五：交付SOP标准操作手册</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🧰 工具模板</div>
+<a href="模块六_工具模板清单.html" class="page-link><span class="icon">🧰</span><span class="title">模块六：工具模板清单</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🤖 Hermes 技术基座</div>
+<a href="README.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes Agent — AI 数字员工技术基座</span></a>
+<a href="Hermes CLI 速查.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes CLI 速查</span></a>
+<a href="Hermes 工具清单.html" class="page-link><span class="icon">🔌</span><span class="title">Hermes 工具清单</span></a>
+<a href="Hermes 示例命令.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes 示例命令</span></a>
+<a href="Hermes 部署与运维.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes 部署与运维</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📦 交付物</div>
+<a href="知识库_客服话术.html" class="page-link><span class="icon">📚</span><span class="title">AI数字员工 客服知识库</span></a>
+<a href="操作手册_企微AI客服部署.html" class="page-link><span class="icon">📋</span><span class="title">企微AI客服部署操作手册</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📎 附件</div>
+<a href="AI数字员工_企业增效计划.html" class="page-link><span class="icon">📄</span><span class="title">AI数字员工_企业增效计划</span></a>
+<a href="AI数字员工_展会精华版.html" class="page-link><span class="icon">🎪</span><span class="title">AI数字员工_展会精华版</span></a>
+<a href="AI智能体企业定制服务_企业展示.html" class="page-link><span class="icon">🤖</span><span class="title">AI智能体企业定制服务_企业展示</span></a>
+<a href="ppt-master参考索引.html" class="page-link><span class="icon">📄</span><span class="title">ppt-master 模板参考</span></a>
+<a href="素材总索引.html" class="page-link><span class="icon">🖼️</span><span class="title">素材总索引</span></a>
+</div>
+            </div>
+        </aside>
+        <main class="content">
+            <div class="breadcrumb"><a href="index.html">🏠 首页</a> / <a href="module-0-项目总览.html">🎯 项目总览</a> / AI数字员工 · 推广与流程体系完整框架</div>
+            <article class="article">
+                <h1>📐 AI数字员工 · 推广与流程体系完整框架</h1>
+    <div class="meta-bar">
+        <span>📖 16 分钟</span>
+        <span>📝 8210 字</span>
+        <span>📊 60 个表格</span>
+    </div>
+    <h1>AI数字员工 · 推广与流程体系完整框架</h1>
+
+<blockquote>版本：v1.0 <div class="table-wrap"><table></blockquote>
+<tr><td>日期：2026-06-03</td><td>负责人：倪锦</td></tr>
+</table></div>> 说明：本文件为项目推广与交付流程的总框架目录，每个模块将独立成文展开到极致细节。
+
+<hr>
+
+<h2>整体架构图</h2>
+
+<pre><code class="lang-">                        ┌─────────────────────────────────┐
+<p>│        企业数字员工项目           │</p>
+<p>│    AI数字员工 · 企业增效计划      │</p>
+<p>└────────────┬────────────────────┘</p>
+<p>│</p>
+<p>┌────────────────────────┼────────────────────────┐</p>
+<p>│                        │                        │</p>
+<p>▼────┴────▼            ▼──────┴──────▼          ▼─────┴─────▼</p>
+<p>┌──────────────┐      ┌──────────────────┐      ┌──────────────┐</p>
+<p>│   推广获客    │ ──→  │   转化成交        │ ──→  │   交付服务    │</p>
+<p>│  (让客户来)   │      │  (让客户掏钱)     │      │  (让客户爽)   │</p>
+<p>└──────────────┘      └──────────────────┘      └──────────────┘</p>
+<p>│                        │                        │</p>
+<p>▼                        ▼                        ▼</p>
+<p>┌──────────────┐      ┌──────────────────┐      ┌──────────────┐</p>
+<p>│ 模块一       │      │ 模块二            │      │ 模块五       │</p>
+<p>│ 推广渠道矩阵 │      │ 销售转化漏斗      │      │ 交付SOP      │</p>
+<p>└──────────────┘      └──────────────────┘      └──────────────┘</p>
+<p>│                        │                        │</p>
+<p>└────────────┬───────────┴───────────┬────────────┘</p>
+<p>│                       │</p>
+<p>┌─────┴─────┐           ┌─────┴─────┐</p>
+<p>│ 模块三     │           │ 模块四     │</p>
+<p>│ 内容素材   │           │ 客户细分   │</p>
+<p>│ 体系       │           │ 差异化方案 │</p>
+<p>└───────────┘           └───────────┘</p>
+<p>│                       │</p>
+<p>└───────────┬───────────┘</p>
+<p>│</p>
+<p>┌─────┴─────┐</p>
+<p>│ 模块六     │</p>
+<p>│ 工具模板   │</p>
+<p>│ 清单       │</p>
+<p>└───────────┘</p>
+<p></code></pre></p>
+
+<hr>
+
+<h2>模块一：推广渠道矩阵</h2>
+
+<blockquote>目标：全渠道覆盖目标客户触点，每个渠道有独立打法、素材、话术、转化路径</blockquote>
+
+<h3>渠道分类</h3>
+
+<div class="table-wrap"><table>
+<tr><td>大类</td><td>渠道</td><td>优先级</td><td>定位</td></tr>
+<tr><td>线上免费</td><td>微信朋友圈</td><td>★★★★★</td><td>私域核心阵地</td></tr>
+<tr><td>线上免费</td><td>微信社群</td><td>★★★★☆</td><td>精准渗透</td></tr>
+<tr><td>线上免费</td><td>短视频（抖音/快手/视频号）</td><td>★★★★★</td><td>公域流量池</td></tr>
+<tr><td>线上免费</td><td>小红书</td><td>★★★★☆</td><td>品牌种草</td></tr>
+<tr><td>线上免费</td><td>公众号/知乎</td><td>★★★☆☆</td><td>深度内容</td></tr>
+<tr><td>线上付费</td><td>抖音/快手信息流</td><td>★★★☆☆</td><td>精准投放</td></tr>
+<tr><td>线上付费</td><td>百度SEM/本地搜索</td><td>★★★★☆</td><td>搜索截流</td></tr>
+<tr><td>线下主动</td><td>展会/行业论坛</td><td>★★★★★</td><td>高意向获客</td></tr>
+<tr><td>线下主动</td><td>产业园/商会/协会</td><td>★★★★☆</td><td>批量触达</td></tr>
+<tr><td>线下主动</td><td>地推/扫街</td><td>★★★☆☆</td><td>区域深耕</td></tr>
+<tr><td>转介绍</td><td>老客户转介绍</td><td>★★★★★</td><td>最高质量</td></tr>
+<tr><td>转介绍</td><td>异业合作转介绍</td><td>★★★★☆</td><td>渠道共享</td></tr>
+<tr><td>线上免费</td><td>闲鱼/58同城</td><td>★★★☆☆</td><td>低价截流</td></tr>
+<tr><td>线上免费</td><td>B站/知识类平台</td><td>★★☆☆☆</td><td>品牌长期</td></tr>
+</table></div>
+<h3>每一个渠道需细化的内容</h3>
+
+<ol>
+<li>渠道画像（什么人在这、什么场景、什么心态）</li>
+<li>内容形式（图文/视频/直播/线下物料）</li>
+<li>核心钩子（3秒抓住注意力的点）</li>
+<li>话术模板（3-5套不同场景话术）</li>
+<li>转化路径（从看到→联系→诊断的完整链路）</li>
+<li>发布频率/节奏</li>
+<li>成本预算</li>
+<li>效果衡量指标</li>
+<li>A/B测试方向</li>
+<li>常见问题预判与应答</li>
+</ol>
+
+<hr>
+
+<h2>模块二：销售转化漏斗</h2>
+
+<blockquote>目标：完整还原从客户第一次接触到签约付款的每一步，每一步有标准动作、话术、时长、应对策略</blockquote>
+
+<h3>漏斗层级</h3>
+
+<pre><code class="lang-">                    ┌──────────────────────┐
+<p>│  曝光/触达（100%）    │</p>
+<p>│  看到推广内容         │</p>
+<p>└──────────┬───────────┘</p>
+<p>│</p>
+<p>┌──────────▼───────────┐</p>
+<p>│  兴趣/点击（≈5%）     │</p>
+<p>│  点开/私信/加好友     │</p>
+<p>└──────────┬───────────┘</p>
+<p>│</p>
+<p>┌──────────▼───────────┐</p>
+<p>│  初步沟通（≈2%）      │</p>
+<p>│  微信/电话初步聊      │</p>
+<p>└──────────┬───────────┘</p>
+<p>│</p>
+<p>┌──────────▼───────────┐</p>
+<p>│  免费诊断（≈1%）      │</p>
+<p>│  上门/远程业务调研     │</p>
+<p>└──────────┬───────────┘</p>
+<p>│</p>
+<p>┌──────────▼───────────┐</p>
+<p>│  方案报价（≈0.7%）    │</p>
+<p>│  出方案+报价          │</p>
+<p>└──────────┬───────────┘</p>
+<p>│</p>
+<p>┌──────────▼───────────┐</p>
+<p>│  签约付款（≈0.5%）    │</p>
+<p>│  签合同+付款          │</p>
+<p>└──────────┬───────────┘</p>
+<p>│</p>
+<p>┌──────────▼───────────┐</p>
+<p>│  交付上线（≈0.5%）    │</p>
+<p>│  开发部署上线         │</p>
+<p>└──────────┬───────────┘</p>
+<p>│</p>
+<p>┌──────────▼───────────┐</p>
+<p>│  转介绍/续费          │</p>
+<p>│  长期价值             │</p>
+<p>└──────────────────────┘</p>
+<p></code></pre></p>
+
+<h3>每一步需细化的内容</h3>
+
+<ol>
+<li><strong>触发场景</strong>：客户处于什么状态</li>
+<li><strong>客户心理</strong>：这个阶段客户在想什么、担心什么</li>
+<li><strong>我方目标</strong>：这一步要达成的唯一目标</li>
+<li><strong>标准动作</strong>：做什么、怎么做、顺序</li>
+<li><strong>标准话术</strong>：开场白、核心说辞、收尾</li>
+<li><strong>常见反对意见</strong>：客户可能说什么、怎么应对</li>
+<li><strong>判断标准</strong>：什么算"通过"这个阶段</li>
+<li><strong>限时/未跟进的应急策略</strong></li>
+<li><strong>工具辅助</strong>：用什么工具或物料辅助转化</li>
+<li><strong>案例/证据支撑</strong>：用什么案例背书</li>
+</ol>
+
+<hr>
+
+<h2>模块三：内容素材体系</h2>
+
+<blockquote>目标：按渠道、按场景、按客户阶段，建立完整的内容素材库，需要什么直接取</blockquote>
+
+<h3>内容分类维度</h3>
+
+<h4>按形式分</h4>
+<ul>
+<li>图文类：朋友圈文案、公众号文章、小红书笔记、知乎回答</li>
+<li>视频类：短视频（15-60s）、中视频（1-3min）、直播</li>
+<li>音频类：播客口播稿</li>
+<li>线下物料：传单、海报、易拉宝、名片、宣传册</li>
+</ul>
+
+<h4>按功能分</h4>
+<ul>
+<li>引流类：吸引注意、产生兴趣</li>
+<li>教育类：建立认知、消除疑虑</li>
+<li>转化类：促成行动、推动决策</li>
+<li>口碑类：案例展示、客户见证</li>
+<li>维护类：老客户维系、转介绍引导</li>
+</ul>
+
+<h4>按客户阶段分</h4>
+<ul>
+<li>陌生人阶段：不认识你，先混脸熟</li>
+<li>有兴趣阶段：主动了解，提供价值</li>
+<li>考虑中阶段：对比竞品，消除疑虑</li>
+<li>决策阶段：临门一脚，降低风险</li>
+<li>已成交阶段：超出预期，引导转介绍</li>
+</ul>
+
+<h3>目标产出物清单</h3>
+
+<ol>
+<li>朋友圈文案库（30条+，分类目）</li>
+<li>短视频脚本库（20条+，分场景）</li>
+<li>小红书笔记模板（10篇+）</li>
+<li>客户案例库（5-10个，真实+匿名）</li>
+<li>行业解决方案（5个行业 x 1页纸）</li>
+<li>常见问题FAQ（20问+，分客户层级）</li>
+<li>公众号文章选题库（12篇+）</li>
+<li>线下物料设计稿（传单/海报/名片）</li>
+<li>直播/录播大纲（3套）</li>
+<li>对比素材（vs 竞品 vs 自做 vs 不用AI）</li>
+</ol>
+
+<hr>
+
+<h2>模块四：客户细分与差异化方案</h2>
+
+<blockquote>目标：不同行业客户有不同痛点、不同场景、不同话术、不同案例</blockquote>
+
+<h3>目标行业清单</h3>
+
+<div class="table-wrap"><table>
+<tr><td>行业</td><td>优先级</td><td>市场规模</td><td>核心痛点</td><td>最高频场景</td></tr>
+<tr><td>电商/直播</td><td>★★★★★</td><td>最大</td><td>客服成本高、内容产出慢</td><td>智能客服+营销内容</td></tr>
+<tr><td>二手车</td><td>★★★★★</td><td>大</td><td>车源管理乱、客户跟进差</td><td>智能客服+数据报表</td></tr>
+<tr><td>本地服务（餐饮/美容等）</td><td>★★★★☆</td><td>大</td><td>预约管理、客户回访</td><td>智能客服+文档自动化</td></tr>
+<tr><td>传统制造业</td><td>★★★★☆</td><td>大</td><td>文档管理、知识传承</td><td>知识库+文档自动化</td></tr>
+<tr><td>律师/会计事务所</td><td>★★★☆☆</td><td>中</td><td>文档处理、法规查询</td><td>文档自动化+知识库</td></tr>
+<tr><td>房产中介</td><td>★★★☆☆</td><td>中</td><td>房源管理、客户跟进</td><td>数据报表+智能客服</td></tr>
+<tr><td>教育培训</td><td>★★★☆☆</td><td>中</td><td>课程咨询、学员管理</td><td>智能客服+知识库</td></tr>
+<tr><td>物流/贸易</td><td>★★☆☆☆</td><td>中</td><td>订单跟踪、异常处理</td><td>数据报表+文档自动化</td></tr>
+</table></div>
+<h3>每个行业需细化的内容</h3>
+
+<ol>
+<li>行业画像（规模、人员结构、IT水平）</li>
+<li>核心痛点（3-5个，越具体越好）</li>
+<li>落地场景（3-5个，每场景一句话描述）</li>
+<li>价值量化（每月省多少钱/多少小时）</li>
+<li>差异化话术（这个行业的客户听什么）</li>
+<li>参考案例（真实或合理虚构）</li>
+<li>常见质疑（这个行业的客户最担心什么）</li>
+<li>推广策略（在哪个渠道找他们、怎么找）</li>
+<li>标杆客户开发计划（第一个客户怎么打）</li>
+<li>成功标准（对这类客户什么叫"成功交付"）</li>
+</ol>
+
+<hr>
+
+<h2>模块五：交付SOP标准操作手册</h2>
+
+<blockquote>目标：从客户联系到交付上线的全流程标准操作手册，新人照着做也能交付</blockquote>
+
+<h3>SOP阶段</h3>
+
+<div class="table-wrap"><table>
+<tr><td>阶段</td><td>步骤</td><td>负责人</td><td>标准时长</td><td>交付物</td></tr>
+<tr><td>L1 联系咨询</td><td>1.1 首次响应</td><td>销售</td><td>1小时内</td><td>客户信息记录</td></tr>
+<tr><td>L1 联系咨询</td><td>1.2 初步沟通</td><td>销售</td><td>20-30min</td><td>初步需求记录</td></tr>
+<tr><td>L2 免费诊断</td><td>2.1 预约调研</td><td>销售+技术</td><td>1天内</td><td>调研时间确认</td></tr>
+<tr><td>L2 免费诊断</td><td>2.2 现场/远程调研</td><td>技术</td><td>1-2天</td><td>调研记录</td></tr>
+<tr><td>L2 免费诊断</td><td>2.3 输出评估报告</td><td>技术</td><td>1天内</td><td>《AI诊断评估报告》</td></tr>
+<tr><td>L3 方案报价</td><td>3.1 方案设计</td><td>技术</td><td>1-2天</td><td>《AI落地方案书》</td></tr>
+<tr><td>L3 方案报价</td><td>3.2 报价谈判</td><td>销售</td><td>1-2天</td><td>报价单</td></tr>
+<tr><td>L4 签约付款</td><td>4.1 签订合同</td><td>销售</td><td>1天</td><td>技术服务合同</td></tr>
+<tr><td>L4 签约付款</td><td>4.2 收款开票</td><td>销售+财务</td><td>1-3天</td><td>付款凭证</td></tr>
+<tr><td>L5 开发部署</td><td>5.1 环境搭建</td><td>技术</td><td>1天</td><td>开发环境就绪</td></tr>
+<tr><td>L5 开发部署</td><td>5.2 Agent开发</td><td>技术</td><td>2-5天</td><td>Agent交付</td></tr>
+<tr><td>L5 开发部署</td><td>5.3 对接测试</td><td>技术</td><td>1天</td><td>测试报告</td></tr>
+<tr><td>L5 开发部署</td><td>5.4 验收上线</td><td>销售+技术</td><td>1天</td><td>验收确认单</td></tr>
+<tr><td>L6 优化维护</td><td>6.1 员工培训</td><td>销售/技术</td><td>1-2h</td><td>培训记录</td></tr>
+<tr><td>L6 优化维护</td><td>6.2 效果跟踪</td><td>技术</td><td>每周</td><td>周报</td></tr>
+<tr><td>L6 优化维护</td><td>6.3 迭代升级</td><td>技术</td><td>每月</td><td>升级记录</td></tr>
+</table></div>
+<h3>每个步骤需细化的内容</h3>
+
+<ol>
+<li><strong>触发条件</strong>：什么情况下进入这个步骤</li>
+<li><strong>准备工作</strong>：开始前需要准备好什么</li>
+<li><strong>执行动作</strong>：每一步做什么、怎么做、顺序</li>
+<li><strong>工具/模板</strong>：用什么工具、填什么表</li>
+<li><strong>沟通话术</strong>：跟客户说什么、怎么说的逐字稿</li>
+<li><strong>质量标准</strong>：做到什么程度算合格</li>
+<li><strong>常见问题</strong>：可能会出什么岔子、怎么处理</li>
+<li><strong>交接要点</strong>：这一步完成交给谁、交什么</li>
+<li><strong>时限要求</strong>：最长不能超过多久</li>
+<li><strong>升级机制</strong>：遇到解决不了的问题找谁</li>
+</ol>
+
+<hr>
+
+<h2>模块六：工具模板清单</h2>
+
+<blockquote>目标：建立可复用、可迭代的工具包，让每次执行都有标准模板</blockquote>
+
+<h3>模板清单</h3>
+
+<ol>
+<li><strong>客户信息记录表</strong> — 首次联系即填写，后续所有环节共用</li>
+<li><strong>初步需求调研问卷</strong> — 发客户自填或电话问</li>
+<li><strong>AI诊断评估报告模板</strong> — 免费交付物，也是转化工具</li>
+<li><strong>AI落地方案书模板</strong> — 含方案+场景+报价</li>
+<li><strong>报价单模板</strong> — 标准格式，支持S1/S2/S3定制</li>
+<li><strong>技术服务合同模板</strong> — 法务审核过的标准合同</li>
+<li><strong>验收确认单模板</strong> — 客户签字确认</li>
+<li><strong>项目排期表模板</strong> — 从签约到上线的甘特图</li>
+<li><strong>培训记录表模板</strong> — 培训了什么、谁参加了</li>
+<li><strong>效果跟踪周报模板</strong> — 每周发给客户的</li>
+<li><strong>客户案例采集模板</strong> — 统一格式采集案例</li>
+<li><strong>转介绍引导话术卡</strong> — 什么时候说、怎么说</li>
+<li><strong>客户分级标准</strong> — A/B/C/D级客户定义</li>
+<li><strong>跟进记录表</strong> — 每一次跟进都有记录</li>
+<li><strong>月度运营报告模板</strong> — 给已签约客户看效果</li>
+</ol>
+
+<hr>
+
+<h2>附录</h2>
+
+<h3>时间规划建议</h3>
+
+<div class="table-wrap"><table>
+<tr><td>阶段</td><td>时间</td><td>重点</td></tr>
+<tr><td>框架搭建</td><td>本周</td><td>完成模块一~六全部内容</td></tr>
+<tr><td>物料制作</td><td>第2周</td><td>朋友圈/短视频/海报等实际物料</td></tr>
+<tr><td>渠道测试</td><td>第3周</td><td>选2-3个渠道试跑</td></tr>
+<tr><td>优化迭代</td><td>第4周</td><td>根据数据调整</td></tr>
+<tr><td>全面铺开</td><td>第5周起</td><td>全渠道启动</td></tr>
+</table></div>
+<h3>关键成功指标 (KPI)</h3>
+
+<div class="table-wrap"><table>
+<tr><td>指标</td><td>目标值</td><td>计算方法</td></tr>
+<tr><td>月获客线索数</td><td>50+</td><td>各渠道新增客户咨询量</td></tr>
+<tr><td>线索转诊断率</td><td>30%+</td><td>进入免费诊断/初步沟通数</td></tr>
+<tr><td>诊断转签约率</td><td>40%+</td><td>签约数/诊断数</td></tr>
+<tr><td>平均交付周期</td><td>7工作日</td><td>从签约到验收天数</td></tr>
+<tr><td>客户满意度</td><td>4.5/5</td><td>验收时满意度评分</td></tr>
+<tr><td>转介绍率</td><td>20%+</td><td>老客户带来新客户占比</td></tr>
+<tr><td>客单价</td><td>6000+</td><td>平均签约金额</td></tr>
+</table></div>
+            </article>
+            <footer class="page-footer">
+                <p>上海锦霓鲤锦网络科技有限公司 · AI 数字员工企业增效计划</p>
+                <p style="margin-top:4px;font-size:12px;"><a href="https://hermes-agent.nousresearch.com" target="_blank">Hermes Agent</a> · <a href="#" onclick="scrollToTop()">回到顶部 ↑</a></p>
+            </footer>
+        </main>
+    </div>
+    <script>
+        
+// 基础防复制
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('copy', e => e.preventDefault());
+document.addEventListener('selectstart', e => e.preventDefault());
+document.addEventListener('dragstart', e => e.preventDefault());
+
+function searchNotes(q) {
+    q = q.toLowerCase();
+    document.querySelectorAll('.page-link').forEach(el => {
+        const text = el.textContent.toLowerCase();
+        el.style.display = text.includes(q) ? '' : 'none';
+    });
+    // 隐藏空的分组
+    document.querySelectorAll('.module-group').forEach(g => {
+        const visible = Array.from(g.querySelectorAll('.page-link')).filter(e => e.style.display !== 'none');
+        g.style.display = visible.length > 0 ? '' : 'none';
+    });
+}
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+    </script>
+</body>
+</html>

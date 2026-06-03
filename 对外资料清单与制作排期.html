@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对外资料清单与制作排期 · 企业数字员工</title>
+    <style>
+        
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --primary: #2563eb;
+    --primary-light: #3b82f6;
+    --bg: #f8fafc;
+    --sidebar-bg: #ffffff;
+    --card-bg: #ffffff;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --gradient: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #3b82f6 100%);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+/* Top Navigation */
+.top-nav {
+    background: var(--gradient);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(37,99,235,0.15);
+}
+.nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo { font-size: 18px; font-weight: 700; color: white; text-decoration: none; letter-spacing: 1px; }
+.nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+.nav-links a {
+    color: rgba(255,255,255,0.85); text-decoration: none; font-size: 12px;
+    padding: 4px 10px; border-radius: 20px; transition: all 0.2s;
+}
+.nav-links a:hover { background: rgba(255,255,255,0.15); color: white; }
+
+/* Layout */
+.layout { display: flex; max-width: 1400px; margin: 0 auto; min-height: calc(100vh - 56px); }
+
+/* Sidebar */
+.sidebar {
+    width: 260px; flex-shrink: 0; background: var(--sidebar-bg);
+    border-right: 1px solid var(--border); padding: 16px 12px;
+    position: sticky; top: 56px; height: calc(100vh - 56px); overflow-y: auto;
+}
+.sidebar-search { margin-bottom: 12px; }
+.sidebar-search input {
+    width: 100%; padding: 7px 12px; border: 1px solid var(--border);
+    border-radius: 8px; font-size: 13px; outline: none; transition: border 0.2s;
+}
+.sidebar-search input:focus { border-color: var(--primary); }
+.module-group { margin-bottom: 16px; }
+.module-title {
+    font-size: 11px; font-weight: 700; color: var(--text-light);
+    text-transform: uppercase; letter-spacing: 0.5px;
+    padding: 6px 8px 3px; border-bottom: 1px solid var(--border); margin-bottom: 3px;
+}
+.page-link {
+    display: flex; align-items: center; gap: 5px;
+    padding: 4px 8px; border-radius: 5px; color: var(--text);
+    text-decoration: none; font-size: 12.5px; transition: all 0.15s;
+}
+.page-link:hover { background: #eef2ff; color: var(--primary); }
+.page-link.active { background: #eef2ff; color: var(--primary); font-weight: 600; }
+.page-link .icon { font-size: 13px; width: 18px; text-align: center; flex-shrink: 0; }
+.page-link .title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Main Content */
+.content { flex: 1; padding: 32px 48px; max-width: 880px; }
+.breadcrumb { font-size: 13px; color: var(--text-light); margin-bottom: 20px; }
+.breadcrumb a { color: var(--primary); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* Article */
+.article h1 { font-size: 28px; font-weight: 700; margin-bottom: 16px; line-height: 1.3; }
+.article h2 {
+    font-size: 22px; font-weight: 600; margin-top: 32px; margin-bottom: 12px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--border);
+}
+.article h3 { font-size: 18px; font-weight: 600; margin-top: 28px; margin-bottom: 8px; }
+.article h4 { font-size: 16px; font-weight: 600; margin-top: 24px; margin-bottom: 8px; }
+.article p { margin-bottom: 14px; }
+.article a { color: var(--primary); text-decoration: none; }
+.article a:hover { text-decoration: underline; }
+.article a.wikilink { background: #eef2ff; padding: 1px 5px; border-radius: 3px; font-size: 14px; }
+.article a.wikilink::before { content: "📄 "; font-size: 12px; }
+.article code {
+    background: #f1f5f9; padding: 2px 6px; border-radius: 4px;
+    font-size: 13px; font-family: "SF Mono", "JetBrains Mono", monospace;
+}
+.article pre {
+    background: #1e293b; color: #e2e8f0; padding: 18px; border-radius: 10px;
+    overflow-x: auto; margin: 16px 0;
+}
+.article pre code { background: none; padding: 0; color: inherit; font-size: 13px; line-height: 1.5; }
+.article blockquote {
+    border-left: 4px solid var(--primary); padding: 10px 18px; margin: 14px 0;
+    background: #f8fafc; border-radius: 0 8px 8px 0; color: var(--text-light);
+}
+.article ul, .article ol { margin: 6px 0 14px 22px; }
+.article li { margin-bottom: 3px; }
+.article .table-wrap { overflow-x: auto; margin: 14px 0; }
+.article table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 500px; }
+.article th, .article td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+.article th { background: #f1f5f9; font-weight: 600; }
+.article tr:nth-child(even) { background: #f8fafc; }
+.article hr { border: none; border-top: 2px solid var(--border); margin: 28px 0; }
+.article .content-img { max-width: 100%; border-radius: 8px; margin: 16px 0; }
+
+.article .meta-bar {
+    display: flex; gap: 14px; font-size: 13px; color: var(--text-light);
+    margin-bottom: 20px; flex-wrap: wrap;
+}
+.article .meta-bar span { background: #f1f5f9; padding: 3px 10px; border-radius: 12px; }
+
+/* Page Footer */
+.page-footer {
+    margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border);
+    text-align: center; font-size: 13px; color: var(--text-light);
+}
+
+/* Home Page */
+.home-hero { text-align: center; padding: 40px 0 24px; }
+.home-hero h1 { font-size: 34px; margin-bottom: 10px; }
+.home-hero p { font-size: 17px; color: var(--text-light); margin-bottom: 6px; }
+.home-info { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
+.home-info .badge {
+    background: #eef2ff; padding: 5px 14px; border-radius: 20px;
+    font-size: 12.5px; color: var(--primary);
+}
+.project-card {
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    border-radius: 14px; padding: 24px 28px; margin: 20px 0;
+}
+.project-card table { width: 100%; border: none; font-size: 14px; }
+.project-card td { border: none; padding: 4px 0; vertical-align: top; }
+.project-card td:first-child { width: 100px; font-weight: 600; color: var(--text-light); }
+.module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; margin: 20px 0; }
+.module-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px; transition: all 0.2s;
+    text-decoration: none; color: inherit; display: block;
+}
+.module-card:hover {
+    border-color: var(--primary); box-shadow: 0 4px 16px rgba(37,99,235,0.08);
+    transform: translateY(-2px);
+}
+.module-card h3 { font-size: 15px; margin-bottom: 6px; }
+.module-card p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+.module-card .count { font-size: 12px; color: var(--text-light); margin-top: 8px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .layout { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--border); }
+    .content { padding: 20px; }
+    .module-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+}
+
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-inner">
+            <a href="index.html" class="logo">🤖 企业数字员工</a>
+            <div class="nav-links">
+                <a href="module-0-项目总览.html">🎯 总览</a>
+<a href="module-1-推广体系.html">📡 推广</a>
+<a href="module-2-销售转化.html">🪜 销售</a>
+<a href="module-3-内容素材.html">📝 素材</a>
+<a href="module-4-客户细分.html">👥 客户</a>
+<a href="module-5-交付SOP.html">🔧 交付</a>
+<a href="module-6-工具模板.html">🧰 工具</a>
+<a href="module-7-Hermes技术基座.html">🤖 Hermes</a>
+<a href="module-交付物.html">📦 交付</a>
+<a href="module-附件.html">📎 附件</a>
+            </div>
+        </div>
+    </nav>
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-search">
+                <input type="text" id="search" placeholder="🔍 搜索笔记..." oninput="searchNotes(this.value)">
+            </div>
+            <div class="sidebar-toc" id="sidebar-toc">
+                <div class="module-group">
+<div class="module-title">🎯 项目总览</div>
+<a href="推广与流程体系_完整框架.html" class="page-link><span class="icon">📐</span><span class="title">AI数字员工 · 推广与流程体系完整框架</span></a>
+<a href="GitHub可用项目清单与案例方案.html" class="page-link><span class="icon">🎯</span><span class="title">GitHub 可用项目清单与案例方案</span></a>
+<a href="八大行业方案速查.html" class="page-link><span class="icon">🏢</span><span class="title">八大行业方案速查</span></a>
+<a href="对外资料清单与制作排期.html" class="page-link active><span class="icon">🎯</span><span class="title">对外资料清单与制作排期</span></a>
+<a href="常见反对意见与应对.html" class="page-link><span class="icon">🛡️</span><span class="title">常见反对意见与应对</span></a>
+<a href="核心话术速查.html" class="page-link><span class="icon">💬</span><span class="title">核心话术速查</span></a>
+<a href="项目检查清单.html" class="page-link><span class="icon">✅</span><span class="title">项目检查清单</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📡 推广体系</div>
+<a href="模块一_推广渠道矩阵.html" class="page-link><span class="icon">📡</span><span class="title">模块一：推广渠道矩阵</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🪜 销售转化</div>
+<a href="模块二_销售转化漏斗.html" class="page-link><span class="icon">🪜</span><span class="title">模块二：销售转化漏斗</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📝 内容素材</div>
+<a href="模块三_内容素材体系.html" class="page-link><span class="icon">📝</span><span class="title">模块三：内容素材体系</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">👥 客户细分</div>
+<a href="模块四_客户细分与差异化方案.html" class="page-link><span class="icon">👥</span><span class="title">模块四：客户细分与差异化方案</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🔧 交付SOP</div>
+<a href="模块五_交付SOP标准操作手册.html" class="page-link><span class="icon">🔧</span><span class="title">模块五：交付SOP标准操作手册</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🧰 工具模板</div>
+<a href="模块六_工具模板清单.html" class="page-link><span class="icon">🧰</span><span class="title">模块六：工具模板清单</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">🤖 Hermes 技术基座</div>
+<a href="README.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes Agent — AI 数字员工技术基座</span></a>
+<a href="Hermes CLI 速查.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes CLI 速查</span></a>
+<a href="Hermes 工具清单.html" class="page-link><span class="icon">🔌</span><span class="title">Hermes 工具清单</span></a>
+<a href="Hermes 示例命令.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes 示例命令</span></a>
+<a href="Hermes 部署与运维.html" class="page-link><span class="icon">🤖</span><span class="title">Hermes 部署与运维</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📦 交付物</div>
+<a href="知识库_客服话术.html" class="page-link><span class="icon">📚</span><span class="title">AI数字员工 客服知识库</span></a>
+<a href="操作手册_企微AI客服部署.html" class="page-link><span class="icon">📋</span><span class="title">企微AI客服部署操作手册</span></a>
+</div>
+<div class="module-group">
+<div class="module-title">📎 附件</div>
+<a href="AI数字员工_企业增效计划.html" class="page-link><span class="icon">📄</span><span class="title">AI数字员工_企业增效计划</span></a>
+<a href="AI数字员工_展会精华版.html" class="page-link><span class="icon">🎪</span><span class="title">AI数字员工_展会精华版</span></a>
+<a href="AI智能体企业定制服务_企业展示.html" class="page-link><span class="icon">🤖</span><span class="title">AI智能体企业定制服务_企业展示</span></a>
+<a href="ppt-master参考索引.html" class="page-link><span class="icon">📄</span><span class="title">ppt-master 模板参考</span></a>
+<a href="素材总索引.html" class="page-link><span class="icon">🖼️</span><span class="title">素材总索引</span></a>
+</div>
+            </div>
+        </aside>
+        <main class="content">
+            <div class="breadcrumb"><a href="index.html">🏠 首页</a> / <a href="module-0-项目总览.html">🎯 项目总览</a> / 对外资料清单与制作排期</div>
+            <article class="article">
+                <h1>🎯 对外资料清单与制作排期</h1>
+    <div class="meta-bar">
+        <span>📖 7 分钟</span>
+        <span>📝 3905 字</span>
+        <span>📊 99 个表格</span>
+    </div>
+    <h1>对外资料清单与制作排期</h1>
+
+<blockquote>借鉴「你的品牌在AI里搜不到，客户在流失」的短视频逻辑，</blockquote>
+<blockquote>整理出 AI数字员工 项目所有对外的资料，按优先级分三个阶段制作。</blockquote>
+
+<hr>
+
+<h2>一、资料分类总览</h2>
+
+<div class="table-wrap"><table>
+<tr><td>分类</td><td>数量</td><td>用途</td><td>优先级</td></tr>
+<tr><td>短视频</td><td>20条脚本+拍摄</td><td>抖音/视频号/快手获客</td><td>★★★★★</td></tr>
+<tr><td>朋友圈</td><td>30条文案+配图</td><td>私域持续触达</td><td>★★★★★</td></tr>
+<tr><td>小红书</td><td>10篇笔记</td><td>品牌种草</td><td>★★★★☆</td></tr>
+<tr><td>线上下单页</td><td>1份</td><td>闲鱼/58同城发布</td><td>★★★★☆</td></tr>
+<tr><td>海报/传单</td><td>各1版</td><td>展会/地推</td><td>★★★★☆</td></tr>
+<tr><td>名片</td><td>1版</td><td>全场景</td><td>★★★★★</td></tr>
+<tr><td>诊断报告模板</td><td>1份</td><td>免费诊断交付物</td><td>★★★★★</td></tr>
+<tr><td>方案书模板</td><td>1份</td><td>报价方案</td><td>★★★★★</td></tr>
+<tr><td>报价单模板</td><td>1份</td><td>报价</td><td>★★★★★</td></tr>
+<tr><td>合同模板</td><td>1份</td><td>签约</td><td>★★★★★</td></tr>
+<tr><td>案例手册</td><td>1份</td><td>多维场景展示</td><td>★★★★☆</td></tr>
+<tr><td>FAQ手册</td><td>1份</td><td>客户自查阅</td><td>★★★☆☆</td></tr>
+<tr><td>行业方案一页纸</td><td>8份</td><td>各行业定向</td><td>★★★★☆</td></tr>
+<tr><td>使用手册(客户版)</td><td>1份</td><td>交付后给客户</td><td>★★★☆☆</td></tr>
+<tr><td>客户验收单</td><td>1份</td><td>交付验收</td><td>★★★☆☆</td></tr>
+</table></div>
+<hr>
+
+<h2>二、短视频脚本（核心获客武器）</h2>
+
+<blockquote>借鉴「品牌在AI里搜不到」爆款逻辑，每条解决一个具体问题</blockquote>
+
+<h3>系列A：痛点共鸣型（10条）</h3>
+
+<div class="table-wrap"><table>
+<tr><td>编号</td><td>标题（前3秒钩子）</td><td>解决的痛点</td><td>时长</td></tr>
+<tr><td>A1</td><td><strong>你的公司在AI里搜不到？客户都在流失！</strong></td><td>品牌AI可见性</td><td>45s</td></tr>
+<tr><td>A2</td><td><strong>你公司有没有月薪5000、产出500的员工？</strong></td><td>隐性人力浪费</td><td>45s</td></tr>
+<tr><td>A3</td><td><strong>晚上11点来的客户，你真的接住了吗？</strong></td><td>夜间漏单</td><td>40s</td></tr>
+<tr><td>A4</td><td><strong>花3500招一个不摸鱼的员工，可能吗？</strong></td><td>性价比对比</td><td>50s</td></tr>
+<tr><td>A5</td><td><strong>为什么你的客服总是在招人？</strong></td><td>客服离职率高</td><td>45s</td></tr>
+<tr><td>A6</td><td><strong>别买AI软件了，先看看你公司适不适合</strong></td><td>避免踩坑</td><td>55s</td></tr>
+<tr><td>A7</td><td><strong>做了100家企业诊断后，我发现3个残酷真相</strong></td><td>行业洞察</td><td>60s</td></tr>
+<tr><td>A8</td><td><strong>你的同行已经用AI省了30%的成本</strong></td><td>竞争压力</td><td>45s</td></tr>
+<tr><td>A9</td><td><strong>AI不是取代人，是不取代你的人才会被取代</strong></td><td>消除恐惧</td><td>50s</td></tr>
+<tr><td>A10</td><td><strong>中小企业主：别再花冤枉钱学AI了</strong></td><td>降低门槛</td><td>50s</td></tr>
+</table></div>
+<h3>系列B：案例展示型（5条）</h3>
+
+<div class="table-wrap"><table>
+<tr><td>编号</td><td>标题</td><td>展示内容</td></tr>
+<tr><td>B1</td><td><strong>给二手车行配了个AI客服，效果震惊老板</strong></td><td>前后数据对比</td></tr>
+<tr><td>B2</td><td><strong>电商老板说：这是我今年花得最值的3500</strong></td><td>客户原话+效果</td></tr>
+<tr><td>B3</td><td><strong>制造业老师傅的经验，终于有人接住了</strong></td><td>知识库演示</td></tr>
+<tr><td>B4</td><td><strong>实体店老板：现在AI帮我接电话，我再也不漏单了</strong></td><td>场景还原</td></tr>
+<tr><td>B5</td><td><strong>客户验收时的反应，才是真实评价</strong></td><td>验收现场</td></tr>
+</table></div>
+<h3>系列C：教程/演示型（5条）</h3>
+
+<div class="table-wrap"><table>
+<tr><td>编号</td><td>标题</td><td>内容</td></tr>
+<tr><td>C1</td><td><strong>AI数字员工到底长什么样？给你看一眼后台</strong></td><td>产品演示</td></tr>
+<tr><td>C2</td><td><strong>3步把Excel交给AI，每天自动出报表</strong></td><td>操作教程</td></tr>
+<tr><td>C3</td><td><strong>AI自动回微信，客户根本不知道是AI</strong></td><td>功能展示</td></tr>
+<tr><td>C4</td><td><strong>从加到AI只要7天，我们是怎么做到的</strong></td><td>流程展示</td></tr>
+<tr><td>C5</td><td><strong>一个AI员工能干多少活？实际测试给你看</strong></td><td>能力边界</td></tr>
+</table></div>
+<hr>
+
+<h2>三、各渠道物料清单</h2>
+
+<h3>3.1 短视频配套物料</h3>
+
+<p>每条视频需要：</p>
+<ul>
+<li>[ ] 封面图（统一模板）</li>
+<li>[ ] 字幕文件</li>
+<li>[ ] 发布时间规划</li>
+<li>[ ] 评论区引导话术</li>
+<li>[ ] 私信自动回复设置</li>
+</ul>
+
+<h3>3.2 朋友圈物料</h3>
+
+<div class="table-wrap"><table>
+<tr><td>类型</td><td>数量</td><td>制作方式</td></tr>
+<tr><td>干货知识卡</td><td>10张</td><td>Canva设计</td></tr>
+<tr><td>客户案例卡</td><td>8张</td><td>截图+打码+排版</td></tr>
+<tr><td>过程记录</td><td>6张</td><td>实拍照片</td></tr>
+<tr><td>个人生活</td><td>4张</td><td>真实照片</td></tr>
+<tr><td>活动海报</td><td>2张</td><td>CTA设计</td></tr>
+</table></div>
+<h3>3.3 线下物料</h3>
+
+<div class="table-wrap"><table>
+<tr><td>物料</td><td>规格</td><td>内容要点</td></tr>
+<tr><td>传单（A4双面）</td><td>彩色</td><td>正面：卖点+报价 背面：场景+流程</td></tr>
+<tr><td>易拉宝（80x200）</td><td>2个</td><td>1个品牌 1个报价</td></tr>
+<tr><td>名片</td><td>100张</td><td>简洁+二维码</td></tr>
+<tr><td>宣传册（折页）</td><td>4折页</td><td>完整介绍+案例</td></tr>
+<tr><td>客户案例集</td><td>A4双面</td><td>3-5个精选案例</td></tr>
+</table></div>
+<h3>3.4 线上发布物料</h3>
+
+<div class="table-wrap"><table>
+<tr><td>平台</td><td>物料</td><td>说明</td></tr>
+<tr><td>闲鱼</td><td>商品详情页</td><td>3500标价，展示服务</td></tr>
+<tr><td>58同城</td><td>服务介绍页</td><td>本地服务分类</td></tr>
+<tr><td>小红书</td><td>个人主页+笔记</td><td>置顶笔记+简介</td></tr>
+<tr><td>抖音</td><td>主页+H5页</td><td>简介+联系方式</td></tr>
+</table></div>
+<hr>
+
+<h2>四、制作排期（三阶段）</h2>
+
+<h3>第一阶段：核心启动（第1周）</h3>
+
+<div class="table-wrap"><table>
+<tr><td>优先</td><td>物料</td><td>产出形式</td><td>所需时间</td></tr>
+<tr><td>1</td><td>短视频脚本A1-A3</td><td>文档</td><td>1天</td></tr>
+<tr><td>2</td><td>短视频拍摄A1</td><td>视频成品</td><td>1天</td></tr>
+<tr><td>3</td><td>朋友圈文案10条</td><td>文档</td><td>半天</td></tr>
+<tr><td>4</td><td>名片设计</td><td>电子稿→印刷</td><td>2天</td></tr>
+<tr><td>5</td><td>诊断报告模板</td><td>飞书/Word模板</td><td>1天</td></tr>
+<tr><td>6</td><td>报价单模板</td><td>Excel/PDF</td><td>半天</td></tr>
+</table></div>
+<h3>第二阶段：渠道铺开（第2周）</h3>
+
+<div class="table-wrap"><table>
+<tr><td>优先</td><td>物料</td><td>产出形式</td><td>所需时间</td></tr>
+<tr><td>7</td><td>短视频A4-A8</td><td>脚本+拍摄</td><td>3天</td></tr>
+<tr><td>9</td><td>传单设计</td><td>电子稿→印刷</td><td>2天</td></tr>
+<tr><td>10</td><td>易拉宝设计</td><td>电子稿→制作</td><td>2天</td></tr>
+<tr><td>11</td><td>小红书笔记3篇</td><td>图文</td><td>1天</td></tr>
+<tr><td>12</td><td>闲鱼/58发布页</td><td>文字+图</td><td>半天</td></tr>
+<tr><td>13</td><td>合同模板定稿</td><td>Word</td><td>1天</td></tr>
+<tr><td>14</td><td>方案书模板</td><td>PPT/Word</td><td>1天</td></tr>
+</table></div>
+<h3>第三阶段：持续迭代（第3-4周）</h3>
+
+<div class="table-wrap"><table>
+<tr><td>优先</td><td>物料</td><td>产出形式</td><td>所需时间</td></tr>
+<tr><td>15</td><td>剩余短视频A9-A10+B1-B5+C1-C5</td><td>全流程</td><td>持续</td></tr>
+<tr><td>16</td><td>案例集初版</td><td>PDF</td><td>2天</td></tr>
+<tr><td>17</td><td>FAQ手册</td><td>在线文档</td><td>1天</td></tr>
+<tr><td>18</td><td>行业一页纸x8</td><td>PDF</td><td>2天</td></tr>
+<tr><td>19</td><td>小红书笔记剩余7篇</td><td>图文</td><td>持续</td></tr>
+<tr><td>20</td><td>客户使用手册</td><td>PDF</td><td>1天</td></tr>
+</table></div>
+<hr>
+
+<h2>五、各物料关联的知识库索引</h2>
+
+<div class="table-wrap"><table>
+<tr><td>物料</td><td>参考的知识库笔记</td></tr>
+<tr><td>短视频脚本</td><td><a href="模块三_内容素材体系.html" class="wikilink">模块三_内容素材体系</a> — 已有20条脚本框架</td></tr>
+<tr><td>朋友圈文案</td><td><a href="模块一_推广渠道矩阵.html" class="wikilink">模块一_推广渠道矩阵</a> — 30条文案模板</td></tr>
+<tr><td>诊断报告</td><td><a href="模块六_工具模板清单.html" class="wikilink">模块六_工具模板清单</a> — T-03模板</td></tr>
+<tr><td>方案书</td><td><a href="模块六_工具模板清单.html" class="wikilink">模块六_工具模板清单</a> — T-04模板</td></tr>
+<tr><td>报价单</td><td><a href="模块六_工具模板清单.html" class="wikilink">模块六_工具模板清单</a> — T-05模板</td></tr>
+<tr><td>合同</td><td><a href="模块六_工具模板清单.html" class="wikilink">模块六_工具模板清单</a> — T-06模板</td></tr>
+<tr><td>行业方案</td><td><a href="模块四_客户细分与差异化方案.html" class="wikilink">模块四_客户细分与差异化方案</a> — 8行业方案</td></tr>
+<tr><td>FAQ</td><td><a href="模块三_内容素材体系.html" class="wikilink">模块三_内容素材体系</a> — 已有20问</td></tr>
+<tr><td>客户案例</td><td><a href="模块三_内容素材体系.html" class="wikilink">模块三_内容素材体系</a> — 案例采集模板</td></tr>
+</table></div>
+<hr>
+
+<h2>六、记住这个逻辑（来自那条视频的启发）</h2>
+
+<p><strong>客户找AI问"帮我推荐一个AI数字员工服务商"</strong></p>
+<p>→ AI搜不到你 → 客户选了别人 → <strong>你流失了客户</strong></p>
+
+<p><strong>所以需要：</strong></p>
+<ol>
+<li>抖音/小红书有你的内容（AI会参考）</li>
+<li>百度能搜到你的名字（SEM+SEO）</li>
+<li>朋友圈天天见你（混脸熟）</li>
+<li>客户帮你传播（转介绍）</li>
+</ol>
+
+<p><strong>这四个就是所有对外资料的核心目标。</strong></p>
+
+<hr>
+
+<p>#对外资料 #物料 #推广 #短视频 #排期</p>
+            </article>
+            <footer class="page-footer">
+                <p>上海锦霓鲤锦网络科技有限公司 · AI 数字员工企业增效计划</p>
+                <p style="margin-top:4px;font-size:12px;"><a href="https://hermes-agent.nousresearch.com" target="_blank">Hermes Agent</a> · <a href="#" onclick="scrollToTop()">回到顶部 ↑</a></p>
+            </footer>
+        </main>
+    </div>
+    <script>
+        
+// 基础防复制
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('copy', e => e.preventDefault());
+document.addEventListener('selectstart', e => e.preventDefault());
+document.addEventListener('dragstart', e => e.preventDefault());
+
+function searchNotes(q) {
+    q = q.toLowerCase();
+    document.querySelectorAll('.page-link').forEach(el => {
+        const text = el.textContent.toLowerCase();
+        el.style.display = text.includes(q) ? '' : 'none';
+    });
+    // 隐藏空的分组
+    document.querySelectorAll('.module-group').forEach(g => {
+        const visible = Array.from(g.querySelectorAll('.page-link')).filter(e => e.style.display !== 'none');
+        g.style.display = visible.length > 0 ? '' : 'none';
+    });
+}
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+    </script>
+</body>
+</html>
