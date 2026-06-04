@@ -490,7 +490,24 @@ body {
   letter-spacing: -0.3px; color: #0f172a;
 }
 
-/* ===== Module Cards ===== */
+/* ===== Scene Cards (用户场景) ===== */
+.scene-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 680px; margin: 0 auto; }
+.scene-card {
+  display: flex; align-items: flex-start; gap: 14px;
+  background: #fff; border: 1px solid #e8edf5; border-radius: 14px;
+  padding: 20px; text-decoration: none; color: inherit;
+  transition: all 0.25s; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.scene-card:hover {
+  transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,0.08);
+  border-color: #93c5fd;
+}
+.scene-icon { font-size: 32px; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.scene-body { flex: 1; min-width: 0; }
+.scene-body h3 { font-size: 15px; font-weight: 600; color: #0f172a; margin-bottom: 4px; }
+.scene-body p { font-size: 13px; color: #64748b; line-height: 1.5; margin: 0; }
+
+/* ===== Module Cards (二页) ===== */
 .module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin: 20px 0; }
 .module-card {
   background: #fff; border: 1px solid #e8edf5; border-radius: 12px;
@@ -519,6 +536,7 @@ body {
   .hero-actions { flex-direction: column; align-items: center; }
   .pricing-grid { grid-template-columns: 1fr; max-width: 360px; }
   .brand-bar { flex-direction: column; align-items: center; gap: 8px; }
+  .scene-grid { grid-template-columns: 1fr; }
   .module-grid { grid-template-columns: 1fr; }
   .nav-links { display: none; }
 }
@@ -605,58 +623,7 @@ body {
 </ul>
 </div>
 </div>
-</div><div class="section-title">📚 知识模块</div><div class="module-grid"><a href="module-0-项目总览.html" class="module-card"><h3>🎯 项目总览</h3><p>GitHub 可用项目清单与案例方案
- 筛选标准：能直接落地、适合中小企业、中文友好、社区活跃
- 时间：2026-06-03
----
- 一、重点推荐项目
- 1. Dify ⭐143k — AI应用搭建平台
-GitHub：https://gi…</p><div class="count">📄 7 篇笔记</div></a><a href="module-1-推广体系.html" class="module-card"><h3>📡 推广体系</h3><p>模块一：推广渠道矩阵
- 版本：v1.0 | 日期：2026-06-03 | 负责人：倪锦
- 说明：全渠道推广策略，每个渠道从画像→内容→话术→转化路径→衡量指标极致细分
----
- 目录
-1. 微信朋友圈 — 私域核心阵地(1-微信朋友圈)
-…</p><div class="count">📄 1 篇笔记</div></a><a href="module-2-销售转化.html" class="module-card"><h3>🪜 销售转化</h3><p>模块二：销售转化漏斗
- 版本：v1.0 | 日期：2026-06-03 | 负责人：倪锦
- 说明：从客户第一次接触到签约付款的完整转化链路，每个阶段拆解到可执行的最小颗粒度
----
- 漏斗全景
-                    ┌──…</p><div class="count">📄 1 篇笔记</div></a><a href="module-3-内容素材.html" class="module-card"><h3>📝 内容素材</h3><p>模块三：内容素材体系
- 版本：v1.0 | 日期：2026-06-03 | 负责人：倪锦
- 说明：按渠道、按功能、按客户阶段建立完整内容素材库
----
- 目录
-1. 素材总览与分类体系(1-素材总览与分类体系)
-2. 朋友圈文案库(2-朋友…</p><div class="count">📄 1 篇笔记</div></a><a href="module-4-客户细分.html" class="module-card"><h3>👥 客户细分</h3><p>模块四：客户细分与差异化方案
- 版本：v1.0 | 日期：2026-06-03 | 负责人：倪锦
- 说明：按行业细分目标客户，每个行业从画像→痛点→场景→话术→案例→转化策略完整覆盖
----
- 目录
-1. 客户细分总览(1-客户细分总览)
-…</p><div class="count">📄 1 篇笔记</div></a><a href="module-5-交付SOP.html" class="module-card"><h3>🔧 交付SOP</h3><p>模块五：交付SOP标准操作手册
- 版本：v1.0 | 日期：2026-06-03 | 负责人：倪锦
- 说明：从客户联系到交付上线的全流程标准操作手册，每个步骤可执行、可检查、可迭代
----
- 目录
-1. SOP总览：6阶段16步(1-sop…</p><div class="count">📄 1 篇笔记</div></a><a href="module-6-工具模板.html" class="module-card"><h3>🧰 工具模板</h3><p>模块六：工具模板清单
- 版本：v1.0 | 日期：2026-06-03 | 负责人：倪锦
- 说明：所有工具模板的完整清单和创建规范，让每次执行都有标准模板可用
----
- 目录
-1. 模板总览(1-模板总览)
-2. 客户信息记录表(2-客户信…</p><div class="count">📄 1 篇笔记</div></a><a href="module-7-Hermes技术基座.html" class="module-card"><h3>🤖 Hermes 技术基座</h3><p>Hermes CLI 速查
- 完整命令参考: https://hermes-agent.nousresearch.com/docs/reference/cli-commands
----
- 基础命令
-bash
-hermes          …</p><div class="count">📄 5 篇笔记</div></a><a href="module-附件.html" class="module-card"><h3>📎 附件</h3><p>AI数字员工_企业增效计划
-- Source: AI数字员工_企业增效计划.pptx
-- Total slides: 12
- Slide 1
-AI 数字员工 · 企业增效计划
-用半个月工资，给公司配一个 24 小时在岗的 AI 员工
-低成本…</p><div class="count">📄 5 篇笔记</div></a></div></article>
+</div><div class="section-title">我们能为你做什么</div><p style="text-align:center;color:#94a3b8;font-size:14px;margin-bottom:24px">选择你感兴趣的场景，看看我们怎么做</p><div class="scene-grid"><a href="module-1-推广体系.html" class="scene-card"><div class="scene-icon">💬</div><div class="scene-body"><h3>客户咨询自动回复</h3><p>微信/企微/飞书消息自动应答，基于知识库智能回复，7×24 小时在线</p></div></a><a href="module-6-工具模板.html" class="scene-card"><div class="scene-icon">📊</div><div class="scene-body"><h3>定时数据报表</h3><p>自动汇总业务数据，每天/每周推送报表到手机，不用人工统计</p></div></a><a href="module-7-Hermes技术基座.html" class="scene-card"><div class="scene-icon">🔍</div><div class="scene-body"><h3>行业情报监控</h3><p>自动搜索行业动态、竞品信息，每日推送摘要，省去人工盯屏</p></div></a><a href="module-3-内容素材.html" class="scene-card"><div class="scene-icon">📚</div><div class="scene-body"><h3>企业知识库搭建</h3><p>把公司文档、老师傅经验做成 AI 知识库，员工随时问</p></div></a><a href="module-附件.html" class="scene-card"><div class="scene-icon">🤖</div><div class="scene-body"><h3>AI 方案 PPT 生成</h3><p>一句话需求自动生成商业方案 PPT，省去排版做图的时间</p></div></a><a href="module-5-交付SOP.html" class="scene-card"><div class="scene-icon">📋</div><div class="scene-body"><h3>销售转化 SOP</h3><p>从客户咨询到交付验收的标准流程，每一步可执行可检查</p></div></a></div></article>
 <footer class="page-footer">
 <p style="margin-bottom:4px">上海锦霓鲤锦网络科技有限公司 · AI 数字员工企业增效计划</p>
 <p style="font-size:12px"><a href="https://qusabc123.github.io/digital-employee-website/" style="color:var(--text-tertiary);text-decoration:none">https://qusabc123.github.io/digital-employee-website/</a></p>

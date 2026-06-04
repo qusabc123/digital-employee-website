@@ -490,7 +490,24 @@ body {
   letter-spacing: -0.3px; color: #0f172a;
 }
 
-/* ===== Module Cards ===== */
+/* ===== Scene Cards (用户场景) ===== */
+.scene-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 680px; margin: 0 auto; }
+.scene-card {
+  display: flex; align-items: flex-start; gap: 14px;
+  background: #fff; border: 1px solid #e8edf5; border-radius: 14px;
+  padding: 20px; text-decoration: none; color: inherit;
+  transition: all 0.25s; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.scene-card:hover {
+  transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,0.08);
+  border-color: #93c5fd;
+}
+.scene-icon { font-size: 32px; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.scene-body { flex: 1; min-width: 0; }
+.scene-body h3 { font-size: 15px; font-weight: 600; color: #0f172a; margin-bottom: 4px; }
+.scene-body p { font-size: 13px; color: #64748b; line-height: 1.5; margin: 0; }
+
+/* ===== Module Cards (二页) ===== */
 .module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin: 20px 0; }
 .module-card {
   background: #fff; border: 1px solid #e8edf5; border-radius: 12px;
@@ -519,6 +536,7 @@ body {
   .hero-actions { flex-direction: column; align-items: center; }
   .pricing-grid { grid-template-columns: 1fr; max-width: 360px; }
   .brand-bar { flex-direction: column; align-items: center; gap: 8px; }
+  .scene-grid { grid-template-columns: 1fr; }
   .module-grid { grid-template-columns: 1fr; }
   .nav-links { display: none; }
 }
