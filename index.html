@@ -348,8 +348,171 @@ body {
 @media (max-width: 768px) {
   .pricing-grid { grid-template-columns: 1fr; }
   .company-inner { flex-direction: column; align-items: center; gap: 6px; }
+/* ===== Home Hero ===== */
+.home-hero {
+  text-align: center; padding: 60px 20px 30px; position: relative;
+  background: linear-gradient(180deg, #f0f4ff 0%, #fafafa 100%);
+  border-radius: 0 0 30px 30px; margin: 0 -48px; overflow: hidden;
+}
+.home-hero::before {
+  content: ''; position: absolute; top: -30%; right: -20%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%);
+  animation: heroFloat 12s ease-in-out infinite alternate;
+}
+.home-hero::after {
+  content: ''; position: absolute; bottom: -20%; left: -10%;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(124,58,237,0.06) 0%, transparent 70%);
+  animation: heroFloat 15s ease-in-out infinite alternate-reverse;
+}
+@keyframes heroFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, -30px) scale(1.1); }
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #fff; border: 1px solid #e8edf5;
+  padding: 6px 18px; border-radius: 20px; font-size: 13px; font-weight: 500;
+  color: #475569; margin-bottom: 20px; position: relative; z-index: 1;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.hero-badge::before { content: '◆ '; color: #3b82f6; }
+.home-hero h1 {
+  font-size: 44px; font-weight: 700; letter-spacing: -1px;
+  line-height: 1.1; margin-bottom: 16px; position: relative; z-index: 1;
+  color: #0f172a;
+}
+.gradient-text {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-desc {
+  font-size: 17px; color: #64748b; max-width: 520px;
+  margin: 0 auto 28px; line-height: 1.6; position: relative; z-index: 1;
+}
+.hero-stats {
+  display: flex; align-items: center; justify-content: center;
+  gap: 24px; margin-bottom: 32px; position: relative; z-index: 1;
+}
+.stat-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.stat-num { font-size: 28px; font-weight: 700; color: #0f172a; }
+.stat-label { font-size: 13px; color: #94a3b8; }
+.stat-divider { width: 1px; height: 36px; background: #e2e8f0; }
+.hero-actions {
+  display: flex; gap: 12px; justify-content: center;
+  position: relative; z-index: 1;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff; padding: 12px 28px; border-radius: 10px;
+  font-size: 15px; font-weight: 500; text-decoration: none;
+  box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+  transition: all 0.25s;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,99,235,0.4); }
+.btn-arrow { transition: transform 0.2s; }
+.btn-primary:hover .btn-arrow { transform: translateX(4px); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #fff; color: #334155; padding: 12px 28px; border-radius: 10px;
+  font-size: 15px; font-weight: 500; text-decoration: none;
+  border: 1px solid #e2e8f0; transition: all 0.25s;
+}
+.btn-outline:hover { border-color: #3b82f6; color: #2563eb; }
+
+/* ===== Brand Bar ===== */
+.brand-bar {
+  display: flex; flex-wrap: wrap; gap: 20px 32px;
+  justify-content: center; padding: 16px 24px;
+  background: #fff; border: 1px solid #e8edf5;
+  border-radius: 12px; margin: 28px 0;
+}
+.brand-item { font-size: 13.5px; color: #475569; display: flex; align-items: center; gap: 6px; }
+.brand-icon { font-size: 15px; }
+
+/* ===== Pricing ===== */
+.pricing-wrap { margin: 48px 0; text-align: center; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #f1f5f9; border: 1px solid #e2e8f0;
+  padding: 4px 14px; border-radius: 16px; font-size: 12px; font-weight: 600;
+  color: #64748b; margin-bottom: 12px;
+}
+.section-heading { font-size: 26px; font-weight: 700; color: #0f172a; margin-bottom: 8px; letter-spacing: -0.5px; }
+.section-sub { font-size: 14px; color: #94a3b8; margin-bottom: 28px; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 800px; margin: 0 auto; }
+.pricing-card {
+  background: #fff; border: 1px solid #e8edf5; border-radius: 14px;
+  padding: 0; overflow: hidden; position: relative;
+  transition: all 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.pricing-card:hover {
+  transform: translateY(-3px); box-shadow: 0 8px 24px rgba(37,99,235,0.1);
+  border-color: #93c5fd;
+}
+.pricing-card.featured {
+  border-color: #93c5fd; border-width: 2px;
+  box-shadow: 0 4px 16px rgba(37,99,235,0.08);
+}
+.most-tag {
+  position: absolute; top: 12px; right: 12px;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: #fff; padding: 3px 12px; border-radius: 8px;
+  font-size: 11px; font-weight: 600;
+}
+.card-top { padding: 28px 24px 16px; text-align: center; }
+.pricing-card h3 { font-size: 18px; color: #64748b; font-weight: 500; margin-bottom: 8px; }
+.card-price { font-size: 36px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
+.price-symbol { font-size: 20px; vertical-align: super; }
+.price-year { font-size: 14px; font-weight: 400; color: #94a3b8; }
+.card-period { font-size: 12px; color: #94a3b8; }
+.card-features { list-style: none; margin: 0; padding: 16px 24px 24px; text-align: left; border-top: 1px solid #f1f5f9; }
+.card-features li {
+  padding: 7px 0; font-size: 14px; color: #334155;
+  display: flex; align-items: center; gap: 8px;
+}
+.check { color: #22c55e; font-weight: 600; }
+
+/* ===== Section Headings ===== */
+.section-title {
+  font-size: 22px; font-weight: 600; margin-top: 48px; margin-bottom: 16px;
+  letter-spacing: -0.3px; color: #0f172a;
+}
+
+/* ===== Module Cards ===== */
+.module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin: 20px 0; }
+.module-card {
+  background: #fff; border: 1px solid #e8edf5; border-radius: 12px;
+  padding: 20px; transition: all 0.25s;
+  text-decoration: none; color: inherit; display: block;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.module-card:hover {
+  transform: translateY(-2px); box-shadow: 0 6px 16px rgba(37,99,235,0.08);
+  border-color: #93c5fd;
+}
+.module-card h3 { font-size: 15px; font-weight: 600; color: #0f172a; margin-bottom: 6px; }
+.module-card p { font-size: 13px; color: #64748b; line-height: 1.5; }
+.module-card .count { font-size: 12px; color: #94a3b8; margin-top: 8px; }
+
+/* Animations */
+.fade-in { opacity: 0; transform: translateY(16px); transition: all 0.5s ease-out; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+  .content { padding: 20px; }
+  .home-hero { margin: 0 -20px; border-radius: 0 0 20px 20px; padding: 40px 20px 24px; }
   .home-hero h1 { font-size: 28px; }
-  .hero-cta { flex-direction: column; align-items: center; }
+  .hero-stats { gap: 16px; }
+  .stat-num { font-size: 22px; }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 360px; }
+  .brand-bar { flex-direction: column; align-items: center; gap: 8px; }
+  .module-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
 }
 
 </style>
@@ -427,63 +590,70 @@ body {
 <div class="breadcrumb"><a href="index.html" style="color:var(--text-tertiary)">🏠 首页</a></div>
 <article class="article"><div class="home-hero">
 <div class="hero-badge">AI 数字员工定制服务</div>
-<h1>用 <span class="highlight">半个月工资</span><br>给公司配一个 <span class="highlight">24 小时在岗</span> 的 AI 员工</h1>
-<p class="hero-sub">不请假 · 不摸鱼 · 不提涨薪 · 随叫随到</p>
-<div class="hero-cta">
-<a href="#pricing" class="btn-primary">查看报价方案</a>
-<a href="module-0-项目总览.html" class="btn-secondary">了解更多 →</a>
+<h1>企业增效的 <span class="gradient-text">AI 解决方案</span></h1>
+<p class="hero-desc">用半个月工资，给公司配一个 24 小时在岗、不请假不摸鱼的 AI 数字员工</p>
+<div class="hero-stats">
+<div class="stat-item"><span class="stat-num">23</span><span class="stat-label">解决方案</span></div>
+<div class="stat-divider"></div>
+<div class="stat-item"><span class="stat-num">102,024</span><span class="stat-label">字实战文档</span></div>
+<div class="stat-divider"></div>
+<div class="stat-item"><span class="stat-num">934</span><span class="stat-label">标准流程</span></div>
 </div>
-<div class="home-info">
-<span class="badge">🤖 23 个解决方案</span>
-<span class="badge">📝 102,024+ 字实战文档</span>
-<span class="badge">📊 934 张标准流程表</span>
-<span class="badge">🏢 专注服务中小企业</span>
-</div>
-</div><div class="company-bar">
-<div class="company-inner">
-<div class="company-item"><span class="ci-label">公司</span><span class="ci-value">上海锦霓鲤锦网络科技有限公司</span></div>
-<div class="company-item"><span class="ci-label">联系人</span><span class="ci-value">倪锦 · 17601414435</span></div>
-<div class="company-item"><span class="ci-label">报价</span><span class="ci-value">S1 ¥3,500 <span class="sep">|</span> S2 ¥6,000 <span class="sep">|</span> S3 ¥50,000/年</span></div>
-<div class="company-item"><span class="ci-label">客户</span><span class="ci-value">电商 · 直播 · 二手车 · 本地服务 · 传统制造业</span></div>
+<div class="hero-actions">
+<a href="#pricing" class="btn-primary">查看报价 <span class="btn-arrow">→</span></a>
+<a href="module-0-项目总览.html" class="btn-outline">了解更多</a>
 </div>
 </div>
-<div id="pricing" class="pricing-section">
-<h2 class="section-title">透明报价 · 按需选择</h2>
+
+<div class="brand-bar">
+<div class="brand-item"><span class="brand-icon">🏢</span> 上海锦霓鲤锦网络科技有限公司</div>
+<div class="brand-item"><span class="brand-icon">📞</span> 倪锦 · 17601414435</div>
+<div class="brand-item"><span class="brand-icon">📧</span> qusabc123@outlook.com</div>
+</div>
+
+<div id="pricing" class="pricing-wrap">
+<div class="section-label">报价方案</div>
+<h2 class="section-heading">透明的价格，看得见的价值</h2>
+<p class="section-sub">按需选择，先诊断后付费，不满意不收费</p>
 <div class="pricing-grid">
-<div class="pricing-card s1">
-<div class="pricing-badge">入门</div>
+<div class="pricing-card">
+<div class="card-top">
 <h3>S1</h3>
-<div class="price">¥3,500</div>
-<div class="price-desc">员工半个月工资</div>
-<ul>
-<li>1 个场景完整交付</li>
-<li>AI 客服 / 报表 / 知识库</li>
-<li>7 天部署上线</li>
-<li>1 个月运维跟踪</li>
+<div class="card-price"><span class="price-symbol">¥</span>3,500</div>
+<div class="card-period">单场景 · 一次性</div>
+</div>
+<ul class="card-features">
+<li><span class="check">✓</span> 1 个场景完整交付</li>
+<li><span class="check">✓</span> AI 客服 / 报表 / 知识库</li>
+<li><span class="check">✓</span> 7 天部署上线</li>
+<li><span class="check">✓</span> 1 个月运维跟踪</li>
 </ul>
 </div>
-<div class="pricing-card s2 featured">
-<div class="pricing-badge most">推荐</div>
+<div class="pricing-card featured">
+<div class="most-tag">推荐</div>
+<div class="card-top">
 <h3>S2</h3>
-<div class="price">¥6,000</div>
-<div class="price-desc">员工一个月工资</div>
-<ul>
-<li>3-5 个场景批量落地</li>
-<li>全渠道接入</li>
-<li>14 天部署上线</li>
-<li>3 个月运维跟踪</li>
+<div class="card-price"><span class="price-symbol">¥</span>6,000</div>
+<div class="card-period">3-5 场景 · 一次性</div>
+</div>
+<ul class="card-features">
+<li><span class="check">✓</span> 3-5 个场景批量落地</li>
+<li><span class="check">✓</span> 全渠道接入</li>
+<li><span class="check">✓</span> 14 天部署上线</li>
+<li><span class="check">✓</span> 3 个月运维跟踪</li>
 </ul>
 </div>
-<div class="pricing-card s3">
-<div class="pricing-badge">企业</div>
+<div class="pricing-card">
+<div class="card-top">
 <h3>S3</h3>
-<div class="price">¥50,000<small>/年</small></div>
-<div class="price-desc">一个正式员工年薪</div>
-<ul>
-<li>全公司不限场景</li>
-<li>定制开发 + 私有部署</li>
-<li>7×24 技术支持</li>
-<li>持续迭代升级</li>
+<div class="card-price"><span class="price-symbol">¥</span>50,000 <span class="price-year">/年</span></div>
+<div class="card-period">全公司 · 年付</div>
+</div>
+<ul class="card-features">
+<li><span class="check">✓</span> 全公司不限场景</li>
+<li><span class="check">✓</span> 定制开发 + 私有部署</li>
+<li><span class="check">✓</span> 7×24 技术支持</li>
+<li><span class="check">✓</span> 持续迭代升级</li>
 </ul>
 </div>
 </div>
