@@ -16,9 +16,9 @@
   --accent: #0071e3;
   --accent-light: #e8f0fe;
   --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
-  --shadow-lg: 0 4px 24px rgba(0,0,0,0.08);
-  --radius: 12px;
-  --radius-sm: 8px;
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
+  --radius: 14px;
+  --radius-sm: 10px;
   --nav-h: 52px;
 }
 
@@ -78,222 +78,271 @@ body {
 }
 .page-link {
   display: flex; align-items: center; gap: 6px;
-  padding: 5px 8px; border-radius: 6px; color: var(--text-secondary);
-  text-decoration: none; font-size: 13px; font-weight: 450;
-  transition: all 0.15s;
+  padding: 5px 8px; border-radius: 6px; font-size: 13px;
+  text-decoration: none; color: var(--text-secondary);
+  transition: all 0.15s; line-height: 1.3;
 }
-.page-link:hover { background: var(--accent-light); color: var(--accent); }
-.page-link.active { background: var(--accent-light); color: var(--accent); font-weight: 600; }
-.page-link .icon { font-size: 13px; width: 20px; text-align: center; flex-shrink: 0; }
-.page-link .title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.page-link:hover { background: var(--surface-hover); color: var(--text); }
+.page-link.active { background: var(--accent-light); color: var(--accent); font-weight: 500; }
 
-/* Content */
-.content { flex: 1; padding: 32px 48px 48px; max-width: 760px; }
-.breadcrumb { font-size: 13px; color: var(--text-tertiary); margin-bottom: 24px; }
-.breadcrumb a { color: var(--text-secondary); text-decoration: none; }
-.breadcrumb a:hover { color: var(--accent); }
-
-/* Article */
-.article h1 {
-  font-size: 32px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.2;
-  margin-bottom: 8px; color: var(--text);
-}
-.article .meta-bar {
-  display: flex; gap: 8px; font-size: 12.5px; color: var(--text-tertiary);
-  margin-bottom: 28px; flex-wrap: wrap;
-}
-.article .meta-bar span { background: var(--surface); padding: 2px 10px; border-radius: 12px; border: 1px solid var(--border); }
-
-.article h2 {
-  font-size: 22px; font-weight: 650; margin-top: 40px; margin-bottom: 12px;
-  letter-spacing: -0.3px; color: var(--text);
-}
-.article h3 { font-size: 18px; font-weight: 600; margin-top: 32px; margin-bottom: 8px; }
-.article h4 { font-size: 16px; font-weight: 600; margin-top: 24px; margin-bottom: 8px; }
-.article p { margin-bottom: 16px; color: var(--text); }
-.article a { color: var(--accent); text-decoration: none; font-weight: 500; }
-.article a:hover { text-decoration: underline; }
-.article a.wikilink { background: var(--accent-light); padding: 1px 6px; border-radius: 4px; font-weight: 400; }
-.article a.wikilink::before { content: "📄 "; font-size: 12px; }
-.article code {
-  background: var(--surface); padding: 2px 8px; border-radius: 5px;
-  font-size: 13px; font-family: "SF Mono", "JetBrains Mono", "Menlo", monospace;
-  border: 1px solid var(--border); color: #e64553;
-}
-.article pre {
-  background: #1d1d1f; color: #f5f5f7; padding: 20px 24px;
-  border-radius: var(--radius); overflow-x: auto; margin: 20px 0;
-}
-.article pre code { background: none; padding: 0; border: none; color: inherit; font-size: 13px; line-height: 1.5; }
-.article blockquote {
-  border-left: 3px solid var(--accent); padding: 12px 20px; margin: 16px 0;
-  background: var(--surface-hover); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  color: var(--text-secondary); font-style: italic;
-}
-.article ul, .article ol { margin: 6px 0 16px 22px; }
-.article li { margin-bottom: 4px; }
-.article .table-wrap { overflow-x: auto; margin: 16px 0; border-radius: var(--radius-sm); border: 1px solid var(--border); }
-.article table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
-.article th, .article td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
-.article th { background: var(--surface-hover); font-weight: 600; font-size: 12.5px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.3px; }
-.article tr:last-child td { border-bottom: none; }
-.article hr { border: none; height: 1px; background: var(--border); margin: 36px 0; }
-.article .content-img { max-width: 100%; border-radius: var(--radius); margin: 20px 0; box-shadow: var(--shadow); }
-
-/* Footer */
-.page-footer {
-  margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border);
-  text-align: center; font-size: 12.5px; color: var(--text-tertiary);
-}
-
-/* Home */
-.home-hero { text-align: center; padding: 48px 0 16px; }
-.home-hero h1 { font-size: 38px; letter-spacing: -0.8px; font-weight: 700; margin-bottom: 8px; }
-.home-hero p { font-size: 17px; color: var(--text-secondary); font-weight: 400; }
-.home-info { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 20px 0; }
-.home-info .badge {
-  background: var(--surface); padding: 4px 14px; border-radius: 20px;
-  font-size: 12.5px; color: var(--text-secondary); border: 1px solid var(--border);
-}
-.project-card {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 24px 28px; margin: 24px 0;
-  box-shadow: var(--shadow);
-}
-.project-card table { width: 100%; border: none; font-size: 14px; }
-.project-card td { border: none; padding: 5px 0; vertical-align: top; }
-.project-card td:first-child { width: 90px; font-weight: 500; color: var(--text-tertiary); font-size: 13px; }
-.module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin: 20px 0; }
-.module-card {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-sm); padding: 18px; transition: all 0.2s;
-  text-decoration: none; color: inherit; display: block;
-  box-shadow: var(--shadow);
-}
-.module-card:hover {
-  border-color: var(--accent); box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
-}
-.module-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
-.module-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
-.module-card .count { font-size: 12px; color: var(--text-tertiary); margin-top: 8px; }
-.section-title { font-size: 20px; font-weight: 600; margin-top: 36px; margin-bottom: 12px; letter-spacing: -0.3px; }
-
-@media (max-width: 768px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; height: auto; position: static; }
-  .content { padding: 20px; }
-  .module-grid { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
-}
-
-/* ===== Full width content (首页) ===== */
-.content-full {
+/* Main */
+.main-content {
+  flex: 1; min-width: 0;
   max-width: 860px; margin: 0 auto; padding: 24px 48px 48px;
   min-height: 100vh;
 }
-.home-footer-cta { text-align: center; margin: 40px 0; }
-.cta-large { padding: 14px 36px !important; font-size: 16px !important; }
+
+/* ===== Animations ===== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(0.5deg); }
+  66% { transform: translateY(-5px) rotate(-0.3deg); }
+}
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
 
 /* ===== Hero Section ===== */
 .home-hero {
-  text-align: center; padding: 50px 0 20px;
+  text-align: center; padding: 60px 0 24px;
   position: relative; overflow: hidden;
 }
 .home-hero::before {
   content: ''; position: absolute; top: -50%; left: -50%;
   width: 200%; height: 200%;
-  background: radial-gradient(circle at 30% 40%, rgba(37,99,235,0.06) 0%, transparent 50%),
-              radial-gradient(circle at 70% 60%, rgba(124,58,237,0.06) 0%, transparent 50%);
-  animation: heroGlow 8s ease-in-out infinite alternate;
+  background: radial-gradient(ellipse at 30% 30%, rgba(37,99,235,0.06) 0%, transparent 45%),
+              radial-gradient(ellipse at 70% 70%, rgba(124,58,237,0.06) 0%, transparent 45%),
+              radial-gradient(ellipse at 50% 50%, rgba(6,182,212,0.04) 0%, transparent 40%);
+  animation: float 12s ease-in-out infinite;
+  pointer-events: none;
 }
-@keyframes heroGlow {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(-20px, 20px); }
+.home-hero::after {
+  content: ''; position: absolute; top: -20%; left: 30%;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%);
+  animation: pulseGlow 4s ease-in-out infinite;
+  pointer-events: none;
 }
+
 .hero-badge {
-  display: inline-block; background: linear-gradient(135deg, #eef2ff, #f5f3ff);
-  color: var(--accent); padding: 5px 18px; border-radius: 20px;
-  font-size: 13px; font-weight: 500; margin-bottom: 18px;
+  display: inline-block;
+  background: linear-gradient(135deg, #eef2ff, #f5f3ff);
+  color: var(--accent); padding: 6px 20px; border-radius: 20px;
+  font-size: 13px; font-weight: 500; margin-bottom: 20px;
   position: relative; animation: fadeUp 0.8s ease-out both;
+  border: 1px solid rgba(37,99,235,0.1);
 }
 .home-hero h1 {
-  font-size: 42px; letter-spacing: -1px; font-weight: 700;
-  margin-bottom: 14px; line-height: 1.15; position: relative;
+  font-size: 44px; letter-spacing: -1.2px; font-weight: 700;
+  margin-bottom: 16px; line-height: 1.1; position: relative;
   animation: fadeUp 0.8s ease-out 0.1s both;
 }
 .home-hero .highlight {
+  background: linear-gradient(135deg, #2563eb, #7c3aed, #0891b2);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: shimmer 4s ease-in-out infinite;
+}
+.hero-sub {
+  font-size: 17px; color: var(--text-secondary); margin-bottom: 20px;
+  animation: fadeUp 0.8s ease-out 0.2s both; position: relative;
+  max-width: 560px; margin-left: auto; margin-right: auto;
+}
+
+.hero-stats {
+  display: flex; justify-content: center; gap: 32px;
+  margin: 16px 0 20px; animation: fadeUp 0.8s ease-out 0.25s both;
+}
+.stat-item { text-align: center; }
+.stat-num {
+  display: block; font-size: 26px; font-weight: 700;
   background: linear-gradient(135deg, #2563eb, #7c3aed);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.hero-sub {
-  font-size: 17px; color: var(--text-secondary); margin-bottom: 30px;
-  animation: fadeUp 0.8s ease-out 0.2s both; position: relative;
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+.stat-label { font-size: 12px; color: var(--text-tertiary); margin-top: -2px; display: block; }
+
 .hero-cta {
-  display: flex; gap: 12px; justify-content: center; margin-bottom: 28px;
+  display: flex; gap: 12px; justify-content: center; margin-bottom: 0;
   animation: fadeUp 0.8s ease-out 0.3s both; position: relative;
 }
 .btn-primary, .btn-secondary {
-  display: inline-block; padding: 11px 30px; border-radius: 8px;
+  display: inline-block; padding: 12px 32px; border-radius: 10px;
   font-size: 15px; font-weight: 500; text-decoration: none;
-  transition: all 0.25s cubic-bezier(0.4,0,0.2,1); position: relative;
-  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
 }
 .btn-primary {
   background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white;
-  box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+  box-shadow: 0 4px 16px rgba(37,99,235,0.3);
 }
 .btn-primary:hover {
-  transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,99,235,0.4);
+  transform: translateY(-3px); box-shadow: 0 8px 24px rgba(37,99,235,0.4);
 }
-.btn-primary:active { transform: translateY(0); }
 .btn-secondary {
   background: var(--surface); color: var(--text); border: 1px solid var(--border);
 }
-.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
-.home-info {
-  display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
-  margin: 20px 0; position: relative;
-  animation: fadeUp 0.8s ease-out 0.4s both;
+/* ===== Content Sections ===== */
+.content-section {
+  margin: 48px 0;
+  animation: fadeUp 0.8s ease-out both;
 }
-.home-info .badge {
-  background: var(--surface); padding: 5px 16px; border-radius: 20px;
-  font-size: 12.5px; color: var(--text-secondary);
-  border: 1px solid var(--border); transition: all 0.2s;
+.section-header {
+  text-align: center; margin-bottom: 28px;
 }
-.home-info .badge:hover { border-color: var(--accent); color: var(--accent); }
+.section-number {
+  display: inline-block;
+  font-size: 12px; font-weight: 600; letter-spacing: 2px;
+  color: var(--accent); margin-bottom: 6px;
+  background: var(--accent-light); padding: 3px 12px;
+  border-radius: 12px;
+}
+.section-header h2 {
+  font-size: 26px; font-weight: 700; letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+.section-desc {
+  font-size: 14px; color: var(--text-secondary);
+  max-width: 480px; margin: 0 auto;
+}
 
-/* ===== Company Bar ===== */
-.company-bar {
-  background: linear-gradient(135deg, #f8fafc, #eef2ff);
-  border: 1px solid var(--border); border-radius: 12px;
-  padding: 18px 24px; margin: 28px 0; position: relative;
-  animation: fadeUp 0.8s ease-out 0.5s both;
+/* ===== Scene Cards ===== */
+.scene-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
 }
-.company-inner { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: center; }
-.company-item { display: flex; gap: 6px; font-size: 13px; }
-.ci-label { color: var(--text-tertiary); font-weight: 500; }
-.ci-value { color: var(--text); }
-.sep { color: var(--border); margin: 0 4px; }
+.scene-card {
+  display: flex; flex-direction: column; align-items: flex-start;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px;
+  text-decoration: none; color: inherit;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  position: relative; overflow: hidden;
+  animation: fadeUp 0.6s ease-out both;
+}
+.scene-card:nth-child(1) { animation-delay: 0.05s; }
+.scene-card:nth-child(2) { animation-delay: 0.1s; }
+.scene-card:nth-child(3) { animation-delay: 0.15s; }
+.scene-card:nth-child(4) { animation-delay: 0.2s; }
+.scene-card:nth-child(5) { animation-delay: 0.25s; }
+.scene-card:nth-child(6) { animation-delay: 0.3s; }
+.scene-card:nth-child(7) { animation-delay: 0.35s; }
+.scene-card:nth-child(8) { animation-delay: 0.4s; }
+.scene-card:nth-child(9) { animation-delay: 0.45s; }
+
+.scene-card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--card-accent, var(--accent));
+  opacity: 0; transition: opacity 0.3s;
+}
+.scene-card:hover::before { opacity: 1; }
+
+.scene-card:hover {
+  border-color: var(--card-accent, var(--accent));
+  box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+  transform: translateY(-4px);
+}
+
+.scene-icon-wrap {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: color-mix(in srgb, var(--card-accent, var(--accent)) 10%, transparent);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px; flex-shrink: 0;
+  transition: transform 0.3s, background 0.3s;
+}
+.scene-card:hover .scene-icon-wrap {
+  transform: scale(1.1);
+  background: color-mix(in srgb, var(--card-accent, var(--accent)) 18%, transparent);
+}
+.scene-icon { font-size: 22px; line-height: 1; }
+
+.scene-info h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 6px;
+  color: var(--text);
+}
+.scene-info p {
+  font-size: 13px; color: var(--text-secondary); line-height: 1.55;
+  margin-bottom: 10px;
+}
+.scene-tag {
+  display: inline-block; font-size: 11px; font-weight: 500;
+  padding: 3px 10px; border-radius: 10px;
+}
+.tag-automation { background: #eef2ff; color: #2563eb; }
+.tag-knowledge { background: #f5f3ff; color: #7c3aed; }
+
+/* ===== Knowledge Grid ===== */
+.knowledge-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+}
+.knowledge-card {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px 14px;
+  text-decoration: none; color: inherit;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  position: relative; overflow: hidden;
+  animation: fadeUp 0.6s ease-out both;
+}
+.knowledge-card:nth-child(1) { animation-delay: 0.05s; }
+.knowledge-card:nth-child(2) { animation-delay: 0.1s; }
+.knowledge-card:nth-child(3) { animation-delay: 0.15s; }
+.knowledge-card:nth-child(4) { animation-delay: 0.2s; }
+.knowledge-card:nth-child(5) { animation-delay: 0.25s; }
+.knowledge-card:nth-child(6) { animation-delay: 0.3s; }
+.knowledge-card:nth-child(7) { animation-delay: 0.35s; }
+.knowledge-card:nth-child(8) { animation-delay: 0.4s; }
+
+.knowledge-card::after {
+  content: ''; position: absolute; bottom: 0; left: 30%;
+  width: 40%; height: 3px;
+  background: var(--card-color, var(--accent));
+  border-radius: 2px; transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.knowledge-card:hover::after { transform: scaleX(1); }
+
+.knowledge-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+  border-color: var(--card-color, var(--accent));
+}
+.knowledge-icon { font-size: 28px; margin-bottom: 10px; }
+.knowledge-body h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.knowledge-body p { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+.knowledge-arrow {
+  display: inline-block; margin-top: 8px;
+  font-size: 16px; color: var(--card-color, var(--accent));
+  opacity: 0; transform: translateX(-8px);
+  transition: all 0.3s;
+}
+.knowledge-card:hover .knowledge-arrow { opacity: 1; transform: translateX(0); }
 
 /* ===== Pricing ===== */
-.pricing-section { margin: 40px 0; }
-.section-title {
-  font-size: 24px; font-weight: 600; text-align: center;
-  letter-spacing: -0.3px; margin-bottom: 24px;
-}
-.section-sub { text-align: center; color: var(--text-secondary); font-size: 14px; margin-top: -16px; margin-bottom: 24px; }
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .pricing-card {
-  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
-  padding: 32px 24px; text-align: center; position: relative;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 28px 22px; text-align: center; position: relative;
   transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
   animation: fadeUp 0.6s ease-out both;
 }
@@ -308,7 +357,6 @@ body {
   border-color: var(--accent); border-width: 2px;
   box-shadow: 0 4px 20px rgba(37,99,235,0.08);
 }
-.pricing-card.featured:hover { box-shadow: 0 8px 30px rgba(37,99,235,0.15); }
 .pricing-badge {
   position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
   background: var(--border); color: var(--text-secondary); padding: 3px 16px;
@@ -319,25 +367,39 @@ body {
   box-shadow: 0 2px 8px rgba(37,99,235,0.3);
 }
 .pricing-card h3 { font-size: 20px; margin-bottom: 8px; }
-.price { font-size: 38px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
-.price small { font-size: 14px; font-weight: 400; color: var(--text-secondary); }
-.price-desc { font-size: 12.5px; color: var(--text-secondary); margin-bottom: 20px; }
-.pricing-card ul { list-style: none; margin: 0; padding: 0; }
+.price {
+  font-size: 36px; font-weight: 700; color: var(--text); margin-bottom: 2px;
+}
+.price-year { font-size: 14px; font-weight: 400; color: var(--text-secondary); }
+.price-desc { font-size: 12.5px; color: var(--text-secondary); margin-bottom: 18px; }
+.pricing-card ul { list-style: none; margin: 0; padding: 0; text-align: left; }
 .pricing-card ul li {
   padding: 7px 0; font-size: 13.5px; color: var(--text);
-  border-bottom: 1px solid var(--border); position: relative;
+  border-bottom: 1px solid var(--border);
 }
 .pricing-card ul li:last-child { border-bottom: none; }
-.pricing-card ul li::before { content: '✓ '; color: var(--accent); font-weight: 600; }
-.pricing-card.s1 { border-top: 3px solid #94a3b8; }
-.pricing-card.s2 { border-top: 3px solid var(--accent); }
-.pricing-card.s3 { border-top: 3px solid #7c3aed; }
 
-/* ===== Module Grid Enhancement ===== */
+/* ===== About ===== */
+.about-block {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px;
+  display: flex; flex-direction: column; gap: 12px;
+  max-width: 500px; margin: 0 auto;
+}
+.about-item {
+  display: flex; gap: 12px; align-items: center;
+}
+.about-label {
+  font-size: 13px; font-weight: 600; color: var(--text-secondary);
+  min-width: 100px;
+}
+.about-text { font-size: 14px; color: var(--text); }
+
+/* ===== Module Card (detail pages) ===== */
 .module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin: 20px 0; }
 .module-card {
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: 12px; padding: 20px; transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+  border-radius: var(--radius-sm); padding: 20px; transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
   text-decoration: none; color: inherit; display: block;
   box-shadow: var(--shadow); animation: fadeUp 0.5s ease-out both;
 }
@@ -349,289 +411,90 @@ body {
 .module-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
 .module-card .count { font-size: 12px; color: var(--text-tertiary); margin-top: 8px; }
 
-/* ===== Scroll Animation ===== */
-.fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
+/* ===== Content ===== */
+.content-area h1, .content-area h2, .content-area h3 { margin-top: 28px; margin-bottom: 12px; font-weight: 600; line-height: 1.3; }
+.content-area h1 { font-size: 26px; letter-spacing: -0.5px; }
+.content-area h2 { font-size: 20px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+.content-area h3 { font-size: 17px; }
+.content-area p { margin: 12px 0; font-size: 15px; line-height: 1.75; color: var(--text); }
+.content-area ul, .content-area ol { margin: 10px 0 10px 22px; }
+.content-area li { margin: 4px 0; line-height: 1.6; }
+.content-area blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--accent);
+  background: #f8fafc; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--text-secondary);
+}
+.content-area pre {
+  background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: var(--radius-sm);
+  overflow-x: auto; font-size: 13px; line-height: 1.6; margin: 14px 0;
+}
+.content-area code { font-family: "SF Mono","Fira Code","Cascadia Code",monospace; }
+.content-area :not(pre) > code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 13px; }
+.content-area img { max-width: 100%; border-radius: var(--radius-sm); margin: 14px 0; }
+.content-area hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+.content-area a { color: var(--accent); text-decoration: none; }
+.content-area a:hover { text-decoration: underline; }
+.content-area .table-wrap { overflow-x: auto; margin: 12px 0; }
+.content-area table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.content-area table td { padding: 8px 12px; border: 1px solid var(--border); }
 
-@media (max-width: 768px) {
-  .pricing-grid { grid-template-columns: 1fr; }
-  .company-inner { flex-direction: column; align-items: center; gap: 6px; }
-/* ===== Home Hero ===== */
-.home-hero {
-  text-align: center; padding: 60px 20px 30px; position: relative;
-  background: linear-gradient(180deg, #f0f4ff 0%, #fafafa 100%);
-  border-radius: 0 0 30px 30px; margin: 0 -48px; overflow: hidden;
-}
-.home-hero::before {
-  content: ''; position: absolute; top: -30%; right: -20%;
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%);
-  animation: heroFloat 12s ease-in-out infinite alternate;
-}
-.home-hero::after {
-  content: ''; position: absolute; bottom: -20%; left: -10%;
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(124,58,237,0.06) 0%, transparent 70%);
-  animation: heroFloat 15s ease-in-out infinite alternate-reverse;
-}
-@keyframes heroFloat {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(30px, -30px) scale(1.1); }
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: #fff; border: 1px solid #e8edf5;
-  padding: 6px 18px; border-radius: 20px; font-size: 13px; font-weight: 500;
-  color: #475569; margin-bottom: 20px; position: relative; z-index: 1;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.hero-badge::before { content: '◆ '; color: #3b82f6; }
-.home-hero h1 {
-  font-size: 44px; font-weight: 700; letter-spacing: -1px;
-  line-height: 1.1; margin-bottom: 16px; position: relative; z-index: 1;
-  color: #0f172a;
-}
-.gradient-text {
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.hero-desc {
-  font-size: 17px; color: #64748b; max-width: 520px;
-  margin: 0 auto 28px; line-height: 1.6; position: relative; z-index: 1;
-}
-.hero-stats {
-  display: flex; align-items: center; justify-content: center;
-  gap: 24px; margin-bottom: 32px; position: relative; z-index: 1;
-}
-.stat-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-.stat-num { font-size: 28px; font-weight: 700; color: #0f172a; }
-.stat-label { font-size: 13px; color: #94a3b8; }
-.stat-divider { width: 1px; height: 36px; background: #e2e8f0; }
-.hero-actions {
-  display: flex; gap: 12px; justify-content: center;
-  position: relative; z-index: 1;
-}
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
-  color: #fff; padding: 12px 28px; border-radius: 10px;
-  font-size: 15px; font-weight: 500; text-decoration: none;
-  box-shadow: 0 4px 14px rgba(37,99,235,0.3);
-  transition: all 0.25s;
-}
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,99,235,0.4); }
-.btn-arrow { transition: transform 0.2s; }
-.btn-primary:hover .btn-arrow { transform: translateX(4px); }
-.btn-outline {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: #fff; color: #334155; padding: 12px 28px; border-radius: 10px;
-  font-size: 15px; font-weight: 500; text-decoration: none;
-  border: 1px solid #e2e8f0; transition: all 0.25s;
-}
-.btn-outline:hover { border-color: #3b82f6; color: #2563eb; }
+/* ===== Meta ===== */
+.meta-bar { display: flex; gap: 16px; margin: 10px 0 20px; color: var(--text-secondary); font-size: 13px; }
+.breadcrumb { font-size: 13px; color: var(--text-tertiary); margin-bottom: 16px; }
+.breadcrumb a { color: var(--text-tertiary); text-decoration: none; }
+.breadcrumb a:hover { color: var(--accent); }
 
-/* ===== Brand Bar ===== */
-.brand-bar {
-  display: flex; flex-wrap: wrap; gap: 20px 32px;
-  justify-content: center; padding: 16px 24px;
-  background: #fff; border: 1px solid #e8edf5;
-  border-radius: 12px; margin: 28px 0;
+/* ===== Footer ===== */
+.page-footer {
+  text-align: center; padding: 32px 0;
+  color: var(--text-tertiary); font-size: 12.5px;
+  border-top: 1px solid var(--border); margin-top: 48px;
 }
-.brand-item { font-size: 13.5px; color: #475569; display: flex; align-items: center; gap: 6px; }
-.brand-icon { font-size: 15px; }
+.page-footer a { color: var(--text-secondary); text-decoration: none; }
 
-/* ===== Pricing ===== */
-.pricing-wrap { margin: 48px 0; text-align: center; }
-.section-label {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: #f1f5f9; border: 1px solid #e2e8f0;
-  padding: 4px 14px; border-radius: 16px; font-size: 12px; font-weight: 600;
-  color: #64748b; margin-bottom: 12px;
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  .main-content { max-width: 100%; padding: 16px 20px; }
+  .scene-grid { grid-template-columns: repeat(2, 1fr); }
+  .knowledge-grid { grid-template-columns: repeat(2, 1fr); }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .home-hero h1 { font-size: 32px; }
 }
-.section-heading { font-size: 26px; font-weight: 700; color: #0f172a; margin-bottom: 8px; letter-spacing: -0.5px; }
-.section-sub { font-size: 14px; color: #94a3b8; margin-bottom: 28px; }
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 800px; margin: 0 auto; }
-.pricing-card {
-  background: #fff; border: 1px solid #e8edf5; border-radius: 14px;
-  padding: 0; overflow: hidden; position: relative;
-  transition: all 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.pricing-card:hover {
-  transform: translateY(-3px); box-shadow: 0 8px 24px rgba(37,99,235,0.1);
-  border-color: #93c5fd;
-}
-.pricing-card.featured {
-  border-color: #93c5fd; border-width: 2px;
-  box-shadow: 0 4px 16px rgba(37,99,235,0.08);
-}
-.most-tag {
-  position: absolute; top: 12px; right: 12px;
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
-  color: #fff; padding: 3px 12px; border-radius: 8px;
-  font-size: 11px; font-weight: 600;
-}
-.card-top { padding: 28px 24px 16px; text-align: center; }
-.pricing-card h3 { font-size: 18px; color: #64748b; font-weight: 500; margin-bottom: 8px; }
-.card-price { font-size: 36px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
-.price-symbol { font-size: 20px; vertical-align: super; }
-.price-year { font-size: 14px; font-weight: 400; color: #94a3b8; }
-.card-period { font-size: 12px; color: #94a3b8; }
-.card-features { list-style: none; margin: 0; padding: 16px 24px 24px; text-align: left; border-top: 1px solid #f1f5f9; }
-.card-features li {
-  padding: 7px 0; font-size: 14px; color: #334155;
-  display: flex; align-items: center; gap: 8px;
-}
-.check { color: #22c55e; font-weight: 600; }
-
-/* ===== Section Headings ===== */
-.section-title {
-  font-size: 22px; font-weight: 600; margin-top: 48px; margin-bottom: 16px;
-  letter-spacing: -0.3px; color: #0f172a;
-}
-
-/* ===== Scene Cards (用户场景) ===== */
-.scene-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 680px; margin: 0 auto; }
-.scene-card {
-  display: flex; align-items: flex-start; gap: 14px;
-  background: #fff; border: 1px solid #e8edf5; border-radius: 14px;
-  padding: 20px; text-decoration: none; color: inherit;
-  transition: all 0.25s; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.scene-card:hover {
-  transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,0.08);
-  border-color: #93c5fd;
-}
-.scene-icon { font-size: 32px; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.scene-body { flex: 1; min-width: 0; }
-.scene-body h3 { font-size: 15px; font-weight: 600; color: #0f172a; margin-bottom: 4px; }
-.scene-body p { font-size: 13px; color: #64748b; line-height: 1.5; margin: 0; }
-
-/* ===== Module Cards (二页) ===== */
-.module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin: 20px 0; }
-.module-card {
-  background: #fff; border: 1px solid #e8edf5; border-radius: 12px;
-  padding: 20px; transition: all 0.25s;
-  text-decoration: none; color: inherit; display: block;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.module-card:hover {
-  transform: translateY(-2px); box-shadow: 0 6px 16px rgba(37,99,235,0.08);
-  border-color: #93c5fd;
-}
-.module-card h3 { font-size: 15px; font-weight: 600; color: #0f172a; margin-bottom: 6px; }
-.module-card p { font-size: 13px; color: #64748b; line-height: 1.5; }
-.module-card .count { font-size: 12px; color: #94a3b8; margin-top: 8px; }
-
-/* Animations */
-.fade-in { opacity: 0; transform: translateY(16px); transition: all 0.5s ease-out; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-
-@media (max-width: 768px) {
-  .content { padding: 20px; }
-  .home-hero { margin: 0 -20px; border-radius: 0 0 20px 20px; padding: 40px 20px 24px; }
-  .home-hero h1 { font-size: 28px; }
-  .hero-stats { gap: 16px; }
-  .stat-num { font-size: 22px; }
-  .hero-actions { flex-direction: column; align-items: center; }
-  .pricing-grid { grid-template-columns: 1fr; max-width: 360px; }
-  .brand-bar { flex-direction: column; align-items: center; gap: 8px; }
+@media (max-width: 600px) {
   .scene-grid { grid-template-columns: 1fr; }
-  .module-grid { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
+  .knowledge-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 20px; }
 }
-
-/* ===== Full width content (首页) ===== */
-.content-full {
-  max-width: 860px; margin: 0 auto; padding: 24px 48px 48px;
-  min-height: 100vh;
-}
-.home-footer-cta { text-align: center; margin: 40px 0; }
-.cta-large { padding: 14px 36px !important; font-size: 16px !important; }
-
 </style>
 </head>
 <body>
 <nav class="top-nav">
 <div class="nav-inner">
 <a href="index.html" class="logo">🤖 企业数字员工</a>
-<div class="nav-links"><a href="module-0-项目总览.html">总览</a>
+<div class="nav-links">
+<a href="index.html">首页</a>
+<a href="module-0-项目总览.html">项目总览</a>
 <a href="module-1-推广体系.html">推广</a>
 <a href="module-2-销售转化.html">销售</a>
-<a href="module-3-内容素材.html">素材</a>
-<a href="module-4-客户细分.html">客户</a>
 <a href="module-5-交付SOP.html">交付</a>
-<a href="module-6-工具模板.html">工具</a>
-<a href="module-7-Hermes技术基座.html">Hermes</a>
-<a href="module-附件.html">附件</a></div>
+<a href="module-7-Hermes技术基座.html">技术基座</a>
+</div>
 </div>
 </nav>
 <div class="layout">
-<aside class="sidebar" id="sidebar">
-<div class="sidebar-search"><input type="text" id="search" placeholder="搜索笔记..." oninput="searchNotes(this.value)"></div>
-<div class="sidebar-toc"><div class="module-group">
-<div class="module-title">🎯 项目总览</div>
-<a href="推广与流程体系_完整框架.html" class="page-link"><span class="icon">📐</span><span class="title">AI数字员工 · 推广与流程体系完整框架</span></a>
-<a href="GitHub可用项目清单与案例方案.html" class="page-link"><span class="icon">🎯</span><span class="title">GitHub 可用项目清单与案例方案</span></a>
-<a href="八大行业方案速查.html" class="page-link"><span class="icon">🏢</span><span class="title">八大行业方案速查</span></a>
-<a href="对外资料清单与制作排期.html" class="page-link"><span class="icon">🎯</span><span class="title">对外资料清单与制作排期</span></a>
-<a href="常见反对意见与应对.html" class="page-link"><span class="icon">🛡️</span><span class="title">常见反对意见与应对</span></a>
-<a href="核心话术速查.html" class="page-link"><span class="icon">💬</span><span class="title">核心话术速查</span></a>
-<a href="项目检查清单.html" class="page-link"><span class="icon">✅</span><span class="title">项目检查清单</span></a>
+<div class="sidebar">
+<div class="sidebar-search"><input id="search-input" type="text" placeholder="搜索笔记..."></div>
+<div class="module-group"><div class="module-title">🎯 项目总览</div><div class="page-link"><a href="GitHub可用项目清单与案例方案.html">🎯 GitHub 可用项目清单与案例方案</a></div><div class="page-link"><a href="八大行业方案速查.html">🏢 八大行业方案速查</a></div><div class="page-link"><a href="对外资料清单与制作排期.html">🎯 对外资料清单与制作排期</a></div><div class="page-link"><a href="常见反对意见与应对.html">🛡️ 常见反对意见与应对</a></div><div class="page-link"><a href="推广与流程体系_完整框架.html">📐 AI数字员工 · 推广与流程体系完整框架</a></div><div class="page-link"><a href="核心话术速查.html">💬 核心话术速查</a></div><div class="page-link"><a href="项目检查清单.html">✅ 项目检查清单</a></div></div><div class="module-group"><div class="module-title">📡 推广体系</div><div class="page-link"><a href="模块一_推广渠道矩阵.html">📡 模块一：推广渠道矩阵</a></div></div><div class="module-group"><div class="module-title">🪜 销售转化</div><div class="page-link"><a href="模块二_销售转化漏斗.html">🪜 模块二：销售转化漏斗</a></div></div><div class="module-group"><div class="module-title">📝 内容素材</div><div class="page-link"><a href="模块三_内容素材体系.html">📝 模块三：内容素材体系</a></div></div><div class="module-group"><div class="module-title">👥 客户细分</div><div class="page-link"><a href="模块四_客户细分与差异化方案.html">👥 模块四：客户细分与差异化方案</a></div></div><div class="module-group"><div class="module-title">🔧 交付SOP</div><div class="page-link"><a href="模块五_交付SOP标准操作手册.html">🔧 模块五：交付SOP标准操作手册</a></div></div><div class="module-group"><div class="module-title">🧰 工具模板</div><div class="page-link active"><a href="模块六_工具模板清单.html">🧰 模块六：工具模板清单</a></div></div><div class="module-group"><div class="module-title">🤖 Hermes 技术基座</div><div class="page-link"><a href="Hermes CLI 速查.html">🤖 Hermes CLI 速查</a></div><div class="page-link"><a href="Hermes 工具清单.html">🔌 Hermes 工具清单</a></div><div class="page-link"><a href="Hermes 示例命令.html">🤖 Hermes 示例命令</a></div><div class="page-link"><a href="Hermes 部署与运维.html">🤖 Hermes 部署与运维</a></div><div class="page-link"><a href="README.html">🤖 Hermes Agent — AI 数字员工技术基座</a></div></div><div class="module-group"><div class="module-title">📎 附件</div><div class="page-link"><a href="AI数字员工_企业增效计划.html">📄 AI数字员工_企业增效计划</a></div><div class="page-link"><a href="AI数字员工_展会精华版.html">🎪 AI数字员工_展会精华版</a></div><div class="page-link"><a href="AI智能体企业定制服务_企业展示.html">🤖 AI智能体企业定制服务_企业展示</a></div><div class="page-link"><a href="ppt-master参考索引.html">📄 ppt-master 模板参考</a></div><div class="page-link"><a href="素材总索引.html">🖼️ 素材总索引</a></div></div>
 </div>
-<div class="module-group">
-<div class="module-title">📡 推广体系</div>
-<a href="模块一_推广渠道矩阵.html" class="page-link"><span class="icon">📡</span><span class="title">模块一：推广渠道矩阵</span></a>
-</div>
-<div class="module-group">
-<div class="module-title">🪜 销售转化</div>
-<a href="模块二_销售转化漏斗.html" class="page-link"><span class="icon">🪜</span><span class="title">模块二：销售转化漏斗</span></a>
-</div>
-<div class="module-group">
-<div class="module-title">📝 内容素材</div>
-<a href="模块三_内容素材体系.html" class="page-link"><span class="icon">📝</span><span class="title">模块三：内容素材体系</span></a>
-</div>
-<div class="module-group">
-<div class="module-title">👥 客户细分</div>
-<a href="模块四_客户细分与差异化方案.html" class="page-link"><span class="icon">👥</span><span class="title">模块四：客户细分与差异化方案</span></a>
-</div>
-<div class="module-group">
-<div class="module-title">🔧 交付SOP</div>
-<a href="模块五_交付SOP标准操作手册.html" class="page-link"><span class="icon">🔧</span><span class="title">模块五：交付SOP标准操作手册</span></a>
-</div>
-<div class="module-group">
-<div class="module-title">🧰 工具模板</div>
-<a href="模块六_工具模板清单.html" class="page-link active"><span class="icon">🧰</span><span class="title">模块六：工具模板清单</span></a>
-</div>
-<div class="module-group">
-<div class="module-title">🤖 Hermes 技术基座</div>
-<a href="README.html" class="page-link"><span class="icon">🤖</span><span class="title">Hermes Agent — AI 数字员工技术基座</span></a>
-<a href="Hermes CLI 速查.html" class="page-link"><span class="icon">🤖</span><span class="title">Hermes CLI 速查</span></a>
-<a href="Hermes 工具清单.html" class="page-link"><span class="icon">🔌</span><span class="title">Hermes 工具清单</span></a>
-<a href="Hermes 示例命令.html" class="page-link"><span class="icon">🤖</span><span class="title">Hermes 示例命令</span></a>
-<a href="Hermes 部署与运维.html" class="page-link"><span class="icon">🤖</span><span class="title">Hermes 部署与运维</span></a>
-</div>
-<div class="module-group">
-<div class="module-title">📎 附件</div>
-<a href="AI数字员工_企业增效计划.html" class="page-link"><span class="icon">📄</span><span class="title">AI数字员工_企业增效计划</span></a>
-<a href="AI数字员工_展会精华版.html" class="page-link"><span class="icon">🎪</span><span class="title">AI数字员工_展会精华版</span></a>
-<a href="AI智能体企业定制服务_企业展示.html" class="page-link"><span class="icon">🤖</span><span class="title">AI智能体企业定制服务_企业展示</span></a>
-<a href="ppt-master参考索引.html" class="page-link"><span class="icon">📄</span><span class="title">ppt-master 模板参考</span></a>
-<a href="素材总索引.html" class="page-link"><span class="icon">🖼️</span><span class="title">素材总索引</span></a>
-</div></div>
-</aside>
-<main class="content">
+<main class="main-content">
 <div class="breadcrumb"><a href="index.html">🏠 首页</a> / <a href="module-6-工具模板.html">🧰 工具模板</a> / 模块六：工具模板清单</div>
-<article class="article"><h1>🧰 模块六：工具模板清单</h1><div class="meta-bar"><span>📖 17 分钟</span><span>📝 8606 字</span><span>📊 93 个表格</span></div><h1>模块六：工具模板清单</h1>
-
-<blockquote>版本：v1.0 <div class="table-wrap"><table></blockquote>
-<tr><td>日期：2026-06-03</td><td>负责人：倪锦</td></tr>
-</table></div>> 说明：所有工具模板的完整清单和创建规范，让每次执行都有标准模板可用
-
-<hr>
-
-<h2>目录</h2>
-
+<div class="content-area"><h1>🧰 模块六：工具模板清单</h1><div class="meta-bar"><span>📖 17 分钟</span><span>📝 8606 字</span><span>📊 93 个表格</span></div><p><h1>模块六：工具模板清单</h1></p>
+<p><blockquote>版本：v1.0 <div class="table-wrap"><table></blockquote></p>
+<p><tr><td>日期：2026-06-03</td><td>负责人：倪锦</td></tr></p>
+<p></table></div>> 说明：所有工具模板的完整清单和创建规范，让每次执行都有标准模板可用</p>
+<p><hr></p>
+<p><h2>目录</h2></p>
 <ol>
 <li>[模板总览](#1-模板总览)</li>
 <li>[客户信息记录表](#2-客户信息记录表)</li>
@@ -648,54 +511,44 @@ body {
 <li>[跟进记录表](#13-跟进记录表)</li>
 <li>[客户管理总表](#14-客户管理总表)</li>
 </ol>
-
-<hr>
-
-<h2>1. 模板总览</h2>
-
-<h3>1.1 模板清单</h3>
-
-<div class="table-wrap"><table>
-<tr><td>编号</td><td>模板名称</td><td>使用阶段</td><td>创建方式</td><td>优先级</td></tr>
-<tr><td>T-01</td><td>客户信息记录表</td><td>L1首次联系</td><td>飞书多维表格/Excel</td><td>★★★★★</td></tr>
-<tr><td>T-02</td><td>初步需求调研问卷</td><td>L1约诊前</td><td>腾讯文档/飞书表单</td><td>★★★★☆</td></tr>
-<tr><td>T-03</td><td>AI诊断评估报告</td><td>L2诊断后</td><td>Markdown/Word</td><td>★★★★★</td></tr>
-<tr><td>T-04</td><td>AI落地方案书</td><td>L3方案</td><td>Markdown/Word</td><td>★★★★★</td></tr>
-<tr><td>T-05</td><td>报价单</td><td>L3报价</td><td>Excel/PDF</td><td>★★★★★</td></tr>
-<tr><td>T-06</td><td>技术服务合同</td><td>L4签约</td><td>Word/法务审核</td><td>★★★★★</td></tr>
-<tr><td>T-07</td><td>验收确认单</td><td>L6验收</td><td>飞书文档/Word</td><td>★★★★★</td></tr>
-<tr><td>T-08</td><td>项目排期表</td><td>L4启动</td><td>飞书甘特图/Excel</td><td>★★★★☆</td></tr>
-<tr><td>T-09</td><td>培训记录表</td><td>L6培训</td><td>飞书文档</td><td>★★★★☆</td></tr>
-<tr><td>T-10</td><td>效果跟踪周报</td><td>L7维护</td><td>飞书文档</td><td>★★★☆☆</td></tr>
-<tr><td>T-11</td><td>客户案例采集</td><td>交付后</td><td>Markdown</td><td>★★★★☆</td></tr>
-<tr><td>T-12</td><td>跟进记录表</td><td>L1-L3</td><td>与T-01合并</td><td>★★★★☆</td></tr>
-<tr><td>T-13</td><td>客户管理总表</td><td>全流程</td><td>飞书多维表格</td><td>★★★★★</td></tr>
-<tr><td>T-14</td><td>上线效果报告</td><td>L6验收</td><td>Word/飞书文档</td><td>★★★☆☆</td></tr>
-<tr><td>T-15</td><td>使用手册(客户版)</td><td>L6培训</td><td>PDF</td><td>★★★☆☆</td></tr>
-</table></div>
-<h3>1.2 模板管理规范</h3>
-
+<p><hr></p>
+<p><h2>1. 模板总览</h2></p>
+<p><h3>1.1 模板清单</h3></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>编号</td><td>模板名称</td><td>使用阶段</td><td>创建方式</td><td>优先级</td></tr></p>
+<p><tr><td>T-01</td><td>客户信息记录表</td><td>L1首次联系</td><td>飞书多维表格/Excel</td><td>★★★★★</td></tr></p>
+<p><tr><td>T-02</td><td>初步需求调研问卷</td><td>L1约诊前</td><td>腾讯文档/飞书表单</td><td>★★★★☆</td></tr></p>
+<p><tr><td>T-03</td><td>AI诊断评估报告</td><td>L2诊断后</td><td>Markdown/Word</td><td>★★★★★</td></tr></p>
+<p><tr><td>T-04</td><td>AI落地方案书</td><td>L3方案</td><td>Markdown/Word</td><td>★★★★★</td></tr></p>
+<p><tr><td>T-05</td><td>报价单</td><td>L3报价</td><td>Excel/PDF</td><td>★★★★★</td></tr></p>
+<p><tr><td>T-06</td><td>技术服务合同</td><td>L4签约</td><td>Word/法务审核</td><td>★★★★★</td></tr></p>
+<p><tr><td>T-07</td><td>验收确认单</td><td>L6验收</td><td>飞书文档/Word</td><td>★★★★★</td></tr></p>
+<p><tr><td>T-08</td><td>项目排期表</td><td>L4启动</td><td>飞书甘特图/Excel</td><td>★★★★☆</td></tr></p>
+<p><tr><td>T-09</td><td>培训记录表</td><td>L6培训</td><td>飞书文档</td><td>★★★★☆</td></tr></p>
+<p><tr><td>T-10</td><td>效果跟踪周报</td><td>L7维护</td><td>飞书文档</td><td>★★★☆☆</td></tr></p>
+<p><tr><td>T-11</td><td>客户案例采集</td><td>交付后</td><td>Markdown</td><td>★★★★☆</td></tr></p>
+<p><tr><td>T-12</td><td>跟进记录表</td><td>L1-L3</td><td>与T-01合并</td><td>★★★★☆</td></tr></p>
+<p><tr><td>T-13</td><td>客户管理总表</td><td>全流程</td><td>飞书多维表格</td><td>★★★★★</td></tr></p>
+<p><tr><td>T-14</td><td>上线效果报告</td><td>L6验收</td><td>Word/飞书文档</td><td>★★★☆☆</td></tr></p>
+<p><tr><td>T-15</td><td>使用手册(客户版)</td><td>L6培训</td><td>PDF</td><td>★★★☆☆</td></tr></p>
+<p></table></div></p>
+<p><h3>1.2 模板管理规范</h3></p>
 <ul>
 <li><strong>存储位置</strong>：<code>/docs/templates/</code> 目录下</li>
 <li><strong>命名规则</strong>：<code>T-编号_模板名称_版本号.md</code></li>
 <li><strong>更新策略</strong>：每次使用后，如有改进意见，在模板底部"改进记录"中注明</li>
 <li><strong>权限管理</strong>：所有模板对团队成员可见</li>
 </ul>
-
-<hr>
-
-<h2>2. 客户信息记录表（T-01）</h2>
-
-<h3>2.1 字段结构</h3>
-
-<pre><code class="lang-">┌──────────────────────────────────────────────────────────────┐
+<p><hr></p>
+<p><h2>2. 客户信息记录表（T-01）</h2></p>
+<p><h3>2.1 字段结构</h3></p>
+<p><pre><code class="lang-">┌──────────────────────────────────────────────────────────────┐</p>
 <p>│ 客户编号 │ 客户名称 │ 行业 │ 规模 │ 联系电话 │ 微信 │ 联系渠道 │</p>
 <p>├──────────┼──────────┼──────┼──────┼──────────┼──────┼──────────┤</p>
 <p>│ C-001    │ 张总     │ 电商 │ 8人  │ 138xxxx  │ xxx  │ 朋友圈   │</p>
 <p>├──────────┼──────────┼──────┼──────┼──────────┼──────┼──────────┤</p>
 <p>│ ...      │          │      │      │          │      │          │</p>
 <p>└──────────────────────────────────────────────────────────────┘</p>
-
 <p>┌──────┬──────┬──────┬──────┬──────┬──────┬──────┐</p>
 <p>│ 等级 │ 意向 │ 痛点 │ 场景 │ 状态 │ 跟进 │ 备注 │</p>
 <p>├──────┼──────┼──────┼──────┼──────┼──────┼──────┤</p>
@@ -704,31 +557,28 @@ body {
 <p>│ ...  │      │      │      │      │      │      │</p>
 <p>└──────┴──────┴──────┴──────┴──────┴──────┴──────┘</p>
 <p></code></pre></p>
-
-<h3>2.2 字段说明</h3>
-
-<div class="table-wrap"><table>
-<tr><td>字段</td><td>必填</td><td>说明</td></tr>
-<tr><td>客户编号</td><td>是</td><td>C-001 格式自动生成</td></tr>
-<tr><td>客户名称</td><td>是</td><td>"张总"或公司名</td></tr>
-<tr><td>行业</td><td>是</td><td>电商/二手车/制造/本地服务</td></tr>
-<tr><td>规模</td><td>是</td><td>人数 + 年营收（估算）</td></tr>
-<tr><td>联系电话</td><td>是</td><td></td></tr>
-<tr><td>微信</td><td>是</td><td></td></tr>
-<tr><td>联系渠道</td><td>是</td><td>朋友圈/展会/转介绍/短视频/社群</td></tr>
-<tr><td>等级</td><td>是</td><td>A/B/C/D</td></tr>
-<tr><td>意向</td><td>是</td><td>高/中/低</td></tr>
-<tr><td>痛点</td><td>是</td><td>核心痛点一句话</td></tr>
-<tr><td>场景</td><td>否</td><td>S1/S2/S3</td></tr>
-<tr><td>状态</td><td>是</td><td>新客/沟通中/诊断中/已报价/已签约/已交付/流失</td></tr>
-<tr><td>跟进人</td><td>是</td><td>默认倪锦</td></tr>
-<tr><td>跟进记录</td><td>是</td><td>每次跟进的简要记录</td></tr>
-<tr><td>上次跟进时间</td><td>是</td><td></td></tr>
-<tr><td>下次跟进时间</td><td>是</td><td></td></tr>
-<tr><td>备注</td><td>否</td><td>其他重要信息</td></tr>
-</table></div>
-<h3>2.3 创建方式</h3>
-
+<p><h3>2.2 字段说明</h3></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>字段</td><td>必填</td><td>说明</td></tr></p>
+<p><tr><td>客户编号</td><td>是</td><td>C-001 格式自动生成</td></tr></p>
+<p><tr><td>客户名称</td><td>是</td><td>"张总"或公司名</td></tr></p>
+<p><tr><td>行业</td><td>是</td><td>电商/二手车/制造/本地服务</td></tr></p>
+<p><tr><td>规模</td><td>是</td><td>人数 + 年营收（估算）</td></tr></p>
+<p><tr><td>联系电话</td><td>是</td><td></td></tr></p>
+<p><tr><td>微信</td><td>是</td><td></td></tr></p>
+<p><tr><td>联系渠道</td><td>是</td><td>朋友圈/展会/转介绍/短视频/社群</td></tr></p>
+<p><tr><td>等级</td><td>是</td><td>A/B/C/D</td></tr></p>
+<p><tr><td>意向</td><td>是</td><td>高/中/低</td></tr></p>
+<p><tr><td>痛点</td><td>是</td><td>核心痛点一句话</td></tr></p>
+<p><tr><td>场景</td><td>否</td><td>S1/S2/S3</td></tr></p>
+<p><tr><td>状态</td><td>是</td><td>新客/沟通中/诊断中/已报价/已签约/已交付/流失</td></tr></p>
+<p><tr><td>跟进人</td><td>是</td><td>默认倪锦</td></tr></p>
+<p><tr><td>跟进记录</td><td>是</td><td>每次跟进的简要记录</td></tr></p>
+<p><tr><td>上次跟进时间</td><td>是</td><td></td></tr></p>
+<p><tr><td>下次跟进时间</td><td>是</td><td></td></tr></p>
+<p><tr><td>备注</td><td>否</td><td>其他重要信息</td></tr></p>
+<p></table></div></p>
+<p><h3>2.3 创建方式</h3></p>
 <p>推荐使用飞书多维表格（免费版即可）：</p>
 <ol>
 <li>创建多维表格 → "客户管理"</li>
@@ -738,16 +588,11 @@ body {
 <li>设置"等级"为单选字段</li>
 <li>设置"跟进记录"为文本字段，每次追加</li>
 </ol>
-
-<hr>
-
-<h2>3. AI诊断评估报告模板（T-03）</h2>
-
-<h3>3.1 报告结构</h3>
-
-<pre><code class="lang-"># AI诊断评估报告
-
-<h2>基本信息</h2>
+<p><hr></p>
+<p><h2>3. AI诊断评估报告模板（T-03）</h2></p>
+<p><h3>3.1 报告结构</h3></p>
+<p><pre><code class="lang-"># AI诊断评估报告</p>
+<p><h2>基本信息</h2></p>
 <ul>
 <li>客户名称：XX公司</li>
 <li>行业：xx</li>
@@ -756,31 +601,26 @@ body {
 <li>调研方式：上门/远程</li>
 <li>报告编号：R-2026-XXX</li>
 </ul>
-
-<h2>一、企业概况</h2>
+<p><h2>一、企业概况</h2></p>
 <p>简要描述客户的核心业务、人员结构、当前数字化水平（1-2段）</p>
-
-<h2>二、业务流程分析</h2>
-<h3>2.1 现状流程</h3>
+<p><h2>二、业务流程分析</h2></p>
+<p><h3>2.1 现状流程</h3></p>
 <p>从客户咨询到成交/交付的核心流程描述</p>
-
-<h3>2.2 效率瓶颈</h3>
+<p><h3>2.2 效率瓶颈</h3></p>
 <p>按优先级列出3-5个效率瓶颈点</p>
 <ol>
 <li>xxx（影响最大）</li>
 <li>xxx</li>
 <li>xxx</li>
 </ol>
-
-<h3>2.3 可优化环节评估</h3>
-<div class="table-wrap"><table>
-<tr><td>环节</td><td>当前耗时</td><td>AI化后</td><td>可节省</td></tr>
-<tr><td>xxx</td><td>2h/天</td><td>5min/天</td><td>90%+</td></tr>
-<tr><td>xxx</td><td>1h/天</td><td>10min/天</td><td>80%+</td></tr>
-</table></div>
-<h2>三、AI落地点建议</h2>
-
-<h3>推荐场景1：xxx</h3>
+<p><h3>2.3 可优化环节评估</h3></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>环节</td><td>当前耗时</td><td>AI化后</td><td>可节省</td></tr></p>
+<p><tr><td>xxx</td><td>2h/天</td><td>5min/天</td><td>90%+</td></tr></p>
+<p><tr><td>xxx</td><td>1h/天</td><td>10min/天</td><td>80%+</td></tr></p>
+<p></table></div></p>
+<p><h2>三、AI落地点建议</h2></p>
+<p><h3>推荐场景1：xxx</h3></p>
 <ul>
 <li>场景描述：xxx</li>
 <li>实施方式：xxx</li>
@@ -788,8 +628,7 @@ body {
 <li>推荐方案：S1/S2/S3</li>
 <li>预估费用：xxx</li>
 </ul>
-
-<h3>推荐场景2：xxx</h3>
+<p><h3>推荐场景2：xxx</h3></p>
 <ul>
 <li>场景描述：xxx</li>
 <li>实施方式：xxx</li>
@@ -797,231 +636,176 @@ body {
 <li>推荐方案：S1/S2/S3</li>
 <li>预估费用：xxx</li>
 </ul>
-
-<h3>推荐场景3：xxx</h3>
+<p><h3>推荐场景3：xxx</h3></p>
 <p>（同上）</p>
-
-<h2>四、预期ROI分析</h2>
-<div class="table-wrap"><table>
-<tr><td>投入</td><td>每年可节省</td><td>ROI</td></tr>
-<tr><td>xxx</td><td>xxx</td><td>xxx%</td></tr>
-</table></div>
-<h2>五、风险与注意事项</h2>
+<p><h2>四、预期ROI分析</h2></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>投入</td><td>每年可节省</td><td>ROI</td></tr></p>
+<p><tr><td>xxx</td><td>xxx</td><td>xxx%</td></tr></p>
+<p></table></div></p>
+<p><h2>五、风险与注意事项</h2></p>
 <ol>
 <li>xxx</li>
 <li>xxx</li>
 </ol>
-
-<h2>六、下一步建议</h2>
+<p><h2>六、下一步建议</h2></p>
 <ol>
 <li>建议方案</li>
 <li>建议下一步行动</li>
 <li>建议联系时间</li>
 </ol>
-
-<hr>
-
+<p><hr></p>
 <p>报告人：倪锦</p>
 <p>日期：2026-06-XX</p>
 <p>上海锦霓鲤锦网络科技有限公司</p>
 <p></code></pre></p>
-
-<hr>
-
-<h2>4. AI落地方案书模板（T-04）</h2>
-
-<h3>4.1 方案书结构</h3>
-
-<pre><code class="lang-"># AI落地方案书
-
+<p><hr></p>
+<p><h2>4. AI落地方案书模板（T-04）</h2></p>
+<p><h3>4.1 方案书结构</h3></p>
+<p><pre><code class="lang-"># AI落地方案书</p>
 <p>客户名称：____________________</p>
 <p>日期：________________________</p>
 <p>方案编号：P-2026-XXX</p>
-
-<hr>
-
-<h2>一、项目背景</h2>
+<p><hr></p>
+<p><h2>一、项目背景</h2></p>
 <p>（1-2段简要回顾诊断结果和客户需求）</p>
-
-<h2>二、推荐方案</h2>
-
-<h3>方案A：S1 单场景方案 ¥3,500</h3>
+<p><h2>二、推荐方案</h2></p>
+<p><h3>方案A：S1 单场景方案 ¥3,500</h3></p>
 <ul>
 <li>实施场景：xxx</li>
 <li>交付内容：xxx</li>
 <li>交付周期：3-5个工作日</li>
 <li>包含服务：开发+部署+培训+1个月维护</li>
 </ul>
-
-<h3>方案B：S2 多场景方案 ¥6,000</h3>
+<p><h3>方案B：S2 多场景方案 ¥6,000</h3></p>
 <ul>
 <li>实施场景：xxx + xxx + xxx</li>
 <li>交付内容：xxx</li>
 <li>交付周期：5-7个工作日</li>
 <li>包含服务：开发+部署+培训+1个月维护</li>
 </ul>
-
-<h3>方案C：S3 不限场景方案 ¥50,000/年</h3>
+<p><h3>方案C：S3 不限场景方案 ¥50,000/年</h3></p>
 <ul>
 <li>覆盖所有场景</li>
 <li>全年无限次迭代</li>
 <li>专人对接服务</li>
 </ul>
-
-<h2>三、实施计划</h2>
-<div class="table-wrap"><table>
-<tr><td>阶段</td><td>内容</td><td>时间</td></tr>
-<tr><td>环境搭建</td><td>xxx</td><td>Day 1-2</td></tr>
-<tr><td>Agent开发</td><td>xxx</td><td>Day 3-5</td></tr>
-<tr><td>测试验收</td><td>xxx</td><td>Day 6</td></tr>
-<tr><td>上线培训</td><td>xxx</td><td>Day 7</td></tr>
-</table></div>
-<h2>四、效果预估</h2>
-<div class="table-wrap"><table>
-<tr><td>指标</td><td>现状</td><td>上线后预估</td></tr>
-<tr><td>xxx</td><td>xxx</td><td>xxx</td></tr>
-</table></div>
-<h2>五、服务保障</h2>
+<p><h2>三、实施计划</h2></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>阶段</td><td>内容</td><td>时间</td></tr></p>
+<p><tr><td>环境搭建</td><td>xxx</td><td>Day 1-2</td></tr></p>
+<p><tr><td>Agent开发</td><td>xxx</td><td>Day 3-5</td></tr></p>
+<p><tr><td>测试验收</td><td>xxx</td><td>Day 6</td></tr></p>
+<p><tr><td>上线培训</td><td>xxx</td><td>Day 7</td></tr></p>
+<p></table></div></p>
+<p><h2>四、效果预估</h2></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>指标</td><td>现状</td><td>上线后预估</td></tr></p>
+<p><tr><td>xxx</td><td>xxx</td><td>xxx</td></tr></p>
+<p></table></div></p>
+<p><h2>五、服务保障</h2></p>
 <ul>
 <li>正规合同+增值税专票</li>
 <li>1个月免费维护</li>
 <li>不满意免费调整</li>
 </ul>
-
-<h2>六、常见问题</h2>
+<p><h2>六、常见问题</h2></p>
 <p>Q: xxx</p>
 <p>A: xxx</p>
-
-<hr>
-
+<p><hr></p>
 <p>上海锦霓鲤锦网络科技有限公司</p>
 <p>联系人：倪锦 17601414435</p>
 <p></code></pre></p>
-
-<hr>
-
-<h2>5. 报价单模板（T-05）</h2>
-
+<p><hr></p>
+<p><h2>5. 报价单模板（T-05）</h2></p>
 <p>见模块五 4.2.1 报价单标准格式</p>
-
-<hr>
-
-<h2>6. 合同关键条款说明（T-06）</h2>
-
-<h3>6.1 合同结构（由法务审核后定稿）</h3>
-
-<pre><code class="lang-">技术服务合同
-
+<p><hr></p>
+<p><h2>6. 合同关键条款说明（T-06）</h2></p>
+<p><h3>6.1 合同结构（由法务审核后定稿）</h3></p>
+<p><pre><code class="lang-">技术服务合同</p>
 <p>甲方（委托方）：____________________</p>
 <p>乙方（服务方）：上海锦霓鲤锦网络科技有限公司</p>
-
 <p>第一条 服务内容</p>
 <p>1.1 乙方为甲方提供AI数字员工定制开发服务</p>
 <p>1.2 具体服务场景：____________________</p>
 <p>1.3 交付标准：____________________</p>
-
 <p>第二条 服务期限</p>
 <p>2.1 开发周期：自本合同生效之日起____个工作日内</p>
 <p>2.2 维护期限：自验收通过之日起____个月</p>
-
 <p>第三条 服务费用及支付方式</p>
 <p>3.1 合同总金额：¥________</p>
 <p>3.2 支付方式：</p>
-<p>- 首付款：合同签署后____日内支付____%</p>
-<p>- 尾款：验收通过后____日内支付____%</p>
+<p>   - 首付款：合同签署后____日内支付____%</p>
+<p>   - 尾款：验收通过后____日内支付____%</p>
 <p>3.3 乙方收款账户：____________________</p>
-
 <p>第四条 验收标准</p>
 <p>4.1 验收标准：____________________</p>
 <p>4.2 验收流程：乙方完成开发→甲方测试→双方签署《验收确认单》</p>
-
 <p>第五条 知识产权</p>
 <p>5.1 乙方为甲方开发的AI数字员工相关代码、配置、知识库等知识产权归甲方所有</p>
 <p>5.2 乙方不得将甲方的数据用于任何其他目的</p>
-
 <p>第六条 保密条款</p>
 <p>6.1 双方对合作过程中获取的对方商业秘密负有保密义务</p>
 <p>6.2 保密期限：自本合同生效之日起____年</p>
-
 <p>第七条 违约责任</p>
 <p>7.1 如乙方未按期交付，每逾期一日按合同金额的____%支付违约金</p>
 <p>7.2 如甲方未按期付款，每逾期一日按未付金额的____%支付违约金</p>
-
 <p>第八条 争议解决</p>
 <p>8.1 本合同适用中华人民共和国法律</p>
 <p>8.2 争议协商不成的，提交乙方所在地人民法院诉讼解决</p>
-
 <p>第九条 其他</p>
 <p>9.1 本合同一式两份，双方各执一份</p>
 <p>9.2 本合同自双方签字盖章之日起生效</p>
-
 <p>甲方签字/盖章：________________  日期：________</p>
 <p>乙方签字/盖章：________________  日期：________</p>
 <p></code></pre></p>
-
-<hr>
-
-<h2>7. 验收确认单模板（T-07）</h2>
-
-<pre><code class="lang-"># AI数字员工验收确认单
-
-<h2>基本信息</h2>
+<p><hr></p>
+<p><h2>7. 验收确认单模板（T-07）</h2></p>
+<p><pre><code class="lang-"># AI数字员工验收确认单</p>
+<p><h2>基本信息</h2></p>
 <ul>
 <li>客户名称：____________________</li>
 <li>项目名称：AI数字员工定制服务</li>
 <li>合同编号：____________________</li>
 <li>验收日期：____________________</li>
 </ul>
-
-<h2>验收内容</h2>
-<div class="table-wrap"><table>
-<tr><td>验收项</td><td>状态</td><td>备注</td></tr>
-<tr><td>功能1：xxx</td><td>□ 通过 □ 不通过</td><td></td></tr>
-<tr><td>功能2：xxx</td><td>□ 通过 □ 不通过</td><td></td></tr>
-<tr><td>功能3：xxx</td><td>□ 通过 □ 不通过</td><td></td></tr>
-<tr><td>员工培训</td><td>□ 已完成 □ 未完成</td><td></td></tr>
-</table></div>
-<h2>验收结论</h2>
+<p><h2>验收内容</h2></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>验收项</td><td>状态</td><td>备注</td></tr></p>
+<p><tr><td>功能1：xxx</td><td>□ 通过 □ 不通过</td><td></td></tr></p>
+<p><tr><td>功能2：xxx</td><td>□ 通过 □ 不通过</td><td></td></tr></p>
+<p><tr><td>功能3：xxx</td><td>□ 通过 □ 不通过</td><td></td></tr></p>
+<p><tr><td>员工培训</td><td>□ 已完成 □ 未完成</td><td></td></tr></p>
+<p></table></div></p>
+<p><h2>验收结论</h2></p>
 <p>□ 验收通过</p>
 <p>□ 验收不通过，需整改项：____________________</p>
-
-<h2>客户确认</h2>
+<p><h2>客户确认</h2></p>
 <p>本人确认上述服务内容已按合同约定交付，功能符合预期。</p>
-
 <p>客户签名：________________</p>
 <p>日期：____________________</p>
-
-<h2>服务方确认</h2>
+<p><h2>服务方确认</h2></p>
 <p>服务方签名：________________</p>
 <p>日期：____________________</p>
 <p></code></pre></p>
-
-<hr>
-
-<h2>8. 项目排期表模板（T-08）</h2>
-
-<pre><code class="lang-"># 项目排期表
-
+<p><hr></p>
+<p><h2>8. 项目排期表模板（T-08）</h2></p>
+<p><pre><code class="lang-"># 项目排期表</p>
 <p>客户：____________________</p>
 <p>项目经理：________________</p>
 <p>项目周期：____年__月__日 至 ____年__月__日</p>
-
-<div class="table-wrap"><table>
-<tr><td>阶段</td><td>任务</td><td>负责人</td><td>开始日</td><td>结束日</td><td>交付物</td><td>状态</td></tr>
-<tr><td>L5</td><td>环境搭建</td><td>xxx</td><td>D1</td><td>D2</td><td>环境就绪</td><td>□</td></tr>
-<tr><td>L5</td><td>Agent开发</td><td>xxx</td><td>D3</td><td>D5</td><td>Agent交付</td><td>□</td></tr>
-<tr><td>L5</td><td>测试验收</td><td>xxx</td><td>D6</td><td>D6</td><td>测试报告</td><td>□</td></tr>
-<tr><td>L6</td><td>上线培训</td><td>xxx</td><td>D7</td><td>D7</td><td>培训记录</td><td>□</td></tr>
-<tr><td>L6</td><td>验收确认</td><td>xxx</td><td>D7</td><td>D7</td><td>验收单</td><td>□</td></tr>
-</table></div></code></pre>
-
-<hr>
-
-<h2>9. 培训记录表模板（T-09）</h2>
-
-<pre><code class="lang-"># AI数字员工使用培训记录
-
-<h2>基本信息</h2>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>阶段</td><td>任务</td><td>负责人</td><td>开始日</td><td>结束日</td><td>交付物</td><td>状态</td></tr></p>
+<p><tr><td>L5</td><td>环境搭建</td><td>xxx</td><td>D1</td><td>D2</td><td>环境就绪</td><td>□</td></tr></p>
+<p><tr><td>L5</td><td>Agent开发</td><td>xxx</td><td>D3</td><td>D5</td><td>Agent交付</td><td>□</td></tr></p>
+<p><tr><td>L5</td><td>测试验收</td><td>xxx</td><td>D6</td><td>D6</td><td>测试报告</td><td>□</td></tr></p>
+<p><tr><td>L6</td><td>上线培训</td><td>xxx</td><td>D7</td><td>D7</td><td>培训记录</td><td>□</td></tr></p>
+<p><tr><td>L6</td><td>验收确认</td><td>xxx</td><td>D7</td><td>D7</td><td>验收单</td><td>□</td></tr></p>
+<p></table></div></code></pre></p>
+<p><hr></p>
+<p><h2>9. 培训记录表模板（T-09）</h2></p>
+<p><pre><code class="lang-"># AI数字员工使用培训记录</p>
+<p><h2>基本信息</h2></p>
 <ul>
 <li>客户名称：____________________</li>
 <li>培训日期：____________________</li>
@@ -1029,43 +813,33 @@ body {
 <li>培训时长：____小时</li>
 <li>培训师：____________________</li>
 </ul>
-
-<h2>参训人员</h2>
-<div class="table-wrap"><table>
-<tr><td>姓名</td><td>岗位</td><td>联系方式</td></tr>
-<tr><td>xxx</td><td>xxx</td><td>xxx</td></tr>
-</table></div>
-<h2>培训内容</h2>
+<p><h2>参训人员</h2></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>姓名</td><td>岗位</td><td>联系方式</td></tr></p>
+<p><tr><td>xxx</td><td>xxx</td><td>xxx</td></tr></p>
+<p></table></div></p>
+<p><h2>培训内容</h2></p>
 <p>□ AI数字员工功能介绍</p>
 <p>□ 日常使用流程</p>
 <p>□ 常见问题处理</p>
 <p>□ 转人工操作</p>
 <p>□ 数据查看</p>
 <p>□ 注意事项</p>
-
-<h2>培训后考核</h2>
+<p><h2>培训后考核</h2></p>
 <p>□ 参训人员能独立使用</p>
 <p>□ 参训人员能解决常见问题</p>
-
-<h2>培训反馈</h2>
+<p><h2>培训反馈</h2></p>
 <p>（客户对培训的评价和建议）</p>
-
-<h2>备注</h2>
+<p><h2>备注</h2></p>
 <p>____________________</p>
 <p></code></pre></p>
-
-<hr>
-
-<h2>10. 效果跟踪周报模板（T-10）</h2>
-
-<h3>10.1 基础版周报</h3>
-
-<pre><code class="lang-"># AI数字员工运营周报
-
+<p><hr></p>
+<p><h2>10. 效果跟踪周报模板（T-10）</h2></p>
+<p><h3>10.1 基础版周报</h3></p>
+<p><pre><code class="lang-"># AI数字员工运营周报</p>
 <p>客户：____________________</p>
 <p>周期：____年__月__日 至 ____年__月__日</p>
-
-<h2>本周数据</h2>
+<p><h2>本周数据</h2></p>
 <ul>
 <li>咨询处理总数：____次</li>
 <li>AI自动处理：____次（占比____%）</li>
@@ -1073,27 +847,21 @@ body {
 <li>平均响应时间：____秒</li>
 <li>客户满意率：____%</li>
 </ul>
-
-<h2>优化内容</h2>
+<p><h2>优化内容</h2></p>
 <ol>
 <li>xxx</li>
 <li>xxx</li>
 </ol>
-
-<h2>下周计划</h2>
+<p><h2>下周计划</h2></p>
 <ol>
 <li>xxx</li>
 <li>xxx</li>
 </ol>
 <p></code></pre></p>
-
-<hr>
-
-<h2>11. 客户案例采集模板（T-11）</h2>
-
-<pre><code class="lang-"># 客户案例采集
-
-<h2>基本信息</h2>
+<p><hr></p>
+<p><h2>11. 客户案例采集模板（T-11）</h2></p>
+<p><pre><code class="lang-"># 客户案例采集</p>
+<p><h2>基本信息</h2></p>
 <p>案例编号：CASE-2026-XXX</p>
 <p>客户行业：__________</p>
 <p>客户规模：__________人</p>
@@ -1101,35 +869,27 @@ body {
 <p>交付周期：____个工作日</p>
 <p>案例状态：□ 待脱敏 □ 已脱敏可用</p>
 <p>是否可公开：□ 可公开 □ 仅内部使用</p>
-
-<h2>客户背景</h2>
+<p><h2>客户背景</h2></p>
 <p>（1-2段，描述客户的核心业务和痛点）</p>
-
-<h2>实施内容</h2>
+<p><h2>实施内容</h2></p>
 <p>场景1：__________</p>
 <p>场景2：__________</p>
 <p>场景3：__________</p>
-
-<h2>效果数据</h2>
-<div class="table-wrap"><table>
-<tr><td>指标</td><td>实施前</td><td>实施后</td></tr>
-<tr><td>xxx</td><td>xxx</td><td>xxx</td></tr>
-<tr><td>xxx</td><td>xxx</td><td>xxx</td></tr>
-</table></div>
-<h2>客户原话</h2>
+<p><h2>效果数据</h2></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>指标</td><td>实施前</td><td>实施后</td></tr></p>
+<p><tr><td>xxx</td><td>xxx</td><td>xxx</td></tr></p>
+<p><tr><td>xxx</td><td>xxx</td><td>xxx</td></tr></p>
+<p></table></div></p>
+<p><h2>客户原话</h2></p>
 <p>&quot;____________________&quot;</p>
-
-<h2>使用场景</h2>
+<p><h2>使用场景</h2></p>
 <p>□ 朋友圈 □ 短视频 □ 小红书 □ 方案书 □ 展会 □ 销售话术</p>
 <p></code></pre></p>
-
-<hr>
-
-<h2>12. 跟进记录表（T-12）</h2>
-
-<h3>12.1 单次跟进记录格式</h3>
-
-<pre><code class="lang-">时间：2026-06-XX XX:XX
+<p><hr></p>
+<p><h2>12. 跟进记录表（T-12）</h2></p>
+<p><h3>12.1 单次跟进记录格式</h3></p>
+<p><pre><code class="lang-">时间：2026-06-XX XX:XX</p>
 <p>方式：电话/微信/见面/其他</p>
 <p>客户反馈：____________________</p>
 <p>我方动作：____________________</p>
@@ -1137,124 +897,81 @@ body {
 <p>跟进人：____________________</p>
 <p>备注：____________________</p>
 <p></code></pre></p>
-
-<h3>12.2 建议：合并至客户管理总表</h3>
-
+<p><h3>12.2 建议：合并至客户管理总表</h3></p>
 <p>每个客户在客户管理总表中直接追加跟进记录，不单独建表。</p>
-
-<hr>
-
-<h2>13. 客户管理总表（T-13）</h2>
-
-<h3>13.1 飞书多维表格字段配置</h3>
-
-<div class="table-wrap"><table>
-<tr><td>字段名</td><td>字段类型</td><td>说明</td></tr>
-<tr><td>客户编号</td><td>自动编号</td><td>C-001</td></tr>
-<tr><td>客户名称</td><td>文本</td><td></td></tr>
-<tr><td>所属行业</td><td>单选</td><td>电商/二手车/本地服务/制造/教育/法律/房产/物流/其他</td></tr>
-<tr><td>企业规模</td><td>文本</td><td>人数+年营收</td></tr>
-<tr><td>联系电话</td><td>文本</td><td></td></tr>
-<tr><td>微信</td><td>文本</td><td></td></tr>
-<tr><td>联系渠道</td><td>单选</td><td>朋友圈/社群/短视频/小红书/展会/转介绍/地推/SEM/其他</td></tr>
-<tr><td>客户等级</td><td>单选</td><td>A级/B级/C级/D级</td></tr>
-<tr><td>意向程度</td><td>单选</td><td>高/中/低</td></tr>
-<tr><td>核心痛点</td><td>文本</td><td></td></tr>
-<tr><td>推荐方案</td><td>单选</td><td>S1/S2/S3/未定</td></tr>
-<tr><td>当前状态</td><td>单选</td><td>新客/沟通中/诊断中/已报价/谈判中/已签约/交付中/已交付/维护中/流失</td></tr>
-<tr><td>跟进人</td><td>文本</td><td></td></tr>
-<tr><td>跟进记录</td><td>文本</td><td>每次追加记录</td></tr>
-<tr><td>上次跟进</td><td>日期</td><td></td></tr>
-<tr><td>下次跟进</td><td>日期</td><td></td></tr>
-<tr><td>签约金额</td><td>数字</td><td></td></tr>
-<tr><td>签约日期</td><td>日期</td><td></td></tr>
-<tr><td>备注</td><td>文本</td><td></td></tr>
-</table></div>
-<hr>
-
-<h2>14. 模板迭代与管理</h2>
-
-<h3>14.1 模板版本记录</h3>
-
+<p><hr></p>
+<p><h2>13. 客户管理总表（T-13）</h2></p>
+<p><h3>13.1 飞书多维表格字段配置</h3></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>字段名</td><td>字段类型</td><td>说明</td></tr></p>
+<p><tr><td>客户编号</td><td>自动编号</td><td>C-001</td></tr></p>
+<p><tr><td>客户名称</td><td>文本</td><td></td></tr></p>
+<p><tr><td>所属行业</td><td>单选</td><td>电商/二手车/本地服务/制造/教育/法律/房产/物流/其他</td></tr></p>
+<p><tr><td>企业规模</td><td>文本</td><td>人数+年营收</td></tr></p>
+<p><tr><td>联系电话</td><td>文本</td><td></td></tr></p>
+<p><tr><td>微信</td><td>文本</td><td></td></tr></p>
+<p><tr><td>联系渠道</td><td>单选</td><td>朋友圈/社群/短视频/小红书/展会/转介绍/地推/SEM/其他</td></tr></p>
+<p><tr><td>客户等级</td><td>单选</td><td>A级/B级/C级/D级</td></tr></p>
+<p><tr><td>意向程度</td><td>单选</td><td>高/中/低</td></tr></p>
+<p><tr><td>核心痛点</td><td>文本</td><td></td></tr></p>
+<p><tr><td>推荐方案</td><td>单选</td><td>S1/S2/S3/未定</td></tr></p>
+<p><tr><td>当前状态</td><td>单选</td><td>新客/沟通中/诊断中/已报价/谈判中/已签约/交付中/已交付/维护中/流失</td></tr></p>
+<p><tr><td>跟进人</td><td>文本</td><td></td></tr></p>
+<p><tr><td>跟进记录</td><td>文本</td><td>每次追加记录</td></tr></p>
+<p><tr><td>上次跟进</td><td>日期</td><td></td></tr></p>
+<p><tr><td>下次跟进</td><td>日期</td><td></td></tr></p>
+<p><tr><td>签约金额</td><td>数字</td><td></td></tr></p>
+<p><tr><td>签约日期</td><td>日期</td><td></td></tr></p>
+<p><tr><td>备注</td><td>文本</td><td></td></tr></p>
+<p></table></div></p>
+<p><hr></p>
+<p><h2>14. 模板迭代与管理</h2></p>
+<p><h3>14.1 模板版本记录</h3></p>
 <p>每个模板文件顶部包含版本信息：</p>
-<pre><code class="lang-"># 模板名称
+<p><pre><code class="lang-"># 模板名称</p>
 <p>版本：v1.0</p>
 <p>最后更新：2026-06-03</p>
 <p>更新人：倪锦</p>
 <p>更新内容：初始版本</p>
 <p></code></pre></p>
-
-<h3>14.2 模板使用反馈</h3>
-
+<p><h3>14.2 模板使用反馈</h3></p>
 <p>每次使用模板后，记录改进建议：</p>
-<pre><code class="lang-">使用日期：
+<p><pre><code class="lang-">使用日期：</p>
 <p>使用项目：</p>
 <p>改进建议：</p>
 <p>是否已更新模板：是/否</p>
 <p></code></pre></p>
-
-<hr>
-
-<blockquote>本模块覆盖了15个核心工具模板</blockquote>
-<blockquote>每个模板有完整的结构字段和使用说明</blockquote>
-<blockquote>建议优先创建：T-01客户管理总表 > T-03诊断报告 > T-06合同</blockquote>
-<blockquote>下一模块可基于此清单逐个实现具体模板文件</blockquote>
-
-
-<hr>
-<h2>相关笔记</h2>
+<p><hr></p>
+<p><blockquote>本模块覆盖了15个核心工具模板</blockquote></p>
+<p><blockquote>每个模板有完整的结构字段和使用说明</blockquote></p>
+<p><blockquote>建议优先创建：T-01客户管理总表 > T-03诊断报告 > T-06合同</blockquote></p>
+<p><blockquote>下一模块可基于此清单逐个实现具体模板文件</blockquote></p>
+<p><hr></p>
+<p><h2>相关笔记</h2></p>
 <ul>
 <li><a href="模块五_交付SOP标准操作手册.html" class="wikilink">模块五_交付SOP标准操作手册</a> — 模板的使用场景</li>
 <li><a href="项目检查清单.html" class="wikilink">项目检查清单</a> — 每个项目要完成哪些</li>
 <li><a href="模块二_销售转化漏斗.html" class="wikilink">模块二_销售转化漏斗</a> — 销售阶段用的模板</li>
 </ul>
-
-<p>#模板 #工具 #SOP #表单</p></article>
-<footer class="page-footer">
-<p style="margin-bottom:4px">上海锦霓鲤锦网络科技有限公司 · AI 数字员工企业增效计划</p>
-<p style="font-size:12px"><a href="https://qusabc123.github.io/digital-employee-website/" style="color:var(--text-tertiary);text-decoration:none">https://qusabc123.github.io/digital-employee-website/</a></p>
-</footer>
+<p>#模板 #工具 #SOP #表单</p></div>
+<div class="page-footer">
+Powered by <a href="#">企业数字员工</a> · 上海锦霓鲤锦网络科技有限公司
+</div>
 </main>
 </div>
+
 <script>
-// 防复制
-document.addEventListener('contextmenu', e => e.preventDefault());
-document.addEventListener('copy', e => e.preventDefault());
-document.addEventListener('selectstart', e => e.preventDefault());
-document.addEventListener('dragstart', e => e.preventDefault());
-
-// 搜索
-function searchNotes(q) {
-    q = q.toLowerCase();
-    document.querySelectorAll('.page-link').forEach(el => {
+document.addEventListener('DOMContentLoaded', function() {
+  // Search
+  var search = document.getElementById('search-input');
+  if (search) {
+    search.addEventListener('input', function() {
+      var q = this.value.toLowerCase();
+      document.querySelectorAll('.page-link').forEach(function(el) {
         el.style.display = el.textContent.toLowerCase().includes(q) ? '' : 'none';
+      });
     });
-    document.querySelectorAll('.module-group').forEach(g => {
-        g.style.display = Array.from(g.querySelectorAll('.page-link')).some(e => e.style.display !== 'none') ? '' : 'none';
-    });
-}
-
-// 回到顶部
-function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-
-// 滚动渐入动画
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, { threshold: 0.1 });
-
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.pricing-card, .module-card').forEach(el => {
-        el.classList.add('fade-in');
-        observer.observe(el);
-    });
-    // 模块卡片交错延迟
-    document.querySelectorAll('.module-grid .module-card').forEach((el, i) => {
-        el.style.animationDelay = (i * 0.05) + 's';
-    });
+  }
 });
 </script>
 </body>

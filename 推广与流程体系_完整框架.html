@@ -16,9 +16,9 @@
   --accent: #0071e3;
   --accent-light: #e8f0fe;
   --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
-  --shadow-lg: 0 4px 24px rgba(0,0,0,0.08);
-  --radius: 12px;
-  --radius-sm: 8px;
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
+  --radius: 14px;
+  --radius-sm: 10px;
   --nav-h: 52px;
 }
 
@@ -78,222 +78,271 @@ body {
 }
 .page-link {
   display: flex; align-items: center; gap: 6px;
-  padding: 5px 8px; border-radius: 6px; color: var(--text-secondary);
-  text-decoration: none; font-size: 13px; font-weight: 450;
-  transition: all 0.15s;
+  padding: 5px 8px; border-radius: 6px; font-size: 13px;
+  text-decoration: none; color: var(--text-secondary);
+  transition: all 0.15s; line-height: 1.3;
 }
-.page-link:hover { background: var(--accent-light); color: var(--accent); }
-.page-link.active { background: var(--accent-light); color: var(--accent); font-weight: 600; }
-.page-link .icon { font-size: 13px; width: 20px; text-align: center; flex-shrink: 0; }
-.page-link .title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.page-link:hover { background: var(--surface-hover); color: var(--text); }
+.page-link.active { background: var(--accent-light); color: var(--accent); font-weight: 500; }
 
-/* Content */
-.content { flex: 1; padding: 32px 48px 48px; max-width: 760px; }
-.breadcrumb { font-size: 13px; color: var(--text-tertiary); margin-bottom: 24px; }
-.breadcrumb a { color: var(--text-secondary); text-decoration: none; }
-.breadcrumb a:hover { color: var(--accent); }
-
-/* Article */
-.article h1 {
-  font-size: 32px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.2;
-  margin-bottom: 8px; color: var(--text);
-}
-.article .meta-bar {
-  display: flex; gap: 8px; font-size: 12.5px; color: var(--text-tertiary);
-  margin-bottom: 28px; flex-wrap: wrap;
-}
-.article .meta-bar span { background: var(--surface); padding: 2px 10px; border-radius: 12px; border: 1px solid var(--border); }
-
-.article h2 {
-  font-size: 22px; font-weight: 650; margin-top: 40px; margin-bottom: 12px;
-  letter-spacing: -0.3px; color: var(--text);
-}
-.article h3 { font-size: 18px; font-weight: 600; margin-top: 32px; margin-bottom: 8px; }
-.article h4 { font-size: 16px; font-weight: 600; margin-top: 24px; margin-bottom: 8px; }
-.article p { margin-bottom: 16px; color: var(--text); }
-.article a { color: var(--accent); text-decoration: none; font-weight: 500; }
-.article a:hover { text-decoration: underline; }
-.article a.wikilink { background: var(--accent-light); padding: 1px 6px; border-radius: 4px; font-weight: 400; }
-.article a.wikilink::before { content: "📄 "; font-size: 12px; }
-.article code {
-  background: var(--surface); padding: 2px 8px; border-radius: 5px;
-  font-size: 13px; font-family: "SF Mono", "JetBrains Mono", "Menlo", monospace;
-  border: 1px solid var(--border); color: #e64553;
-}
-.article pre {
-  background: #1d1d1f; color: #f5f5f7; padding: 20px 24px;
-  border-radius: var(--radius); overflow-x: auto; margin: 20px 0;
-}
-.article pre code { background: none; padding: 0; border: none; color: inherit; font-size: 13px; line-height: 1.5; }
-.article blockquote {
-  border-left: 3px solid var(--accent); padding: 12px 20px; margin: 16px 0;
-  background: var(--surface-hover); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  color: var(--text-secondary); font-style: italic;
-}
-.article ul, .article ol { margin: 6px 0 16px 22px; }
-.article li { margin-bottom: 4px; }
-.article .table-wrap { overflow-x: auto; margin: 16px 0; border-radius: var(--radius-sm); border: 1px solid var(--border); }
-.article table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
-.article th, .article td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
-.article th { background: var(--surface-hover); font-weight: 600; font-size: 12.5px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.3px; }
-.article tr:last-child td { border-bottom: none; }
-.article hr { border: none; height: 1px; background: var(--border); margin: 36px 0; }
-.article .content-img { max-width: 100%; border-radius: var(--radius); margin: 20px 0; box-shadow: var(--shadow); }
-
-/* Footer */
-.page-footer {
-  margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border);
-  text-align: center; font-size: 12.5px; color: var(--text-tertiary);
-}
-
-/* Home */
-.home-hero { text-align: center; padding: 48px 0 16px; }
-.home-hero h1 { font-size: 38px; letter-spacing: -0.8px; font-weight: 700; margin-bottom: 8px; }
-.home-hero p { font-size: 17px; color: var(--text-secondary); font-weight: 400; }
-.home-info { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 20px 0; }
-.home-info .badge {
-  background: var(--surface); padding: 4px 14px; border-radius: 20px;
-  font-size: 12.5px; color: var(--text-secondary); border: 1px solid var(--border);
-}
-.project-card {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 24px 28px; margin: 24px 0;
-  box-shadow: var(--shadow);
-}
-.project-card table { width: 100%; border: none; font-size: 14px; }
-.project-card td { border: none; padding: 5px 0; vertical-align: top; }
-.project-card td:first-child { width: 90px; font-weight: 500; color: var(--text-tertiary); font-size: 13px; }
-.module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin: 20px 0; }
-.module-card {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-sm); padding: 18px; transition: all 0.2s;
-  text-decoration: none; color: inherit; display: block;
-  box-shadow: var(--shadow);
-}
-.module-card:hover {
-  border-color: var(--accent); box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
-}
-.module-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
-.module-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
-.module-card .count { font-size: 12px; color: var(--text-tertiary); margin-top: 8px; }
-.section-title { font-size: 20px; font-weight: 600; margin-top: 36px; margin-bottom: 12px; letter-spacing: -0.3px; }
-
-@media (max-width: 768px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; height: auto; position: static; }
-  .content { padding: 20px; }
-  .module-grid { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
-}
-
-/* ===== Full width content (首页) ===== */
-.content-full {
+/* Main */
+.main-content {
+  flex: 1; min-width: 0;
   max-width: 860px; margin: 0 auto; padding: 24px 48px 48px;
   min-height: 100vh;
 }
-.home-footer-cta { text-align: center; margin: 40px 0; }
-.cta-large { padding: 14px 36px !important; font-size: 16px !important; }
+
+/* ===== Animations ===== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(0.5deg); }
+  66% { transform: translateY(-5px) rotate(-0.3deg); }
+}
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
 
 /* ===== Hero Section ===== */
 .home-hero {
-  text-align: center; padding: 50px 0 20px;
+  text-align: center; padding: 60px 0 24px;
   position: relative; overflow: hidden;
 }
 .home-hero::before {
   content: ''; position: absolute; top: -50%; left: -50%;
   width: 200%; height: 200%;
-  background: radial-gradient(circle at 30% 40%, rgba(37,99,235,0.06) 0%, transparent 50%),
-              radial-gradient(circle at 70% 60%, rgba(124,58,237,0.06) 0%, transparent 50%);
-  animation: heroGlow 8s ease-in-out infinite alternate;
+  background: radial-gradient(ellipse at 30% 30%, rgba(37,99,235,0.06) 0%, transparent 45%),
+              radial-gradient(ellipse at 70% 70%, rgba(124,58,237,0.06) 0%, transparent 45%),
+              radial-gradient(ellipse at 50% 50%, rgba(6,182,212,0.04) 0%, transparent 40%);
+  animation: float 12s ease-in-out infinite;
+  pointer-events: none;
 }
-@keyframes heroGlow {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(-20px, 20px); }
+.home-hero::after {
+  content: ''; position: absolute; top: -20%; left: 30%;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%);
+  animation: pulseGlow 4s ease-in-out infinite;
+  pointer-events: none;
 }
+
 .hero-badge {
-  display: inline-block; background: linear-gradient(135deg, #eef2ff, #f5f3ff);
-  color: var(--accent); padding: 5px 18px; border-radius: 20px;
-  font-size: 13px; font-weight: 500; margin-bottom: 18px;
+  display: inline-block;
+  background: linear-gradient(135deg, #eef2ff, #f5f3ff);
+  color: var(--accent); padding: 6px 20px; border-radius: 20px;
+  font-size: 13px; font-weight: 500; margin-bottom: 20px;
   position: relative; animation: fadeUp 0.8s ease-out both;
+  border: 1px solid rgba(37,99,235,0.1);
 }
 .home-hero h1 {
-  font-size: 42px; letter-spacing: -1px; font-weight: 700;
-  margin-bottom: 14px; line-height: 1.15; position: relative;
+  font-size: 44px; letter-spacing: -1.2px; font-weight: 700;
+  margin-bottom: 16px; line-height: 1.1; position: relative;
   animation: fadeUp 0.8s ease-out 0.1s both;
 }
 .home-hero .highlight {
+  background: linear-gradient(135deg, #2563eb, #7c3aed, #0891b2);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: shimmer 4s ease-in-out infinite;
+}
+.hero-sub {
+  font-size: 17px; color: var(--text-secondary); margin-bottom: 20px;
+  animation: fadeUp 0.8s ease-out 0.2s both; position: relative;
+  max-width: 560px; margin-left: auto; margin-right: auto;
+}
+
+.hero-stats {
+  display: flex; justify-content: center; gap: 32px;
+  margin: 16px 0 20px; animation: fadeUp 0.8s ease-out 0.25s both;
+}
+.stat-item { text-align: center; }
+.stat-num {
+  display: block; font-size: 26px; font-weight: 700;
   background: linear-gradient(135deg, #2563eb, #7c3aed);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.hero-sub {
-  font-size: 17px; color: var(--text-secondary); margin-bottom: 30px;
-  animation: fadeUp 0.8s ease-out 0.2s both; position: relative;
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+.stat-label { font-size: 12px; color: var(--text-tertiary); margin-top: -2px; display: block; }
+
 .hero-cta {
-  display: flex; gap: 12px; justify-content: center; margin-bottom: 28px;
+  display: flex; gap: 12px; justify-content: center; margin-bottom: 0;
   animation: fadeUp 0.8s ease-out 0.3s both; position: relative;
 }
 .btn-primary, .btn-secondary {
-  display: inline-block; padding: 11px 30px; border-radius: 8px;
+  display: inline-block; padding: 12px 32px; border-radius: 10px;
   font-size: 15px; font-weight: 500; text-decoration: none;
-  transition: all 0.25s cubic-bezier(0.4,0,0.2,1); position: relative;
-  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
 }
 .btn-primary {
   background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white;
-  box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+  box-shadow: 0 4px 16px rgba(37,99,235,0.3);
 }
 .btn-primary:hover {
-  transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,99,235,0.4);
+  transform: translateY(-3px); box-shadow: 0 8px 24px rgba(37,99,235,0.4);
 }
-.btn-primary:active { transform: translateY(0); }
 .btn-secondary {
   background: var(--surface); color: var(--text); border: 1px solid var(--border);
 }
-.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
-.home-info {
-  display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
-  margin: 20px 0; position: relative;
-  animation: fadeUp 0.8s ease-out 0.4s both;
+/* ===== Content Sections ===== */
+.content-section {
+  margin: 48px 0;
+  animation: fadeUp 0.8s ease-out both;
 }
-.home-info .badge {
-  background: var(--surface); padding: 5px 16px; border-radius: 20px;
-  font-size: 12.5px; color: var(--text-secondary);
-  border: 1px solid var(--border); transition: all 0.2s;
+.section-header {
+  text-align: center; margin-bottom: 28px;
 }
-.home-info .badge:hover { border-color: var(--accent); color: var(--accent); }
+.section-number {
+  display: inline-block;
+  font-size: 12px; font-weight: 600; letter-spacing: 2px;
+  color: var(--accent); margin-bottom: 6px;
+  background: var(--accent-light); padding: 3px 12px;
+  border-radius: 12px;
+}
+.section-header h2 {
+  font-size: 26px; font-weight: 700; letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+.section-desc {
+  font-size: 14px; color: var(--text-secondary);
+  max-width: 480px; margin: 0 auto;
+}
 
-/* ===== Company Bar ===== */
-.company-bar {
-  background: linear-gradient(135deg, #f8fafc, #eef2ff);
-  border: 1px solid var(--border); border-radius: 12px;
-  padding: 18px 24px; margin: 28px 0; position: relative;
-  animation: fadeUp 0.8s ease-out 0.5s both;
+/* ===== Scene Cards ===== */
+.scene-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
 }
-.company-inner { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: center; }
-.company-item { display: flex; gap: 6px; font-size: 13px; }
-.ci-label { color: var(--text-tertiary); font-weight: 500; }
-.ci-value { color: var(--text); }
-.sep { color: var(--border); margin: 0 4px; }
+.scene-card {
+  display: flex; flex-direction: column; align-items: flex-start;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px;
+  text-decoration: none; color: inherit;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  position: relative; overflow: hidden;
+  animation: fadeUp 0.6s ease-out both;
+}
+.scene-card:nth-child(1) { animation-delay: 0.05s; }
+.scene-card:nth-child(2) { animation-delay: 0.1s; }
+.scene-card:nth-child(3) { animation-delay: 0.15s; }
+.scene-card:nth-child(4) { animation-delay: 0.2s; }
+.scene-card:nth-child(5) { animation-delay: 0.25s; }
+.scene-card:nth-child(6) { animation-delay: 0.3s; }
+.scene-card:nth-child(7) { animation-delay: 0.35s; }
+.scene-card:nth-child(8) { animation-delay: 0.4s; }
+.scene-card:nth-child(9) { animation-delay: 0.45s; }
+
+.scene-card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--card-accent, var(--accent));
+  opacity: 0; transition: opacity 0.3s;
+}
+.scene-card:hover::before { opacity: 1; }
+
+.scene-card:hover {
+  border-color: var(--card-accent, var(--accent));
+  box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+  transform: translateY(-4px);
+}
+
+.scene-icon-wrap {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: color-mix(in srgb, var(--card-accent, var(--accent)) 10%, transparent);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px; flex-shrink: 0;
+  transition: transform 0.3s, background 0.3s;
+}
+.scene-card:hover .scene-icon-wrap {
+  transform: scale(1.1);
+  background: color-mix(in srgb, var(--card-accent, var(--accent)) 18%, transparent);
+}
+.scene-icon { font-size: 22px; line-height: 1; }
+
+.scene-info h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 6px;
+  color: var(--text);
+}
+.scene-info p {
+  font-size: 13px; color: var(--text-secondary); line-height: 1.55;
+  margin-bottom: 10px;
+}
+.scene-tag {
+  display: inline-block; font-size: 11px; font-weight: 500;
+  padding: 3px 10px; border-radius: 10px;
+}
+.tag-automation { background: #eef2ff; color: #2563eb; }
+.tag-knowledge { background: #f5f3ff; color: #7c3aed; }
+
+/* ===== Knowledge Grid ===== */
+.knowledge-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+}
+.knowledge-card {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px 14px;
+  text-decoration: none; color: inherit;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  position: relative; overflow: hidden;
+  animation: fadeUp 0.6s ease-out both;
+}
+.knowledge-card:nth-child(1) { animation-delay: 0.05s; }
+.knowledge-card:nth-child(2) { animation-delay: 0.1s; }
+.knowledge-card:nth-child(3) { animation-delay: 0.15s; }
+.knowledge-card:nth-child(4) { animation-delay: 0.2s; }
+.knowledge-card:nth-child(5) { animation-delay: 0.25s; }
+.knowledge-card:nth-child(6) { animation-delay: 0.3s; }
+.knowledge-card:nth-child(7) { animation-delay: 0.35s; }
+.knowledge-card:nth-child(8) { animation-delay: 0.4s; }
+
+.knowledge-card::after {
+  content: ''; position: absolute; bottom: 0; left: 30%;
+  width: 40%; height: 3px;
+  background: var(--card-color, var(--accent));
+  border-radius: 2px; transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.knowledge-card:hover::after { transform: scaleX(1); }
+
+.knowledge-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+  border-color: var(--card-color, var(--accent));
+}
+.knowledge-icon { font-size: 28px; margin-bottom: 10px; }
+.knowledge-body h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.knowledge-body p { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+.knowledge-arrow {
+  display: inline-block; margin-top: 8px;
+  font-size: 16px; color: var(--card-color, var(--accent));
+  opacity: 0; transform: translateX(-8px);
+  transition: all 0.3s;
+}
+.knowledge-card:hover .knowledge-arrow { opacity: 1; transform: translateX(0); }
 
 /* ===== Pricing ===== */
-.pricing-section { margin: 40px 0; }
-.section-title {
-  font-size: 24px; font-weight: 600; text-align: center;
-  letter-spacing: -0.3px; margin-bottom: 24px;
-}
-.section-sub { text-align: center; color: var(--text-secondary); font-size: 14px; margin-top: -16px; margin-bottom: 24px; }
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .pricing-card {
-  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
-  padding: 32px 24px; text-align: center; position: relative;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 28px 22px; text-align: center; position: relative;
   transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
   animation: fadeUp 0.6s ease-out both;
 }
@@ -308,7 +357,6 @@ body {
   border-color: var(--accent); border-width: 2px;
   box-shadow: 0 4px 20px rgba(37,99,235,0.08);
 }
-.pricing-card.featured:hover { box-shadow: 0 8px 30px rgba(37,99,235,0.15); }
 .pricing-badge {
   position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
   background: var(--border); color: var(--text-secondary); padding: 3px 16px;
@@ -319,25 +367,39 @@ body {
   box-shadow: 0 2px 8px rgba(37,99,235,0.3);
 }
 .pricing-card h3 { font-size: 20px; margin-bottom: 8px; }
-.price { font-size: 38px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
-.price small { font-size: 14px; font-weight: 400; color: var(--text-secondary); }
-.price-desc { font-size: 12.5px; color: var(--text-secondary); margin-bottom: 20px; }
-.pricing-card ul { list-style: none; margin: 0; padding: 0; }
+.price {
+  font-size: 36px; font-weight: 700; color: var(--text); margin-bottom: 2px;
+}
+.price-year { font-size: 14px; font-weight: 400; color: var(--text-secondary); }
+.price-desc { font-size: 12.5px; color: var(--text-secondary); margin-bottom: 18px; }
+.pricing-card ul { list-style: none; margin: 0; padding: 0; text-align: left; }
 .pricing-card ul li {
   padding: 7px 0; font-size: 13.5px; color: var(--text);
-  border-bottom: 1px solid var(--border); position: relative;
+  border-bottom: 1px solid var(--border);
 }
 .pricing-card ul li:last-child { border-bottom: none; }
-.pricing-card ul li::before { content: '✓ '; color: var(--accent); font-weight: 600; }
-.pricing-card.s1 { border-top: 3px solid #94a3b8; }
-.pricing-card.s2 { border-top: 3px solid var(--accent); }
-.pricing-card.s3 { border-top: 3px solid #7c3aed; }
 
-/* ===== Module Grid Enhancement ===== */
+/* ===== About ===== */
+.about-block {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px;
+  display: flex; flex-direction: column; gap: 12px;
+  max-width: 500px; margin: 0 auto;
+}
+.about-item {
+  display: flex; gap: 12px; align-items: center;
+}
+.about-label {
+  font-size: 13px; font-weight: 600; color: var(--text-secondary);
+  min-width: 100px;
+}
+.about-text { font-size: 14px; color: var(--text); }
+
+/* ===== Module Card (detail pages) ===== */
 .module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin: 20px 0; }
 .module-card {
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: 12px; padding: 20px; transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+  border-radius: var(--radius-sm); padding: 20px; transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
   text-decoration: none; color: inherit; display: block;
   box-shadow: var(--shadow); animation: fadeUp 0.5s ease-out both;
 }
@@ -349,352 +411,147 @@ body {
 .module-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
 .module-card .count { font-size: 12px; color: var(--text-tertiary); margin-top: 8px; }
 
-/* ===== Scroll Animation ===== */
-.fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
+/* ===== Content ===== */
+.content-area h1, .content-area h2, .content-area h3 { margin-top: 28px; margin-bottom: 12px; font-weight: 600; line-height: 1.3; }
+.content-area h1 { font-size: 26px; letter-spacing: -0.5px; }
+.content-area h2 { font-size: 20px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+.content-area h3 { font-size: 17px; }
+.content-area p { margin: 12px 0; font-size: 15px; line-height: 1.75; color: var(--text); }
+.content-area ul, .content-area ol { margin: 10px 0 10px 22px; }
+.content-area li { margin: 4px 0; line-height: 1.6; }
+.content-area blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--accent);
+  background: #f8fafc; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--text-secondary);
+}
+.content-area pre {
+  background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: var(--radius-sm);
+  overflow-x: auto; font-size: 13px; line-height: 1.6; margin: 14px 0;
+}
+.content-area code { font-family: "SF Mono","Fira Code","Cascadia Code",monospace; }
+.content-area :not(pre) > code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 13px; }
+.content-area img { max-width: 100%; border-radius: var(--radius-sm); margin: 14px 0; }
+.content-area hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+.content-area a { color: var(--accent); text-decoration: none; }
+.content-area a:hover { text-decoration: underline; }
+.content-area .table-wrap { overflow-x: auto; margin: 12px 0; }
+.content-area table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.content-area table td { padding: 8px 12px; border: 1px solid var(--border); }
 
-@media (max-width: 768px) {
-  .pricing-grid { grid-template-columns: 1fr; }
-  .company-inner { flex-direction: column; align-items: center; gap: 6px; }
-/* ===== Home Hero ===== */
-.home-hero {
-  text-align: center; padding: 60px 20px 30px; position: relative;
-  background: linear-gradient(180deg, #f0f4ff 0%, #fafafa 100%);
-  border-radius: 0 0 30px 30px; margin: 0 -48px; overflow: hidden;
-}
-.home-hero::before {
-  content: ''; position: absolute; top: -30%; right: -20%;
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%);
-  animation: heroFloat 12s ease-in-out infinite alternate;
-}
-.home-hero::after {
-  content: ''; position: absolute; bottom: -20%; left: -10%;
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(124,58,237,0.06) 0%, transparent 70%);
-  animation: heroFloat 15s ease-in-out infinite alternate-reverse;
-}
-@keyframes heroFloat {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(30px, -30px) scale(1.1); }
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: #fff; border: 1px solid #e8edf5;
-  padding: 6px 18px; border-radius: 20px; font-size: 13px; font-weight: 500;
-  color: #475569; margin-bottom: 20px; position: relative; z-index: 1;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.hero-badge::before { content: '◆ '; color: #3b82f6; }
-.home-hero h1 {
-  font-size: 44px; font-weight: 700; letter-spacing: -1px;
-  line-height: 1.1; margin-bottom: 16px; position: relative; z-index: 1;
-  color: #0f172a;
-}
-.gradient-text {
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.hero-desc {
-  font-size: 17px; color: #64748b; max-width: 520px;
-  margin: 0 auto 28px; line-height: 1.6; position: relative; z-index: 1;
-}
-.hero-stats {
-  display: flex; align-items: center; justify-content: center;
-  gap: 24px; margin-bottom: 32px; position: relative; z-index: 1;
-}
-.stat-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-.stat-num { font-size: 28px; font-weight: 700; color: #0f172a; }
-.stat-label { font-size: 13px; color: #94a3b8; }
-.stat-divider { width: 1px; height: 36px; background: #e2e8f0; }
-.hero-actions {
-  display: flex; gap: 12px; justify-content: center;
-  position: relative; z-index: 1;
-}
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
-  color: #fff; padding: 12px 28px; border-radius: 10px;
-  font-size: 15px; font-weight: 500; text-decoration: none;
-  box-shadow: 0 4px 14px rgba(37,99,235,0.3);
-  transition: all 0.25s;
-}
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,99,235,0.4); }
-.btn-arrow { transition: transform 0.2s; }
-.btn-primary:hover .btn-arrow { transform: translateX(4px); }
-.btn-outline {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: #fff; color: #334155; padding: 12px 28px; border-radius: 10px;
-  font-size: 15px; font-weight: 500; text-decoration: none;
-  border: 1px solid #e2e8f0; transition: all 0.25s;
-}
-.btn-outline:hover { border-color: #3b82f6; color: #2563eb; }
+/* ===== Meta ===== */
+.meta-bar { display: flex; gap: 16px; margin: 10px 0 20px; color: var(--text-secondary); font-size: 13px; }
+.breadcrumb { font-size: 13px; color: var(--text-tertiary); margin-bottom: 16px; }
+.breadcrumb a { color: var(--text-tertiary); text-decoration: none; }
+.breadcrumb a:hover { color: var(--accent); }
 
-/* ===== Brand Bar ===== */
-.brand-bar {
-  display: flex; flex-wrap: wrap; gap: 20px 32px;
-  justify-content: center; padding: 16px 24px;
-  background: #fff; border: 1px solid #e8edf5;
-  border-radius: 12px; margin: 28px 0;
+/* ===== Footer ===== */
+.page-footer {
+  text-align: center; padding: 32px 0;
+  color: var(--text-tertiary); font-size: 12.5px;
+  border-top: 1px solid var(--border); margin-top: 48px;
 }
-.brand-item { font-size: 13.5px; color: #475569; display: flex; align-items: center; gap: 6px; }
-.brand-icon { font-size: 15px; }
+.page-footer a { color: var(--text-secondary); text-decoration: none; }
 
-/* ===== Pricing ===== */
-.pricing-wrap { margin: 48px 0; text-align: center; }
-.section-label {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: #f1f5f9; border: 1px solid #e2e8f0;
-  padding: 4px 14px; border-radius: 16px; font-size: 12px; font-weight: 600;
-  color: #64748b; margin-bottom: 12px;
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  .main-content { max-width: 100%; padding: 16px 20px; }
+  .scene-grid { grid-template-columns: repeat(2, 1fr); }
+  .knowledge-grid { grid-template-columns: repeat(2, 1fr); }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .home-hero h1 { font-size: 32px; }
 }
-.section-heading { font-size: 26px; font-weight: 700; color: #0f172a; margin-bottom: 8px; letter-spacing: -0.5px; }
-.section-sub { font-size: 14px; color: #94a3b8; margin-bottom: 28px; }
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 800px; margin: 0 auto; }
-.pricing-card {
-  background: #fff; border: 1px solid #e8edf5; border-radius: 14px;
-  padding: 0; overflow: hidden; position: relative;
-  transition: all 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.pricing-card:hover {
-  transform: translateY(-3px); box-shadow: 0 8px 24px rgba(37,99,235,0.1);
-  border-color: #93c5fd;
-}
-.pricing-card.featured {
-  border-color: #93c5fd; border-width: 2px;
-  box-shadow: 0 4px 16px rgba(37,99,235,0.08);
-}
-.most-tag {
-  position: absolute; top: 12px; right: 12px;
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
-  color: #fff; padding: 3px 12px; border-radius: 8px;
-  font-size: 11px; font-weight: 600;
-}
-.card-top { padding: 28px 24px 16px; text-align: center; }
-.pricing-card h3 { font-size: 18px; color: #64748b; font-weight: 500; margin-bottom: 8px; }
-.card-price { font-size: 36px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
-.price-symbol { font-size: 20px; vertical-align: super; }
-.price-year { font-size: 14px; font-weight: 400; color: #94a3b8; }
-.card-period { font-size: 12px; color: #94a3b8; }
-.card-features { list-style: none; margin: 0; padding: 16px 24px 24px; text-align: left; border-top: 1px solid #f1f5f9; }
-.card-features li {
-  padding: 7px 0; font-size: 14px; color: #334155;
-  display: flex; align-items: center; gap: 8px;
-}
-.check { color: #22c55e; font-weight: 600; }
-
-/* ===== Section Headings ===== */
-.section-title {
-  font-size: 22px; font-weight: 600; margin-top: 48px; margin-bottom: 16px;
-  letter-spacing: -0.3px; color: #0f172a;
-}
-
-/* ===== Scene Cards (用户场景) ===== */
-.scene-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 680px; margin: 0 auto; }
-.scene-card {
-  display: flex; align-items: flex-start; gap: 14px;
-  background: #fff; border: 1px solid #e8edf5; border-radius: 14px;
-  padding: 20px; text-decoration: none; color: inherit;
-  transition: all 0.25s; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.scene-card:hover {
-  transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,0.08);
-  border-color: #93c5fd;
-}
-.scene-icon { font-size: 32px; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.scene-body { flex: 1; min-width: 0; }
-.scene-body h3 { font-size: 15px; font-weight: 600; color: #0f172a; margin-bottom: 4px; }
-.scene-body p { font-size: 13px; color: #64748b; line-height: 1.5; margin: 0; }
-
-/* ===== Module Cards (二页) ===== */
-.module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin: 20px 0; }
-.module-card {
-  background: #fff; border: 1px solid #e8edf5; border-radius: 12px;
-  padding: 20px; transition: all 0.25s;
-  text-decoration: none; color: inherit; display: block;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.module-card:hover {
-  transform: translateY(-2px); box-shadow: 0 6px 16px rgba(37,99,235,0.08);
-  border-color: #93c5fd;
-}
-.module-card h3 { font-size: 15px; font-weight: 600; color: #0f172a; margin-bottom: 6px; }
-.module-card p { font-size: 13px; color: #64748b; line-height: 1.5; }
-.module-card .count { font-size: 12px; color: #94a3b8; margin-top: 8px; }
-
-/* Animations */
-.fade-in { opacity: 0; transform: translateY(16px); transition: all 0.5s ease-out; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-
-@media (max-width: 768px) {
-  .content { padding: 20px; }
-  .home-hero { margin: 0 -20px; border-radius: 0 0 20px 20px; padding: 40px 20px 24px; }
-  .home-hero h1 { font-size: 28px; }
-  .hero-stats { gap: 16px; }
-  .stat-num { font-size: 22px; }
-  .hero-actions { flex-direction: column; align-items: center; }
-  .pricing-grid { grid-template-columns: 1fr; max-width: 360px; }
-  .brand-bar { flex-direction: column; align-items: center; gap: 8px; }
+@media (max-width: 600px) {
   .scene-grid { grid-template-columns: 1fr; }
-  .module-grid { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
+  .knowledge-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 20px; }
 }
-
-/* ===== Full width content (首页) ===== */
-.content-full {
-  max-width: 860px; margin: 0 auto; padding: 24px 48px 48px;
-  min-height: 100vh;
-}
-.home-footer-cta { text-align: center; margin: 40px 0; }
-.cta-large { padding: 14px 36px !important; font-size: 16px !important; }
-
 </style>
 </head>
 <body>
 <nav class="top-nav">
 <div class="nav-inner">
 <a href="index.html" class="logo">🤖 企业数字员工</a>
-<div class="nav-links"><a href="module-0-项目总览.html">总览</a>
+<div class="nav-links">
+<a href="index.html">首页</a>
+<a href="module-0-项目总览.html">项目总览</a>
 <a href="module-1-推广体系.html">推广</a>
 <a href="module-2-销售转化.html">销售</a>
-<a href="module-3-内容素材.html">素材</a>
-<a href="module-4-客户细分.html">客户</a>
 <a href="module-5-交付SOP.html">交付</a>
-<a href="module-6-工具模板.html">工具</a>
-<a href="module-7-Hermes技术基座.html">Hermes</a>
-<a href="module-附件.html">附件</a></div>
+<a href="module-7-Hermes技术基座.html">技术基座</a>
+</div>
 </div>
 </nav>
 <div class="layout">
-<aside class="sidebar" id="sidebar">
-<div class="sidebar-search"><input type="text" id="search" placeholder="搜索笔记..." oninput="searchNotes(this.value)"></div>
-<div class="sidebar-toc"><div class="module-group">
-<div class="module-title">🎯 项目总览</div>
-<a href="推广与流程体系_完整框架.html" class="page-link active"><span class="icon">📐</span><span class="title">AI数字员工 · 推广与流程体系完整框架</span></a>
-<a href="GitHub可用项目清单与案例方案.html" class="page-link"><span class="icon">🎯</span><span class="title">GitHub 可用项目清单与案例方案</span></a>
-<a href="八大行业方案速查.html" class="page-link"><span class="icon">🏢</span><span class="title">八大行业方案速查</span></a>
-<a href="对外资料清单与制作排期.html" class="page-link"><span class="icon">🎯</span><span class="title">对外资料清单与制作排期</span></a>
-<a href="常见反对意见与应对.html" class="page-link"><span class="icon">🛡️</span><span class="title">常见反对意见与应对</span></a>
-<a href="核心话术速查.html" class="page-link"><span class="icon">💬</span><span class="title">核心话术速查</span></a>
-<a href="项目检查清单.html" class="page-link"><span class="icon">✅</span><span class="title">项目检查清单</span></a>
+<div class="sidebar">
+<div class="sidebar-search"><input id="search-input" type="text" placeholder="搜索笔记..."></div>
+<div class="module-group"><div class="module-title">🎯 项目总览</div><div class="page-link"><a href="GitHub可用项目清单与案例方案.html">🎯 GitHub 可用项目清单与案例方案</a></div><div class="page-link"><a href="八大行业方案速查.html">🏢 八大行业方案速查</a></div><div class="page-link"><a href="对外资料清单与制作排期.html">🎯 对外资料清单与制作排期</a></div><div class="page-link"><a href="常见反对意见与应对.html">🛡️ 常见反对意见与应对</a></div><div class="page-link active"><a href="推广与流程体系_完整框架.html">📐 AI数字员工 · 推广与流程体系完整框架</a></div><div class="page-link"><a href="核心话术速查.html">💬 核心话术速查</a></div><div class="page-link"><a href="项目检查清单.html">✅ 项目检查清单</a></div></div><div class="module-group"><div class="module-title">📡 推广体系</div><div class="page-link"><a href="模块一_推广渠道矩阵.html">📡 模块一：推广渠道矩阵</a></div></div><div class="module-group"><div class="module-title">🪜 销售转化</div><div class="page-link"><a href="模块二_销售转化漏斗.html">🪜 模块二：销售转化漏斗</a></div></div><div class="module-group"><div class="module-title">📝 内容素材</div><div class="page-link"><a href="模块三_内容素材体系.html">📝 模块三：内容素材体系</a></div></div><div class="module-group"><div class="module-title">👥 客户细分</div><div class="page-link"><a href="模块四_客户细分与差异化方案.html">👥 模块四：客户细分与差异化方案</a></div></div><div class="module-group"><div class="module-title">🔧 交付SOP</div><div class="page-link"><a href="模块五_交付SOP标准操作手册.html">🔧 模块五：交付SOP标准操作手册</a></div></div><div class="module-group"><div class="module-title">🧰 工具模板</div><div class="page-link"><a href="模块六_工具模板清单.html">🧰 模块六：工具模板清单</a></div></div><div class="module-group"><div class="module-title">🤖 Hermes 技术基座</div><div class="page-link"><a href="Hermes CLI 速查.html">🤖 Hermes CLI 速查</a></div><div class="page-link"><a href="Hermes 工具清单.html">🔌 Hermes 工具清单</a></div><div class="page-link"><a href="Hermes 示例命令.html">🤖 Hermes 示例命令</a></div><div class="page-link"><a href="Hermes 部署与运维.html">🤖 Hermes 部署与运维</a></div><div class="page-link"><a href="README.html">🤖 Hermes Agent — AI 数字员工技术基座</a></div></div><div class="module-group"><div class="module-title">📎 附件</div><div class="page-link"><a href="AI数字员工_企业增效计划.html">📄 AI数字员工_企业增效计划</a></div><div class="page-link"><a href="AI数字员工_展会精华版.html">🎪 AI数字员工_展会精华版</a></div><div class="page-link"><a href="AI智能体企业定制服务_企业展示.html">🤖 AI智能体企业定制服务_企业展示</a></div><div class="page-link"><a href="ppt-master参考索引.html">📄 ppt-master 模板参考</a></div><div class="page-link"><a href="素材总索引.html">🖼️ 素材总索引</a></div></div>
 </div>
-<div class="module-group">
-<div class="module-title">📡 推广体系</div>
-<a href="模块一_推广渠道矩阵.html" class="page-link"><span class="icon">📡</span><span class="title">模块一：推广渠道矩阵</span></a>
-</div>
-<div class="module-group">
-<div class="module-title">🪜 销售转化</div>
-<a href="模块二_销售转化漏斗.html" class="page-link"><span class="icon">🪜</span><span class="title">模块二：销售转化漏斗</span></a>
-</div>
-<div class="module-group">
-<div class="module-title">📝 内容素材</div>
-<a href="模块三_内容素材体系.html" class="page-link"><span class="icon">📝</span><span class="title">模块三：内容素材体系</span></a>
-</div>
-<div class="module-group">
-<div class="module-title">👥 客户细分</div>
-<a href="模块四_客户细分与差异化方案.html" class="page-link"><span class="icon">👥</span><span class="title">模块四：客户细分与差异化方案</span></a>
-</div>
-<div class="module-group">
-<div class="module-title">🔧 交付SOP</div>
-<a href="模块五_交付SOP标准操作手册.html" class="page-link"><span class="icon">🔧</span><span class="title">模块五：交付SOP标准操作手册</span></a>
-</div>
-<div class="module-group">
-<div class="module-title">🧰 工具模板</div>
-<a href="模块六_工具模板清单.html" class="page-link"><span class="icon">🧰</span><span class="title">模块六：工具模板清单</span></a>
-</div>
-<div class="module-group">
-<div class="module-title">🤖 Hermes 技术基座</div>
-<a href="README.html" class="page-link"><span class="icon">🤖</span><span class="title">Hermes Agent — AI 数字员工技术基座</span></a>
-<a href="Hermes CLI 速查.html" class="page-link"><span class="icon">🤖</span><span class="title">Hermes CLI 速查</span></a>
-<a href="Hermes 工具清单.html" class="page-link"><span class="icon">🔌</span><span class="title">Hermes 工具清单</span></a>
-<a href="Hermes 示例命令.html" class="page-link"><span class="icon">🤖</span><span class="title">Hermes 示例命令</span></a>
-<a href="Hermes 部署与运维.html" class="page-link"><span class="icon">🤖</span><span class="title">Hermes 部署与运维</span></a>
-</div>
-<div class="module-group">
-<div class="module-title">📎 附件</div>
-<a href="AI数字员工_企业增效计划.html" class="page-link"><span class="icon">📄</span><span class="title">AI数字员工_企业增效计划</span></a>
-<a href="AI数字员工_展会精华版.html" class="page-link"><span class="icon">🎪</span><span class="title">AI数字员工_展会精华版</span></a>
-<a href="AI智能体企业定制服务_企业展示.html" class="page-link"><span class="icon">🤖</span><span class="title">AI智能体企业定制服务_企业展示</span></a>
-<a href="ppt-master参考索引.html" class="page-link"><span class="icon">📄</span><span class="title">ppt-master 模板参考</span></a>
-<a href="素材总索引.html" class="page-link"><span class="icon">🖼️</span><span class="title">素材总索引</span></a>
-</div></div>
-</aside>
-<main class="content">
+<main class="main-content">
 <div class="breadcrumb"><a href="index.html">🏠 首页</a> / <a href="module-0-项目总览.html">🎯 项目总览</a> / AI数字员工 · 推广与流程体系完整框架</div>
-<article class="article"><h1>📐 AI数字员工 · 推广与流程体系完整框架</h1><div class="meta-bar"><span>📖 16 分钟</span><span>📝 8210 字</span><span>📊 60 个表格</span></div><h1>AI数字员工 · 推广与流程体系完整框架</h1>
-
-<blockquote>版本：v1.0 <div class="table-wrap"><table></blockquote>
-<tr><td>日期：2026-06-03</td><td>负责人：倪锦</td></tr>
-</table></div>> 说明：本文件为项目推广与交付流程的总框架目录，每个模块将独立成文展开到极致细节。
-
-<hr>
-
-<h2>整体架构图</h2>
-
-<pre><code class="lang-">                        ┌─────────────────────────────────┐
-<p>│        企业数字员工项目           │</p>
-<p>│    AI数字员工 · 企业增效计划      │</p>
-<p>└────────────┬────────────────────┘</p>
-<p>│</p>
-<p>┌────────────────────────┼────────────────────────┐</p>
-<p>│                        │                        │</p>
-<p>▼────┴────▼            ▼──────┴──────▼          ▼─────┴─────▼</p>
-<p>┌──────────────┐      ┌──────────────────┐      ┌──────────────┐</p>
-<p>│   推广获客    │ ──→  │   转化成交        │ ──→  │   交付服务    │</p>
-<p>│  (让客户来)   │      │  (让客户掏钱)     │      │  (让客户爽)   │</p>
-<p>└──────────────┘      └──────────────────┘      └──────────────┘</p>
-<p>│                        │                        │</p>
-<p>▼                        ▼                        ▼</p>
-<p>┌──────────────┐      ┌──────────────────┐      ┌──────────────┐</p>
-<p>│ 模块一       │      │ 模块二            │      │ 模块五       │</p>
-<p>│ 推广渠道矩阵 │      │ 销售转化漏斗      │      │ 交付SOP      │</p>
-<p>└──────────────┘      └──────────────────┘      └──────────────┘</p>
-<p>│                        │                        │</p>
-<p>└────────────┬───────────┴───────────┬────────────┘</p>
-<p>│                       │</p>
-<p>┌─────┴─────┐           ┌─────┴─────┐</p>
-<p>│ 模块三     │           │ 模块四     │</p>
-<p>│ 内容素材   │           │ 客户细分   │</p>
-<p>│ 体系       │           │ 差异化方案 │</p>
-<p>└───────────┘           └───────────┘</p>
-<p>│                       │</p>
-<p>└───────────┬───────────┘</p>
-<p>│</p>
-<p>┌─────┴─────┐</p>
-<p>│ 模块六     │</p>
-<p>│ 工具模板   │</p>
-<p>│ 清单       │</p>
-<p>└───────────┘</p>
+<div class="content-area"><h1>📐 AI数字员工 · 推广与流程体系完整框架</h1><div class="meta-bar"><span>📖 16 分钟</span><span>📝 8210 字</span><span>📊 60 个表格</span></div><p><h1>AI数字员工 · 推广与流程体系完整框架</h1></p>
+<p><blockquote>版本：v1.0 <div class="table-wrap"><table></blockquote></p>
+<p><tr><td>日期：2026-06-03</td><td>负责人：倪锦</td></tr></p>
+<p></table></div>> 说明：本文件为项目推广与交付流程的总框架目录，每个模块将独立成文展开到极致细节。</p>
+<p><hr></p>
+<p><h2>整体架构图</h2></p>
+<p><pre><code class="lang-">                        ┌─────────────────────────────────┐</p>
+<p>                        │        企业数字员工项目           │</p>
+<p>                        │    AI数字员工 · 企业增效计划      │</p>
+<p>                        └────────────┬────────────────────┘</p>
+<p>                                     │</p>
+<p>            ┌────────────────────────┼────────────────────────┐</p>
+<p>            │                        │                        │</p>
+<p>       ▼────┴────▼            ▼──────┴──────▼          ▼─────┴─────▼</p>
+<p>    ┌──────────────┐      ┌──────────────────┐      ┌──────────────┐</p>
+<p>    │   推广获客    │ ──→  │   转化成交        │ ──→  │   交付服务    │</p>
+<p>    │  (让客户来)   │      │  (让客户掏钱)     │      │  (让客户爽)   │</p>
+<p>    └──────────────┘      └──────────────────┘      └──────────────┘</p>
+<p>            │                        │                        │</p>
+<p>            ▼                        ▼                        ▼</p>
+<p>    ┌──────────────┐      ┌──────────────────┐      ┌──────────────┐</p>
+<p>    │ 模块一       │      │ 模块二            │      │ 模块五       │</p>
+<p>    │ 推广渠道矩阵 │      │ 销售转化漏斗      │      │ 交付SOP      │</p>
+<p>    └──────────────┘      └──────────────────┘      └──────────────┘</p>
+<p>            │                        │                        │</p>
+<p>            └────────────┬───────────┴───────────┬────────────┘</p>
+<p>                         │                       │</p>
+<p>                   ┌─────┴─────┐           ┌─────┴─────┐</p>
+<p>                   │ 模块三     │           │ 模块四     │</p>
+<p>                   │ 内容素材   │           │ 客户细分   │</p>
+<p>                   │ 体系       │           │ 差异化方案 │</p>
+<p>                   └───────────┘           └───────────┘</p>
+<p>                         │                       │</p>
+<p>                         └───────────┬───────────┘</p>
+<p>                                     │</p>
+<p>                               ┌─────┴─────┐</p>
+<p>                               │ 模块六     │</p>
+<p>                               │ 工具模板   │</p>
+<p>                               │ 清单       │</p>
+<p>                               └───────────┘</p>
 <p></code></pre></p>
-
-<hr>
-
-<h2>模块一：推广渠道矩阵</h2>
-
-<blockquote>目标：全渠道覆盖目标客户触点，每个渠道有独立打法、素材、话术、转化路径</blockquote>
-
-<h3>渠道分类</h3>
-
-<div class="table-wrap"><table>
-<tr><td>大类</td><td>渠道</td><td>优先级</td><td>定位</td></tr>
-<tr><td>线上免费</td><td>微信朋友圈</td><td>★★★★★</td><td>私域核心阵地</td></tr>
-<tr><td>线上免费</td><td>微信社群</td><td>★★★★☆</td><td>精准渗透</td></tr>
-<tr><td>线上免费</td><td>短视频（抖音/快手/视频号）</td><td>★★★★★</td><td>公域流量池</td></tr>
-<tr><td>线上免费</td><td>小红书</td><td>★★★★☆</td><td>品牌种草</td></tr>
-<tr><td>线上免费</td><td>公众号/知乎</td><td>★★★☆☆</td><td>深度内容</td></tr>
-<tr><td>线上付费</td><td>抖音/快手信息流</td><td>★★★☆☆</td><td>精准投放</td></tr>
-<tr><td>线上付费</td><td>百度SEM/本地搜索</td><td>★★★★☆</td><td>搜索截流</td></tr>
-<tr><td>线下主动</td><td>展会/行业论坛</td><td>★★★★★</td><td>高意向获客</td></tr>
-<tr><td>线下主动</td><td>产业园/商会/协会</td><td>★★★★☆</td><td>批量触达</td></tr>
-<tr><td>线下主动</td><td>地推/扫街</td><td>★★★☆☆</td><td>区域深耕</td></tr>
-<tr><td>转介绍</td><td>老客户转介绍</td><td>★★★★★</td><td>最高质量</td></tr>
-<tr><td>转介绍</td><td>异业合作转介绍</td><td>★★★★☆</td><td>渠道共享</td></tr>
-<tr><td>线上免费</td><td>闲鱼/58同城</td><td>★★★☆☆</td><td>低价截流</td></tr>
-<tr><td>线上免费</td><td>B站/知识类平台</td><td>★★☆☆☆</td><td>品牌长期</td></tr>
-</table></div>
-<h3>每一个渠道需细化的内容</h3>
-
+<p><hr></p>
+<p><h2>模块一：推广渠道矩阵</h2></p>
+<p><blockquote>目标：全渠道覆盖目标客户触点，每个渠道有独立打法、素材、话术、转化路径</blockquote></p>
+<p><h3>渠道分类</h3></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>大类</td><td>渠道</td><td>优先级</td><td>定位</td></tr></p>
+<p><tr><td>线上免费</td><td>微信朋友圈</td><td>★★★★★</td><td>私域核心阵地</td></tr></p>
+<p><tr><td>线上免费</td><td>微信社群</td><td>★★★★☆</td><td>精准渗透</td></tr></p>
+<p><tr><td>线上免费</td><td>短视频（抖音/快手/视频号）</td><td>★★★★★</td><td>公域流量池</td></tr></p>
+<p><tr><td>线上免费</td><td>小红书</td><td>★★★★☆</td><td>品牌种草</td></tr></p>
+<p><tr><td>线上免费</td><td>公众号/知乎</td><td>★★★☆☆</td><td>深度内容</td></tr></p>
+<p><tr><td>线上付费</td><td>抖音/快手信息流</td><td>★★★☆☆</td><td>精准投放</td></tr></p>
+<p><tr><td>线上付费</td><td>百度SEM/本地搜索</td><td>★★★★☆</td><td>搜索截流</td></tr></p>
+<p><tr><td>线下主动</td><td>展会/行业论坛</td><td>★★★★★</td><td>高意向获客</td></tr></p>
+<p><tr><td>线下主动</td><td>产业园/商会/协会</td><td>★★★★☆</td><td>批量触达</td></tr></p>
+<p><tr><td>线下主动</td><td>地推/扫街</td><td>★★★☆☆</td><td>区域深耕</td></tr></p>
+<p><tr><td>转介绍</td><td>老客户转介绍</td><td>★★★★★</td><td>最高质量</td></tr></p>
+<p><tr><td>转介绍</td><td>异业合作转介绍</td><td>★★★★☆</td><td>渠道共享</td></tr></p>
+<p><tr><td>线上免费</td><td>闲鱼/58同城</td><td>★★★☆☆</td><td>低价截流</td></tr></p>
+<p><tr><td>线上免费</td><td>B站/知识类平台</td><td>★★☆☆☆</td><td>品牌长期</td></tr></p>
+<p></table></div></p>
+<p><h3>每一个渠道需细化的内容</h3></p>
 <ol>
 <li>渠道画像（什么人在这、什么场景、什么心态）</li>
 <li>内容形式（图文/视频/直播/线下物料）</li>
@@ -707,58 +564,51 @@ body {
 <li>A/B测试方向</li>
 <li>常见问题预判与应答</li>
 </ol>
-
-<hr>
-
-<h2>模块二：销售转化漏斗</h2>
-
-<blockquote>目标：完整还原从客户第一次接触到签约付款的每一步，每一步有标准动作、话术、时长、应对策略</blockquote>
-
-<h3>漏斗层级</h3>
-
-<pre><code class="lang-">                    ┌──────────────────────┐
-<p>│  曝光/触达（100%）    │</p>
-<p>│  看到推广内容         │</p>
-<p>└──────────┬───────────┘</p>
-<p>│</p>
-<p>┌──────────▼───────────┐</p>
-<p>│  兴趣/点击（≈5%）     │</p>
-<p>│  点开/私信/加好友     │</p>
-<p>└──────────┬───────────┘</p>
-<p>│</p>
-<p>┌──────────▼───────────┐</p>
-<p>│  初步沟通（≈2%）      │</p>
-<p>│  微信/电话初步聊      │</p>
-<p>└──────────┬───────────┘</p>
-<p>│</p>
-<p>┌──────────▼───────────┐</p>
-<p>│  免费诊断（≈1%）      │</p>
-<p>│  上门/远程业务调研     │</p>
-<p>└──────────┬───────────┘</p>
-<p>│</p>
-<p>┌──────────▼───────────┐</p>
-<p>│  方案报价（≈0.7%）    │</p>
-<p>│  出方案+报价          │</p>
-<p>└──────────┬───────────┘</p>
-<p>│</p>
-<p>┌──────────▼───────────┐</p>
-<p>│  签约付款（≈0.5%）    │</p>
-<p>│  签合同+付款          │</p>
-<p>└──────────┬───────────┘</p>
-<p>│</p>
-<p>┌──────────▼───────────┐</p>
-<p>│  交付上线（≈0.5%）    │</p>
-<p>│  开发部署上线         │</p>
-<p>└──────────┬───────────┘</p>
-<p>│</p>
-<p>┌──────────▼───────────┐</p>
-<p>│  转介绍/续费          │</p>
-<p>│  长期价值             │</p>
-<p>└──────────────────────┘</p>
+<p><hr></p>
+<p><h2>模块二：销售转化漏斗</h2></p>
+<p><blockquote>目标：完整还原从客户第一次接触到签约付款的每一步，每一步有标准动作、话术、时长、应对策略</blockquote></p>
+<p><h3>漏斗层级</h3></p>
+<p><pre><code class="lang-">                    ┌──────────────────────┐</p>
+<p>                    │  曝光/触达（100%）    │</p>
+<p>                    │  看到推广内容         │</p>
+<p>                    └──────────┬───────────┘</p>
+<p>                               │</p>
+<p>                    ┌──────────▼───────────┐</p>
+<p>                    │  兴趣/点击（≈5%）     │</p>
+<p>                    │  点开/私信/加好友     │</p>
+<p>                    └──────────┬───────────┘</p>
+<p>                               │</p>
+<p>                    ┌──────────▼───────────┐</p>
+<p>                    │  初步沟通（≈2%）      │</p>
+<p>                    │  微信/电话初步聊      │</p>
+<p>                    └──────────┬───────────┘</p>
+<p>                               │</p>
+<p>                    ┌──────────▼───────────┐</p>
+<p>                    │  免费诊断（≈1%）      │</p>
+<p>                    │  上门/远程业务调研     │</p>
+<p>                    └──────────┬───────────┘</p>
+<p>                               │</p>
+<p>                    ┌──────────▼───────────┐</p>
+<p>                    │  方案报价（≈0.7%）    │</p>
+<p>                    │  出方案+报价          │</p>
+<p>                    └──────────┬───────────┘</p>
+<p>                               │</p>
+<p>                    ┌──────────▼───────────┐</p>
+<p>                    │  签约付款（≈0.5%）    │</p>
+<p>                    │  签合同+付款          │</p>
+<p>                    └──────────┬───────────┘</p>
+<p>                               │</p>
+<p>                    ┌──────────▼───────────┐</p>
+<p>                    │  交付上线（≈0.5%）    │</p>
+<p>                    │  开发部署上线         │</p>
+<p>                    └──────────┬───────────┘</p>
+<p>                               │</p>
+<p>                    ┌──────────▼───────────┐</p>
+<p>                    │  转介绍/续费          │</p>
+<p>                    │  长期价值             │</p>
+<p>                    └──────────────────────┘</p>
 <p></code></pre></p>
-
-<h3>每一步需细化的内容</h3>
-
+<p><h3>每一步需细化的内容</h3></p>
 <ol>
 <li><strong>触发场景</strong>：客户处于什么状态</li>
 <li><strong>客户心理</strong>：这个阶段客户在想什么、担心什么</li>
@@ -771,24 +621,18 @@ body {
 <li><strong>工具辅助</strong>：用什么工具或物料辅助转化</li>
 <li><strong>案例/证据支撑</strong>：用什么案例背书</li>
 </ol>
-
-<hr>
-
-<h2>模块三：内容素材体系</h2>
-
-<blockquote>目标：按渠道、按场景、按客户阶段，建立完整的内容素材库，需要什么直接取</blockquote>
-
-<h3>内容分类维度</h3>
-
-<h4>按形式分</h4>
+<p><hr></p>
+<p><h2>模块三：内容素材体系</h2></p>
+<p><blockquote>目标：按渠道、按场景、按客户阶段，建立完整的内容素材库，需要什么直接取</blockquote></p>
+<p><h3>内容分类维度</h3></p>
+<p><h4>按形式分</h4></p>
 <ul>
 <li>图文类：朋友圈文案、公众号文章、小红书笔记、知乎回答</li>
 <li>视频类：短视频（15-60s）、中视频（1-3min）、直播</li>
 <li>音频类：播客口播稿</li>
 <li>线下物料：传单、海报、易拉宝、名片、宣传册</li>
 </ul>
-
-<h4>按功能分</h4>
+<p><h4>按功能分</h4></p>
 <ul>
 <li>引流类：吸引注意、产生兴趣</li>
 <li>教育类：建立认知、消除疑虑</li>
@@ -796,8 +640,7 @@ body {
 <li>口碑类：案例展示、客户见证</li>
 <li>维护类：老客户维系、转介绍引导</li>
 </ul>
-
-<h4>按客户阶段分</h4>
+<p><h4>按客户阶段分</h4></p>
 <ul>
 <li>陌生人阶段：不认识你，先混脸熟</li>
 <li>有兴趣阶段：主动了解，提供价值</li>
@@ -805,9 +648,7 @@ body {
 <li>决策阶段：临门一脚，降低风险</li>
 <li>已成交阶段：超出预期，引导转介绍</li>
 </ul>
-
-<h3>目标产出物清单</h3>
-
+<p><h3>目标产出物清单</h3></p>
 <ol>
 <li>朋友圈文案库（30条+，分类目）</li>
 <li>短视频脚本库（20条+，分场景）</li>
@@ -820,28 +661,22 @@ body {
 <li>直播/录播大纲（3套）</li>
 <li>对比素材（vs 竞品 vs 自做 vs 不用AI）</li>
 </ol>
-
-<hr>
-
-<h2>模块四：客户细分与差异化方案</h2>
-
-<blockquote>目标：不同行业客户有不同痛点、不同场景、不同话术、不同案例</blockquote>
-
-<h3>目标行业清单</h3>
-
-<div class="table-wrap"><table>
-<tr><td>行业</td><td>优先级</td><td>市场规模</td><td>核心痛点</td><td>最高频场景</td></tr>
-<tr><td>电商/直播</td><td>★★★★★</td><td>最大</td><td>客服成本高、内容产出慢</td><td>智能客服+营销内容</td></tr>
-<tr><td>二手车</td><td>★★★★★</td><td>大</td><td>车源管理乱、客户跟进差</td><td>智能客服+数据报表</td></tr>
-<tr><td>本地服务（餐饮/美容等）</td><td>★★★★☆</td><td>大</td><td>预约管理、客户回访</td><td>智能客服+文档自动化</td></tr>
-<tr><td>传统制造业</td><td>★★★★☆</td><td>大</td><td>文档管理、知识传承</td><td>知识库+文档自动化</td></tr>
-<tr><td>律师/会计事务所</td><td>★★★☆☆</td><td>中</td><td>文档处理、法规查询</td><td>文档自动化+知识库</td></tr>
-<tr><td>房产中介</td><td>★★★☆☆</td><td>中</td><td>房源管理、客户跟进</td><td>数据报表+智能客服</td></tr>
-<tr><td>教育培训</td><td>★★★☆☆</td><td>中</td><td>课程咨询、学员管理</td><td>智能客服+知识库</td></tr>
-<tr><td>物流/贸易</td><td>★★☆☆☆</td><td>中</td><td>订单跟踪、异常处理</td><td>数据报表+文档自动化</td></tr>
-</table></div>
-<h3>每个行业需细化的内容</h3>
-
+<p><hr></p>
+<p><h2>模块四：客户细分与差异化方案</h2></p>
+<p><blockquote>目标：不同行业客户有不同痛点、不同场景、不同话术、不同案例</blockquote></p>
+<p><h3>目标行业清单</h3></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>行业</td><td>优先级</td><td>市场规模</td><td>核心痛点</td><td>最高频场景</td></tr></p>
+<p><tr><td>电商/直播</td><td>★★★★★</td><td>最大</td><td>客服成本高、内容产出慢</td><td>智能客服+营销内容</td></tr></p>
+<p><tr><td>二手车</td><td>★★★★★</td><td>大</td><td>车源管理乱、客户跟进差</td><td>智能客服+数据报表</td></tr></p>
+<p><tr><td>本地服务（餐饮/美容等）</td><td>★★★★☆</td><td>大</td><td>预约管理、客户回访</td><td>智能客服+文档自动化</td></tr></p>
+<p><tr><td>传统制造业</td><td>★★★★☆</td><td>大</td><td>文档管理、知识传承</td><td>知识库+文档自动化</td></tr></p>
+<p><tr><td>律师/会计事务所</td><td>★★★☆☆</td><td>中</td><td>文档处理、法规查询</td><td>文档自动化+知识库</td></tr></p>
+<p><tr><td>房产中介</td><td>★★★☆☆</td><td>中</td><td>房源管理、客户跟进</td><td>数据报表+智能客服</td></tr></p>
+<p><tr><td>教育培训</td><td>★★★☆☆</td><td>中</td><td>课程咨询、学员管理</td><td>智能客服+知识库</td></tr></p>
+<p><tr><td>物流/贸易</td><td>★★☆☆☆</td><td>中</td><td>订单跟踪、异常处理</td><td>数据报表+文档自动化</td></tr></p>
+<p></table></div></p>
+<p><h3>每个行业需细化的内容</h3></p>
 <ol>
 <li>行业画像（规模、人员结构、IT水平）</li>
 <li>核心痛点（3-5个，越具体越好）</li>
@@ -854,36 +689,30 @@ body {
 <li>标杆客户开发计划（第一个客户怎么打）</li>
 <li>成功标准（对这类客户什么叫"成功交付"）</li>
 </ol>
-
-<hr>
-
-<h2>模块五：交付SOP标准操作手册</h2>
-
-<blockquote>目标：从客户联系到交付上线的全流程标准操作手册，新人照着做也能交付</blockquote>
-
-<h3>SOP阶段</h3>
-
-<div class="table-wrap"><table>
-<tr><td>阶段</td><td>步骤</td><td>负责人</td><td>标准时长</td><td>交付物</td></tr>
-<tr><td>L1 联系咨询</td><td>1.1 首次响应</td><td>销售</td><td>1小时内</td><td>客户信息记录</td></tr>
-<tr><td>L1 联系咨询</td><td>1.2 初步沟通</td><td>销售</td><td>20-30min</td><td>初步需求记录</td></tr>
-<tr><td>L2 免费诊断</td><td>2.1 预约调研</td><td>销售+技术</td><td>1天内</td><td>调研时间确认</td></tr>
-<tr><td>L2 免费诊断</td><td>2.2 现场/远程调研</td><td>技术</td><td>1-2天</td><td>调研记录</td></tr>
-<tr><td>L2 免费诊断</td><td>2.3 输出评估报告</td><td>技术</td><td>1天内</td><td>《AI诊断评估报告》</td></tr>
-<tr><td>L3 方案报价</td><td>3.1 方案设计</td><td>技术</td><td>1-2天</td><td>《AI落地方案书》</td></tr>
-<tr><td>L3 方案报价</td><td>3.2 报价谈判</td><td>销售</td><td>1-2天</td><td>报价单</td></tr>
-<tr><td>L4 签约付款</td><td>4.1 签订合同</td><td>销售</td><td>1天</td><td>技术服务合同</td></tr>
-<tr><td>L4 签约付款</td><td>4.2 收款开票</td><td>销售+财务</td><td>1-3天</td><td>付款凭证</td></tr>
-<tr><td>L5 开发部署</td><td>5.1 环境搭建</td><td>技术</td><td>1天</td><td>开发环境就绪</td></tr>
-<tr><td>L5 开发部署</td><td>5.2 Agent开发</td><td>技术</td><td>2-5天</td><td>Agent交付</td></tr>
-<tr><td>L5 开发部署</td><td>5.3 对接测试</td><td>技术</td><td>1天</td><td>测试报告</td></tr>
-<tr><td>L5 开发部署</td><td>5.4 验收上线</td><td>销售+技术</td><td>1天</td><td>验收确认单</td></tr>
-<tr><td>L6 优化维护</td><td>6.1 员工培训</td><td>销售/技术</td><td>1-2h</td><td>培训记录</td></tr>
-<tr><td>L6 优化维护</td><td>6.2 效果跟踪</td><td>技术</td><td>每周</td><td>周报</td></tr>
-<tr><td>L6 优化维护</td><td>6.3 迭代升级</td><td>技术</td><td>每月</td><td>升级记录</td></tr>
-</table></div>
-<h3>每个步骤需细化的内容</h3>
-
+<p><hr></p>
+<p><h2>模块五：交付SOP标准操作手册</h2></p>
+<p><blockquote>目标：从客户联系到交付上线的全流程标准操作手册，新人照着做也能交付</blockquote></p>
+<p><h3>SOP阶段</h3></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>阶段</td><td>步骤</td><td>负责人</td><td>标准时长</td><td>交付物</td></tr></p>
+<p><tr><td>L1 联系咨询</td><td>1.1 首次响应</td><td>销售</td><td>1小时内</td><td>客户信息记录</td></tr></p>
+<p><tr><td>L1 联系咨询</td><td>1.2 初步沟通</td><td>销售</td><td>20-30min</td><td>初步需求记录</td></tr></p>
+<p><tr><td>L2 免费诊断</td><td>2.1 预约调研</td><td>销售+技术</td><td>1天内</td><td>调研时间确认</td></tr></p>
+<p><tr><td>L2 免费诊断</td><td>2.2 现场/远程调研</td><td>技术</td><td>1-2天</td><td>调研记录</td></tr></p>
+<p><tr><td>L2 免费诊断</td><td>2.3 输出评估报告</td><td>技术</td><td>1天内</td><td>《AI诊断评估报告》</td></tr></p>
+<p><tr><td>L3 方案报价</td><td>3.1 方案设计</td><td>技术</td><td>1-2天</td><td>《AI落地方案书》</td></tr></p>
+<p><tr><td>L3 方案报价</td><td>3.2 报价谈判</td><td>销售</td><td>1-2天</td><td>报价单</td></tr></p>
+<p><tr><td>L4 签约付款</td><td>4.1 签订合同</td><td>销售</td><td>1天</td><td>技术服务合同</td></tr></p>
+<p><tr><td>L4 签约付款</td><td>4.2 收款开票</td><td>销售+财务</td><td>1-3天</td><td>付款凭证</td></tr></p>
+<p><tr><td>L5 开发部署</td><td>5.1 环境搭建</td><td>技术</td><td>1天</td><td>开发环境就绪</td></tr></p>
+<p><tr><td>L5 开发部署</td><td>5.2 Agent开发</td><td>技术</td><td>2-5天</td><td>Agent交付</td></tr></p>
+<p><tr><td>L5 开发部署</td><td>5.3 对接测试</td><td>技术</td><td>1天</td><td>测试报告</td></tr></p>
+<p><tr><td>L5 开发部署</td><td>5.4 验收上线</td><td>销售+技术</td><td>1天</td><td>验收确认单</td></tr></p>
+<p><tr><td>L6 优化维护</td><td>6.1 员工培训</td><td>销售/技术</td><td>1-2h</td><td>培训记录</td></tr></p>
+<p><tr><td>L6 优化维护</td><td>6.2 效果跟踪</td><td>技术</td><td>每周</td><td>周报</td></tr></p>
+<p><tr><td>L6 优化维护</td><td>6.3 迭代升级</td><td>技术</td><td>每月</td><td>升级记录</td></tr></p>
+<p></table></div></p>
+<p><h3>每个步骤需细化的内容</h3></p>
 <ol>
 <li><strong>触发条件</strong>：什么情况下进入这个步骤</li>
 <li><strong>准备工作</strong>：开始前需要准备好什么</li>
@@ -896,15 +725,10 @@ body {
 <li><strong>时限要求</strong>：最长不能超过多久</li>
 <li><strong>升级机制</strong>：遇到解决不了的问题找谁</li>
 </ol>
-
-<hr>
-
-<h2>模块六：工具模板清单</h2>
-
-<blockquote>目标：建立可复用、可迭代的工具包，让每次执行都有标准模板</blockquote>
-
-<h3>模板清单</h3>
-
+<p><hr></p>
+<p><h2>模块六：工具模板清单</h2></p>
+<p><blockquote>目标：建立可复用、可迭代的工具包，让每次执行都有标准模板</blockquote></p>
+<p><h3>模板清单</h3></p>
 <ol>
 <li><strong>客户信息记录表</strong> — 首次联系即填写，后续所有环节共用</li>
 <li><strong>初步需求调研问卷</strong> — 发客户自填或电话问</li>
@@ -922,78 +746,46 @@ body {
 <li><strong>跟进记录表</strong> — 每一次跟进都有记录</li>
 <li><strong>月度运营报告模板</strong> — 给已签约客户看效果</li>
 </ol>
-
-<hr>
-
-<h2>附录</h2>
-
-<h3>时间规划建议</h3>
-
-<div class="table-wrap"><table>
-<tr><td>阶段</td><td>时间</td><td>重点</td></tr>
-<tr><td>框架搭建</td><td>本周</td><td>完成模块一~六全部内容</td></tr>
-<tr><td>物料制作</td><td>第2周</td><td>朋友圈/短视频/海报等实际物料</td></tr>
-<tr><td>渠道测试</td><td>第3周</td><td>选2-3个渠道试跑</td></tr>
-<tr><td>优化迭代</td><td>第4周</td><td>根据数据调整</td></tr>
-<tr><td>全面铺开</td><td>第5周起</td><td>全渠道启动</td></tr>
-</table></div>
-<h3>关键成功指标 (KPI)</h3>
-
-<div class="table-wrap"><table>
-<tr><td>指标</td><td>目标值</td><td>计算方法</td></tr>
-<tr><td>月获客线索数</td><td>50+</td><td>各渠道新增客户咨询量</td></tr>
-<tr><td>线索转诊断率</td><td>30%+</td><td>进入免费诊断/初步沟通数</td></tr>
-<tr><td>诊断转签约率</td><td>40%+</td><td>签约数/诊断数</td></tr>
-<tr><td>平均交付周期</td><td>7工作日</td><td>从签约到验收天数</td></tr>
-<tr><td>客户满意度</td><td>4.5/5</td><td>验收时满意度评分</td></tr>
-<tr><td>转介绍率</td><td>20%+</td><td>老客户带来新客户占比</td></tr>
-<tr><td>客单价</td><td>6000+</td><td>平均签约金额</td></tr>
-</table></div></article>
-<footer class="page-footer">
-<p style="margin-bottom:4px">上海锦霓鲤锦网络科技有限公司 · AI 数字员工企业增效计划</p>
-<p style="font-size:12px"><a href="https://qusabc123.github.io/digital-employee-website/" style="color:var(--text-tertiary);text-decoration:none">https://qusabc123.github.io/digital-employee-website/</a></p>
-</footer>
+<p><hr></p>
+<p><h2>附录</h2></p>
+<p><h3>时间规划建议</h3></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>阶段</td><td>时间</td><td>重点</td></tr></p>
+<p><tr><td>框架搭建</td><td>本周</td><td>完成模块一~六全部内容</td></tr></p>
+<p><tr><td>物料制作</td><td>第2周</td><td>朋友圈/短视频/海报等实际物料</td></tr></p>
+<p><tr><td>渠道测试</td><td>第3周</td><td>选2-3个渠道试跑</td></tr></p>
+<p><tr><td>优化迭代</td><td>第4周</td><td>根据数据调整</td></tr></p>
+<p><tr><td>全面铺开</td><td>第5周起</td><td>全渠道启动</td></tr></p>
+<p></table></div></p>
+<p><h3>关键成功指标 (KPI)</h3></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>指标</td><td>目标值</td><td>计算方法</td></tr></p>
+<p><tr><td>月获客线索数</td><td>50+</td><td>各渠道新增客户咨询量</td></tr></p>
+<p><tr><td>线索转诊断率</td><td>30%+</td><td>进入免费诊断/初步沟通数</td></tr></p>
+<p><tr><td>诊断转签约率</td><td>40%+</td><td>签约数/诊断数</td></tr></p>
+<p><tr><td>平均交付周期</td><td>7工作日</td><td>从签约到验收天数</td></tr></p>
+<p><tr><td>客户满意度</td><td>4.5/5</td><td>验收时满意度评分</td></tr></p>
+<p><tr><td>转介绍率</td><td>20%+</td><td>老客户带来新客户占比</td></tr></p>
+<p><tr><td>客单价</td><td>6000+</td><td>平均签约金额</td></tr></p>
+<p></table></div></p></div>
+<div class="page-footer">
+Powered by <a href="#">企业数字员工</a> · 上海锦霓鲤锦网络科技有限公司
+</div>
 </main>
 </div>
+
 <script>
-// 防复制
-document.addEventListener('contextmenu', e => e.preventDefault());
-document.addEventListener('copy', e => e.preventDefault());
-document.addEventListener('selectstart', e => e.preventDefault());
-document.addEventListener('dragstart', e => e.preventDefault());
-
-// 搜索
-function searchNotes(q) {
-    q = q.toLowerCase();
-    document.querySelectorAll('.page-link').forEach(el => {
+document.addEventListener('DOMContentLoaded', function() {
+  // Search
+  var search = document.getElementById('search-input');
+  if (search) {
+    search.addEventListener('input', function() {
+      var q = this.value.toLowerCase();
+      document.querySelectorAll('.page-link').forEach(function(el) {
         el.style.display = el.textContent.toLowerCase().includes(q) ? '' : 'none';
+      });
     });
-    document.querySelectorAll('.module-group').forEach(g => {
-        g.style.display = Array.from(g.querySelectorAll('.page-link')).some(e => e.style.display !== 'none') ? '' : 'none';
-    });
-}
-
-// 回到顶部
-function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-
-// 滚动渐入动画
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, { threshold: 0.1 });
-
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.pricing-card, .module-card').forEach(el => {
-        el.classList.add('fade-in');
-        observer.observe(el);
-    });
-    // 模块卡片交错延迟
-    document.querySelectorAll('.module-grid .module-card').forEach((el, i) => {
-        el.style.animationDelay = (i * 0.05) + 's';
-    });
+  }
 });
 </script>
 </body>

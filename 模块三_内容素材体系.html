@@ -16,9 +16,9 @@
   --accent: #0071e3;
   --accent-light: #e8f0fe;
   --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
-  --shadow-lg: 0 4px 24px rgba(0,0,0,0.08);
-  --radius: 12px;
-  --radius-sm: 8px;
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
+  --radius: 14px;
+  --radius-sm: 10px;
   --nav-h: 52px;
 }
 
@@ -78,222 +78,271 @@ body {
 }
 .page-link {
   display: flex; align-items: center; gap: 6px;
-  padding: 5px 8px; border-radius: 6px; color: var(--text-secondary);
-  text-decoration: none; font-size: 13px; font-weight: 450;
-  transition: all 0.15s;
+  padding: 5px 8px; border-radius: 6px; font-size: 13px;
+  text-decoration: none; color: var(--text-secondary);
+  transition: all 0.15s; line-height: 1.3;
 }
-.page-link:hover { background: var(--accent-light); color: var(--accent); }
-.page-link.active { background: var(--accent-light); color: var(--accent); font-weight: 600; }
-.page-link .icon { font-size: 13px; width: 20px; text-align: center; flex-shrink: 0; }
-.page-link .title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.page-link:hover { background: var(--surface-hover); color: var(--text); }
+.page-link.active { background: var(--accent-light); color: var(--accent); font-weight: 500; }
 
-/* Content */
-.content { flex: 1; padding: 32px 48px 48px; max-width: 760px; }
-.breadcrumb { font-size: 13px; color: var(--text-tertiary); margin-bottom: 24px; }
-.breadcrumb a { color: var(--text-secondary); text-decoration: none; }
-.breadcrumb a:hover { color: var(--accent); }
-
-/* Article */
-.article h1 {
-  font-size: 32px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.2;
-  margin-bottom: 8px; color: var(--text);
-}
-.article .meta-bar {
-  display: flex; gap: 8px; font-size: 12.5px; color: var(--text-tertiary);
-  margin-bottom: 28px; flex-wrap: wrap;
-}
-.article .meta-bar span { background: var(--surface); padding: 2px 10px; border-radius: 12px; border: 1px solid var(--border); }
-
-.article h2 {
-  font-size: 22px; font-weight: 650; margin-top: 40px; margin-bottom: 12px;
-  letter-spacing: -0.3px; color: var(--text);
-}
-.article h3 { font-size: 18px; font-weight: 600; margin-top: 32px; margin-bottom: 8px; }
-.article h4 { font-size: 16px; font-weight: 600; margin-top: 24px; margin-bottom: 8px; }
-.article p { margin-bottom: 16px; color: var(--text); }
-.article a { color: var(--accent); text-decoration: none; font-weight: 500; }
-.article a:hover { text-decoration: underline; }
-.article a.wikilink { background: var(--accent-light); padding: 1px 6px; border-radius: 4px; font-weight: 400; }
-.article a.wikilink::before { content: "📄 "; font-size: 12px; }
-.article code {
-  background: var(--surface); padding: 2px 8px; border-radius: 5px;
-  font-size: 13px; font-family: "SF Mono", "JetBrains Mono", "Menlo", monospace;
-  border: 1px solid var(--border); color: #e64553;
-}
-.article pre {
-  background: #1d1d1f; color: #f5f5f7; padding: 20px 24px;
-  border-radius: var(--radius); overflow-x: auto; margin: 20px 0;
-}
-.article pre code { background: none; padding: 0; border: none; color: inherit; font-size: 13px; line-height: 1.5; }
-.article blockquote {
-  border-left: 3px solid var(--accent); padding: 12px 20px; margin: 16px 0;
-  background: var(--surface-hover); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  color: var(--text-secondary); font-style: italic;
-}
-.article ul, .article ol { margin: 6px 0 16px 22px; }
-.article li { margin-bottom: 4px; }
-.article .table-wrap { overflow-x: auto; margin: 16px 0; border-radius: var(--radius-sm); border: 1px solid var(--border); }
-.article table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
-.article th, .article td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
-.article th { background: var(--surface-hover); font-weight: 600; font-size: 12.5px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.3px; }
-.article tr:last-child td { border-bottom: none; }
-.article hr { border: none; height: 1px; background: var(--border); margin: 36px 0; }
-.article .content-img { max-width: 100%; border-radius: var(--radius); margin: 20px 0; box-shadow: var(--shadow); }
-
-/* Footer */
-.page-footer {
-  margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border);
-  text-align: center; font-size: 12.5px; color: var(--text-tertiary);
-}
-
-/* Home */
-.home-hero { text-align: center; padding: 48px 0 16px; }
-.home-hero h1 { font-size: 38px; letter-spacing: -0.8px; font-weight: 700; margin-bottom: 8px; }
-.home-hero p { font-size: 17px; color: var(--text-secondary); font-weight: 400; }
-.home-info { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 20px 0; }
-.home-info .badge {
-  background: var(--surface); padding: 4px 14px; border-radius: 20px;
-  font-size: 12.5px; color: var(--text-secondary); border: 1px solid var(--border);
-}
-.project-card {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 24px 28px; margin: 24px 0;
-  box-shadow: var(--shadow);
-}
-.project-card table { width: 100%; border: none; font-size: 14px; }
-.project-card td { border: none; padding: 5px 0; vertical-align: top; }
-.project-card td:first-child { width: 90px; font-weight: 500; color: var(--text-tertiary); font-size: 13px; }
-.module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin: 20px 0; }
-.module-card {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-sm); padding: 18px; transition: all 0.2s;
-  text-decoration: none; color: inherit; display: block;
-  box-shadow: var(--shadow);
-}
-.module-card:hover {
-  border-color: var(--accent); box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
-}
-.module-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
-.module-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
-.module-card .count { font-size: 12px; color: var(--text-tertiary); margin-top: 8px; }
-.section-title { font-size: 20px; font-weight: 600; margin-top: 36px; margin-bottom: 12px; letter-spacing: -0.3px; }
-
-@media (max-width: 768px) {
-  .layout { flex-direction: column; }
-  .sidebar { width: 100%; height: auto; position: static; }
-  .content { padding: 20px; }
-  .module-grid { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
-}
-
-/* ===== Full width content (首页) ===== */
-.content-full {
+/* Main */
+.main-content {
+  flex: 1; min-width: 0;
   max-width: 860px; margin: 0 auto; padding: 24px 48px 48px;
   min-height: 100vh;
 }
-.home-footer-cta { text-align: center; margin: 40px 0; }
-.cta-large { padding: 14px 36px !important; font-size: 16px !important; }
+
+/* ===== Animations ===== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(0.5deg); }
+  66% { transform: translateY(-5px) rotate(-0.3deg); }
+}
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
 
 /* ===== Hero Section ===== */
 .home-hero {
-  text-align: center; padding: 50px 0 20px;
+  text-align: center; padding: 60px 0 24px;
   position: relative; overflow: hidden;
 }
 .home-hero::before {
   content: ''; position: absolute; top: -50%; left: -50%;
   width: 200%; height: 200%;
-  background: radial-gradient(circle at 30% 40%, rgba(37,99,235,0.06) 0%, transparent 50%),
-              radial-gradient(circle at 70% 60%, rgba(124,58,237,0.06) 0%, transparent 50%);
-  animation: heroGlow 8s ease-in-out infinite alternate;
+  background: radial-gradient(ellipse at 30% 30%, rgba(37,99,235,0.06) 0%, transparent 45%),
+              radial-gradient(ellipse at 70% 70%, rgba(124,58,237,0.06) 0%, transparent 45%),
+              radial-gradient(ellipse at 50% 50%, rgba(6,182,212,0.04) 0%, transparent 40%);
+  animation: float 12s ease-in-out infinite;
+  pointer-events: none;
 }
-@keyframes heroGlow {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(-20px, 20px); }
+.home-hero::after {
+  content: ''; position: absolute; top: -20%; left: 30%;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%);
+  animation: pulseGlow 4s ease-in-out infinite;
+  pointer-events: none;
 }
+
 .hero-badge {
-  display: inline-block; background: linear-gradient(135deg, #eef2ff, #f5f3ff);
-  color: var(--accent); padding: 5px 18px; border-radius: 20px;
-  font-size: 13px; font-weight: 500; margin-bottom: 18px;
+  display: inline-block;
+  background: linear-gradient(135deg, #eef2ff, #f5f3ff);
+  color: var(--accent); padding: 6px 20px; border-radius: 20px;
+  font-size: 13px; font-weight: 500; margin-bottom: 20px;
   position: relative; animation: fadeUp 0.8s ease-out both;
+  border: 1px solid rgba(37,99,235,0.1);
 }
 .home-hero h1 {
-  font-size: 42px; letter-spacing: -1px; font-weight: 700;
-  margin-bottom: 14px; line-height: 1.15; position: relative;
+  font-size: 44px; letter-spacing: -1.2px; font-weight: 700;
+  margin-bottom: 16px; line-height: 1.1; position: relative;
   animation: fadeUp 0.8s ease-out 0.1s both;
 }
 .home-hero .highlight {
+  background: linear-gradient(135deg, #2563eb, #7c3aed, #0891b2);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: shimmer 4s ease-in-out infinite;
+}
+.hero-sub {
+  font-size: 17px; color: var(--text-secondary); margin-bottom: 20px;
+  animation: fadeUp 0.8s ease-out 0.2s both; position: relative;
+  max-width: 560px; margin-left: auto; margin-right: auto;
+}
+
+.hero-stats {
+  display: flex; justify-content: center; gap: 32px;
+  margin: 16px 0 20px; animation: fadeUp 0.8s ease-out 0.25s both;
+}
+.stat-item { text-align: center; }
+.stat-num {
+  display: block; font-size: 26px; font-weight: 700;
   background: linear-gradient(135deg, #2563eb, #7c3aed);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.hero-sub {
-  font-size: 17px; color: var(--text-secondary); margin-bottom: 30px;
-  animation: fadeUp 0.8s ease-out 0.2s both; position: relative;
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+.stat-label { font-size: 12px; color: var(--text-tertiary); margin-top: -2px; display: block; }
+
 .hero-cta {
-  display: flex; gap: 12px; justify-content: center; margin-bottom: 28px;
+  display: flex; gap: 12px; justify-content: center; margin-bottom: 0;
   animation: fadeUp 0.8s ease-out 0.3s both; position: relative;
 }
 .btn-primary, .btn-secondary {
-  display: inline-block; padding: 11px 30px; border-radius: 8px;
+  display: inline-block; padding: 12px 32px; border-radius: 10px;
   font-size: 15px; font-weight: 500; text-decoration: none;
-  transition: all 0.25s cubic-bezier(0.4,0,0.2,1); position: relative;
-  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
 }
 .btn-primary {
   background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white;
-  box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+  box-shadow: 0 4px 16px rgba(37,99,235,0.3);
 }
 .btn-primary:hover {
-  transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,99,235,0.4);
+  transform: translateY(-3px); box-shadow: 0 8px 24px rgba(37,99,235,0.4);
 }
-.btn-primary:active { transform: translateY(0); }
 .btn-secondary {
   background: var(--surface); color: var(--text); border: 1px solid var(--border);
 }
-.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
-.home-info {
-  display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
-  margin: 20px 0; position: relative;
-  animation: fadeUp 0.8s ease-out 0.4s both;
+/* ===== Content Sections ===== */
+.content-section {
+  margin: 48px 0;
+  animation: fadeUp 0.8s ease-out both;
 }
-.home-info .badge {
-  background: var(--surface); padding: 5px 16px; border-radius: 20px;
-  font-size: 12.5px; color: var(--text-secondary);
-  border: 1px solid var(--border); transition: all 0.2s;
+.section-header {
+  text-align: center; margin-bottom: 28px;
 }
-.home-info .badge:hover { border-color: var(--accent); color: var(--accent); }
+.section-number {
+  display: inline-block;
+  font-size: 12px; font-weight: 600; letter-spacing: 2px;
+  color: var(--accent); margin-bottom: 6px;
+  background: var(--accent-light); padding: 3px 12px;
+  border-radius: 12px;
+}
+.section-header h2 {
+  font-size: 26px; font-weight: 700; letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+.section-desc {
+  font-size: 14px; color: var(--text-secondary);
+  max-width: 480px; margin: 0 auto;
+}
 
-/* ===== Company Bar ===== */
-.company-bar {
-  background: linear-gradient(135deg, #f8fafc, #eef2ff);
-  border: 1px solid var(--border); border-radius: 12px;
-  padding: 18px 24px; margin: 28px 0; position: relative;
-  animation: fadeUp 0.8s ease-out 0.5s both;
+/* ===== Scene Cards ===== */
+.scene-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
 }
-.company-inner { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: center; }
-.company-item { display: flex; gap: 6px; font-size: 13px; }
-.ci-label { color: var(--text-tertiary); font-weight: 500; }
-.ci-value { color: var(--text); }
-.sep { color: var(--border); margin: 0 4px; }
+.scene-card {
+  display: flex; flex-direction: column; align-items: flex-start;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px;
+  text-decoration: none; color: inherit;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  position: relative; overflow: hidden;
+  animation: fadeUp 0.6s ease-out both;
+}
+.scene-card:nth-child(1) { animation-delay: 0.05s; }
+.scene-card:nth-child(2) { animation-delay: 0.1s; }
+.scene-card:nth-child(3) { animation-delay: 0.15s; }
+.scene-card:nth-child(4) { animation-delay: 0.2s; }
+.scene-card:nth-child(5) { animation-delay: 0.25s; }
+.scene-card:nth-child(6) { animation-delay: 0.3s; }
+.scene-card:nth-child(7) { animation-delay: 0.35s; }
+.scene-card:nth-child(8) { animation-delay: 0.4s; }
+.scene-card:nth-child(9) { animation-delay: 0.45s; }
+
+.scene-card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--card-accent, var(--accent));
+  opacity: 0; transition: opacity 0.3s;
+}
+.scene-card:hover::before { opacity: 1; }
+
+.scene-card:hover {
+  border-color: var(--card-accent, var(--accent));
+  box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+  transform: translateY(-4px);
+}
+
+.scene-icon-wrap {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: color-mix(in srgb, var(--card-accent, var(--accent)) 10%, transparent);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px; flex-shrink: 0;
+  transition: transform 0.3s, background 0.3s;
+}
+.scene-card:hover .scene-icon-wrap {
+  transform: scale(1.1);
+  background: color-mix(in srgb, var(--card-accent, var(--accent)) 18%, transparent);
+}
+.scene-icon { font-size: 22px; line-height: 1; }
+
+.scene-info h3 {
+  font-size: 15px; font-weight: 600; margin-bottom: 6px;
+  color: var(--text);
+}
+.scene-info p {
+  font-size: 13px; color: var(--text-secondary); line-height: 1.55;
+  margin-bottom: 10px;
+}
+.scene-tag {
+  display: inline-block; font-size: 11px; font-weight: 500;
+  padding: 3px 10px; border-radius: 10px;
+}
+.tag-automation { background: #eef2ff; color: #2563eb; }
+.tag-knowledge { background: #f5f3ff; color: #7c3aed; }
+
+/* ===== Knowledge Grid ===== */
+.knowledge-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+}
+.knowledge-card {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px 14px;
+  text-decoration: none; color: inherit;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  position: relative; overflow: hidden;
+  animation: fadeUp 0.6s ease-out both;
+}
+.knowledge-card:nth-child(1) { animation-delay: 0.05s; }
+.knowledge-card:nth-child(2) { animation-delay: 0.1s; }
+.knowledge-card:nth-child(3) { animation-delay: 0.15s; }
+.knowledge-card:nth-child(4) { animation-delay: 0.2s; }
+.knowledge-card:nth-child(5) { animation-delay: 0.25s; }
+.knowledge-card:nth-child(6) { animation-delay: 0.3s; }
+.knowledge-card:nth-child(7) { animation-delay: 0.35s; }
+.knowledge-card:nth-child(8) { animation-delay: 0.4s; }
+
+.knowledge-card::after {
+  content: ''; position: absolute; bottom: 0; left: 30%;
+  width: 40%; height: 3px;
+  background: var(--card-color, var(--accent));
+  border-radius: 2px; transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.knowledge-card:hover::after { transform: scaleX(1); }
+
+.knowledge-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+  border-color: var(--card-color, var(--accent));
+}
+.knowledge-icon { font-size: 28px; margin-bottom: 10px; }
+.knowledge-body h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.knowledge-body p { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+.knowledge-arrow {
+  display: inline-block; margin-top: 8px;
+  font-size: 16px; color: var(--card-color, var(--accent));
+  opacity: 0; transform: translateX(-8px);
+  transition: all 0.3s;
+}
+.knowledge-card:hover .knowledge-arrow { opacity: 1; transform: translateX(0); }
 
 /* ===== Pricing ===== */
-.pricing-section { margin: 40px 0; }
-.section-title {
-  font-size: 24px; font-weight: 600; text-align: center;
-  letter-spacing: -0.3px; margin-bottom: 24px;
-}
-.section-sub { text-align: center; color: var(--text-secondary); font-size: 14px; margin-top: -16px; margin-bottom: 24px; }
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .pricing-card {
-  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
-  padding: 32px 24px; text-align: center; position: relative;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 28px 22px; text-align: center; position: relative;
   transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
   animation: fadeUp 0.6s ease-out both;
 }
@@ -308,7 +357,6 @@ body {
   border-color: var(--accent); border-width: 2px;
   box-shadow: 0 4px 20px rgba(37,99,235,0.08);
 }
-.pricing-card.featured:hover { box-shadow: 0 8px 30px rgba(37,99,235,0.15); }
 .pricing-badge {
   position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
   background: var(--border); color: var(--text-secondary); padding: 3px 16px;
@@ -319,25 +367,39 @@ body {
   box-shadow: 0 2px 8px rgba(37,99,235,0.3);
 }
 .pricing-card h3 { font-size: 20px; margin-bottom: 8px; }
-.price { font-size: 38px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
-.price small { font-size: 14px; font-weight: 400; color: var(--text-secondary); }
-.price-desc { font-size: 12.5px; color: var(--text-secondary); margin-bottom: 20px; }
-.pricing-card ul { list-style: none; margin: 0; padding: 0; }
+.price {
+  font-size: 36px; font-weight: 700; color: var(--text); margin-bottom: 2px;
+}
+.price-year { font-size: 14px; font-weight: 400; color: var(--text-secondary); }
+.price-desc { font-size: 12.5px; color: var(--text-secondary); margin-bottom: 18px; }
+.pricing-card ul { list-style: none; margin: 0; padding: 0; text-align: left; }
 .pricing-card ul li {
   padding: 7px 0; font-size: 13.5px; color: var(--text);
-  border-bottom: 1px solid var(--border); position: relative;
+  border-bottom: 1px solid var(--border);
 }
 .pricing-card ul li:last-child { border-bottom: none; }
-.pricing-card ul li::before { content: '✓ '; color: var(--accent); font-weight: 600; }
-.pricing-card.s1 { border-top: 3px solid #94a3b8; }
-.pricing-card.s2 { border-top: 3px solid var(--accent); }
-.pricing-card.s3 { border-top: 3px solid #7c3aed; }
 
-/* ===== Module Grid Enhancement ===== */
+/* ===== About ===== */
+.about-block {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px;
+  display: flex; flex-direction: column; gap: 12px;
+  max-width: 500px; margin: 0 auto;
+}
+.about-item {
+  display: flex; gap: 12px; align-items: center;
+}
+.about-label {
+  font-size: 13px; font-weight: 600; color: var(--text-secondary);
+  min-width: 100px;
+}
+.about-text { font-size: 14px; color: var(--text); }
+
+/* ===== Module Card (detail pages) ===== */
 .module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin: 20px 0; }
 .module-card {
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: 12px; padding: 20px; transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+  border-radius: var(--radius-sm); padding: 20px; transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
   text-decoration: none; color: inherit; display: block;
   box-shadow: var(--shadow); animation: fadeUp 0.5s ease-out both;
 }
@@ -349,289 +411,90 @@ body {
 .module-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
 .module-card .count { font-size: 12px; color: var(--text-tertiary); margin-top: 8px; }
 
-/* ===== Scroll Animation ===== */
-.fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
+/* ===== Content ===== */
+.content-area h1, .content-area h2, .content-area h3 { margin-top: 28px; margin-bottom: 12px; font-weight: 600; line-height: 1.3; }
+.content-area h1 { font-size: 26px; letter-spacing: -0.5px; }
+.content-area h2 { font-size: 20px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+.content-area h3 { font-size: 17px; }
+.content-area p { margin: 12px 0; font-size: 15px; line-height: 1.75; color: var(--text); }
+.content-area ul, .content-area ol { margin: 10px 0 10px 22px; }
+.content-area li { margin: 4px 0; line-height: 1.6; }
+.content-area blockquote {
+  margin: 14px 0; padding: 10px 16px; border-left: 3px solid var(--accent);
+  background: #f8fafc; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--text-secondary);
+}
+.content-area pre {
+  background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: var(--radius-sm);
+  overflow-x: auto; font-size: 13px; line-height: 1.6; margin: 14px 0;
+}
+.content-area code { font-family: "SF Mono","Fira Code","Cascadia Code",monospace; }
+.content-area :not(pre) > code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 13px; }
+.content-area img { max-width: 100%; border-radius: var(--radius-sm); margin: 14px 0; }
+.content-area hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+.content-area a { color: var(--accent); text-decoration: none; }
+.content-area a:hover { text-decoration: underline; }
+.content-area .table-wrap { overflow-x: auto; margin: 12px 0; }
+.content-area table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.content-area table td { padding: 8px 12px; border: 1px solid var(--border); }
 
-@media (max-width: 768px) {
-  .pricing-grid { grid-template-columns: 1fr; }
-  .company-inner { flex-direction: column; align-items: center; gap: 6px; }
-/* ===== Home Hero ===== */
-.home-hero {
-  text-align: center; padding: 60px 20px 30px; position: relative;
-  background: linear-gradient(180deg, #f0f4ff 0%, #fafafa 100%);
-  border-radius: 0 0 30px 30px; margin: 0 -48px; overflow: hidden;
-}
-.home-hero::before {
-  content: ''; position: absolute; top: -30%; right: -20%;
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%);
-  animation: heroFloat 12s ease-in-out infinite alternate;
-}
-.home-hero::after {
-  content: ''; position: absolute; bottom: -20%; left: -10%;
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(124,58,237,0.06) 0%, transparent 70%);
-  animation: heroFloat 15s ease-in-out infinite alternate-reverse;
-}
-@keyframes heroFloat {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(30px, -30px) scale(1.1); }
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: #fff; border: 1px solid #e8edf5;
-  padding: 6px 18px; border-radius: 20px; font-size: 13px; font-weight: 500;
-  color: #475569; margin-bottom: 20px; position: relative; z-index: 1;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.hero-badge::before { content: '◆ '; color: #3b82f6; }
-.home-hero h1 {
-  font-size: 44px; font-weight: 700; letter-spacing: -1px;
-  line-height: 1.1; margin-bottom: 16px; position: relative; z-index: 1;
-  color: #0f172a;
-}
-.gradient-text {
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.hero-desc {
-  font-size: 17px; color: #64748b; max-width: 520px;
-  margin: 0 auto 28px; line-height: 1.6; position: relative; z-index: 1;
-}
-.hero-stats {
-  display: flex; align-items: center; justify-content: center;
-  gap: 24px; margin-bottom: 32px; position: relative; z-index: 1;
-}
-.stat-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-.stat-num { font-size: 28px; font-weight: 700; color: #0f172a; }
-.stat-label { font-size: 13px; color: #94a3b8; }
-.stat-divider { width: 1px; height: 36px; background: #e2e8f0; }
-.hero-actions {
-  display: flex; gap: 12px; justify-content: center;
-  position: relative; z-index: 1;
-}
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
-  color: #fff; padding: 12px 28px; border-radius: 10px;
-  font-size: 15px; font-weight: 500; text-decoration: none;
-  box-shadow: 0 4px 14px rgba(37,99,235,0.3);
-  transition: all 0.25s;
-}
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,99,235,0.4); }
-.btn-arrow { transition: transform 0.2s; }
-.btn-primary:hover .btn-arrow { transform: translateX(4px); }
-.btn-outline {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: #fff; color: #334155; padding: 12px 28px; border-radius: 10px;
-  font-size: 15px; font-weight: 500; text-decoration: none;
-  border: 1px solid #e2e8f0; transition: all 0.25s;
-}
-.btn-outline:hover { border-color: #3b82f6; color: #2563eb; }
+/* ===== Meta ===== */
+.meta-bar { display: flex; gap: 16px; margin: 10px 0 20px; color: var(--text-secondary); font-size: 13px; }
+.breadcrumb { font-size: 13px; color: var(--text-tertiary); margin-bottom: 16px; }
+.breadcrumb a { color: var(--text-tertiary); text-decoration: none; }
+.breadcrumb a:hover { color: var(--accent); }
 
-/* ===== Brand Bar ===== */
-.brand-bar {
-  display: flex; flex-wrap: wrap; gap: 20px 32px;
-  justify-content: center; padding: 16px 24px;
-  background: #fff; border: 1px solid #e8edf5;
-  border-radius: 12px; margin: 28px 0;
+/* ===== Footer ===== */
+.page-footer {
+  text-align: center; padding: 32px 0;
+  color: var(--text-tertiary); font-size: 12.5px;
+  border-top: 1px solid var(--border); margin-top: 48px;
 }
-.brand-item { font-size: 13.5px; color: #475569; display: flex; align-items: center; gap: 6px; }
-.brand-icon { font-size: 15px; }
+.page-footer a { color: var(--text-secondary); text-decoration: none; }
 
-/* ===== Pricing ===== */
-.pricing-wrap { margin: 48px 0; text-align: center; }
-.section-label {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: #f1f5f9; border: 1px solid #e2e8f0;
-  padding: 4px 14px; border-radius: 16px; font-size: 12px; font-weight: 600;
-  color: #64748b; margin-bottom: 12px;
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  .main-content { max-width: 100%; padding: 16px 20px; }
+  .scene-grid { grid-template-columns: repeat(2, 1fr); }
+  .knowledge-grid { grid-template-columns: repeat(2, 1fr); }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .home-hero h1 { font-size: 32px; }
 }
-.section-heading { font-size: 26px; font-weight: 700; color: #0f172a; margin-bottom: 8px; letter-spacing: -0.5px; }
-.section-sub { font-size: 14px; color: #94a3b8; margin-bottom: 28px; }
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 800px; margin: 0 auto; }
-.pricing-card {
-  background: #fff; border: 1px solid #e8edf5; border-radius: 14px;
-  padding: 0; overflow: hidden; position: relative;
-  transition: all 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.pricing-card:hover {
-  transform: translateY(-3px); box-shadow: 0 8px 24px rgba(37,99,235,0.1);
-  border-color: #93c5fd;
-}
-.pricing-card.featured {
-  border-color: #93c5fd; border-width: 2px;
-  box-shadow: 0 4px 16px rgba(37,99,235,0.08);
-}
-.most-tag {
-  position: absolute; top: 12px; right: 12px;
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
-  color: #fff; padding: 3px 12px; border-radius: 8px;
-  font-size: 11px; font-weight: 600;
-}
-.card-top { padding: 28px 24px 16px; text-align: center; }
-.pricing-card h3 { font-size: 18px; color: #64748b; font-weight: 500; margin-bottom: 8px; }
-.card-price { font-size: 36px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
-.price-symbol { font-size: 20px; vertical-align: super; }
-.price-year { font-size: 14px; font-weight: 400; color: #94a3b8; }
-.card-period { font-size: 12px; color: #94a3b8; }
-.card-features { list-style: none; margin: 0; padding: 16px 24px 24px; text-align: left; border-top: 1px solid #f1f5f9; }
-.card-features li {
-  padding: 7px 0; font-size: 14px; color: #334155;
-  display: flex; align-items: center; gap: 8px;
-}
-.check { color: #22c55e; font-weight: 600; }
-
-/* ===== Section Headings ===== */
-.section-title {
-  font-size: 22px; font-weight: 600; margin-top: 48px; margin-bottom: 16px;
-  letter-spacing: -0.3px; color: #0f172a;
-}
-
-/* ===== Scene Cards (用户场景) ===== */
-.scene-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 680px; margin: 0 auto; }
-.scene-card {
-  display: flex; align-items: flex-start; gap: 14px;
-  background: #fff; border: 1px solid #e8edf5; border-radius: 14px;
-  padding: 20px; text-decoration: none; color: inherit;
-  transition: all 0.25s; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.scene-card:hover {
-  transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,0.08);
-  border-color: #93c5fd;
-}
-.scene-icon { font-size: 32px; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.scene-body { flex: 1; min-width: 0; }
-.scene-body h3 { font-size: 15px; font-weight: 600; color: #0f172a; margin-bottom: 4px; }
-.scene-body p { font-size: 13px; color: #64748b; line-height: 1.5; margin: 0; }
-
-/* ===== Module Cards (二页) ===== */
-.module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin: 20px 0; }
-.module-card {
-  background: #fff; border: 1px solid #e8edf5; border-radius: 12px;
-  padding: 20px; transition: all 0.25s;
-  text-decoration: none; color: inherit; display: block;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-}
-.module-card:hover {
-  transform: translateY(-2px); box-shadow: 0 6px 16px rgba(37,99,235,0.08);
-  border-color: #93c5fd;
-}
-.module-card h3 { font-size: 15px; font-weight: 600; color: #0f172a; margin-bottom: 6px; }
-.module-card p { font-size: 13px; color: #64748b; line-height: 1.5; }
-.module-card .count { font-size: 12px; color: #94a3b8; margin-top: 8px; }
-
-/* Animations */
-.fade-in { opacity: 0; transform: translateY(16px); transition: all 0.5s ease-out; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-
-@media (max-width: 768px) {
-  .content { padding: 20px; }
-  .home-hero { margin: 0 -20px; border-radius: 0 0 20px 20px; padding: 40px 20px 24px; }
-  .home-hero h1 { font-size: 28px; }
-  .hero-stats { gap: 16px; }
-  .stat-num { font-size: 22px; }
-  .hero-actions { flex-direction: column; align-items: center; }
-  .pricing-grid { grid-template-columns: 1fr; max-width: 360px; }
-  .brand-bar { flex-direction: column; align-items: center; gap: 8px; }
+@media (max-width: 600px) {
   .scene-grid { grid-template-columns: 1fr; }
-  .module-grid { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
+  .knowledge-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 20px; }
 }
-
-/* ===== Full width content (首页) ===== */
-.content-full {
-  max-width: 860px; margin: 0 auto; padding: 24px 48px 48px;
-  min-height: 100vh;
-}
-.home-footer-cta { text-align: center; margin: 40px 0; }
-.cta-large { padding: 14px 36px !important; font-size: 16px !important; }
-
 </style>
 </head>
 <body>
 <nav class="top-nav">
 <div class="nav-inner">
 <a href="index.html" class="logo">🤖 企业数字员工</a>
-<div class="nav-links"><a href="module-0-项目总览.html">总览</a>
+<div class="nav-links">
+<a href="index.html">首页</a>
+<a href="module-0-项目总览.html">项目总览</a>
 <a href="module-1-推广体系.html">推广</a>
 <a href="module-2-销售转化.html">销售</a>
-<a href="module-3-内容素材.html">素材</a>
-<a href="module-4-客户细分.html">客户</a>
 <a href="module-5-交付SOP.html">交付</a>
-<a href="module-6-工具模板.html">工具</a>
-<a href="module-7-Hermes技术基座.html">Hermes</a>
-<a href="module-附件.html">附件</a></div>
+<a href="module-7-Hermes技术基座.html">技术基座</a>
+</div>
 </div>
 </nav>
 <div class="layout">
-<aside class="sidebar" id="sidebar">
-<div class="sidebar-search"><input type="text" id="search" placeholder="搜索笔记..." oninput="searchNotes(this.value)"></div>
-<div class="sidebar-toc"><div class="module-group">
-<div class="module-title">🎯 项目总览</div>
-<a href="推广与流程体系_完整框架.html" class="page-link"><span class="icon">📐</span><span class="title">AI数字员工 · 推广与流程体系完整框架</span></a>
-<a href="GitHub可用项目清单与案例方案.html" class="page-link"><span class="icon">🎯</span><span class="title">GitHub 可用项目清单与案例方案</span></a>
-<a href="八大行业方案速查.html" class="page-link"><span class="icon">🏢</span><span class="title">八大行业方案速查</span></a>
-<a href="对外资料清单与制作排期.html" class="page-link"><span class="icon">🎯</span><span class="title">对外资料清单与制作排期</span></a>
-<a href="常见反对意见与应对.html" class="page-link"><span class="icon">🛡️</span><span class="title">常见反对意见与应对</span></a>
-<a href="核心话术速查.html" class="page-link"><span class="icon">💬</span><span class="title">核心话术速查</span></a>
-<a href="项目检查清单.html" class="page-link"><span class="icon">✅</span><span class="title">项目检查清单</span></a>
+<div class="sidebar">
+<div class="sidebar-search"><input id="search-input" type="text" placeholder="搜索笔记..."></div>
+<div class="module-group"><div class="module-title">🎯 项目总览</div><div class="page-link"><a href="GitHub可用项目清单与案例方案.html">🎯 GitHub 可用项目清单与案例方案</a></div><div class="page-link"><a href="八大行业方案速查.html">🏢 八大行业方案速查</a></div><div class="page-link"><a href="对外资料清单与制作排期.html">🎯 对外资料清单与制作排期</a></div><div class="page-link"><a href="常见反对意见与应对.html">🛡️ 常见反对意见与应对</a></div><div class="page-link"><a href="推广与流程体系_完整框架.html">📐 AI数字员工 · 推广与流程体系完整框架</a></div><div class="page-link"><a href="核心话术速查.html">💬 核心话术速查</a></div><div class="page-link"><a href="项目检查清单.html">✅ 项目检查清单</a></div></div><div class="module-group"><div class="module-title">📡 推广体系</div><div class="page-link"><a href="模块一_推广渠道矩阵.html">📡 模块一：推广渠道矩阵</a></div></div><div class="module-group"><div class="module-title">🪜 销售转化</div><div class="page-link"><a href="模块二_销售转化漏斗.html">🪜 模块二：销售转化漏斗</a></div></div><div class="module-group"><div class="module-title">📝 内容素材</div><div class="page-link active"><a href="模块三_内容素材体系.html">📝 模块三：内容素材体系</a></div></div><div class="module-group"><div class="module-title">👥 客户细分</div><div class="page-link"><a href="模块四_客户细分与差异化方案.html">👥 模块四：客户细分与差异化方案</a></div></div><div class="module-group"><div class="module-title">🔧 交付SOP</div><div class="page-link"><a href="模块五_交付SOP标准操作手册.html">🔧 模块五：交付SOP标准操作手册</a></div></div><div class="module-group"><div class="module-title">🧰 工具模板</div><div class="page-link"><a href="模块六_工具模板清单.html">🧰 模块六：工具模板清单</a></div></div><div class="module-group"><div class="module-title">🤖 Hermes 技术基座</div><div class="page-link"><a href="Hermes CLI 速查.html">🤖 Hermes CLI 速查</a></div><div class="page-link"><a href="Hermes 工具清单.html">🔌 Hermes 工具清单</a></div><div class="page-link"><a href="Hermes 示例命令.html">🤖 Hermes 示例命令</a></div><div class="page-link"><a href="Hermes 部署与运维.html">🤖 Hermes 部署与运维</a></div><div class="page-link"><a href="README.html">🤖 Hermes Agent — AI 数字员工技术基座</a></div></div><div class="module-group"><div class="module-title">📎 附件</div><div class="page-link"><a href="AI数字员工_企业增效计划.html">📄 AI数字员工_企业增效计划</a></div><div class="page-link"><a href="AI数字员工_展会精华版.html">🎪 AI数字员工_展会精华版</a></div><div class="page-link"><a href="AI智能体企业定制服务_企业展示.html">🤖 AI智能体企业定制服务_企业展示</a></div><div class="page-link"><a href="ppt-master参考索引.html">📄 ppt-master 模板参考</a></div><div class="page-link"><a href="素材总索引.html">🖼️ 素材总索引</a></div></div>
 </div>
-<div class="module-group">
-<div class="module-title">📡 推广体系</div>
-<a href="模块一_推广渠道矩阵.html" class="page-link"><span class="icon">📡</span><span class="title">模块一：推广渠道矩阵</span></a>
-</div>
-<div class="module-group">
-<div class="module-title">🪜 销售转化</div>
-<a href="模块二_销售转化漏斗.html" class="page-link"><span class="icon">🪜</span><span class="title">模块二：销售转化漏斗</span></a>
-</div>
-<div class="module-group">
-<div class="module-title">📝 内容素材</div>
-<a href="模块三_内容素材体系.html" class="page-link active"><span class="icon">📝</span><span class="title">模块三：内容素材体系</span></a>
-</div>
-<div class="module-group">
-<div class="module-title">👥 客户细分</div>
-<a href="模块四_客户细分与差异化方案.html" class="page-link"><span class="icon">👥</span><span class="title">模块四：客户细分与差异化方案</span></a>
-</div>
-<div class="module-group">
-<div class="module-title">🔧 交付SOP</div>
-<a href="模块五_交付SOP标准操作手册.html" class="page-link"><span class="icon">🔧</span><span class="title">模块五：交付SOP标准操作手册</span></a>
-</div>
-<div class="module-group">
-<div class="module-title">🧰 工具模板</div>
-<a href="模块六_工具模板清单.html" class="page-link"><span class="icon">🧰</span><span class="title">模块六：工具模板清单</span></a>
-</div>
-<div class="module-group">
-<div class="module-title">🤖 Hermes 技术基座</div>
-<a href="README.html" class="page-link"><span class="icon">🤖</span><span class="title">Hermes Agent — AI 数字员工技术基座</span></a>
-<a href="Hermes CLI 速查.html" class="page-link"><span class="icon">🤖</span><span class="title">Hermes CLI 速查</span></a>
-<a href="Hermes 工具清单.html" class="page-link"><span class="icon">🔌</span><span class="title">Hermes 工具清单</span></a>
-<a href="Hermes 示例命令.html" class="page-link"><span class="icon">🤖</span><span class="title">Hermes 示例命令</span></a>
-<a href="Hermes 部署与运维.html" class="page-link"><span class="icon">🤖</span><span class="title">Hermes 部署与运维</span></a>
-</div>
-<div class="module-group">
-<div class="module-title">📎 附件</div>
-<a href="AI数字员工_企业增效计划.html" class="page-link"><span class="icon">📄</span><span class="title">AI数字员工_企业增效计划</span></a>
-<a href="AI数字员工_展会精华版.html" class="page-link"><span class="icon">🎪</span><span class="title">AI数字员工_展会精华版</span></a>
-<a href="AI智能体企业定制服务_企业展示.html" class="page-link"><span class="icon">🤖</span><span class="title">AI智能体企业定制服务_企业展示</span></a>
-<a href="ppt-master参考索引.html" class="page-link"><span class="icon">📄</span><span class="title">ppt-master 模板参考</span></a>
-<a href="素材总索引.html" class="page-link"><span class="icon">🖼️</span><span class="title">素材总索引</span></a>
-</div></div>
-</aside>
-<main class="content">
+<main class="main-content">
 <div class="breadcrumb"><a href="index.html">🏠 首页</a> / <a href="module-3-内容素材.html">📝 内容素材</a> / 模块三：内容素材体系</div>
-<article class="article"><h1>📝 模块三：内容素材体系</h1><div class="meta-bar"><span>📖 24 分钟</span><span>📝 12185 字</span><span>📊 124 个表格</span></div><h1>模块三：内容素材体系</h1>
-
-<blockquote>版本：v1.0 <div class="table-wrap"><table></blockquote>
-<tr><td>日期：2026-06-03</td><td>负责人：倪锦</td></tr>
-</table></div>> 说明：按渠道、按功能、按客户阶段建立完整内容素材库
-
-<hr>
-
-<h2>目录</h2>
-
+<div class="content-area"><h1>📝 模块三：内容素材体系</h1><div class="meta-bar"><span>📖 24 分钟</span><span>📝 12185 字</span><span>📊 124 个表格</span></div><p><h1>模块三：内容素材体系</h1></p>
+<p><blockquote>版本：v1.0 <div class="table-wrap"><table></blockquote></p>
+<p><tr><td>日期：2026-06-03</td><td>负责人：倪锦</td></tr></p>
+<p></table></div>> 说明：按渠道、按功能、按客户阶段建立完整内容素材库</p>
+<p><hr></p>
+<p><h2>目录</h2></p>
 <ol>
 <li>[素材总览与分类体系](#1-素材总览与分类体系)</li>
 <li>[朋友圈文案库](#2-朋友圈文案库)</li>
@@ -642,76 +505,64 @@ body {
 <li>[线下一页纸/传单文案](#7-线下一页纸传单文案)</li>
 <li>[内容日历与排期](#8-内容日历与排期)</li>
 </ol>
-
-<hr>
-
-<h2>1. 素材总览与分类体系</h2>
-
-<h3>1.1 按渠道分类</h3>
-
-<div class="table-wrap"><table>
-<tr><td>渠道</td><td>素材形式</td><td>数量目标</td><td>频率</td></tr>
-<tr><td>朋友圈</td><td>图文（短文字+配图）</td><td>30条+</td><td>每日1条</td></tr>
-<tr><td>短视频</td><td>口播+演示</td><td>20条+脚本</td><td>每周3-5条</td></tr>
-<tr><td>小红书</td><td>图文笔记</td><td>10篇+</td><td>每周3篇</td></tr>
-<tr><td>公众号</td><td>长文</td><td>12篇+</td><td>每周1篇</td></tr>
-<tr><td>知乎</td><td>问答</td><td>10条+</td><td>每周2条</td></tr>
-<tr><td>线下</td><td>传单/海报/手册</td><td>各1版</td><td>按需</td></tr>
-<tr><td>社群</td><td>短分享</td><td>10条+</td><td>每周2次/群</td></tr>
-</table></div>
-<h3>1.2 按功能分类</h3>
-
-<div class="table-wrap"><table>
-<tr><td>功能</td><td>说明</td><td>占内容总量比例</td></tr>
-<tr><td>引流类</td><td>吸引注意、引发好奇</td><td>30%</td></tr>
-<tr><td>教育类</td><td>建立认知、传递价值</td><td>35%</td></tr>
-<tr><td>转化类</td><td>促成行动、推动决策</td><td>15%</td></tr>
-<tr><td>口碑类</td><td>案例展示、客户见证</td><td>15%</td></tr>
-<tr><td>维护类</td><td>已有客户、转介绍</td><td>5%</td></tr>
-</table></div>
-<h3>1.3 按客户阶段分类</h3>
-
-<div class="table-wrap"><table>
-<tr><td>阶段</td><td>内容重点</td><td>推荐素材</td></tr>
-<tr><td>陌生人</td><td>"跟我有关"</td><td>痛点型/数据型短视频、朋友圈故事</td></tr>
-<tr><td>有兴趣</td><td>"能帮我什么"</td><td>案例、场景介绍、行业解决方案</td></tr>
-<tr><td>考虑中</td><td>"为什么选你"</td><td>对比内容、FAQ、客户见证</td></tr>
-<tr><td>决策中</td><td>"风险大不大"</td><td>合同/保障说明、先诊后付、案例</td></tr>
-<tr><td>已成交</td><td>"超出预期"</td><td>效果报告、使用技巧、转介绍引导</td></tr>
-</table></div>
-<hr>
-
-<h2>2. 朋友圈文案库</h2>
-
-<h3>2.1 分类索引</h3>
-
-<div class="table-wrap"><table>
-<tr><td>编号</td><td>类型</td><td>标题/主题</td><td>目的</td></tr>
-<tr><td>PYQ-01</td><td>干货</td><td>AI能帮你公司省钱的5个岗位</td><td>教育引流</td></tr>
-<tr><td>PYQ-02</td><td>干货</td><td>什么样的工作最适合交给AI？</td><td>教育</td></tr>
-<tr><td>PYQ-03</td><td>案例</td><td>客户说3500花得值</td><td>口碑转化</td></tr>
-<tr><td>PYQ-04</td><td>案例</td><td>二手车行AI客服上线第3天成交1单</td><td>口碑转化</td></tr>
-<tr><td>PYQ-05</td><td>过程</td><td>去工厂做AI诊断的一天</td><td>建立信任</td></tr>
-<tr><td>PYQ-06</td><td>过程</td><td>客户验收时说的话很真实</td><td>信任</td></tr>
-<tr><td>PYQ-07</td><td>优惠</td><td>限时免费AI诊断名额</td><td>转化</td></tr>
-<tr><td>PYQ-08</td><td>互动</td><td>你最想让AI帮你做什么</td><td>互动</td></tr>
-<tr><td>PYQ-09</td><td>干货</td><td>AI不是取代人是让人做更有价值的事</td><td>教育</td></tr>
-<tr><td>PYQ-10</td><td>生活</td><td>周末日常（含个人色彩）</td><td>拉近距离</td></tr>
-</table></div>
+<p><hr></p>
+<p><h2>1. 素材总览与分类体系</h2></p>
+<p><h3>1.1 按渠道分类</h3></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>渠道</td><td>素材形式</td><td>数量目标</td><td>频率</td></tr></p>
+<p><tr><td>朋友圈</td><td>图文（短文字+配图）</td><td>30条+</td><td>每日1条</td></tr></p>
+<p><tr><td>短视频</td><td>口播+演示</td><td>20条+脚本</td><td>每周3-5条</td></tr></p>
+<p><tr><td>小红书</td><td>图文笔记</td><td>10篇+</td><td>每周3篇</td></tr></p>
+<p><tr><td>公众号</td><td>长文</td><td>12篇+</td><td>每周1篇</td></tr></p>
+<p><tr><td>知乎</td><td>问答</td><td>10条+</td><td>每周2条</td></tr></p>
+<p><tr><td>线下</td><td>传单/海报/手册</td><td>各1版</td><td>按需</td></tr></p>
+<p><tr><td>社群</td><td>短分享</td><td>10条+</td><td>每周2次/群</td></tr></p>
+<p></table></div></p>
+<p><h3>1.2 按功能分类</h3></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>功能</td><td>说明</td><td>占内容总量比例</td></tr></p>
+<p><tr><td>引流类</td><td>吸引注意、引发好奇</td><td>30%</td></tr></p>
+<p><tr><td>教育类</td><td>建立认知、传递价值</td><td>35%</td></tr></p>
+<p><tr><td>转化类</td><td>促成行动、推动决策</td><td>15%</td></tr></p>
+<p><tr><td>口碑类</td><td>案例展示、客户见证</td><td>15%</td></tr></p>
+<p><tr><td>维护类</td><td>已有客户、转介绍</td><td>5%</td></tr></p>
+<p></table></div></p>
+<p><h3>1.3 按客户阶段分类</h3></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>阶段</td><td>内容重点</td><td>推荐素材</td></tr></p>
+<p><tr><td>陌生人</td><td>"跟我有关"</td><td>痛点型/数据型短视频、朋友圈故事</td></tr></p>
+<p><tr><td>有兴趣</td><td>"能帮我什么"</td><td>案例、场景介绍、行业解决方案</td></tr></p>
+<p><tr><td>考虑中</td><td>"为什么选你"</td><td>对比内容、FAQ、客户见证</td></tr></p>
+<p><tr><td>决策中</td><td>"风险大不大"</td><td>合同/保障说明、先诊后付、案例</td></tr></p>
+<p><tr><td>已成交</td><td>"超出预期"</td><td>效果报告、使用技巧、转介绍引导</td></tr></p>
+<p></table></div></p>
+<p><hr></p>
+<p><h2>2. 朋友圈文案库</h2></p>
+<p><h3>2.1 分类索引</h3></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>编号</td><td>类型</td><td>标题/主题</td><td>目的</td></tr></p>
+<p><tr><td>PYQ-01</td><td>干货</td><td>AI能帮你公司省钱的5个岗位</td><td>教育引流</td></tr></p>
+<p><tr><td>PYQ-02</td><td>干货</td><td>什么样的工作最适合交给AI？</td><td>教育</td></tr></p>
+<p><tr><td>PYQ-03</td><td>案例</td><td>客户说3500花得值</td><td>口碑转化</td></tr></p>
+<p><tr><td>PYQ-04</td><td>案例</td><td>二手车行AI客服上线第3天成交1单</td><td>口碑转化</td></tr></p>
+<p><tr><td>PYQ-05</td><td>过程</td><td>去工厂做AI诊断的一天</td><td>建立信任</td></tr></p>
+<p><tr><td>PYQ-06</td><td>过程</td><td>客户验收时说的话很真实</td><td>信任</td></tr></p>
+<p><tr><td>PYQ-07</td><td>优惠</td><td>限时免费AI诊断名额</td><td>转化</td></tr></p>
+<p><tr><td>PYQ-08</td><td>互动</td><td>你最想让AI帮你做什么</td><td>互动</td></tr></p>
+<p><tr><td>PYQ-09</td><td>干货</td><td>AI不是取代人是让人做更有价值的事</td><td>教育</td></tr></p>
+<p><tr><td>PYQ-10</td><td>生活</td><td>周末日常（含个人色彩）</td><td>拉近距离</td></tr></p>
+<p></table></div></p>
 <p>（每条文案的完整逐字稿见模块一第5章）</p>
-
-<h3>2.2 配图规范</h3>
-
-<div class="table-wrap"><table>
-<tr><td>内容类型</td><td>配图建议</td></tr>
-<tr><td>干货输出</td><td>数据截图、知识卡片（Canva可做）、文字长图</td></tr>
-<tr><td>客户案例</td><td>客户聊天记录截图（打码）、验收现场照片</td></tr>
-<tr><td>过程展示</td><td>现场调研照片、开发界面截图、下班后的办公室</td></tr>
-<tr><td>优惠活动</td><td>海报/优惠卡片（简约风格）</td></tr>
-<tr><td>个人生活</td><td>真实照片、不刻意</td></tr>
-</table></div>
-<h3>2.3 朋友圈配图模板</h3>
-
+<p><h3>2.2 配图规范</h3></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>内容类型</td><td>配图建议</td></tr></p>
+<p><tr><td>干货输出</td><td>数据截图、知识卡片（Canva可做）、文字长图</td></tr></p>
+<p><tr><td>客户案例</td><td>客户聊天记录截图（打码）、验收现场照片</td></tr></p>
+<p><tr><td>过程展示</td><td>现场调研照片、开发界面截图、下班后的办公室</td></tr></p>
+<p><tr><td>优惠活动</td><td>海报/优惠卡片（简约风格）</td></tr></p>
+<p><tr><td>个人生活</td><td>真实照片、不刻意</td></tr></p>
+<p></table></div></p>
+<p><h3>2.3 朋友圈配图模板</h3></p>
 <p>配图要求：</p>
 <ul>
 <li>尺寸：1:1（正方形）或4:3</li>
@@ -719,97 +570,81 @@ body {
 <li>统一视觉风格：蓝白主色调+「锦霓鲤锦」logo水印</li>
 <li>避免"微商风"（大红大黄+夸张字体）</li>
 </ul>
-
-<hr>
-
-<h2>3. 短视频脚本库</h2>
-
-<h3>3.1 脚本分类索引</h3>
-
-<div class="table-wrap"><table>
-<tr><td>编号</td><td>系列</td><td>标题</td><td>时长</td><td>类型</td></tr>
-<tr><td>SP-01</td><td>降本实战</td><td>你公司有没有月薪5000产出500的员工？</td><td>45s</td><td>痛点</td></tr>
-<tr><td>SP-02</td><td>降本实战</td><td>3500的AI员工能干多少活？</td><td>50s</td><td>价值展示</td></tr>
-<tr><td>SP-03</td><td>降本实战</td><td>一个二手车老板的AI转型故事</td><td>60s</td><td>案例</td></tr>
-<tr><td>SP-04</td><td>降本实战</td><td>晚上11点来的客户，AI帮你自动接</td><td>45s</td><td>场景</td></tr>
-<tr><td>SP-05</td><td>老板说真话</td><td>我为什么要做AI数字员工这行</td><td>60s</td><td>信任</td></tr>
-<tr><td>SP-06</td><td>老板说真话</td><td>有些钱该省有些钱不该省</td><td>50s</td><td>价值观</td></tr>
-<tr><td>SP-07</td><td>AI扫盲</td><td>AI数字员工到底长什么样？</td><td>50s</td><td>演示</td></tr>
-<tr><td>SP-08</td><td>AI扫盲</td><td>3步把你的Excel交给AI</td><td>55s</td><td>教程</td></tr>
-<tr><td>SP-09</td><td>客户见证</td><td>客户发给我的聊天截图</td><td>40s</td><td>口碑</td></tr>
-<tr><td>SP-10</td><td>行业揭秘</td><td>AI企业服务的坑，我替你踩了</td><td>55s</td><td>教育</td></tr>
-<tr><td>SP-11</td><td>行业揭秘</td><td>大厂2万的方案，我为什么能3500做？</td><td>60s</td><td>对比</td></tr>
-<tr><td>SP-12</td><td>降本实战</td><td>实体店老板必看：AI帮你省什么钱</td><td>50s</td><td>行业</td></tr>
-<tr><td>SP-13</td><td>降本实战</td><td>AI做日报，自动发到你微信群</td><td>45s</td><td>演示</td></tr>
-<tr><td>SP-14</td><td>老板说真话</td><td>做AI诊断100家后的3个发现</td><td>55s</td><td>洞察</td></tr>
-<tr><td>SP-15</td><td>客户见证</td><td>客户说早知道有这个我去年就做了</td><td>40s</td><td>口碑</td></tr>
-<tr><td>SP-16</td><td>AI扫盲</td><td>AI听不懂你的话怎么办？</td><td>45s</td><td>教育</td></tr>
-<tr><td>SP-17</td><td>降本实战</td><td>制造业老板：AI能帮我管库存吗？</td><td>50s</td><td>行业</td></tr>
-<tr><td>SP-18</td><td>老板说真话</td><td>我们第一个客户的故事</td><td>55s</td><td>信任</td></tr>
-<tr><td>SP-19</td><td>行业揭秘</td><td>AI服务商怎么选？4条标准</td><td>50s</td><td>教育</td></tr>
-<tr><td>SP-20</td><td>降本实战</td><td>一句"好的收到"就够了？不，AI能更多</td><td>45s</td><td>场景</td></tr>
-</table></div>
+<p><hr></p>
+<p><h2>3. 短视频脚本库</h2></p>
+<p><h3>3.1 脚本分类索引</h3></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>编号</td><td>系列</td><td>标题</td><td>时长</td><td>类型</td></tr></p>
+<p><tr><td>SP-01</td><td>降本实战</td><td>你公司有没有月薪5000产出500的员工？</td><td>45s</td><td>痛点</td></tr></p>
+<p><tr><td>SP-02</td><td>降本实战</td><td>3500的AI员工能干多少活？</td><td>50s</td><td>价值展示</td></tr></p>
+<p><tr><td>SP-03</td><td>降本实战</td><td>一个二手车老板的AI转型故事</td><td>60s</td><td>案例</td></tr></p>
+<p><tr><td>SP-04</td><td>降本实战</td><td>晚上11点来的客户，AI帮你自动接</td><td>45s</td><td>场景</td></tr></p>
+<p><tr><td>SP-05</td><td>老板说真话</td><td>我为什么要做AI数字员工这行</td><td>60s</td><td>信任</td></tr></p>
+<p><tr><td>SP-06</td><td>老板说真话</td><td>有些钱该省有些钱不该省</td><td>50s</td><td>价值观</td></tr></p>
+<p><tr><td>SP-07</td><td>AI扫盲</td><td>AI数字员工到底长什么样？</td><td>50s</td><td>演示</td></tr></p>
+<p><tr><td>SP-08</td><td>AI扫盲</td><td>3步把你的Excel交给AI</td><td>55s</td><td>教程</td></tr></p>
+<p><tr><td>SP-09</td><td>客户见证</td><td>客户发给我的聊天截图</td><td>40s</td><td>口碑</td></tr></p>
+<p><tr><td>SP-10</td><td>行业揭秘</td><td>AI企业服务的坑，我替你踩了</td><td>55s</td><td>教育</td></tr></p>
+<p><tr><td>SP-11</td><td>行业揭秘</td><td>大厂2万的方案，我为什么能3500做？</td><td>60s</td><td>对比</td></tr></p>
+<p><tr><td>SP-12</td><td>降本实战</td><td>实体店老板必看：AI帮你省什么钱</td><td>50s</td><td>行业</td></tr></p>
+<p><tr><td>SP-13</td><td>降本实战</td><td>AI做日报，自动发到你微信群</td><td>45s</td><td>演示</td></tr></p>
+<p><tr><td>SP-14</td><td>老板说真话</td><td>做AI诊断100家后的3个发现</td><td>55s</td><td>洞察</td></tr></p>
+<p><tr><td>SP-15</td><td>客户见证</td><td>客户说早知道有这个我去年就做了</td><td>40s</td><td>口碑</td></tr></p>
+<p><tr><td>SP-16</td><td>AI扫盲</td><td>AI听不懂你的话怎么办？</td><td>45s</td><td>教育</td></tr></p>
+<p><tr><td>SP-17</td><td>降本实战</td><td>制造业老板：AI能帮我管库存吗？</td><td>50s</td><td>行业</td></tr></p>
+<p><tr><td>SP-18</td><td>老板说真话</td><td>我们第一个客户的故事</td><td>55s</td><td>信任</td></tr></p>
+<p><tr><td>SP-19</td><td>行业揭秘</td><td>AI服务商怎么选？4条标准</td><td>50s</td><td>教育</td></tr></p>
+<p><tr><td>SP-20</td><td>降本实战</td><td>一句"好的收到"就够了？不，AI能更多</td><td>45s</td><td>场景</td></tr></p>
+<p></table></div></p>
 <p>（完整逐字稿见模块一第6章，每条脚本已包含前3秒钩子+中间案例+结尾CTA）</p>
-
-<h3>3.2 短视频拍摄规范</h3>
-
-<div class="table-wrap"><table>
-<tr><td>维度</td><td>标准</td></tr>
-<tr><td>分辨率</td><td>1080p (1920x1080)</td></tr>
-<tr><td>帧率</td><td>30fps</td></tr>
-<tr><td>画幅</td><td>9:16 竖屏</td></tr>
-<tr><td>灯光</td><td>自然光最好，或补面光</td></tr>
-<tr><td>收音</td><td>领夹麦（最便宜的小米/罗德即可）</td></tr>
-<tr><td>背景</td><td>干净整洁的办公室/客户现场/纯色墙</td></tr>
-<tr><td>着装</td><td>商务休闲（衬衫/Polo/夹克，不要西装革履）</td></tr>
-<tr><td>时长</td><td>40-60秒为最佳</td></tr>
-<tr><td>字幕</td><td>必须加，字号小36+</td></tr>
-</table></div>
-<h3>3.3 封面模板</h3>
+<p><h3>3.2 短视频拍摄规范</h3></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>维度</td><td>标准</td></tr></p>
+<p><tr><td>分辨率</td><td>1080p (1920x1080)</td></tr></p>
+<p><tr><td>帧率</td><td>30fps</td></tr></p>
+<p><tr><td>画幅</td><td>9:16 竖屏</td></tr></p>
+<p><tr><td>灯光</td><td>自然光最好，或补面光</td></tr></p>
+<p><tr><td>收音</td><td>领夹麦（最便宜的小米/罗德即可）</td></tr></p>
+<p><tr><td>背景</td><td>干净整洁的办公室/客户现场/纯色墙</td></tr></p>
+<p><tr><td>着装</td><td>商务休闲（衬衫/Polo/夹克，不要西装革履）</td></tr></p>
+<p><tr><td>时长</td><td>40-60秒为最佳</td></tr></p>
+<p><tr><td>字幕</td><td>必须加，字号小36+</td></tr></p>
+<p></table></div></p>
+<p><h3>3.3 封面模板</h3></p>
 <ul>
 <li>统一版式：上方大字标题 + 中间人物/场景 + 下方"锦霓鲤锦·AI数字员工"</li>
 <li>封面字：不超过8个字，字号醒目</li>
 <li>风格：蓝白主色调，简洁干净</li>
 </ul>
-
-<hr>
-
-<h2>4. 小红书笔记模板</h2>
-
-<h3>4.1 笔记分类索引</h3>
-
-<div class="table-wrap"><table>
-<tr><td>编号</td><td>类型</td><td>标题</td><td>目的</td></tr>
-<tr><td>XHS-01</td><td>干货清单</td><td>写给中小企业主：AI能帮你省钱的5个岗位</td><td>引流</td></tr>
-<tr><td>XHS-02</td><td>干货清单</td><td>月薪5000的助理 VS 3500的AI员工</td><td>对比引流</td></tr>
-<tr><td>XHS-03</td><td>实操教程</td><td>手把手：AI自动生成日报/周报</td><td>教育</td></tr>
-<tr><td>XHS-04</td><td>实操教程</td><td>老板必学：让AI帮你自动回客服消息</td><td>教育</td></tr>
-<tr><td>XHS-05</td><td>实操教程</td><td>3步搭建你的第一个AI数字员工</td><td>教育</td></tr>
-<tr><td>XHS-06</td><td>日常故事</td><td>今天去一个工厂做AI诊断</td><td>信任</td></tr>
-<tr><td>XHS-07</td><td>日常故事</td><td>做了100+诊断后老板们最担心什么</td><td>信任</td></tr>
-<tr><td>XHS-08</td><td>日常故事</td><td>客户说3500的AI用了一周效果如何</td><td>口碑</td></tr>
-<tr><td>XHS-09</td><td>避坑指南</td><td>中小企业买AI服务的4个坑</td><td>教育</td></tr>
-<tr><td>XHS-10</td><td>行业洞察</td><td>2026年哪几个行业最适合AI落地</td><td>教育引流</td></tr>
-</table></div>
+<p><hr></p>
+<p><h2>4. 小红书笔记模板</h2></p>
+<p><h3>4.1 笔记分类索引</h3></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>编号</td><td>类型</td><td>标题</td><td>目的</td></tr></p>
+<p><tr><td>XHS-01</td><td>干货清单</td><td>写给中小企业主：AI能帮你省钱的5个岗位</td><td>引流</td></tr></p>
+<p><tr><td>XHS-02</td><td>干货清单</td><td>月薪5000的助理 VS 3500的AI员工</td><td>对比引流</td></tr></p>
+<p><tr><td>XHS-03</td><td>实操教程</td><td>手把手：AI自动生成日报/周报</td><td>教育</td></tr></p>
+<p><tr><td>XHS-04</td><td>实操教程</td><td>老板必学：让AI帮你自动回客服消息</td><td>教育</td></tr></p>
+<p><tr><td>XHS-05</td><td>实操教程</td><td>3步搭建你的第一个AI数字员工</td><td>教育</td></tr></p>
+<p><tr><td>XHS-06</td><td>日常故事</td><td>今天去一个工厂做AI诊断</td><td>信任</td></tr></p>
+<p><tr><td>XHS-07</td><td>日常故事</td><td>做了100+诊断后老板们最担心什么</td><td>信任</td></tr></p>
+<p><tr><td>XHS-08</td><td>日常故事</td><td>客户说3500的AI用了一周效果如何</td><td>口碑</td></tr></p>
+<p><tr><td>XHS-09</td><td>避坑指南</td><td>中小企业买AI服务的4个坑</td><td>教育</td></tr></p>
+<p><tr><td>XHS-10</td><td>行业洞察</td><td>2026年哪几个行业最适合AI落地</td><td>教育引流</td></tr></p>
+<p></table></div></p>
 <p>（完整内容见模块一第7章）</p>
-
-<h3>4.2 小红书格式规范</h3>
+<p><h3>4.2 小红书格式规范</h3></p>
 <ul>
 <li>封面图：3:4比例，大字号标题+关键词</li>
 <li>正文：短句+emoji+空行，不要大段文字</li>
 <li>标签：5-8个，前3个精准标签</li>
 <li>发布时间：早8点/午12点/晚8点</li>
 </ul>
-
-<hr>
-
-<h2>5. 客户案例库</h2>
-
-<h3>5.1 案例标准化模板</h3>
-
+<p><hr></p>
+<p><h2>5. 客户案例库</h2></p>
+<p><h3>5.1 案例标准化模板</h3></p>
 <p>每一个案例按照统一格式编写，后续可快速检索和复用。</p>
-
-<pre><code class="lang-">┌────────────────────────────────────────┐
+<p><pre><code class="lang-">┌────────────────────────────────────────┐</p>
 <p>│ 案例编号：CASE-2026-XXX                │</p>
 <p>│ 客户行业：XXX                          │</p>
 <p>│ 客户规模：XX人                         │</p>
@@ -819,68 +654,57 @@ body {
 <p>│ 案例等级：可公开/仅内部/仅定向使用     │</p>
 <p>└────────────────────────────────────────┘</p>
 <p></code></pre></p>
-
-<h3>5.2 案例标准结构</h3>
-
-<pre><code class="lang-">## 【行业】XX行业 — AI智能客服/文档自动化/数据报表案例
-
-<h3>客户背景</h3>
+<p><h3>5.2 案例标准结构</h3></p>
+<p><pre><code class="lang-">## 【行业】XX行业 — AI智能客服/文档自动化/数据报表案例</p>
+<p><h3>客户背景</h3></p>
 <ul>
 <li>行业：xx</li>
 <li>规模：xx人</li>
 <li>主要业务：xx</li>
 <li>核心痛点（转型前）：xx</li>
 </ul>
-
-<h3>解决方案</h3>
+<p><h3>解决方案</h3></p>
 <ul>
 <li>实施场景：xx</li>
 <li>使用方案：S1/S2/S3</li>
 <li>关键配置：xx</li>
 </ul>
-
-<h3>效果展示</h3>
+<p><h3>效果展示</h3></p>
 <ul>
 <li>问题处理量：原来X条/天 → 现在Y条/天</li>
 <li>响应速度：原来X小时 → 现在X秒</li>
 <li>时间节约：原来每天X小时 → 现在X分钟</li>
 <li>客户原话：……</li>
 </ul>
-
-<h3>交付周期</h3>
+<p><h3>交付周期</h3></p>
 <ul>
 <li>从签约到上线：X个工作日</li>
 <li>培训用时：X小时</li>
 </ul>
-
-<h3>客户评价</h3>
+<p><h3>客户评价</h3></p>
 <p>「客户原话引用」</p>
 <p></code></pre></p>
-
-<h3>5.3 案例库目录（待填充）</h3>
-
-<div class="table-wrap"><table>
-<tr><td>编号</td><td>行业</td><td>场景</td><td>状态</td><td>是否可用于推广</td></tr>
-<tr><td>CASE-01</td><td>二手车</td><td>智能客服+数据报表</td><td>待采集</td><td>是</td></tr>
-<tr><td>CASE-02</td><td>电商</td><td>智能客服+营销内容</td><td>待采集</td><td>是</td></tr>
-<tr><td>CASE-03</td><td>本地服务</td><td>智能客服+文档自动化</td><td>待采集</td><td>是</td></tr>
-<tr><td>CASE-04</td><td>制造业</td><td>知识库+文档自动化</td><td>待采集</td><td>是</td></tr>
-<tr><td>CASE-05</td><td>零售连锁</td><td>数据报表+智能客服</td><td>待采集</td><td>是</td></tr>
-<tr><td>CASE-06</td><td>教育培训</td><td>智能客服+知识库</td><td>待采集</td><td>是</td></tr>
-</table></div>
-<h3>5.4 案例使用场景对照</h3>
-
-<div class="table-wrap"><table>
-<tr><td>案例编号</td><td>朋友圈</td><td>短视频</td><td>小红书</td><td>方案书</td><td>展会</td><td>销售话术</td></tr>
-<tr><td>CASE-01</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
-<tr><td>CASE-02</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
-<tr><td>CASE-03</td><td>✓</td><td></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
-<tr><td>CASE-04</td><td>✓</td><td></td><td></td><td>✓</td><td>✓</td><td>✓</td></tr>
-<tr><td>CASE-05</td><td>✓</td><td></td><td></td><td>✓</td><td>✓</td><td>✓</td></tr>
-<tr><td>CASE-06</td><td></td><td></td><td></td><td>✓</td><td></td><td>✓</td></tr>
-</table></div>
-<h3>5.5 虚拟案例编写规范（首单客户前使用）</h3>
-
+<p><h3>5.3 案例库目录（待填充）</h3></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>编号</td><td>行业</td><td>场景</td><td>状态</td><td>是否可用于推广</td></tr></p>
+<p><tr><td>CASE-01</td><td>二手车</td><td>智能客服+数据报表</td><td>待采集</td><td>是</td></tr></p>
+<p><tr><td>CASE-02</td><td>电商</td><td>智能客服+营销内容</td><td>待采集</td><td>是</td></tr></p>
+<p><tr><td>CASE-03</td><td>本地服务</td><td>智能客服+文档自动化</td><td>待采集</td><td>是</td></tr></p>
+<p><tr><td>CASE-04</td><td>制造业</td><td>知识库+文档自动化</td><td>待采集</td><td>是</td></tr></p>
+<p><tr><td>CASE-05</td><td>零售连锁</td><td>数据报表+智能客服</td><td>待采集</td><td>是</td></tr></p>
+<p><tr><td>CASE-06</td><td>教育培训</td><td>智能客服+知识库</td><td>待采集</td><td>是</td></tr></p>
+<p></table></div></p>
+<p><h3>5.4 案例使用场景对照</h3></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>案例编号</td><td>朋友圈</td><td>短视频</td><td>小红书</td><td>方案书</td><td>展会</td><td>销售话术</td></tr></p>
+<p><tr><td>CASE-01</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr></p>
+<p><tr><td>CASE-02</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr></p>
+<p><tr><td>CASE-03</td><td>✓</td><td></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr></p>
+<p><tr><td>CASE-04</td><td>✓</td><td></td><td></td><td>✓</td><td>✓</td><td>✓</td></tr></p>
+<p><tr><td>CASE-05</td><td>✓</td><td></td><td></td><td>✓</td><td>✓</td><td>✓</td></tr></p>
+<p><tr><td>CASE-06</td><td></td><td></td><td></td><td>✓</td><td></td><td>✓</td></tr></p>
+<p></table></div></p>
+<p><h3>5.5 虚拟案例编写规范（首单客户前使用）</h3></p>
 <p>在没有真实案例时，编写"虚拟脱敏案例"需遵循：</p>
 <ol>
 <li><strong>标注</strong>：标注"基于真实案例改编，已脱敏处理"</li>
@@ -889,111 +713,77 @@ body {
 <li><strong>用语</strong>：用"某xx行业企业"而非具体公司名</li>
 <li><strong>验证</strong>：案例上线后，产品必须能复现所述效果</li>
 </ol>
-
-<hr>
-
-<h2>6. FAQ常见问题库</h2>
-
-<h3>6.1 五级FAQ分类</h3>
-
-<div class="table-wrap"><table>
-<tr><td>级别</td><td>分类</td><td>对应客户阶段</td></tr>
-<tr><td>L1 入门级</td><td>AI是什么？能做什么？</td><td>陌生人→有兴趣</td></tr>
-<tr><td>L2 产品级</td><td>具体怎么配？要花多少钱？</td><td>有兴趣→考虑中</td></tr>
-<tr><td>L3 比较级</td><td>跟xx比怎么样？</td><td>考虑中→决策中</td></tr>
-<tr><td>L4 风险级</td><td>安全吗？效果不好怎么办？</td><td>决策中</td></tr>
-<tr><td>L5 操作级</td><td>具体怎么用？需要学多久？</td><td>已成交</td></tr>
-</table></div>
-<h3>6.2 L1 入门级 FAQ（8问）</h3>
-
+<p><hr></p>
+<p><h2>6. FAQ常见问题库</h2></p>
+<p><h3>6.1 五级FAQ分类</h3></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>级别</td><td>分类</td><td>对应客户阶段</td></tr></p>
+<p><tr><td>L1 入门级</td><td>AI是什么？能做什么？</td><td>陌生人→有兴趣</td></tr></p>
+<p><tr><td>L2 产品级</td><td>具体怎么配？要花多少钱？</td><td>有兴趣→考虑中</td></tr></p>
+<p><tr><td>L3 比较级</td><td>跟xx比怎么样？</td><td>考虑中→决策中</td></tr></p>
+<p><tr><td>L4 风险级</td><td>安全吗？效果不好怎么办？</td><td>决策中</td></tr></p>
+<p><tr><td>L5 操作级</td><td>具体怎么用？需要学多久？</td><td>已成交</td></tr></p>
+<p></table></div></p>
+<p><h3>6.2 L1 入门级 FAQ（8问）</h3></p>
 <p><strong>Q1：AI数字员工到底是什么？</strong></p>
 <p>A：AI数字员工就是帮你公司做重复性工作的AI系统。比如自动回客服消息、自动做报表、自动生成报价单。它不是通用软件，是根据你的业务量身定制的。</p>
-
 <p><strong>Q2：跟ChatGPT有什么区别？</strong></p>
 <p>A：ChatGPT是通用对话工具，你问它答。AI数字员工是直接接入你的业务流程，自动完成工作。比如客户发来一个"这个多少钱"，AI自动查库存、出报价、记录信息，一条龙完成。不需要你一句一句地问。</p>
-
 <p><strong>Q3：我不会用AI怎么办？</strong></p>
 <p>A：完全不用担心。你不需要学任何技术，只需要告诉我们你想解决什么问题。剩下的诊断、开发、部署、培训我们全包。</p>
-
 <p><strong>Q4：需要买什么设备吗？</strong></p>
 <p>A：不需要。AI数字员工是云端服务，有电脑/手机、能联网就能用。</p>
-
-<hr>
-
-<h3>6.3 L2 产品级 FAQ（8问）</h3>
-
+<p><hr></p>
+<p><h3>6.3 L2 产品级 FAQ（8问）</h3></p>
 <p><strong>Q5：配一个AI数字员工要多久？</strong></p>
 <p>A：从签约到上线，单场景通常3-7个工作日。包括开发、测试、部署、培训。</p>
-
 <p><strong>Q6：配一个要多少钱？</strong></p>
 <p>A：S1单场景3500元，S2三到五个场景6000元，S3不限场景一年五万。具体看您需要几个场景。</p>
-
 <p><strong>Q7：费用包含什么？</strong></p>
 <p>A：包含诊断、方案设计、开发部署、对接测试、员工培训、一个月维护。不包括大模型API调用费（每月几百块）。</p>
-
 <p><strong>Q8：怎么收费的？能分期吗？</strong></p>
 <p>A：首付50%，验收后付剩余50%。可以分期。可签合同、对公转账、开增值税专票。</p>
-
-<hr>
-
-<h3>6.4 L3 比较级 FAQ（6问）</h3>
-
+<p><hr></p>
+<p><h3>6.4 L3 比较级 FAQ（6问）</h3></p>
 <p><strong>Q9：跟大厂的AI方案比怎么样？</strong></p>
 <p>A：大厂定制一个场景2-5万元起，周期1-3个月。我们单场景3500起，3-7天交付。大厂做大客户的，我们专注中小企业。</p>
-
 <p><strong>Q10：跟SaaS软件比呢？</strong></p>
 <p>A：SaaS软件是标准功能，不能定制。我们是一对一定制，深度适配你的业务流程。</p>
-
 <p><strong>Q11：跟外包公司比呢？</strong></p>
 <p>A：传统外包公司懂开发但不懂AI，报价高、周期长。我们既懂AI又懂落地，价格是外包的零头。</p>
-
-<hr>
-
-<h3>6.5 L4 风险级 FAQ（6问）</h3>
-
+<p><hr></p>
+<p><h3>6.5 L4 风险级 FAQ（6问）</h3></p>
 <p><strong>Q12：数据安全吗？核心数据给你们放心吗？</strong></p>
 <p>A：数据安全是我们最重视的。</p>
 <p>1、签保密协议，受法律约束</p>
 <p>2、数据可部署在私有环境，不外传</p>
 <p>3、AI只是按你的规则处理数据，不学习你的客户数据</p>
 <p>4、可换供应商时，AI归你，数据归你</p>
-
 <p><strong>Q13：效果不好怎么办？</strong></p>
 <p>A：两个保障：</p>
 <p>1、先免费诊断再出方案，不是瞎配</p>
 <p>2、交付后一个月内，效果不达标免费调整到满意</p>
-
 <p><strong>Q14：AI会不会把我的数据拿去训练？</strong></p>
 <p>A：不会。我们使用的模型可以关闭"数据训练"开关，您的数据只用于您自己的AI运行，不会被用来训练模型。这个可以在合同里写清楚。</p>
-
 <p><strong>Q15：合同有保障吗？</strong></p>
 <p>A：我们是正规注册公司（上海锦霓鲤锦网络科技有限公司），签正式技术服务合同，可开增值税专票，受法律保障。</p>
-
-<hr>
-
-<h3>6.6 L5 操作级 FAQ（4问）</h3>
-
+<p><hr></p>
+<p><h3>6.6 L5 操作级 FAQ（4问）</h3></p>
 <p><strong>Q16：员工需要学多久？</strong></p>
 <p>A：一般培训30-60分钟就够。主要是教员工怎么用AI（比如怎么转人工、怎么看数据）。大部分员工当天就能上手。</p>
-
 <p><strong>Q17：会不会员工抵触？</strong></p>
 <p>A：有些员工会担心被取代。我们的方法是：</p>
 <p>1、提前说明AI是"助手"不是"替代"</p>
 <p>2、把AI定位成帮员工干脏活累活的工具</p>
 <p>3、培训时强调：会用AI的人更有价值</p>
-
 <p>18Q：AI出错了怎么办？</p>
 <p>A：AI不是100%完美，但我们会设置"兜底机制"——AI处理不了的自动转人工。并且持续优化，随着数据积累，AI会越来越准。</p>
-
 <p><strong>Q19：以后不想用了，数据能删吗？</strong></p>
 <p>A：可以。随时可以停止服务，您的所有数据都会删除或返还给您。合同里有明确约定。</p>
-
-<hr>
-
-<h2>7. 线下一页纸/传单文案</h2>
-
-<h3>7.1 传单正面</h3>
-<pre><code class="lang-">┌─────────────────────────────────────────┐
+<p><hr></p>
+<p><h2>7. 线下一页纸/传单文案</h2></p>
+<p><h3>7.1 传单正面</h3></p>
+<p><pre><code class="lang-">┌─────────────────────────────────────────┐</p>
 <p>│                                         │</p>
 <p>│   用半个月工资                          │</p>
 <p>│   给公司配一个                          │</p>
@@ -1015,9 +805,8 @@ body {
 <p>│                                         │</p>
 <p>└─────────────────────────────────────────┘</p>
 <p></code></pre></p>
-
-<h3>7.2 传单背面</h3>
-<pre><code class="lang-">┌─────────────────────────────────────────┐
+<p><h3>7.2 传单背面</h3></p>
+<p><pre><code class="lang-">┌─────────────────────────────────────────┐</p>
 <p>│   AI数字员工能做什么？                   │</p>
 <p>│                                         │</p>
 <p>│   💬 智能客服 — 7x24自动回复客户咨询     │</p>
@@ -1035,36 +824,32 @@ body {
 <p>│                                         │</p>
 <p>└─────────────────────────────────────────┘</p>
 <p></code></pre></p>
-
-<h3>7.3 海报（易拉宝）文案</h3>
-
-<pre><code class="lang-">              ┌─────────────────────┐
-<p>│ AI 数字员工          │</p>
-<p>│ 企业增效计划          │</p>
-<p>└─────────────────────┘</p>
-
-<p>┌─────────────────────────────────────┐</p>
-<p>│                                     │</p>
-<p>│    用半个月工资                      │</p>
-<p>│    给公司配一个                      │</p>
-<p>│    24小时在岗的 AI 员工              │</p>
-<p>│                                     │</p>
-<p>│    低成本 · 快交付                  │</p>
-<p>│    轻侵入 · 正规保障                │</p>
-<p>│                                     │</p>
-<p>│    S1 3,500元 · S2 6,000元          │</p>
-<p>│    S3 50,000/年                     │</p>
-<p>│                                     │</p>
-<p>│    联系人：倪锦                      │</p>
-<p>│    电话：17601414435                │</p>
-<p>│                                     │</p>
-<p>│    上海锦霓鲤锦网络科技有限公司      │</p>
-<p>│                                     │</p>
-<p>└─────────────────────────────────────┘</p>
+<p><h3>7.3 海报（易拉宝）文案</h3></p>
+<p><pre><code class="lang-">              ┌─────────────────────┐</p>
+<p>              │ AI 数字员工          │</p>
+<p>              │ 企业增效计划          │</p>
+<p>              └─────────────────────┘</p>
+<p>    ┌─────────────────────────────────────┐</p>
+<p>    │                                     │</p>
+<p>    │    用半个月工资                      │</p>
+<p>    │    给公司配一个                      │</p>
+<p>    │    24小时在岗的 AI 员工              │</p>
+<p>    │                                     │</p>
+<p>    │    低成本 · 快交付                  │</p>
+<p>    │    轻侵入 · 正规保障                │</p>
+<p>    │                                     │</p>
+<p>    │    S1 3,500元 · S2 6,000元          │</p>
+<p>    │    S3 50,000/年                     │</p>
+<p>    │                                     │</p>
+<p>    │    联系人：倪锦                      │</p>
+<p>    │    电话：17601414435                │</p>
+<p>    │                                     │</p>
+<p>    │    上海锦霓鲤锦网络科技有限公司      │</p>
+<p>    │                                     │</p>
+<p>    └─────────────────────────────────────┘</p>
 <p></code></pre></p>
-
-<h3>7.4 名片文案</h3>
-<pre><code class="lang-">正面：
+<p><h3>7.4 名片文案</h3></p>
+<p><pre><code class="lang-">正面：</p>
 <p>┌────────────────────┐</p>
 <p>│ 倪锦                │</p>
 <p>│ AI数字员工 · 企业定制 │</p>
@@ -1072,7 +857,6 @@ body {
 <p>│ 上海锦霓鲤锦网络科技  │</p>
 <p>│ 有限公司             │</p>
 <p>└────────────────────┘</p>
-
 <p>背面：</p>
 <p>┌────────────────────┐</p>
 <p>│ 用半个月工资         │</p>
@@ -1083,14 +867,10 @@ body {
 <p>│ 📧 qusabc123@outlook.com │</p>
 <p>└────────────────────┘</p>
 <p></code></pre></p>
-
-<hr>
-
-<h2>8. 内容日历与排期</h2>
-
-<h3>8.1 月度内容日历（模板）</h3>
-
-<pre><code class="lang-">┌─────────────────────────────────────────────────────────────┐
+<p><hr></p>
+<p><h2>8. 内容日历与排期</h2></p>
+<p><h3>8.1 月度内容日历（模板）</h3></p>
+<p><pre><code class="lang-">┌─────────────────────────────────────────────────────────────┐</p>
 <p>│                        2026年6月                           │</p>
 <p>├──────┬──────────┬──────────┬──────────┬──────────┬──────────┤</p>
 <p>│ 周一  │ 周二     │ 周三     │ 周四     │ 周五     │ 周六     │</p>
@@ -1108,33 +888,28 @@ body {
 <p>│...   │ ...      │ ...      │ ...      │ ...      │ ...      │</p>
 <p>└──────┴──────────┴──────────┴──────────┴──────────┴──────────┘</p>
 <p></code></pre></p>
-
-<h3>8.2 周度排期（标准周）</h3>
-
-<div class="table-wrap"><table>
-<tr><td>时间</td><td>周一</td><td>周二</td><td>周三</td><td>周四</td><td>周五</td><td>周六</td><td>周日</td></tr>
-<tr><td>📱 朋友圈</td><td>干货</td><td>案例</td><td>生活</td><td>干货</td><td>过程</td><td>优惠</td><td>互动</td></tr>
-<tr><td>📹 短视频</td><td>拍摄</td><td>剪辑发布</td><td>拍摄</td><td>剪辑发布</td><td>拍摄</td><td>剪辑发布</td><td>—</td></tr>
-<tr><td>📕 小红书</td><td>—</td><td>笔记发布</td><td>—</td><td>笔记发布</td><td>—</td><td>笔记发布</td><td>—</td></tr>
-<tr><td>💬 社群</td><td>分享</td><td>—</td><td>分享</td><td>—</td><td>分享</td><td>—</td><td>—</td></tr>
-<tr><td>📝 准备</td><td>本周内容</td><td>素材制作</td><td>素材制作</td><td>下周规划</td><td>数据分析</td><td>素材储备</td><td>内容整理</td></tr>
-</table></div>
-<h3>8.3 内容储备池管理</h3>
-
-<div class="table-wrap"><table>
-<tr><td>状态</td><td>说明</td><td>目标</td></tr>
-<tr><td>📋 选题池</td><td>有标题/方向但未写</td><td>50+</td></tr>
-<tr><td>✏️ 草稿池</td><td>已写了一半</td><td>20+</td></tr>
-<tr><td>✅ 完成池</td><td>写完可用</td><td>各渠道10+</td></tr>
-<tr><td>📅 排期池</td><td>已经排好发布时间</td><td>2周量</td></tr>
-<tr><td>📤 已发布</td><td>已发备用</td><td>持续积累</td></tr>
-</table></div>
-<h3>8.4 内容复用映射</h3>
-
+<p><h3>8.2 周度排期（标准周）</h3></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>时间</td><td>周一</td><td>周二</td><td>周三</td><td>周四</td><td>周五</td><td>周六</td><td>周日</td></tr></p>
+<p><tr><td>📱 朋友圈</td><td>干货</td><td>案例</td><td>生活</td><td>干货</td><td>过程</td><td>优惠</td><td>互动</td></tr></p>
+<p><tr><td>📹 短视频</td><td>拍摄</td><td>剪辑发布</td><td>拍摄</td><td>剪辑发布</td><td>拍摄</td><td>剪辑发布</td><td>—</td></tr></p>
+<p><tr><td>📕 小红书</td><td>—</td><td>笔记发布</td><td>—</td><td>笔记发布</td><td>—</td><td>笔记发布</td><td>—</td></tr></p>
+<p><tr><td>💬 社群</td><td>分享</td><td>—</td><td>分享</td><td>—</td><td>分享</td><td>—</td><td>—</td></tr></p>
+<p><tr><td>📝 准备</td><td>本周内容</td><td>素材制作</td><td>素材制作</td><td>下周规划</td><td>数据分析</td><td>素材储备</td><td>内容整理</td></tr></p>
+<p></table></div></p>
+<p><h3>8.3 内容储备池管理</h3></p>
+<p><div class="table-wrap"><table></p>
+<p><tr><td>状态</td><td>说明</td><td>目标</td></tr></p>
+<p><tr><td>📋 选题池</td><td>有标题/方向但未写</td><td>50+</td></tr></p>
+<p><tr><td>✏️ 草稿池</td><td>已写了一半</td><td>20+</td></tr></p>
+<p><tr><td>✅ 完成池</td><td>写完可用</td><td>各渠道10+</td></tr></p>
+<p><tr><td>📅 排期池</td><td>已经排好发布时间</td><td>2周量</td></tr></p>
+<p><tr><td>📤 已发布</td><td>已发备用</td><td>持续积累</td></tr></p>
+<p></table></div></p>
+<p><h3>8.4 内容复用映射</h3></p>
 <p>一条内容的生命周期（最大化复用）：</p>
-
-<pre><code class="lang-">原始素材（如：一个客户案例）
-<p>↓</p>
+<p><pre><code class="lang-">原始素材（如：一个客户案例）</p>
+<p>    ↓</p>
 <p>一鱼多吃：</p>
 <p>├── 📱 朋友圈：200字短文案+配图</p>
 <p>├── 📹 短视频：40-60秒口播</p>
@@ -1144,69 +919,37 @@ body {
 <p>├── 📋 方案书：作为成功案例章节</p>
 <p>└── 🏢 展会：制作案例单页/海报</p>
 <p></code></pre></p>
-
-<hr>
-
-<blockquote>本模块覆盖了6大内容分类，共计50+条可复用素材</blockquote>
-<blockquote>每条素材都在对应渠道有明确排期和用途</blockquote>
-<blockquote>下一模块：[模块四：客户细分与差异化方案](./模块四_客户细分与差异化方案.md)</blockquote>
-
-
-<hr>
-<h2>相关笔记</h2>
+<p><hr></p>
+<p><blockquote>本模块覆盖了6大内容分类，共计50+条可复用素材</blockquote></p>
+<p><blockquote>每条素材都在对应渠道有明确排期和用途</blockquote></p>
+<p><blockquote>下一模块：[模块四：客户细分与差异化方案](./模块四_客户细分与差异化方案.md)</blockquote></p>
+<p><hr></p>
+<p><h2>相关笔记</h2></p>
 <ul>
 <li><a href="模块一_推广渠道矩阵.html" class="wikilink">模块一_推广渠道矩阵</a> — 内容发布到哪个渠道</li>
 <li><a href="核心话术速查.html" class="wikilink">核心话术速查</a> — 朋友圈/短视频文案参考</li>
 <li><a href="常见反对意见与应对.html" class="wikilink">常见反对意见与应对</a> — FAQ相关</li>
 <li><a href="素材总索引.html" class="wikilink">素材总索引</a> — 所有PPT/Word素材</li>
 </ul>
-
-<p>#内容 #素材 #营销 #文案</p></article>
-<footer class="page-footer">
-<p style="margin-bottom:4px">上海锦霓鲤锦网络科技有限公司 · AI 数字员工企业增效计划</p>
-<p style="font-size:12px"><a href="https://qusabc123.github.io/digital-employee-website/" style="color:var(--text-tertiary);text-decoration:none">https://qusabc123.github.io/digital-employee-website/</a></p>
-</footer>
+<p>#内容 #素材 #营销 #文案</p></div>
+<div class="page-footer">
+Powered by <a href="#">企业数字员工</a> · 上海锦霓鲤锦网络科技有限公司
+</div>
 </main>
 </div>
+
 <script>
-// 防复制
-document.addEventListener('contextmenu', e => e.preventDefault());
-document.addEventListener('copy', e => e.preventDefault());
-document.addEventListener('selectstart', e => e.preventDefault());
-document.addEventListener('dragstart', e => e.preventDefault());
-
-// 搜索
-function searchNotes(q) {
-    q = q.toLowerCase();
-    document.querySelectorAll('.page-link').forEach(el => {
+document.addEventListener('DOMContentLoaded', function() {
+  // Search
+  var search = document.getElementById('search-input');
+  if (search) {
+    search.addEventListener('input', function() {
+      var q = this.value.toLowerCase();
+      document.querySelectorAll('.page-link').forEach(function(el) {
         el.style.display = el.textContent.toLowerCase().includes(q) ? '' : 'none';
+      });
     });
-    document.querySelectorAll('.module-group').forEach(g => {
-        g.style.display = Array.from(g.querySelectorAll('.page-link')).some(e => e.style.display !== 'none') ? '' : 'none';
-    });
-}
-
-// 回到顶部
-function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-
-// 滚动渐入动画
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, { threshold: 0.1 });
-
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.pricing-card, .module-card').forEach(el => {
-        el.classList.add('fade-in');
-        observer.observe(el);
-    });
-    // 模块卡片交错延迟
-    document.querySelectorAll('.module-grid .module-card').forEach((el, i) => {
-        el.style.animationDelay = (i * 0.05) + 's';
-    });
+  }
 });
 </script>
 </body>
